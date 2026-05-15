@@ -1,0 +1,186 @@
+/* styles.css */
+
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.outer-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 500px;
+    padding: 20px;
+    border: 2px solid lightgrey;
+    border-radius: 15px;
+    text-align: center;
+    position: relative; /* Set position to relative for pseudo-elements */
+    overflow: hidden; /* Ensure pseudo-elements don't overflow */
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(200, 200, 200, 0.8), rgba(255, 255, 255, 0.6)); /* Gradient background */
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2), 0 10px 15px rgba(0, 0, 0, 0.1); /* Deep 3D shadow */
+    transform: translateZ(0) perspective(500px); /* Perspective for 3D effect */
+    transform-style: preserve-3d; /* Enable 3D children */
+    z-index: 1; /* Bring container above other elements */
+    box-sizing: border-box; /* Ensures padding is included in the element’s total width/height */
+}
+
+/* Glossy effect for top left corner */
+.container::before {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top right, rgba(255, 255, 255, 0.3), transparent);
+    border-top-left-radius: 15px; /* Adjust border radius to match the container */
+    z-index: 2; /* Ensure this is above the container's content */
+}
+
+/* Glossy effect for top right corner */
+.container::after {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top left, rgba(255, 255, 255, 0.6), transparent);
+    border-top-right-radius: 15px; /* Adjust border radius to match the container */
+    z-index: 2; /* Ensure this is above the container's content */
+}
+
+/* Adding the inner shadow effect for depth */
+.container::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 15px;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.3); /* Inner shadow for depth */
+    transform: translate(-50%, -50%) scale(0.98); /* Slightly shrink for "stuffed" effect */
+    z-index: -1; /* Put the inner shadow behind content */
+}
+
+.container h3 {
+    margin-top: 0;
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #333;
+}
+
+
+.container:hover::before,
+.container:hover::after {
+    opacity: 0.8; /* Slightly increase opacity on hover */
+}
+
+.container {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), /* Light shadow */
+                0 4px 20px rgba(0, 0, 0, 0.3); /* Highlight from top */
+}
+.email {
+    font-size: 20px;
+    color: black;
+}
+
+.email .at-symbol {
+    color: green;
+}
+
+.domain {
+    font-size: 20px;
+    color: black;
+}
+
+.domain .tld {
+    color: red;
+}
+
+.result {
+    font-size: 16px;
+}
+
+.result strong {
+    font-weight: bold;
+}
+
+.return-button {
+    text-align: center; /* Center the button text */
+    position: absolute;
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust to perfectly center the button */
+    bottom: 160px; /* Position the button from the bottom */
+  }
+  
+  .return-button button {
+    padding: 10px 20px; /* Add padding to the button */
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative; /* Set position to relative for pseudo-elements */
+    overflow: hidden; /* Ensure pseudo-elements don't overflow */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), /* Light shadow */
+                0 4px 20px rgba(0, 0, 0, 0.3); /* Highlight from top */
+    margin: 20px 0; /* Ensure consistent margin */
+  }
+  
+  /* Glossy effect for top left corner */
+  .return-button button::before {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top right, rgba(255, 255, 255, 0.6), transparent);
+    border-top-left-radius: 5px; /* Adjust border radius as needed */
+    z-index: 1; /* Ensure the pseudo-element is above the background */
+  }
+  
+  /* Glossy effect for top right corner */
+  .return-button button::after {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top left, rgba(255, 255, 255, 0.6), transparent);
+    border-top-right-radius: 5px; /* Adjust border radius as needed */
+    z-index: 1; /* Ensure the pseudo-element is above the background */
+  }
+  
+  .return-button button:hover::before,
+  .return-button button:hover::after {
+    opacity: 0.8; /* Slightly increase opacity on hover */
+  }
+  
+  .return-button button:hover {
+    background-color: #076907;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3), /* Light shadow */
+                0 4px 20px rgba(0, 0, 0, 0.4); /* Highlight from top */
+  }
+  
+  .return-button button:active {
+    transform: scale(0.95); /* Slightly shrink the button on click */
+  }
+

@@ -1,0 +1,24 @@
+CREATE TABLE IF NOT EXISTS details (
+  id INT(5) NOT NULL,
+  name VARCHAR(15) NOT NULL,
+  surname VARCHAR(15) NOT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+
+SELECT * FROM details;
+
+-- Original Records
+INSERT INTO details (id, name, surname) VALUES
+(120017, 'Giorgos', 'Karesis'),
+(123456, 'Stella', 'Kourti'),
+(130000, 'Bob', 'Brown'),
+(178114, 'Stella', 'Kourti'),
+(190117, 'Ilir', 'Hoxha'),
+(230118, 'Steve', 'Papadopoulous'),
+(210115, 'Amalia', 'Sapounzi');
+
+-- Additional Records
+INSERT INTO details (id, name, surname) VALUES
+(111205, 'Giannis', 'Papadopoulos'),
+(121407, 'Anna', 'Petratou');

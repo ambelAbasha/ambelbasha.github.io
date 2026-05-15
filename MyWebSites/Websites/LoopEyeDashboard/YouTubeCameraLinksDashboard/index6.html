@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Polaroid Style Camera Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 10px;
+    }
+
+    .add-camera {
+      margin: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .add-camera button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #28a745;
+      color: white;
+    }
+
+    .add-camera button:hover {
+      background-color: #218838;
+    }
+
+    .dashboard {
+      display: grid;
+      gap: 20px;
+      padding: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+
+    .camera {
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      background: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 0;
+      position: relative;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .camera .video-wrapper {
+      flex-grow: 1;
+      background-color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+    }
+
+    .camera video {
+      max-width: 100%;
+      height: auto;
+      border-bottom: 2px solid #ccc;
+    }
+
+    .camera h3 {
+      margin: 10px 0;
+      font-size: 18px;
+    }
+
+    .camera .controls {
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .camera input[type="text"] {
+      margin: 10px 0;
+      padding: 8px;
+      width: calc(100% - 20px);
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    .camera button {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #dc3545;
+      color: white;
+    }
+
+    .camera button:hover {
+      background-color: #c82333;
+    }
+  </style>
+</head>
+<body>
+  <h1>Polaroid Style Camera Dashboard</h1>
+  <div class="add-camera">
+    <button id="addCameraBtn">Add Camera</button>
+  </div>
+  <div id="cameraLimitMessage" class="limit-message"></div>
+  <div class="dashboard" id="dashboard"></div>
+
+  <script>
+    const dashboard = document.getElementById("dashboard");
+    const addCameraBtn = document.getElementById("addCameraBtn");
+    const cameraLimitMessage = document.getElementById("cameraLimitMessage");
+
+    let cameras = [];
+    const cameraLimit = 10;
+
+    addCameraBtn.addEventListener("click", () => {
+      if (cameras.length >= cameraLimit) {
+        cameraLimitMessage.innerText =
+          "You have reached the maximum limit of cameras. Apply for more access.";
+        return;
+      }
+      cameraLimitMessage.innerText = "";
+
+      const cameraId = cameras.length + 1;
+      cameras.push({ id: cameraId, url: "", name: `Camera ${cameraId}` });
+
+      const cameraDiv = document.createElement("div");
+      cameraDiv.className = "camera";
+      cameraDiv.dataset.cameraId = cameraId;
+
+      cameraDiv.innerHTML = `
+        <div class="video-wrapper">
+          <video id="video-${cameraId}" autoplay muted playsinline>
+            <source src="" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <h3 contenteditable="true" onblur="renameCamera(${cameraId}, this.innerText)">
+          Camera ${cameraId}
+        </h3>
+        <div class="controls">
+          <input 
+            type="text" 
+            placeholder="Enter stream URL" 
+            id="streamUrl-${cameraId}" 
+            onchange="updateStreamUrl(${cameraId})"
+          />
+          <button onclick="deleteCamera(${cameraId})">Delete</button>
+        </div>
+      `;
+
+      cameraDiv.addEventListener("click", () => toggleSelect(cameraDiv));
+      dashboard.appendChild(cameraDiv);
+
+      updateGridLayout();
+    });
+
+    function updateGridLayout() {
+      const cameraCount = dashboard.children.length;
+      if (cameraCount === 1) {
+        dashboard.style.gridTemplateColumns = "1fr";
+      } else if (cameraCount === 2) {
+        dashboard.style.gridTemplateColumns = "repeat(2, 1fr)";
+      } else {
+        dashboard.style.gridTemplateColumns = "repeat(auto-fill, minmax(300px, 1fr))";
+      }
+    }
+
+    function updateStreamUrl(cameraId) {
+      const streamUrl = document.getElementById(`streamUrl-${cameraId}`).value;
+      const videoElement = document.getElementById(`video-${cameraId}`);
+      const sourceElement = videoElement.querySelector("source");
+
+      sourceElement.src = streamUrl;
+      videoElement.load();
+      console.log(`Camera ${cameraId} stream URL updated to: ${streamUrl}`);
+    }
+
+    function deleteCamera(cameraId) {
+      const cameraToDelete = document.querySelector(`.camera[data-camera-id="${cameraId}"]`);
+      if (cameraToDelete) {
+        cameraToDelete.remove();
+        cameras = cameras.filter((cam) => cam.id !== cameraId);
+        updateGridLayout();
+      }
+    }
+
+    function renameCamera(cameraId, newName) {
+      const camera = cameras.find((cam) => cam.id === cameraId);
+      if (camera) {
+        camera.name = newName;
+        console.log(`Camera ${cameraId} renamed to: ${newName}`);
+      }
+    }
+
+    function toggleSelect(cameraDiv) {
+      if (cameraDiv.classList.contains("selected")) {
+        cameraDiv.classList.remove("selected");
+      } else {
+        document.querySelectorAll(".camera").forEach((el) => el.classList.remove("selected"));
+        cameraDiv.classList.add("selected");
+      }
+    }
+  </script>
+</body>
+</html>

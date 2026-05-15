@@ -1,0 +1,2 @@
+auth_check.php -> authCheck.php
+display_music.php -> displayMusic.php

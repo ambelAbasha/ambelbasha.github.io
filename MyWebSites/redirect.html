@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const INSTANCE_KEY = 'uniquePageInstanceId';
+    const params = new URLSearchParams(window.location.search);
+    const instanceIdFromUrl = params.get('instance_id');
+    const redirectUrl = params.get('url');
+
+    function log(...messages) {
+        console.log(...messages);
+    }
+
+    if (instanceIdFromUrl && redirectUrl) {
+        const storedInstanceId = localStorage.getItem(INSTANCE_KEY);
+        if (storedInstanceId === instanceIdFromUrl) {
+            log("[Redirect] Instance IDs match. Redirecting to:", redirectUrl);
+            window.location.href = decodeURIComponent(redirectUrl);
+        } else {
+            log("[Redirect] Conflict. Displaying modal.");
+            displayModal();
+        }
+    } else {
+        log("[Redirect] Missing parameters.");
+        displayError("Invalid redirect request.");
+    }
+
+    function displayError(message) {
+        document.body.innerHTML = `<p style="color:red;">${message}</p>`;
+    }
+
+    function displayModal() {
+        const modal = document.createElement('div');
+        modal.innerHTML = `
+            <div style="background: rgba(0,0,0,0.7); position:fixed; top:0; left:0; width:100%; height:100%; display:flex; justify-content:center; align-items:center;">
+                <div style="background:#fff; padding:20px; text-align:center;">
+                    <p>Instance conflict detected. Please resolve the conflict.</p>
+                    <button id="resolve">Resolve</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+
+        document.getElementById('resolve').onclick = () => {
+            localStorage.setItem(INSTANCE_KEY, instanceIdFromUrl);
+            window.location.reload();
+        };
+    }
+});
+    </script>
+</head>
+<body>
+    <p>Redirecting you to the existing instance...</p>
+</body>
+</html>

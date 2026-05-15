@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Learn more about the purpose and structure of Ambel Basha's portfolio landing page.">
+    <meta name="author" content="Ambel Basha">
+    <meta name="keywords" content="portfolio, full-stack developer, cybersecurity, web development, skills, projects">
+
+    <title>About This Page - Ambel Basha</title>
+
+    <!-- External Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Link to Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header id="about-header" role="banner" class="navbar-container">
+        <div class="welcome-title">About This Page</div>
+
+        <!-- Wrap the button in its own wrapper -->
+        <div class="burger-wrapper">
+            <button
+                id="burger-toggle"
+                class="burger-button"
+                aria-expanded="false"
+                aria-controls="about-menu"
+                aria-label="Toggle navigation"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        <nav id="about-menu" role="navigation" aria-label="About page sections" hidden>
+            <ul>
+                <li><a href="../../index.html">Intro</a></li>
+                <li><a href="../../index.html#about">About</a></li>
+                <li><a href="../../index.html#skills">Skills</a></li>
+                <li><a href="../../index.html">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- About This Page Section -->
+    <div class="about-page-container">
+        <!-- Main Content -->
+        <main>
+            <!-- Introduction Section -->
+            <section class="description">
+                <h2>🎯 Purpose</h2>
+                <p>
+                    Welcome to the "About This Page" section! This page offers insight into the design and development of Ambel Basha’s landing page. As a Full-Stack Developer and Cybersecurity expert, this page showcases his technical expertise, projects, and professional background.
+                </p>
+                <p>
+                    The page is designed to provide an engaging experience with a minimalistic layout. It features interactive elements like smooth scrolling, dynamic counters, and a responsive design that adapts to various screen sizes.
+                </p>
+            </section>
+
+            <!-- Purpose Section -->
+            <section class="details">
+                <h2>⚙️ Functionality</h2>
+                <p>
+                    The main goal of this page is to centralize Ambel Basha's professional portfolio. Users can explore Ambel’s skills, view projects, and understand his approach to full-stack development and cybersecurity. The burger menu allows easy navigation to key sections, such as About, Skills, and Portfolio.
+                </p>
+                <p>
+                    Key sections include:
+                </p>
+                <ul>
+                    <li><strong>About:</strong> Information about Ambel, along with links to "Read More" and "Portfolio".</li>
+                    <li><strong>Skills:</strong> A breakdown of Ambel’s technical expertise, with links to related portfolio projects.</li>
+                    <li><strong>Footer:</strong> Contains visitor statistics and essential contact/navigation links.</li>
+                </ul>
+            </section>
+
+            <!-- Technologies Used Section -->
+            <section class="technologies">
+                <h2>🛠️ Technologies Used</h2>
+                <p>
+                    Ambel’s portfolio landing page leverages several technologies and tools to create a seamless and interactive experience:
+                </p>
+                <ul>
+                    <li><strong>HTML5 & CSS3:</strong> The foundation for the page structure and styling.</li>
+                    <li><strong>JavaScript:</strong> Used for dynamic elements like the burger menu, smooth scrolling, and visitor count functionality.</li>
+                    <li><strong>Font Awesome:</strong> For scalable vector icons like the ones used in the navigation bar and footer.</li>
+                    <li><strong>Google Fonts:</strong> Provides a clean and modern typography style.</li>
+                    <li><strong>Responsive Design:</strong> Ensures the page adapts to all devices, from desktops to mobile phones.</li>
+                </ul>
+            </section>
+
+            <!-- Skills Section -->
+            <section class="skills">
+                <a href="../../index.html#skills" class="button"><h2>Skills</h2></a>
+                <p>
+                    Ambel’s skills are highlighted in the following areas:
+                </p>
+                <ul>
+                    <li><strong>Web Development:</strong> Expertise in languages like Java, Python, C++, PHP, HTML, JavaScript, JSP, and CSS for building dynamic and secure web solutions.</li>
+                    <li><strong>Databases:</strong> Proficiency in MySQL and MariaDB, creating robust database systems.</li>
+                    <li><strong>Cybersecurity:</strong> Specialization in secure development practices including SQL Injection Prevention, Buffer Overflow Protection, and Data Encryption.</li>
+                    <li><strong>Linux Scripting:</strong> Advanced Bash scripting for automation and system administration tasks.</li>
+                    <li><strong>Metadata:</strong> Optimizing search engine rankings using descriptive and structured data.</li>
+                    <li><strong>IoT:</strong> Experience with Raspberry Pi Sense Hat and Alexa Voice Service for IoT projects.</li>
+                    <li><strong>Software Quality Assurance:</strong> Expertise in Test Automation and Test-Driven Development (TDD).</li>
+                </ul>
+                <p>
+                    These skills are connected to specific projects in the <a href="../../portfolio.html" class="button">Portfolio</a> section for deeper exploration.
+                </p>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Footer Section -->
+    <footer id="footer-container" class="footer">
+        <div class="footer-container">
+            <ul class="footer-nav">
+                <li>
+                    <a href="aboutLanding.html">
+                        <i class="fas fa-file-alt"></i>
+                        <span>This Page</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../../MyWebSites/About/about.html#contact">
+                        <i class="fas fa-phone"></i>
+                        <span>Contact</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../../index.html">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- Script for Handling Internal Navigation -->
+    <script>
+        function handleInternalNav(event) {
+            event.preventDefault();
+            const targetId = event.target.getAttribute("href").substring(1);
+            document.getElementById(targetId).scrollIntoView({ behavior: "smooth" });
+        }
+    </script>
+    
+    <script>
+        const wrapper = document.querySelector('.burger-wrapper');
+        const btn     = document.getElementById('burger-toggle');
+        const menu    = document.getElementById('about-menu');
+
+        btn.addEventListener('click', () => {
+            const open = btn.classList.toggle('open');
+            btn.setAttribute('aria-expanded', open);
+            menu.hidden = !open;
+            menu.classList.toggle('show', open);
+            wrapper.classList.toggle('animate-cw', open);
+            wrapper.classList.toggle('animate-ccw', !open);
+        });
+    </script>
+</body>
+
+</html>

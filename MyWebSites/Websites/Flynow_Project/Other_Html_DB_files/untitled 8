@@ -1,0 +1,12 @@
+#Inserts that i did in flynow database
+use flynow;
+
+insert into airline_company (comp_name)
+values ('Olympic'),
+		('Aegean'),
+		('Ryan');
+		
+insert into passenger (p_name,p_lastname,city)
+values ('John','Smith','Athens'),
+		('Mary','Ford','Thessaloniki'),
+		('Dimitris','Papadopoylos','Irakleion');

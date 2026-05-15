@@ -1,0 +1,637 @@
+/*=============================================
+  :root — Global Variables (Responsive Ready)
+=============================================*/
+:root {
+  --color-bg: #003135;
+  --color-bg-alt: #024950;
+  --color-bg-hover: #002428;
+  --color-primary: #0FA4AF;
+  --color-cyan-dark: #0c7075;
+  --color-secondary: #bb4232;
+  --color-secondary-dark: #993528;
+  --color-accent-1: #F5C74F;
+  --color-accent-2: #B8C46E;
+  --color-accent-3: #CFAF9D;
+  --color-text: #ffffff;
+  --color-text-muted: #bb4232;
+  --color-border: #0FA4AF;
+  --color-shadow: rgba(0,0,0,0.2);
+  --font-display: 'Syne', sans-serif;
+  --font-sans: 'Inter', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+  --font-size-base: 1rem;
+  --font-size-sm: 0.875rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.5rem;
+  --line-height-base: 1.4;
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xlg: 6rem;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 2px 6px var(--color-shadow);
+  --shadow-md: 0 4px 12px var(--color-shadow);
+  --transition-fast: 0.2s ease;
+  --transition: 0.3s ease;
+
+  /* Responsive font scaling */
+  --font-size-fluid-sm: clamp(0.8rem, 0.6vw, 0.9rem);
+  --font-size-fluid-base: clamp(1rem, 1vw, 1.2rem);
+  --font-size-fluid-lg: clamp(1.2rem, 1.5vw, 1.5rem);
+  --font-size-fluid-xl: clamp(1.5rem, 2vw, 2rem);
+  --font-size-fluid-xxl: clamp(2rem, 3vw, 2.5rem);
+
+  /* RGB channel triplets — for rgba() compositions */
+  --color-primary-rgb:    15, 164, 175;
+  --color-secondary-rgb:  187, 66, 50;
+  --color-accent-1-rgb:   245, 199, 79;
+  --color-accent-2-rgb:   184, 196, 110;
+  --color-bg-rgb:         0, 49, 53;
+
+  /* Semantic extras */
+  --color-menu-bg:        #01373e;
+  --color-status-online:  #4caf82;
+  --color-gradient-warm:  #f24e1e;
+  --color-gradient-cool:  #04e2c5;
+  --wh-bg:                #000d10;
+  --color-terminal-green: #0a990a;
+}
+
+/* Basic Reset and Responsiveness */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+  font-size: 100%;
+}
+
+body {
+  user-select: none;
+  margin: 0;
+  padding: 40px 0 0;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-fluid-base);
+  line-height: var(--line-height-base);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  pointer-events: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-optical-sizing: auto;
+}
+
+body * {
+  pointer-events: auto;
+}
+
+/* Responsive Typography Utility */
+.h1 {
+  font-size: var(--font-size-fluid-xxl);
+}
+.h2 {
+  font-size: var(--font-size-fluid-xl);
+}
+.h3 {
+  font-size: var(--font-size-fluid-lg);
+}
+.p {
+  font-size: var(--font-size-fluid-base);
+}
+.small {
+  font-size: var(--font-size-fluid-sm);
+}
+
+@media (max-width: 768px) {
+  :root {
+    --space-sm: 0.75rem;   /* Reduced from 1rem */
+    --space-md: 1rem;      /* Reduced from 1.5rem */
+    --space-lg: 1.5rem;
+    --font-size-base: 0.95rem;
+    --font-size-sm: 0.8rem;
+  }
+
+  body {
+    padding-top: 30px; /* Reduced from 40px */
+  }
+
+  /* Adjust burger wrapper size */
+  .burger-wrapper {
+    width: 45px;  /* Slightly smaller */
+    height: 45px;
+  }
+
+  /* Adjust navbar title size */
+  .welcome-title {
+    font-size: clamp(1.6rem, 5vw, 2.3rem); /* Slightly smaller title */
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --space-sm: 0.5rem;   /* Reduced from 0.75rem */
+    --space-md: 0.75rem;  /* Reduced from 1rem */
+    --space-lg: 1rem;
+    --font-size-base: 0.85rem;
+    --font-size-sm: 0.75rem;
+  }
+
+  html {
+    font-size: 90%;
+  }
+
+  body {
+    padding-top: 20px; /* Reduced from 30px */
+  }
+
+  /* Adjust burger wrapper size */
+  .burger-wrapper {
+    width: 40px;  /* Smaller size */
+    height: 40px;
+  }
+
+  /* Adjust navbar title size */
+  .welcome-title {
+    font-size: clamp(1.4rem, 5vw, 2.1rem); /* Even smaller title */
+  }
+}
+
+@keyframes slideDown {
+  from { top: -120px; }
+  to { top: 0; }
+}
+
+/* Main Header */
+#main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(180deg, var(--color-bg-alt), var(--color-bg));
+  color: var(--color-text);
+  padding: 0.5rem 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  z-index: 100;
+  animation: slideDown 0.6s ease-in-out forwards;
+}
+
+@media (max-width: 768px) {
+  #main-header {
+    padding: 0.15rem 0;  /* Reduced padding for tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  #main-header {
+    padding: 0.1rem 0;  /* Further reduced padding for mobile devices */
+  }
+}
+
+/* Navbar and Burger Menu */
+.navbar-container {
+  max-width: 1400px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 4;
+  padding: 0;
+}
+
+/* Welcome Title Styling */
+.welcome-title {
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  font-weight: 800;
+  font-family: var(--font-display);
+  letter-spacing: -0.03em;
+  color: var(--highlight-color);
+  text-align: center;
+  flex-grow: 1;
+  position: relative;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+  left: 0;
+  margin: 0 auto;
+}
+
+/* Burger Wrapper */
+.burger-wrapper {
+  position: absolute;
+  top: 60%;  /* Increased from 52% to lower the burger */
+  right: var(--space-md);
+  transform: translateY(-50%);  /* Adjusted to keep it centered properly */
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 101;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .burger-wrapper {
+    top: 50%;  /* Keep vertically centered */
+    transform: translateY(-50%);  /* Keep it centered inside the element */
+    width: 48px;  /* Smaller size */
+    height: 0;  /* Remove height */
+    padding: 0;  /* Remove padding */
+  }
+}
+
+@media (max-width: 480px) {
+  .burger-wrapper {
+    top: 50%;  /* Keep vertically centered */
+    transform: translateY(-50%);  /* Keep it centered inside the element */
+    width: 40px;  /* Smaller size */
+    height: 0;  /* Remove height */
+    padding: 0;  /* Remove padding */
+  }
+}
+
+@keyframes drawCircle {
+  0% { stroke-dasharray: 0 314.159; }
+  100% { stroke-dasharray: 314.159 0; }
+}
+
+.burger-menu {
+  --fill-angle: 0deg;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  background-color: var(--color-text);
+  color: var(--color-secondary);
+  border: 4px solid transparent;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-xs);
+  cursor: pointer;
+  pointer-events: auto;
+  box-shadow: var(--shadow-sm);
+  z-index: 1;
+  transition: background 0.3s;
+  border-image: conic-gradient(rgba(0, 0, 0, 0.6) var(--fill-angle), transparent var(--fill-angle)) 1;
+}
+
+.burger-menu span {
+  position: absolute;
+  width: 30px;
+  height: 4px;
+  background-color: var(--color-secondary-dark);
+  border-radius: 4px;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  transform-origin: center;
+}
+
+.burger-menu span:nth-child(1) { top: var(--space-xs); }
+.burger-menu span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+.burger-menu span:nth-child(3) { bottom: var(--space-xs); }
+
+.burger-menu.open span:nth-child(1) {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.burger-menu.open span:nth-child(2) { opacity: 0; }
+
+.burger-menu.open span:nth-child(3) {
+  bottom: 50%;
+  transform: translateY(50%) rotate(-45deg);
+}
+
+.burger-menu:hover span { background-color: #381805; }
+.burger-wrapper.animate-cw .burger-menu { --fill-angle: 360deg; }
+.burger-wrapper.animate-ccw .burger-menu { --fill-angle: 0deg; }
+
+.clock {
+  position: absolute;
+  top: 52%;
+  left: 10px; /* Move the clock 10px from the left edge */
+  transform: translateY(-52%);
+  padding: 10px 10px 10px 0;
+  font-family: 'Courier New', monospace;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 600;
+  color: var(--color-secondary);
+  background: transparent;
+  border-radius: 5px;
+  z-index: 2;
+  margin-left: 0;
+}
+
+/* For smaller screens, further adjustments to ensure responsiveness */
+@media (max-width: 768px) {
+  .clock {
+    left: 10px; /* Keep it 10px from the left edge on smaller screens */
+    font-size: clamp(0.8rem, 3vw, 1rem); /* Slightly smaller font size on mobile */
+  }
+}
+
+
+#visitor-count-section {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 12px;
+  gap: 5px;
+  position: absolute;
+  right: 6rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+}
+
+#visitor-count-section p {
+  display: inline-block;
+  width: 120px;
+  text-align: right;
+  font-family: monospace;
+  white-space: nowrap;
+  margin: 0;
+  position: relative;
+}
+
+#visitor-count-section p .number .prefix,
+#visitor-count-section p .number .digits {
+  display: inline;
+  margin: 0;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-15px);
+    opacity: 0;
+  }
+}
+
+.visit-animation {
+  position: absolute;
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--color-accent-1);
+  left: 100%;
+  margin-left: 5px;
+  animation: floatUp 1s ease-out forwards;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  #main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+
+  #clock {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .burger-wrapper {
+    right: 4em;
+    top: 70%;
+  }
+
+  .welcome-title {
+    margin: 2.5rem 1rem 0;
+    font-size: clamp(1.5rem, 5vw, 1.8rem);
+    text-align: center;
+    left: 0;
+  }
+
+  .navbar-container {
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 2.5rem;
+  }
+  #visitor-count-section {
+    position: absolute;
+    top: 10px; /* Add some space from the top */
+    right: 4rem; /* Small space from the right edge */
+    width: auto;
+    display: flex;
+    justify-content: flex-end; /* Align items to the right */
+    align-items: center;
+    padding: 0.5rem 1rem;
+    z-index: 900;
+  }
+
+  #visitor-count-section p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--color-text);
+    white-space: nowrap;
+  }
+}
+
+
+.hero {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 100px 20px;
+  min-height: 60vh;
+  animation: fadeIn 2s ease-out;
+}
+
+.hero img {
+  border-radius: 50%;
+  width: 450px;
+  height: 450px;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 5vw, 2.5rem);
+  background: linear-gradient(to right, var(--color-gradient-warm), var(--color-gradient-cool));
+  -webkit-background-clip: text; /* Safari and WebKit browsers */
+  background-clip: text; /* For other browsers */
+  color: transparent; /* Make the text color transparent to show the gradient */
+  margin-bottom: 10px;
+}
+
+.about-info p {
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.7rem;
+  background: linear-gradient(to right, var(--color-gradient-cool), var(--color-gradient-warm));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-align: center;
+
+  /* Animation setup */
+  opacity: 0;
+  transform: translateY(120vh) rotate(15deg); /* start below viewport */
+  animation: riseFlowUnified 2s cubic-bezier(.25,1.25,.5,1) forwards;
+}
+
+/* Keyframes for curved upward flow */
+@keyframes riseFlowUnified {
+  0% {
+    opacity: 0;
+    transform: translateY(120vh) rotate(15deg); /* way below screen */
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-30px) rotate(-8deg); /* overshoot with curve */
+  }
+  75% {
+    transform: translateY(15px) rotate(5deg); /* bounce down a bit */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(0); /* final natural position */
+  }
+}
+
+.section {
+  padding: 60px 20px;
+  max-width: 1580px;
+  margin: auto;
+  animation: fadeIn 2s ease-out;
+}
+
+#web {
+  margin-top: -40px; /* Shift the entire section upwards */
+  padding-top: 0; /* Remove any extra padding at the top */
+}
+
+#web-project-header {
+  margin-top: -28px; /* Adjust the header margin if needed */
+}
+
+.card-grid {
+  margin-top: -14px; /* Adjust the card grid position if needed */
+}
+
+.section h2 {
+  text-align: center;
+  color: var(--color-accent-1);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-md);
+  margin-top: 0;
+}
+
+.card-link {
+  display: block;
+  text-decoration: none;
+}
+
+.card {
+  position: relative;
+  background: var(--color-cyan-dark) url('Images/AbstractTurq.jpeg') no-repeat center/cover;
+  background-blend-mode: lighten;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  top: 3em;
+  bottom: 4em;
+  animation: fadeIn 2s ease-out;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  border: 2px solid #064447;
+  border-radius: 12px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.card-link:hover .card,
+.card-link:focus .card {
+  background-color: var(--color-secondary);
+  transform: translateY(-3px);
+}
+
+.card-link:active .card {
+  background-color: var(--color-secondary-dark);
+  transform: translateY(0);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: var(--space-md);
+}
+
+.card-content h3 {
+  color: var(--color-accent-1);
+  margin-bottom: var(--space-sm);
+}
+
+/* ==================== 
+   Fade-in Animation 
+   ==================== */
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/*=============================================
+  Typography System — Font Assignments
+=============================================*/
+h1, h2, h3,
+.welcome-title,
+.section h2 {
+  font-family: var(--font-display);
+  letter-spacing: -0.025em;
+}
+
+h1 { font-weight: 800; }
+h2 { font-weight: 800; }
+h3 { font-weight: 700; }
+
+.welcome-title { font-weight: 800; }
+
+/* Labels & clock — monospace for technical precision */
+.clock,
+.menu-section-label,
+.menu-sub,
+.status-text,
+.visit-animation {
+  font-family: var(--font-mono);
+}
+
+/* Smooth paragraph rendering */
+p { line-height: 1.72; }

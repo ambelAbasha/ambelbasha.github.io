@@ -1,0 +1,91 @@
+/* Error container */
+#error-container {
+    width: 150px;
+    margin: 0 auto;
+    background-color: #f8d7da; /* Light red background for error */
+    color: #721c24; /* Dark red text for better readability */
+    padding: 5px;
+    border: 1px solid #f5c6cb; /* Matching red error theme */
+    border-radius: 5px;
+    text-align: center;
+    font-size: 12px;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    display: block; /* Ensure it is displayed */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Add slight shadow */
+}
+
+
+/* Ensure page layout doesn't shift due to margins/padding */
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Wrapper to center content */
+#wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Center container for the form */
+.container {
+    text-align: center;
+}
+
+/* Styles for input fields */
+.login input[type="text"],
+.login input[type="password"] {
+    width: 300px; /* Ensure consistency in field width */
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc; /* Neutral border */
+    border-radius: 3px;
+    box-sizing: border-box;
+    font-size: 14px; /* Slightly larger font for readability */
+    transition: border-color 0.3s ease; /* Smooth transition for border changes */
+}
+
+/* Add focus state for inputs to match a polished look */
+.login input[type="text"]:focus,
+.login input[type="password"]:focus {
+    border-color: #007bff; /* Blue border on focus */
+    outline: none;
+}
+
+/* Submit button */
+.login .submit input[type="submit"] {
+    width: 300px; /* Button width matching inputs */
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: #007bff; /* Blue background */
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px; /* Slightly larger font for buttons */
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+/* Hover effect for submit button */
+.login .submit input[type="submit"]:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Error message styles to ensure visibility on all devices */
+@media (max-width: 768px) {
+    #error-container {
+        width: 90%; /* Adjust width on smaller screens */
+    }
+    .login input[type="text"],
+    .login input[type="password"],
+    .login .submit input[type="submit"] {
+        width: 90%; /* Adjust input and button width for smaller devices */
+    }
+}

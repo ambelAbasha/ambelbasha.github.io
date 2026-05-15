@@ -1,0 +1,185 @@
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.container {
+    width: 99%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.table-container {
+    width: 33%;
+    max-width: 600px;
+    height: auto;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) perspective(500px); /* Add perspective for 3D effect */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid lightgrey;
+    border-radius: 15px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2), 0 10px 15px rgba(0, 0, 0, 0.1); /* Deep 3D shadow */
+    overflow: auto;
+    padding: 20px;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(200, 200, 200, 0.8), rgba(255, 255, 255, 0.6));
+    box-sizing: border-box;
+    transform-style: preserve-3d; /* Allow for 3D children to be visible */
+    z-index: 1;
+}
+
+.table-container::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 15px;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.3); /* Inner shadow for depth */
+    transform: translate(-50%, -50%) scale(0.98); /* Slightly shrink for "stuffed" effect */
+    z-index: -1; /* Put the inner shadow behind content */
+}
+
+.table-container h2 {
+    margin-top: 0;
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #333;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    position: relative;
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Light shadow */
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* Glossy effect for table */
+table::before, table::after {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    height: 100%;
+    width: 50%;
+    background: linear-gradient(to top right, rgba(255, 255, 255, 0.4), transparent);
+    z-index: 1; /* Ensure the pseudo-element is above the background */
+}
+
+table::before {
+    left: 0;
+    border-top-left-radius: 5px; /* Adjust border radius as needed */
+}
+
+table::after {
+    right: 0;
+    border-top-right-radius: 5px; /* Adjust border radius as needed */
+}
+
+/* Additional glossy effects for hover */
+table:hover::before,
+table:hover::after {
+    opacity: 0.8; /* Slightly increase opacity on hover */
+}
+
+/* Table cell styles */
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.3); /* Slightly transparent for glass effect */
+}
+
+thead {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+tbody tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+tbody tr:nth-child(odd) {
+    background-color: rgba(245, 241, 241, 0.2);
+}
+
+.return-button {
+    text-align: center; /* Center the button text */
+    position: absolute;
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust to perfectly center the button */
+    bottom: 160px; /* Position the button from the bottom */
+}
+
+.return-button button {
+    padding: 10px 20px; /* Add padding to the button */
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative; /* Set position to relative for pseudo-elements */
+    overflow: hidden; /* Ensure pseudo-elements don't overflow */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), /* Light shadow */
+                0 4px 20px rgba(0, 0, 0, 0.3); /* Highlight from top */
+    margin: 20px 0; /* Ensure consistent margin */
+}
+
+/* Glossy effect for top left corner */
+.return-button button::before {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top right, rgba(255, 255, 255, 0.6), transparent);
+    border-top-left-radius: 5px; /* Adjust border radius as needed */
+    z-index: 1; /* Ensure the pseudo-element is above the background */
+}
+
+/* Glossy effect for top right corner */
+.return-button button::after {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top left, rgba(255, 255, 255, 0.6), transparent);
+    border-top-right-radius: 5px; /* Adjust border radius as needed */
+    z-index: 1; /* Ensure the pseudo-element is above the background */
+}
+
+.return-button button:hover::before,
+.return-button button:hover::after {
+    opacity: 0.8; /* Slightly increase opacity on hover */
+}
+
+.return-button button:hover {
+    background-color: #076907;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3), /* Light shadow */
+                0 4px 20px rgba(0, 0, 0, 0.4); /* Highlight from top */
+}
+
+.return-button button:active {
+    transform: scale(0.95); /* Slightly shrink the button on click */
+}
+
+  
+
+

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <link rel="stylesheet" href="Styles/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="banner">
+            <nav>
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Connect</a>
+            </nav>
+        </div>
+        <div class="sidebar-left">Sidebar Left</div>
+        <div class="sidebar-right">Sidebar Right</div>
+        <div class="central-area">
+            <div class="lower-central-container">
+                <svg class="nauyilius" viewBox="0 0 400 400">
+                    <!-- Define your SVG shapes here -->
+                </svg>
+            </div>
+            <div class="upper-central-container">
+                <center><h2>Enter Student Information</h2>
+                <form action="process.php" method="post">
+                    <label for="num_students">Enter number of students:</label><center>
+                    <input type="number" id="num_students" name="num_students" required>
+                    <center><button type="submit">Submit</button><center>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

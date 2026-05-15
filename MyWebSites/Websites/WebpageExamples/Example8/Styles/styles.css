@@ -1,0 +1,272 @@
+/* Combined CSS with additional requirements */
+/* Body styles */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0; /* Light grey background */
+    font-family: 'Arial', sans-serif; /* Default font for a cleaner look */
+}
+
+/* Outer container styles with 3D 'blown' effect */
+.outer-container {
+    margin-top: 20px; /* Adjust margin as needed */
+    width: 60%; /* Adjusted for a more balanced width */
+    max-width: 1200px; /* Max width to prevent stretching */
+    height: auto;
+    border: none; /* Remove border */
+    padding: 30px; /* Add padding to create space */
+    background: linear-gradient(145deg, #ffffff, #e6e6e6); /* Subtle gradient for depth */
+    border-radius: 20px; /* Rounded corners for softer edges */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2), 0 10px 20px rgba(0, 0, 0, 0.1); /* Deep shadow effect */
+    transform: scale(1.05); /* Slight inflation to give a "blown-up" look */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effect */
+    perspective: 1500px; /* Add depth to the scene */
+}
+
+/* Hover effect for outer container to enhance depth */
+.outer-container:hover {
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1), 0 15px 30px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
+}
+
+/* Table styles */
+table {
+    border-collapse: separate;
+    border-spacing: 3px; /* Spacing between cells */
+    border-radius: 10px; /* Rounded corners on the table */
+    position: relative; /* Ensure top property works */
+    top: 15%; /* Adjusted to center the table properly */
+    width: 100%; /* Use full width within the container */
+    max-width: 1000px; /* Prevent table from becoming too wide */
+    height: auto; /* Allow the height to adjust based on content */
+    overflow: auto; /* Add scrollbar if content exceeds dimensions */
+    background: linear-gradient(145deg, #f7f6f6, #b3b1b1, #f7f6f6); /* Adding gradient background */
+    padding: 20px; /* Add padding inside the table */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 0 10px 20px rgba(0, 0, 0, 0.15); /* Enhanced shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions for hover effects */
+}
+
+/* Hover effect to make the table appear more dynamic */
+table:hover {
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3), 0 15px 30px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+}
+
+/* Table cell styles */
+th,
+td {
+    border: 0.8px solid #b4b2b2; /* Add border to table cells */
+    padding: 15px; /* Increase cell padding for better spacing */
+    text-align: center; /* Center-align text in cells */
+    min-width: 80px; /* Ensure minimum width */
+    font-size: 14px; /* Adjust text size for better readability */
+}
+
+/* Adjust background and text color for cells */
+td {
+    background-color: white; /* Set background color to white */
+    color: black; /* Set text color to black */
+}
+
+/* Button styles */
+input[type="submit"] {
+    margin-top: 10px;
+    padding: 10px 20px; /* Increase button padding for better appearance */
+    background-color: #4CAF50; /* Green button color */
+    color: white; /* Button text color */
+    border: none; /* Remove button border */
+    border-radius: 5px; /* Rounded corners on buttons */
+    font-size: 16px; /* Increase font size for better legibility */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s; /* Smooth hover effect */
+}
+input[type="submit"]:hover {
+    background-color: #45a049; /* Darker green color on hover */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Light shadow on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Week day cell styles */
+.week-day {
+    position: relative; /* Set position to relative for pseudo-elements */
+    background-color: #4CAF50; /* Green background color */
+    color: white; /* Text color */
+    font-weight: bold; /* Bold font weight */
+    padding: 10px 20px; /* Padding for the cell */
+    border-radius: 5px; /* Rounded corners */
+    border: 1px solid #007c3e; /* Add solid border */
+    text-align: center; /* Center text */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Glossy glass effect */
+    overflow: hidden; /* Ensure pseudo-elements don't overflow */
+}
+
+/* Glossy effect for top left corner */
+.week-day::before,
+.week-day::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top right, rgba(255, 255, 255, 0.6), transparent);
+    border-radius: 50%;
+    z-index: -1;
+    transform: scale(1.5) translate(-25%, -25%);
+}
+
+.week-day::after {
+    background: linear-gradient(to top left, rgba(255, 255, 255, 0.6), transparent);
+    transform: scale(1.5) translate(25%, -25%);
+}
+
+/* Month cell styles */
+.month-cell {
+    background-color: #4CAF50; /* Light green pastel color for month cell */
+    font-weight: bold; /* Make the month text bold */
+    border-radius: 6px 6px 0 0; /* Rounded corners for top-left and top-right */
+    padding: 18px 20px; /* Increase cell padding for better spacing */
+    opacity: 0.9;
+    border: 2px solid #007c3e; /* Outer border for the table header cells */
+    position: relative; /* Set position to relative for pseudo-elements */
+}
+
+/* Target the specific header row for June 2024 */
+.month-cell tr:first-child th {
+    border-bottom: 2px solid #343434; /* Add bottom border to the header row */
+}
+
+/* Center-align text */
+.month-cell center {
+    display: block;
+}
+
+/* No cell borders for month cells */
+.month-cell td {
+    border: none; /* Remove default cell borders */
+}
+
+/* Rounded corners for bottom left and bottom right cells */
+table tr:last-child td:first-child {
+    border-radius: 0 0 0 15px; /* Rounded bottom left corner */
+}
+
+table tr:last-child td:last-child {
+    border-radius: 0 0 15px 0; /* Rounded bottom right corner */
+}
+
+/* Current date cell styles */
+.curr-date {
+    background-color: orange !important; /* Background color for current date cells */
+    color: rgb(2, 2, 2); /* Set text color to white */
+    font-weight: bold; /* Make the text bold */
+}
+
+/* Button styles for Prev and Next buttons */
+input[type="submit"][name="prev"],
+input[type="submit"][name="next"] {
+    position: relative;
+    top: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+    overflow: hidden;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+}
+
+/* Glossy effect for Prev and Next buttons */
+input[type="submit"][name="prev"]::before,
+input[type="submit"][name="next"]::before,
+input[type="submit"][name="prev"]::after,
+input[type="submit"][name="next"]::after {
+    content: "";
+    position: absolute;
+    top: -30%;
+    left: -30%;
+    width: 160%;
+    height: 160%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0.1));
+    border-radius: 50%;
+    transform: rotate(45deg);
+}
+
+/* Hover effect for buttons */
+input[type="submit"]:hover {
+    background-color: #45a049;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+}
+
+.return-button {
+    text-align: center; /* Center the button */
+    margin-top: 20px; /* Adjust margin as needed */
+}
+
+.return-button button {
+    padding: 10px 20px; /* Add padding to the button */
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative; /* Set position to relative for pseudo-elements */
+    overflow: hidden; /* Ensure pseudo-elements don't overflow */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), /* Light shadow */
+                0 4px 20px rgba(0, 0, 0, 0.3); /* Highlight from top */
+    margin: 20px 0; /* Ensure consistent margin */
+}
+
+/* Glossy effect for top left corner */
+.return-button button::before {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top right, rgba(255, 255, 255, 0.6), transparent);
+    border-top-left-radius: 5px; /* Adjust border radius as needed */
+    z-index: 1; /* Ensure the pseudo-element is above the background */
+}
+
+/* Glossy effect for top right corner */
+.return-button button::after {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top left, rgba(255, 255, 255, 0.6), transparent);
+    border-top-right-radius: 5px; /* Adjust border radius as needed */
+    z-index: 1; /* Ensure the pseudo-element is above the background */
+}
+
+.return-button button:hover::before,
+.return-button button:hover::after {
+    opacity: 0.8; /* Slightly increase opacity on hover */
+}
+
+.return-button button:hover {
+    background-color: #076907;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3), /* Light shadow */
+                0 4px 20px rgba(0, 0, 0, 0.4); /* Highlight from top */
+}
+
+.return-button button:active {
+    transform: scale(0.95); /* Slightly shrink the button on click */
+}

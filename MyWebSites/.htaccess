@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteBase /WebPages/MyWebSites/
+RewriteRule ^index\.php$ index.php [L]
+RewriteRule ^redirect\.html$ redirect.html [L]

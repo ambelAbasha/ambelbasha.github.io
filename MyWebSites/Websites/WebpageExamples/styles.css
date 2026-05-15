@@ -1,0 +1,544 @@
+/* Base styles */
+:root {
+  --primary-bg-color: #f5f5f5;
+  --container-bg-color: #fff;
+  --banner-bg-color: #f2f2f4;
+  --footer-bg-color: #f2f2f2;
+  --primary-color: #333;
+  --secondary-color: #666;
+  --highlight-color: #43e8d8;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--primary-bg-color);
+}
+
+.container {
+  width: 89%;
+  margin: 50px auto; /* Updated margin */
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+  background-color: var(--container-bg-color);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.container:hover {
+  background-color: #f9f9f9;
+}
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.banner {
+  background: linear-gradient(
+    to bottom,
+    rgba(192,192,192,0.8) 0%,  /* Top edge with gray */
+    rgba(255,255,255,1) 50%,    /* Middle fading to white */
+    rgba(192,192,192,0.8) 100%  /* Bottom edge with gray */
+  );
+  padding: 20px;
+  text-align: center;
+  margin-right: 38px; /* Increase this value to create more space on the right */
+  width: calc(100% - 43px); /* Adjust width according to the margin */
+  border-radius: 10px;  /* Give it a cylindrical look */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4); /* Optional: subtle shadow for depth */
+}
+
+/* Style for the text content */
+.banner h3 {
+  font-size: 24px; /* Size of the heading */
+  color: #272727; /* Dark gray color for better readability */
+  font-weight: 700; /* Bold weight */
+  margin: 0; /* Remove default margin */
+  padding-top: 20px;
+  padding-bottom: 6px; /* Space below the heading */
+}
+
+.banner p {
+  font-size: 14px; /* Size of the paragraph text */
+  color: #666; /* Lighter gray for paragraph */
+  line-height: 1.5; /* Improve readability with line height */
+  margin: 0; /* Remove default margin */
+}
+
+.central-area {
+  background-color: #e6e6e6;
+  width: calc(100% - 43px);
+  padding: 20px;
+  margin-right: -10px;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Optional: subtle shadow for depth */
+}
+
+.central-area > div {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  flex-wrap: wrap;
+  width: 100%; /* Full width */
+  height: 100%; /* Ensure height is full to center vertically */
+}
+
+/* Flex Containers */
+.container-1,
+.container-2,
+.container-3,
+.container-4,
+.container-5,
+.container-6,
+.container-7 {
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1; /* Set equal flex for all containers */
+  margin: 5px; /* Add margin for spacing between containers */
+}
+
+/* Hover effect */
+.container-1:hover,
+.container-2:hover,
+.container-3:hover,
+.container-4:hover,
+.container-5:hover,
+.container-6:hover,
+.container-7:hover {
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.5);
+  transform: translateY(-3px);
+}
+
+/* Adjust container widths for equal spacing */
+.container-7 {
+  flex: 1; /* Adjust to occupy the same space as other containers */
+}
+
+/* Gradient backgrounds with grey borders */
+.container-1 {
+  border: 2px solid #d3d3d3;
+  background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(230,230,230,1) 100%);
+}
+
+.container-2 {
+  border: 2px solid #bdbdbd;
+  background: radial-gradient(circle, rgba(245,245,245,1) 0%, rgba(210,210,210,1) 100%);
+}
+
+.container-3 {
+  border: 2px solid #a8a8a8;
+  background: radial-gradient(circle, rgba(235,235,235,1) 0%, rgba(190,190,190,1) 100%);
+}
+
+.container-4 {
+  border: 2px solid #929292;
+  background: radial-gradient(circle, rgba(225,225,225,1) 0%, rgba(170,170,170,1) 100%);
+}
+
+.container-5 {
+  border: 2px solid #7d7d7d;
+  background: radial-gradient(circle, rgba(215,215,215,1) 0%, rgba(150,150,150,1) 100%);
+}
+
+.container-6 {
+  border: 2px solid #676767;
+  background: radial-gradient(circle, rgba(205,205,205,1) 0%, rgba(130,130,130,1) 100%);
+}
+
+.container-7 {
+  border: 2px solid #505050;
+  background: radial-gradient(circle, rgba(195,195,195,1) 0%, rgba(110,110,110,1) 100%);
+}
+
+/* Centered elements inside the containers */
+.container-1 > div,
+.container-2 > div,
+.container-3 > div,
+.container-4 > div,
+.container-5 > div,
+.container-6 > div,
+.container-7 > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  perspective: 1000px; /* Add perspective for the 3D effect */
+}
+
+
+/* Button Styles */
+.glossy-button {
+  background-color: var(--highlight-color);
+  border-radius: 35px;
+  transition: transform 0.1s, box-shadow 0.1s, background-color 0.3s; /* Added transition for background-color */
+}
+
+.glossy-button:hover {
+  background-color: #36c4c0; /* Slightly darker on hover */
+}
+
+/* Add media queries for responsive design */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Stack elements on smaller screens */
+  }
+  
+  .sidebar {
+    width: 100%; /* Full width on small screens */
+    margin-left: 0; /* Reset margin */
+  }
+}
+
+/* Footer */
+.footer {
+  background: linear-gradient(
+    to bottom,
+    rgba(192,192,192,0.8) 0%,  /* Top edge with gray */
+    rgba(255,255,255,1) 50%,    /* Middle fading to white */
+    rgba(192,192,192,0.8) 100%  /* Bottom edge with gray */
+  );
+  padding: 20px;
+  text-align: center;
+  margin-right: 40px; /* Increase this value to create more space on the right */
+  width: calc(100% - 43px); /* Adjust width according to the margin */
+  border-bottom-left-radius: 10px; /* Give it a cylindrical look */
+  border-bottom-right-radius: 10px; /* Give it a cylindrical look */
+  border-top-left-radius: 0%;
+  border-top-right-radius: 0%;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4); /* Optional: subtle shadow for depth */
+}
+
+.footer ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer ul li {
+  display: inline;
+  margin: 0 15px; /* Increased horizontal margin for better spacing */
+}
+
+.footer ul li a {
+  display: inline-block; /* Make links behave like buttons */
+  padding: 10px 20px; /* Padding for button-like appearance */
+  background-color: #818080; /* Button background color */
+  color: #ffffff; /* White text for visibility */
+  text-decoration: none;
+  border: 2px solid #d3d3d3;
+  border-radius: 15px; /* Rounded corners */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
+  position: relative; /* Set position to relative for pseudo-elements */
+  overflow: hidden; /* Ensure pseudo-elements don't overflow */
+}
+
+/* Glossy effect for top left corner */
+.footer ul li a::before {
+  content: ""; /* Empty content for pseudo-element */
+  position: absolute; /* Absolute positioning */
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 50%;
+  background: linear-gradient(to top right, rgba(255, 255, 255, 0.6), transparent);
+  border-top-left-radius: 15px; /* Match border radius */
+  z-index: 1; /* Ensure the pseudo-element is above the background */
+}
+
+/* Glossy effect for top right corner */
+.footer ul li a::after {
+  content: ""; /* Empty content for pseudo-element */
+  position: absolute; /* Absolute positioning */
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 50%;
+  background: linear-gradient(to top left, rgba(255, 255, 255, 0.6), transparent);
+  border-top-right-radius: 15px; /* Match border radius */
+  z-index: 1; /* Ensure the pseudo-element is above the background */
+}
+
+.footer ul li a:hover {
+  background-color: #f3bb05; /* Green on hover */
+  color: #020202; /* Change text color on hover */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3), /* Light shadow */
+              0 4px 20px rgba(0, 0, 0, 0.4); /* Highlight from top */
+}
+
+.footer ul li a:active {
+  background-color: #007a8c; /* Darker Cyan on active */
+  color: #030303; /* Keep text white */
+  transform: scale(0.95); /* Slightly shrink the button on click */
+}
+
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  background: linear-gradient(
+    to right,
+    rgba(192, 192, 192, 0.8) 0%, /* Left edge with pale gray */
+    rgba(255, 255, 255, 1) 50%,   /* Middle fading to white */
+    rgba(192, 192, 192, 0.8) 100%  /* Right edge with pale gray */
+  );
+  padding: 20px;
+  border-top-right-radius: 20px; /* Rounded top-right corner */
+  border-bottom-right-radius: 20px; /* Rounded bottom-right corner */
+  border-bottom-left-radius: 0; /* Ensure bottom-left corner is square */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-left: -3px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4); /* Optional: subtle shadow for depth */
+}
+
+.sidebar ul li a {
+  display: block;
+  padding: 8px 14px;
+  font-size: 14px;
+  color: black;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-top-right-radius: 10px; /* Optional: Adjust as needed */
+  border-bottom-right-radius: 10px; /* Optional: Adjust as needed */
+  border-bottom-left-radius: 0; /* Ensure bottom-left corner is square */
+  margin: 10px 0; /* Margin for separation */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  cursor: pointer;
+  text-align: center; /* Center text */
+  margin-bottom: 10px; /* Increased space between buttons */
+}
+
+.sidebar ul li a {
+  display: block;
+  padding: 8px 14px; /* Slightly bigger padding */
+  font-size: 14px; /* Font size */
+  color: black; /* Font color black */
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 10px; /* Border radius */
+  position: relative;
+  overflow: hidden;
+  width: 100px; /* Width */
+  margin: 0 auto; /* Adjusted margin */
+  border: 1px solid #ccc; /* Add a 1px light grey border */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add a 3D effect */
+}
+
+.sidebar ul li a.example-button {
+  color: black; /* Font color black for the example button */
+}
+
+.sidebar ul li a:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.6) 50%, rgba(0, 0, 0, 0) 100%); /* Glossy transparent film effect */
+  border-radius: 50%;
+  opacity: 0.5; /* Adjust the opacity for a translucent effect */
+  transition: transform 0.3s ease;
+  z-index: -1; /* Place behind the button */
+}
+
+.sidebar ul li a:hover:before {
+  transform: scale(1.1); /* Scale effect on hover */
+}
+
+.sidebar ul li a:active:before {
+  transform: scale(0.9); /* Scale effect on active */
+}
+
+/* Glossy button styles */
+.glossy-button {
+  display: inline-block;
+  position: relative;
+  background-color: #43e8d8; /* Cyan color */
+  background-image: linear-gradient( /* chrome */
+    hsla(0, 0%, 100%, 0.6), hsla(0, 0%, 100%, 0) 50%,
+    hsla(0, 0%, 0%, 0.3) 50%, hsla(0, 0%, 100%, 0.2)
+  );
+  font-size: 14px; /* Font size */
+  font-family: sans-serif;
+  font-weight: normal;
+  color: black;
+  padding: 2px 10px; /* Slightly bigger padding */
+  text-shadow:
+    0 0 15px hsla(0, 0%, 100%, 1), /* bloom */
+    0 2px 4px hsla(0, 0%, 0%, 0.7); /* drop shadow */
+  border: none;
+  border-radius: 35px; /* Border radius */
+  margin: 0 auto; /* Adjusted margin */
+  box-shadow:
+    inset 0 -5px 20px hsla(0, 0%, 0%, 0.4), /* top light */
+    inset 0 5px 20px hsla(0, 0%, 100%, 0.4), /* bottom shadow */
+    /* multiple light sources yall */
+    -8px 8px 5px hsla(0, 0%, 0%, 0.15), /* drop shadow 1 */
+    5px 18px 10px hsla(0, 0%, 0%, 0.2); /* drop shadow 2 */
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+/* Glossy button hover effect */
+.glossy-button:hover {
+  transform: scale(1.05);
+  box-shadow:
+    inset 0 -5px 20px hsla(0, 0%, 0%, 0.4), /* top light */
+    inset 0 5px 20px hsla(0, 0%, 100%, 0.4), /* bottom shadow */
+    /* multiple light sources */
+    -12px 12px 5px hsla(0, 0%, 0%, 0.15), /* drop shadow 1 */
+    10px 25px 10px hsla(0, 0%, 0%, 0.2); /* drop shadow 2 */
+}
+
+/* Container for the flip card with perspective */
+.container-7 {
+  perspective: 1000px;
+  width: 300px;
+  height: 200px;
+}
+
+/* Flip card styles */
+.flip-card {
+  width: 300px;
+  height: 200px;
+  position: relative;
+  perspective: 1000px;
+}
+
+/* Flip card inner styles */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease-in-out; /* Smooth flip transition */
+}
+
+/* Flip card flipped state */
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg); /* Rotate the card to show the back */
+}
+
+/* Flip card front styling */
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* Hide the backface when not flipped */
+  border-radius: 7px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Flip card front styling */
+.flip-card-front {
+  background-image: url("./Images/Central.jpg"); /* Set the image as background */
+  background-color: #818080;  /* Gray color for the rest of the container */
+  background-size: cover;
+  left: 17.45%;
+  background-position: center;
+  border-radius: 7px; /* Apply rounded corners */
+  width: 64%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden; /* Hide front when flipped */
+}
+
+
+/* Flip card back */
+.flip-card-back {
+  background-color: #fff; /* White background */
+  transform: rotateY(180deg); /* Rotate the back to align with flipped card */
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease-in-out; /* Smooth opacity transition */
+}
+
+/* Show back on flip */
+.flip-card.flipped .flip-card-back {
+  opacity: 1; /* Make back visible */
+}
+
+/* Style for the explanation text */
+#flip-card-text {
+  font-family: Arial, sans-serif; /* Set a clean font */
+  font-size: 13px; /* Default font size */
+  margin-left: 50px;
+  margin-right: 50px;
+  line-height: 1.5; /* Space between lines */
+  padding: 15px; /* Padding for breathing space */
+  max-height: 400px; /* Max height for scrolling */
+  overflow-y: auto; /* Enable vertical scrolling if text exceeds max height */
+  width: 100%; /* Make it responsive */
+  background-color: #f4f4f4; /* Light background for readability */
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for better contrast */
+  color: #333; /* Text color */
+}
+
+/* When the explanation text is expanded */
+#flip-card-text.read-more {
+  max-height: none; /* Allow full height */
+}
+
+/* Style the "Read More" button */
+.read-more-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+.read-more-button:hover {
+  background-color: #0056b3;
+}
+
+/* Optional: Make the text size responsive */
+@media (max-width: 768px) {
+  #flip-card-text {
+      font-size: 14px; /* Smaller text on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  #flip-card-text {
+      font-size: 12px; /* Even smaller text on very small screens */
+  }
+}

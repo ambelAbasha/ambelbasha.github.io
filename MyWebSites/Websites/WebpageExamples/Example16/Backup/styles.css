@@ -1,0 +1,246 @@
+/* General reset and full viewport height */
+body, html {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Outer container to center content vertically and horizontally */
+.outer-container {
+    width: 100%;
+    height: calc(100vh - 70px); /* Take full height minus button space */
+    display: flex;
+    justify-content: center; /* Horizontally center content */
+    align-items: center; /* Vertically center content */
+    padding: 10px; /* Optional padding for a little space around */
+    box-sizing: border-box;
+}
+
+/* .container styling */
+.container {
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    flex-direction: column;
+    width: 70%; /* Keep container width relatively wide */
+    max-width: 800px; /* Allow container to grow larger on wide screens */
+    min-height: 250px; /* Reduced the height of the container further */
+    border-radius: 10px; /* Rounded corners */
+    padding: 15px; /* Reduced padding to make the container more compact */
+    position: relative; /* For stacking context */
+    z-index: 1; /* Ensure it's below the box */
+    box-sizing: border-box;
+    margin: 0 auto; /* Centering horizontally without pushing too high */
+}
+
+/* Inflated 3D effect for the box inside the container */
+.box {
+    width: 80%; /* Keep the box width relative to the container */
+    max-width: 500px; /* Limit the box width */
+    min-height: 250px; /* Reduced minimum height for the box */
+    padding: 15px; /* Reduced padding inside the box */
+    border: 2px solid lightgrey;
+    margin-bottom: 70px;
+    border-radius: 15px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(200, 200, 200, 0.8), rgba(255, 255, 255, 0.6));
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2), 0 10px 15px rgba(0, 0, 0, 0.1);
+    transform: translateZ(0) perspective(420px); /* 3D perspective */
+    transform-style: preserve-3d;
+    z-index: 2; /* Keep box above other elements */
+    box-sizing: border-box;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Glossy effect for top left corner of the box */
+.box::before {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top right, rgba(255, 255, 255, 0.3), transparent); /* Glossy effect */
+    border-top-left-radius: 15px; /* Match container's border radius */
+    z-index: 3; /* Ensure this is above the box content */
+}
+
+/* Glossy effect for top right corner of the box */
+.box::after {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top left, rgba(255, 255, 255, 0.3), transparent); /* Glossy effect */
+    border-top-right-radius: 15px; /* Match container's border radius */
+    z-index: 3; /* Ensure this is above the box content */
+}
+
+/* Adding inner shadow effect for depth */
+.box::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 15px;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.3); /* Inner shadow for depth */
+    transform: translate(-50%, -50%) scale(0.98); /* Slightly shrink for "stuffed" effect */
+    z-index: -1; /* Put the inner shadow behind content */
+}
+
+/* Hover effect for more pronounced 3D look */
+.box:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), 0 12px 40px rgba(0, 0, 0, 0.2); /* More shadow depth */
+    transform: perspective(500px) scale(1.01); /* Slightly inflate the box on hover */
+}
+
+/* Active state for further 3D interaction */
+.box:active {
+    transform: perspective(500px) scale(0.98); /* Slightly shrink on click to simulate pressing */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2), 0 10px 30px rgba(0, 0, 0, 0.15); /* Decrease shadow for pressed effect */
+}
+
+/* Form container and select styling for glossy effect */
+.form-container select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: 30%;
+    max-width: 180px;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(to bottom, #ffffff, #edf7ee);
+}
+
+/* Glossy effects for select options */
+.form-container select::before,
+.form-container select::after {
+    content: "";
+    position: absolute;
+    background: linear-gradient(to top left, rgba(255, 255, 255, 0.6), transparent);
+    z-index: 1;
+}
+
+.form-container select::before {
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    border-top-left-radius: 10px;
+}
+
+.form-container select::after {
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    border-top-right-radius: 10px;
+}
+
+/* Submit button */
+.form-container input[type="submit"] {
+    background: linear-gradient(to bottom, #4CAF50, #388E3C);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    max-width: 380px;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease, background 0.3s ease, transform 0.3s ease;
+}
+
+.form-container input[type="submit"]:hover {
+    background: linear-gradient(to bottom, #66BB6A, #43A047);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+.form-container input[type="submit"]:hover::before,
+.form-container input[type="submit"]:hover::after {
+    opacity: 0.8;
+}
+
+/* Return button */
+.return-button {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-bottom: 160px;
+}
+
+.return-button button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), 0 4px 20px rgba(0, 0, 0, 0.3);
+    margin: 20px 0;
+}
+
+.return-button button:hover {
+    background-color: #076907;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3), 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.return-button button:active {
+    transform: scale(0.95);
+}
+
+/* Button glossy effects */
+.return-button button::before,
+.return-button button::after {
+    content: "";
+    position: absolute;
+    background: linear-gradient(to top right, rgba(255, 255, 255, 0.6), transparent);
+    z-index: 1;
+}
+
+.return-button button::before {
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    border-top-left-radius: 5px;
+}
+
+.return-button button::after {
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    border-top-right-radius: 5px;
+}
+
+.return-button button:hover::before,
+.return-button button:hover::after {
+    opacity: 0.8;
+}

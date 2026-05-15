@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enhanced Streaming Dashboard</title>
+  <link rel="stylesheet" href="Styles/styles.css">
+</head>
+<body>
+  <header>
+    <div class="logo">Enhanced Dashboard</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Settings</a>
+      <a href="#">Profile</a>
+      <a href="#">Logout</a>
+    </nav>
+  </header>
+  
+  <main>
+    <section class="overview">
+        <div class="card">
+            <h3>Total Users</h3>
+            <p>25</p>
+        </div>
+    
+        <div class="card">
+            <h3>Total Cameras</h3>
+            <p id="total-cameras">0</p>
+            <div class="add-camera">
+                <button class="add-camera-btn" id="addCameraBtn">Add Camera</button>
+            </div>
+            <div id="cameraLimitMessage" class="limit-message"></div>
+        </div>
+    </section>
+    
+    <div class="camera-grid" id="cameraGrid"></div>
+    <!-- Rename Camera Modal -->
+    <div id="renameCameraModal" class="modal">
+        <div class="modal-content">
+            <h4>Rename Camera</h4>
+            <p id="renameMessage">This camera has already been named. Are you sure you want to rename?</p>
+            <input type="text" id="newCameraName" placeholder="Enter new camera name">
+            <div class="modal-footer">
+                <button id="confirmRename" class="btn yes-btn">Yes, rename</button>
+                <button id="cancelRename" class="btn no-btn">No, that's okay</button>
+            </div>
+        </div>
+    </div>
+    
+    
+    </div>
+  </div>
+  </main>
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2024 Vision Scope. Created by Ambel Basha. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#about">About this Page</a>
+        <a href="#contact">Contact</a>
+        <a href="#privacy">Privacy Policy</a>
+        <a href="#terms">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+  
+
+  <script>
+    const cameraGrid = document.getElementById("cameraGrid");
+    const addCameraBtn = document.getElementById("addCameraBtn");
+    const cameraLimitMessage = document.getElementById("cameraLimitMessage");
+    const totalCamerasDisplay = document.getElementById("total-cameras");
+    const renameCameraModal = document.getElementById("renameCameraModal");
+    const newCameraNameInput = document.getElementById("newCameraName");
+    const confirmRenameButton = document.getElementById("confirmRename");
+    const cancelRenameButton = document.getElementById("cancelRename");
+    const renameMessage = document.getElementById("renameMessage");
+
+    const cameraLimit = 10;
+    let cameras = [];
+
+    addCameraBtn.addEventListener("click", () => {
+      if (cameras.length >= cameraLimit) {
+        cameraLimitMessage.textContent = "You have reached the maximum limit of cameras.";
+        return;
+      }
+      cameraLimitMessage.textContent = "";
+
+      const cameraId = cameras.length + 1;
+      cameras.push({ id: cameraId, url: "", name: `Camera ${cameraId}` });
+
+      const cameraDiv = document.createElement("div");
+      cameraDiv.className = "camera";
+      cameraDiv.dataset.cameraId = cameraId;
+
+      cameraDiv.innerHTML = `
+        <div class="video-wrapper">
+          <iframe id="video-${cameraId}" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+        <h3 contenteditable="true" onblur="showRenameModal(${cameraId})">
+          Camera ${cameraId}
+        </h3>
+        <div class="controls">
+          <input type="text" placeholder="Enter YouTube live stream URL" id="streamUrl-${cameraId}" onchange="updateStreamUrl(${cameraId})">
+          <button class="submit-btn" id="submit-${cameraId}" onclick="submitStreamUrl(${cameraId})">Submit</button>
+          <button class="fullscreen-btn" onclick="toggleFullscreen(${cameraId})">Fullscreen</button>
+          <button class="delete-btn" onclick="removeCamera(${cameraId})">Delete</button>
+        </div>
+        <button class="rename-btn" onclick="showRenameModal(${cameraId})">Rename Camera</button>
+      `;
+
+      cameraGrid.appendChild(cameraDiv);
+      updateTotalCameras();
+    });
+
+    // Function to show rename modal
+    function showRenameModal(cameraId) {
+      const camera = cameras[cameraId - 1];
+      const existingName = camera.name;
+      newCameraNameInput.value = existingName;  // Default to the current name
+
+      renameMessage.textContent = `'${existingName}' has already been named. Are you sure you want to rename?`;
+      
+      // Show the modal
+      renameCameraModal.style.display = 'block';
+
+      // Button events
+      confirmRenameButton.onclick = function() {
+        const newName = newCameraNameInput.value.trim();
+        if (newName && !doesCameraNameExist(newName, cameraId)) {
+          camera.name = newName;
+          updateCameraName(cameraId);
+          hideRenameModal();
+        } else {
+          alert(`Camera "${newName}" already exists. Please choose another name.`);
+        }
+      };
+
+      cancelRenameButton.onclick = hideRenameModal;
+    }
+
+    // Check if camera name already exists
+    function doesCameraNameExist(name, cameraId) {
+      return cameras.some((camera, index) => camera.name === name && index + 1 !== cameraId);
+    }
+
+    // Function to hide the modal after rename operation
+    function hideRenameModal() {
+      renameCameraModal.style.display = 'none';
+    }
+
+    // Function to update camera name in the DOM and hide button for 10 seconds
+    function updateCameraName(cameraId) {
+      const cameraDiv = document.querySelector(`.camera[data-camera-id="${cameraId}"]`);
+      const cameraNameElement = cameraDiv.querySelector("h3");
+      cameraNameElement.innerText = cameras[cameraId - 1].name;
+
+      const renameButton = cameraDiv.querySelector(".rename-btn");
+      renameButton.style.display = 'none'; // Hide rename button
+
+      // Show again after 10 seconds
+      setTimeout(() => {
+        renameButton.style.display = 'inline-block'; // Show rename button again
+      }, 10000);
+    }
+
+    // Function to submit stream URL (as before)
+    function submitStreamUrl(cameraId) {
+      const streamUrlField = document.getElementById(`streamUrl-${cameraId}`);
+      const videoElement = document.getElementById(`video-${cameraId}`);
+      const submitButton = document.getElementById(`submit-${cameraId}`);
+
+      const streamUrl = streamUrlField.value;
+      let embedUrl = "";
+
+      const youtubeId = extractYouTubeId(streamUrl);
+      if (youtubeId) {
+        embedUrl = `https://www.youtube.com/embed/${youtubeId}?autoplay=1`;
+      } else {
+        const vimeoId = extractVimeoId(streamUrl);
+        if (vimeoId) {
+          embedUrl = `https://player.vimeo.com/video/${vimeoId}`;
+        } else if (streamUrl.includes(".m3u8")) {
+          embedUrl = streamUrl;
+        } else if (streamUrl.includes("rtsp://")) {
+          alert("RTSP streams are not supported natively in browsers.");
+          return;
+        } else {
+          embedUrl = streamUrl;
+        }
+      }
+
+      if (embedUrl) {
+        videoElement.src = embedUrl;
+        submitButton.innerText = "Update URL";
+        submitButton.setAttribute("onclick", `updateStreamUrl(${cameraId})`);
+
+        setTimeout(() => {
+          streamUrlField.style.display = 'none';
+        }, 30000);
+      } else {
+        alert("Invalid media URL");
+      }
+    }
+
+    // Function to update stream URL (as before)
+    function updateStreamUrl(cameraId) {
+      const streamUrlField = document.getElementById(`streamUrl-${cameraId}`);
+      streamUrlField.style.display = 'block';
+      document.getElementById(`submit-${cameraId}`).innerText = 'Change URL';
+    }
+
+    function extractYouTubeId(url) {
+      const regex = /(?:https?:\/\/(?:www\.)?youtube\.com\/(?:.*[?&]v=|.*\/e(?:mbed)?\/|live\/)([a-zA-Z0-9_-]+))/;
+      const match = url.match(regex);
+      return match ? match[1] : null;
+    }
+
+    function extractVimeoId(url) {
+      const regex = /(?:https?:\/\/(?:www\.)?vimeo\.com\/(?:.*\/)(\d+))/;
+      const match = url.match(regex);
+      return match ? match[1] : null;
+    }
+
+    function toggleFullscreen(cameraId) {
+      const videoElement = document.getElementById(`video-${cameraId}`);
+      if (videoElement.requestFullscreen) {
+        videoElement.requestFullscreen();
+      } else if (videoElement.mozRequestFullScreen) {
+        videoElement.mozRequestFullScreen();
+      } else if (videoElement.webkitRequestFullscreen) {
+        videoElement.webkitRequestFullscreen();
+      } else if (videoElement.msRequestFullscreen) {
+        videoElement.msRequestFullscreen();
+      }
+    }
+
+    function removeCamera(cameraId) {
+      cameras = cameras.filter(camera => camera.id !== cameraId);
+      const cameraDiv = document.querySelector(`.camera[data-camera-id="${cameraId}"]`);
+      cameraDiv.remove();
+      updateTotalCameras();
+    }
+
+    function updateTotalCameras() {
+      totalCamerasDisplay.textContent = cameras.length;
+    }
+</script>
+
+</script>
+
+</body>
+</html>

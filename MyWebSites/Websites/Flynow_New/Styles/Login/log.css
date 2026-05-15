@@ -1,0 +1,255 @@
+/* ========== CSS Variables ========== */
+:root {
+  --color-bg: #f5f5f5;
+  --color-white: #ffffff;
+  --color-primary: #0306d1;
+  --color-primary-dark: #010a8b;
+  --color-accent: #FFAC1C;
+  --color-text: #333;
+  --color-error: #ff3b30;
+  --font-base: 'Arial', sans-serif;
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --radius-sm: 5px;
+  --radius-md: 10px;
+  --radius-lg: 15px;
+  --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ========== Global Styles ========== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-bg);
+  font-family: var(--font-base);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* ========== Container ========== */
+.container {
+  width: 90%;
+  max-width: 500px;
+  padding: var(--spacing-md);
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-light);
+  text-align: center;
+}
+
+/* ========== Header, Title, and Date-Time ========== */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.title {
+  display: inline-block;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: linear-gradient(45deg, var(--color-white), #f0f0f0);
+  border: 2px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.title:hover {
+  background: var(--color-accent);
+  color: var(--color-white);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* ========== Login Form ========== */
+form#login {
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Ensure the fieldset is positioned relative and hides overflow */
+fieldset {
+  position: relative;
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  overflow: hidden; /* Hide the moving element when outside the border */
+}
+
+/* Create a pseudo-element for the moving white "shine" */
+fieldset::after {
+  content: "";
+  position: absolute;
+  width: 12px;  /* Adjust the size as desired */
+  height: 12px;
+  background: radial-gradient(circle, #ffffff 0%, rgba(255,255,255,0) 70%);
+  transform: translate(-50%, -50%);
+  
+  /* Define the rectangular motion path along the fieldset border */
+  offset-path: path("M 0 0 L 100% 0 L 100% 100% L 0 100% Z");
+  -webkit-offset-path: path("M 0 0 L 100% 0 L 100% 100% L 0 100% Z");
+  offset-rotate: auto;
+  -webkit-offset-rotate: auto;
+  
+  /* Start the moving element at the top-left corner */
+  offset-distance: 0%;
+  -webkit-offset-distance: 0%;
+  
+  animation: borderShine 4s linear infinite;
+}
+
+/* Animation keyframes to move the shine along the path */
+@keyframes borderShine {
+  0% {
+    offset-distance: 0%;
+    -webkit-offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+    -webkit-offset-distance: 100%;
+  }
+}
+
+/* ---------- Legend Base Styles ---------- */
+legend {
+  position: relative; /* Needed for the pseudo-element positioning */
+  font-size: 1.75rem;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
+  padding: 0.5rem 1rem;           /* Give the legend some internal space */
+  background-color: var(--color-white);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  overflow: hidden;             /* Hide the animated dot when it goes outside */
+}
+
+/* ---------- Shiny Dot Animation on the Legend ---------- */
+legend::after {
+  content: "";
+  position: absolute;
+  width: 10px;    /* Adjust size as needed */
+  height: 10px;
+  background: radial-gradient(circle, #ffffff 0%, rgba(255,255,255,0) 70%);
+  transform: translate(-50%, -50%);
+  
+  /* Define a rectangular motion path that follows the legend's border */
+  offset-path: path("M 0 0 L 100% 0 L 100% 100% L 0 100% Z");
+  -webkit-offset-path: path("M 0 0 L 100% 0 L 100% 100% L 0 100% Z");
+  offset-rotate: auto;
+  -webkit-offset-rotate: auto;
+  
+  /* Start the moving element at the beginning of the path */
+  offset-distance: 0%;
+  -webkit-offset-distance: 0%;
+  
+  animation: legendShine 4s linear infinite;
+}
+
+/* ---------- Keyframes for the Legend Shine ---------- */
+@keyframes legendShine {
+  0% {
+    offset-distance: 0%;
+    -webkit-offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+    -webkit-offset-distance: 100%;
+  }
+}
+
+/* ========== Form Groups ========== */
+.form-group {
+  margin-bottom: var(--spacing-md);
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"] {
+  width: 100%;
+  padding: var(--spacing-sm); /* Increased padding variable */
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: var(--radius-lg);
+}
+
+
+/* Positioning for the password toggle icon */
+.password-group {
+  position: relative;
+}
+
+.password-toggle-icon {
+  position: absolute;
+  top: 74%;
+  right: var(--spacing-xs);
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: var(--color-text);
+}
+
+/* ========== Submit Button ========== */
+input[type="submit"] {
+  background: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  padding: var(--spacing-sm);
+  font-size: 1.125rem;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.3s ease, transform 0.1s ease;
+  margin-top: var(--spacing-md);
+}
+
+input[type="submit"]:hover {
+  background: #021c91;
+}
+
+input[type="submit"]:active {
+  transform: scale(0.97);
+}
+
+/* ========== Error Message ========== */
+.error-message {
+  color: var(--color-error);
+  font-size: 1rem;
+  margin: var(--spacing-sm) 0;
+  padding: var(--spacing-xs);
+  border: 1px solid var(--color-error);
+  border-radius: var(--radius-sm);
+}
+
+/* ========== Links Section ========== */
+.links {
+  margin-top: var(--spacing-lg);
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+.links a {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.links a:hover {
+  color: var(--color-primary-dark);
+}

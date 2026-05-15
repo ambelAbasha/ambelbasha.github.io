@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATM Transaction</title>
+</head>
+<body>
+    <h1>ATM Transaction</h1>
+    <form id="atmForm">
+        <label for="accno">Bank Account Number:</label>
+        <input type="text" id="accno" name="accno" required><br><br>
+
+        <label for="transactionType">Transaction Type:</label>
+        <select id="transactionType" name="transactionType" required>
+            <option value="Y">Ypoloipo</option>
+            <option value="A">Analipsi</option>
+            <option value="K">Katathesi</option>
+        </select><br><br>
+
+        <div id="transactionDetails" style="display: none;">
+            <!-- Transaction details will be displayed here -->
+        </div><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById('atmForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+
+            fetch('backend_script.php', { // Change to your server-side script
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('transactionDetails').innerHTML = data;
+                document.getElementById('transactionDetails').style.display = 'block';
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>

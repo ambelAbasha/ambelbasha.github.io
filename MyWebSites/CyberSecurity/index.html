@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta Information -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Ambel Basha">
+    <meta name="description" content="This webpage is part of Ambel Basha's Cyber Security portfolio.">
+    <meta name="keywords" content="Cyber Security, Ambel Basha, Vulnerabilities, Cryptography, Password Detection, Registry Overflow, Linux Forensics">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Cyber Security Webpage - Ambel Basha">
+    <meta property="og:description" content="Explore various cyber security topics.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="path/to/your/image.jpg">
+
+    <title>Cyber Security Hub</title>
+    <!-- in  <head> : -->
+<!-- 1) FONT AWESOME (must come before styles.css) -->
+  <!-- Link to Font Awesome CDN -->
+ <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+<!-- Link to main stylesheet for overall site styling -->
+<link rel="stylesheet" type="text/css" href="styles.css">
+<!-- Script to manage the header layout -->
+<script src="CyberSecurity/Scripts/ClipTextCutOut/clipTextWelcomeTitle.js" defer></script>
+
+<!-- Script to enable fullscreen and auto-scroll functionality for PDFs -->
+<script src="CyberSecurity/Scripts/FullScreenAndAutoplay/fullScreenAndAutoplay.js" defer></script>
+
+<!-- Script to handle language toggling and PDF content updates -->
+<script src="CyberSecurity/Scripts/LanguageAndUpdate/toggleLanguageAndUpdatePDFs.js" defer></script>
+
+<!-- Script to manage the responsive menu toggle functionality -->
+<script src="CyberSecurity/Scripts/MenuToggler/toggleMenu.js" defer></script>
+
+</head>
+<body>
+
+<!-- ================================
+       HEADER SECTION
+==================================== -->
+<header id="main-header">
+  <!-- Header Container: Title + Language Toggle -->
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar-container">
+      <!-- Page Title -->
+      <h1 id="pageTitle">Cyber Security Hub</h1>
+
+      <!-- Language Toggle Button -->
+      <button 
+        id="toggleLanguageButton" 
+        onclick="toggleLanguage()" 
+        aria-label="Toggle Language"
+      >
+        <img 
+          id="languageFlag" 
+          src="Images/englishFlag.png" 
+          alt="Language Flag" 
+          width="30" 
+          height="30"
+        >
+      </button>
+      
+      <!-- Burger Menu -->
+      <div class="burger-wrapper">
+        <div 
+          id="cyber-burger-menu" 
+          class="burger-menu" 
+          onclick="toggleMenu()" 
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Navigation Bar -->
+  <nav class="cyber-navbar">
+    <div class="navbar-container">
+      <div id="cyber-primary-container" class="cyber-primary-container">
+        <!-- Additional content for navigation, if needed -->
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Main Navigation Menu -->
+<div id="menu" class="cyber-menu" aria-hidden="true">
+  <a href="javascript:void(0);" onclick="toggleHomeMenu()" class="cta-btn home-link">Home</a>
+  <a href="javascript:void(0);" onclick="togglePortfolioMenu()" class="cta-btn portfolio-link">Portfolio</a>
+  <a href="javascript:void(0);" onclick="toggleAboutMenu()" class="cta-btn about-link">About</a>
+  <a href="../About/about.html#contact" class="nav-link">Contact</a>
+  <a href="#pdfTitle1" class="nav-link">Known Vulnerabilities</a>
+  <a href="#pdfTitle2" class="nav-link">Cryptography</a>
+  <a href="#pdfTitle3" class="nav-link">Password Detection</a>
+  <a href="#pdfTitle4" class="nav-link">Registry Overflow</a>
+  <a href="#pdfTitle5" class="nav-link">Linux Forensics</a>
+</div>
+
+<!-- Home Dropdown Menu -->
+<div id="home-menu" class="home-menu submenu">
+  <a href="https://ambelbasha.github.io/MyWebSites/About/about.html#about">About</a>
+  <a href="https://ambelbasha.github.io/index.html##skills">Skills</a>
+  <a href="https://ambelbasha.github.io/index.html#home">Home</a>
+</div>
+
+<!-- Portfolio Dropdown Menu -->
+<div id="cyberSecurity-menu1" class="portfolio-menu submenu">
+  <a href="../../portfolio.html#web">Web Projects</a>
+  <a href="../../portfolio.html#database">Databases</a>
+  <a href="../../portfolio.html#cyber">Cyber Security</a>
+  <a href="../../portfolio.html#linux">Linux</a>
+  <a href="../../portfolio.html#metadata">Metadata</a>
+</div>
+
+<!-- About Dropdown Menu -->
+<div id="about-menu" class="about-menu submenu">
+  <a href="../About/about.html">Biography</a>
+  <a href="../About/about.html#education">Education</a>
+  <a href="../About/about.html#experience">Experience</a>
+  <a href="../About/about.html#skills">Skills</a>
+  <a href="../About/about.html#contact">Contact Info</a>
+</div>
+
+  <!-- ================================
+       MAIN SECTION
+  =================================== -->
+  <main class="main-content">
+    <div class="container">
+
+      <div class="pdf-block">
+        <h2 id="pdfTitle1">Known Vulnerabilities</h2>
+        <object 
+          id="pdfObject1" 
+          data="Pdf's/Report1-KnownVulnerabilities.pdf" 
+          type="application/pdf" 
+          width="100%" 
+          height="500px"
+        >
+          <p>Your browser does not support viewing PDFs. <a href="Pdf's/Report1-KnownVulnerabilities.pdf">Download PDF</a>.</p>
+        </object>
+        <button onclick="toggleFullscreen('pdfObject1')">Toggle Fullscreen</button>
+      </div>
+
+      <div class="pdf-block">
+        <h2 id="pdfTitle2">Cryptography</h2>
+        <object 
+          id="pdfObject2" 
+          data="Pdf's/Report2-Cryptography.pdf" 
+          type="application/pdf" 
+          width="100%" 
+          height="500px"
+        >
+          <p>Your browser does not support viewing PDFs. <a href="Pdf's/Report2-Cryptography.pdf">Download PDF</a>.</p>
+        </object>
+        <button onclick="toggleFullscreen('pdfObject2')">Toggle Fullscreen</button>
+      </div>
+
+      <div class="pdf-block">
+        <h2 id="pdfTitle3">Password Detection</h2>
+        <object 
+          id="pdfObject3" 
+          data="Pdf's/Report3-PasswordDetection.pdf" 
+          type="application/pdf" 
+          width="100%" 
+          height="500px"
+        >
+          <p>Your browser does not support viewing PDFs. <a href="Pdf's/Report3-PasswordDetection.pdf">Download PDF</a>.</p>
+        </object>
+        <button onclick="toggleFullscreen('pdfObject3')">Toggle Fullscreen</button>
+      </div>
+
+      <div class="pdf-block">
+        <h2 id="pdfTitle4">Registry Overflow</h2>
+        <object 
+          id="pdfObject4" 
+          data="Pdf's/Report4-RegistryOverflow.pdf" 
+          type="application/pdf" 
+          width="100%" 
+          height="500px"
+        >
+          <p>Your browser does not support viewing PDFs. <a href="Pdf's/Report4-RegistryOverflow.pdf">Download PDF</a>.</p>
+        </object>
+        <button onclick="toggleFullscreen('pdfObject4')">Toggle Fullscreen</button>
+      </div>
+
+      <div class="pdf-block">
+        <h2 id="pdfTitle5">Panoptis 2018 - Linux Forensics</h2>
+        <object 
+          id="pdfObject5" 
+          data="Pdf's/Report5-LinuxForensics.pdf" 
+          type="application/pdf" 
+          width="100%" 
+          height="500px"
+        >
+          <p>Your browser does not support viewing PDFs. <a href="Pdf's/Report5-LinuxForensics.pdf">Download PDF</a>.</p>
+        </object>
+        <button onclick="toggleFullscreen('pdfObject5')">Toggle Fullscreen</button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ================================
+       LANGUAGE MODAL
+  =================================== -->
+  <div id="languageModal" class="modal">
+    <div class="modal-content">
+      <span id="modalMessage">Language has been changed from English to Greek.</span>
+    </div>
+  </div>
+
+<footer class="footer">
+  <div class="footer-container">
+    <!-- 1) Merged Footer Links in one centered row -->
+    <div class="footer-links">
+      <ul class="footer-nav">
+        <li><a href="../../index.html"><i class="fa-solid fa-house" aria-hidden="true"></i><span>Home</span></a></li>
+        <li><a href="../About/about.html"><i class="fa-solid fa-circle-info" aria-hidden="true"></i><span>About</span></a></li>
+        <li><a href="../CyberSecurity/AboutThisPage/aboutThisPage.html"><i class="fa-solid fa-file-lines" aria-hidden="true"></i><span>This Page</span></a></li>
+        <li><a href="/privacy.html"><i class="fa-solid fa-shield-alt" aria-hidden="true"></i><span>Privacy Policy</span></a></li>
+        <li><a href="/terms.html"><i class="fa-solid fa-file-contract" aria-hidden="true"></i><span>Terms of Use</span></a></li>
+      </ul>
+    </div>
+    <!-- 2) Copyright line -->
+    <p class="footer-copyright">© 2025 Cyber Security Hub. All rights reserved.</p>
+  </div>
+</footer>
+
+
+<audio id="click-sound" preload="auto">
+    <source src="click-sound.mp3" type="audio/mpeg">
+    <source src="click-sound.ogg" type="audio/ogg">
+    Your browser does not support the audio element.
+</audio>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const navButtons = document.querySelectorAll('.nav-button');
+    const clickSound = document.getElementById('click-sound');
+    clickSound.volume = 0.4;
+
+    const toggleLanguageButton = document.getElementById('toggleLanguageButton');
+
+    navButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            clickSound.play().catch(error => {
+                console.error("Audio playback failed:", error);
+            });
+
+            if (button.getAttribute('target') === '_blank') return;
+
+            event.preventDefault();
+            setTimeout(() => {
+                window.location.href = button.getAttribute('href');
+            }, 500);
+        });
+    });
+
+    if (toggleLanguageButton) {
+        toggleLanguageButton.addEventListener('click', () => {
+            clickSound.play().catch(error => {
+                console.error("Audio playback failed:", error);
+            });
+        });
+    }
+});
+
+function toggleFullscreen(pdfObjectId) {
+    const pdfObject = document.getElementById(pdfObjectId);
+
+    if (!pdfObject) return;
+
+    if (document.fullscreenElement) {
+        // Exit fullscreen if already in fullscreen
+        document.exitFullscreen();
+    } else {
+        // Request fullscreen on the object element
+        if (pdfObject.requestFullscreen) {
+            pdfObject.requestFullscreen();
+        } else if (pdfObject.webkitRequestFullscreen) { // Safari
+            pdfObject.webkitRequestFullscreen();
+        } else if (pdfObject.msRequestFullscreen) { // IE11
+            pdfObject.msRequestFullscreen();
+        } else {
+            console.warn('Fullscreen API is not supported.');
+        }
+    }
+}
+
+</script>
+<script>
+// Smooth scroll + hover feedback with dark‑orange text only
+const header = document.getElementById("web-project-header");
+const target = document.getElementById("projects-grid");
+
+// Grab its starting color so we can put it back
+const originalColor = window.getComputedStyle(header).color;
+
+if (header && target) {
+  // Transition just the color and transform
+  header.style.transition = "color 0.3s ease, transform 0.3s ease";
+
+  header.addEventListener("mouseenter", () => {
+    header.style.color = "#FF8C00";     // dark orange
+    header.style.transform = "scale(1.01)";
+  });
+
+  header.addEventListener("mouseleave", () => {
+    header.style.color = originalColor; // revert to whatever it was
+    header.style.transform = "scale(1)";
+  });
+
+  header.addEventListener("click", () => {
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+
+    // Optional: briefly highlight target after scroll
+    target.style.transition = "background-color 0.6s ease";
+    target.style.backgroundColor = "rgba(255,183,3,0.2)";
+    setTimeout(() => {
+      target.style.backgroundColor = "transparent";
+    }, 1000);
+  });
+}
+</script>
+</body>
+</html>

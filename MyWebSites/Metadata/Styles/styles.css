@@ -1,0 +1,439 @@
+/* ==============================================
+   Fully Updated Stylesheet - Part 1 of 3
+==============================================*/
+
+/*=============================================
+   :root — Global Variables
+=============================================*/
+:root {
+  --color-bg: #003135;
+  --color-bg-alt: #024950;
+  --color-bg-hover: #002428;
+  --color-primary: #0FA4AF;
+  --color-secondary: #bb4232;
+  --color-secondary-dark: #993528;
+  --color-accent-1: #F5C74F;
+  --color-accent-2: #B8C46E;
+  --color-accent-3: #CFAF9D;
+  --color-text: #ffffff;
+  --color-text-muted: #bb4232;
+  --color-border: #0FA4AF;
+  --color-shadow: rgba(0, 0, 0, 0.2);
+  --font-sans: 'Poppins', sans-serif;
+  --font-size-xs: 0.65rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.5rem;
+  --font-size-xxl: 2rem;
+  --font-size-xxxl: 3rem;
+  --line-height-base: 1.4;
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-xlg: 50px;
+  --shadow-sm: 0 2px 6px var(--color-shadow);
+  --shadow-md: 0 4px 12px var(--color-shadow);
+  --transition-fast: 0.2s ease;
+  --transition: 0.3s ease;
+  --highlight-color: var(--color-accent-1);
+}
+
+/*=============================================
+   Global & Utility Resets
+=============================================*/
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 10px;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  padding-top: 68px;
+  overflow-x: hidden;
+}
+
+/*=============================================
+   Navbar Styles
+=============================================*/
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes rainbowFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 400% 50%;
+  }
+}
+
+.metadata-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(180deg, var(--color-bg-alt), var(--color-bg));
+  padding: var(--space-sm) 0;
+  box-shadow: var(--shadow-md);
+  z-index: 100;
+  animation: slideDown 0.6s ease-in-out forwards;
+}
+
+.metadata-navbar::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet, red);
+  background-size: 400% 100%;
+  animation: rainbowFlow 10s linear infinite;
+  z-index: 102;
+}
+
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-sm);
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* This ensures items are vertically centered */
+}
+
+.welcome-title {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center;     /* Center vertically */
+  text-align: center;      /* Ensure the text inside is centered */
+  height: auto;            /* Set height to auto, so it doesn't stretch to full viewport */
+  margin: 0;               /* Remove any default margin */
+}
+
+.burger-wrapper {
+  margin-right: 3rem; /* Add 3rem space from the right */
+  z-index: 101;
+  top: 50%; /* Vertically center the element */
+  right: 3rem; /* 3rem space from the right */
+  transform: translateY(-50%); /* Center it vertically by adjusting the Y translation */
+  z-index: 101;
+}
+
+/* For smaller screens */
+@media screen and (max-width: 768px) {
+  .metadata-navbar {
+    padding: var(--space-xs) 0; /* Adjust navbar padding for smaller screens */
+  }
+  .navbar-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .burger-wrapper {
+    right: var(--space-xs); /* Align the burger to the left on mobile */
+  }
+}
+.metadata-menu {
+  width: 200px; /* Make dropdown slightly smaller */
+  top: 45px; /* Adjust for better spacing on smaller screens */
+}
+
+/* Show dropdown for smaller screens */
+@media screen and (max-width: 768px) {
+  .metadata-menu {
+    width: 100%;
+    top: 60px; /* Ensure it stays within view */
+  }
+}
+
+/* Keyframes for the circular border animation */
+@keyframes drawCircle {
+  0% {
+    stroke-dasharray: 0 314.159;
+  }
+  100% {
+    stroke-dasharray: 314.159 0;
+  }
+}
+
+/* ==============================================
+   Burger Button Styles
+==============================================*/
+/* ==============================================
+   Burger Button Styles
+==============================================*/
+.burger-menu {
+  width: 42px;
+  height: 42px;
+  background-color: var(--color-text); /* Keep the default background white */
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  z-index: 101;
+  box-shadow: var(--shadow-sm);
+  transition: background var(--transition);
+}
+
+.burger-menu span {
+  width: 30px;
+  height: 4px;
+  background-color: var(--color-secondary);
+  border-radius: 4px;
+  transition: transform 0.4s ease, opacity 0.4s ease, background-color 0.3s ease;
+}
+
+.burger-menu span:hover {
+  background-color: var(--color-secondary-dark);
+}
+
+/* When burger menu is open, keep background white */
+#metadata-burger-menu.open {
+  background-color: var(--color-text); /* Ensure it remains white */
+}
+
+#metadata-burger-menu.open span:nth-child(1) {
+  transform: translateY(10px) rotate(45deg);
+}
+
+#metadata-burger-menu.open span:nth-child(2) {
+  opacity: 0;
+}
+
+#metadata-burger-menu.open span:nth-child(3) {
+  transform: translateY(-10px) rotate(-45deg);
+}
+
+/* ==============================================
+   Dropdown Menu Styles
+==============================================*/
+.metadata-menu {
+  position: absolute;
+  top: 48px;
+  right: 0; /* Align it fully to the right */
+  display: none;
+  flex-direction: column;
+  background-color: var(--color-bg-alt);
+  padding: var(--space-sm);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 100;
+}
+
+.metadata-menu.open {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.metadata-menu a {
+  display: block;
+  width: 100%;
+  padding: var(--space-xs) var(--space-sm);
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  text-decoration: none;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  text-align: center;
+  margin-bottom: var(--space-xs); /* Add vertical space between the links */
+  transition: background-color var(--transition),
+              color var(--transition),
+              transform var(--transition);
+}
+
+.metadata-menu a:hover {
+  background-color: var(--color-accent-1);
+  border-color: var(--color-secondary);
+  color: var(--color-bg-alt);
+  transform: scale(1.05);
+}
+
+.metadata-menu a:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-primary);
+}
+
+/* ==============================================
+   Miscellaneous Styles
+==============================================*/
+#navbar {
+  position: relative;
+}
+
+/* Add smooth sliding-in effect */
+@keyframes slideIn {
+  0% {
+    transform: translateX(10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Main container to center the content */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+/* Example responsive adjustments for navbar and ppt-container */
+@media screen and (max-width: 1024px) {
+  .ppt-container {
+    width: 90vw;
+    height: 90vh;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .ppt-container.fullscreen {
+    width: 100vw;
+    height: 100vh;
+  }
+}
+
+/* Navbar adjusted for better responsiveness */
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-sm);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* PowerPoint Container */
+.ppt-container {
+  position: relative;
+  width: 80vw;
+  height: 80vh;
+  max-width: 1024px;
+  max-height: 768px;
+  transition: width 0.3s ease-in-out, height 0.3s ease-in-out;
+}
+
+/* Fullscreen mode for ppt-container */
+.ppt-container.fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  background-color: #000;
+}
+
+/* Make iframe fill the ppt-container */
+.ppt-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Center the button below the ppt-container */
+.button-container {
+  margin-top: 26px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+}
+
+/* Base CTA button */
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: var(--space-xs) var(--space-md);
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  border: 2px solid transparent;
+  border-radius: var(--radius-xlg);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, transform 0.3s ease-out, box-shadow 0.3s ease-out, opacity 0.2s ease;
+  top: -10px;
+  animation: fadeSlideUp 1s ease-out forwards;
+  animation-delay: 1.2s;
+}
+
+/* CTA Primary Button */
+.cta-btn.primary {
+  background-color: #bb1a05;
+  border-color: #920505;
+  color: #fff;
+  background-image: linear-gradient(145deg, #ff6347, #bb1a05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* CTA Button Hover Effects */
+.cta-btn.primary:hover,
+.cta-btn.primary:focus {
+  background-color: #800404;
+  background-image: linear-gradient(145deg, #ff4d2b, #800404);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  outline: none;
+  opacity: 0.9;
+}
+
+/* CTA Button Focus Effect */
+.cta-btn.primary:focus {
+  box-shadow: 0 0 10px 3px rgba(255, 165, 0, 0.8);
+}
+
+/* Button active state */
+.cta-btn.primary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Info Bar Styles */
+.info-bar {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 12px;
+  color: #141414;
+  opacity: 0.7;
+  padding-top: 10px;
+}

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Camera Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+    }
+    .dashboard {
+      display: grid;
+      gap: 20px;
+      padding: 20px;
+    }
+    .camera {
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      background: white;
+      padding: 10px;
+      position: relative;
+      text-align: center;
+    }
+    .camera.selected {
+      border-color: #007BFF;
+      box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+    }
+    .camera input {
+      margin: 10px 0;
+      padding: 8px;
+      width: calc(100% - 20px);
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .camera button {
+      padding: 5px 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #dc3545;
+      color: white;
+    }
+    .camera button:hover {
+      background-color: #c82333;
+    }
+    .add-camera {
+      margin: 20px;
+      display: flex;
+      justify-content: center;
+    }
+    .add-camera button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #28a745;
+      color: white;
+    }
+    .add-camera button:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+  <h1 style="text-align: center; padding: 10px;">Dynamic Camera Dashboard</h1>
+  <div class="add-camera">
+    <button id="addCameraBtn">Add Camera</button>
+  </div>
+  <div class="dashboard" id="dashboard"></div>
+
+  <script>
+    const dashboard = document.getElementById("dashboard");
+    const addCameraBtn = document.getElementById("addCameraBtn");
+
+    let cameraCounter = 0;
+
+    // Add Camera Function
+    addCameraBtn.addEventListener("click", () => {
+      cameraCounter++;
+      const cameraDiv = document.createElement("div");
+      cameraDiv.className = "camera";
+      cameraDiv.dataset.cameraId = cameraCounter;
+      cameraDiv.innerHTML = `
+        <h3>Camera ${cameraCounter}</h3>
+        <p>Location ${cameraCounter}</p>
+        <input 
+          type="text" 
+          placeholder="Enter stream URL" 
+          id="streamUrl-${cameraCounter}" 
+          onchange="updateStreamUrl(${cameraCounter})"
+        />
+        <button onclick="deleteCamera(${cameraCounter})">Delete</button>
+      `;
+      cameraDiv.addEventListener("click", () => toggleSelect(cameraDiv));
+      dashboard.appendChild(cameraDiv);
+      updateGridLayout();
+    });
+
+    // Update Grid Layout Dynamically
+    function updateGridLayout() {
+      const cameraCount = dashboard.children.length;
+      if (cameraCount === 1) {
+        dashboard.style.gridTemplateColumns = "1fr";
+      } else if (cameraCount === 2) {
+        dashboard.style.gridTemplateColumns = "1fr 1fr";
+      } else {
+        dashboard.style.gridTemplateColumns = "repeat(auto-fill, minmax(300px, 1fr))";
+      }
+    }
+
+    // Update Stream URL
+    function updateStreamUrl(cameraId) {
+      const streamUrl = document.getElementById(`streamUrl-${cameraId}`).value;
+      console.log(`Camera ${cameraId} stream URL updated to: ${streamUrl}`);
+    }
+
+    // Delete Camera
+    function deleteCamera(cameraId) {
+      const cameraToDelete = document.querySelector(`.camera[data-camera-id="${cameraId}"]`);
+      if (cameraToDelete) {
+        cameraToDelete.remove();
+        updateGridLayout();
+      }
+    }
+
+    // Toggle Select Camera
+    function toggleSelect(cameraDiv) {
+      if (cameraDiv.classList.contains("selected")) {
+        cameraDiv.classList.remove("selected");
+      } else {
+        document.querySelectorAll(".camera").forEach((el) => el.classList.remove("selected"));
+        cameraDiv.classList.add("selected");
+      }
+    }
+  </script>
+</body>
+</html>

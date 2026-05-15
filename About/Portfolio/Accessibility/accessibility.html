@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Learn about the accessibility features of this website." />
+    <meta name="author" content="Ambel Basha" />
+    <title>Accessibility Features</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+    <header role="banner">
+        <h1>Website Accessibility Features</h1>
+    </header>
+
+    <main role="main" id="main-content">
+        <div class="section-wrapper">
+        <section>
+            <h2>1. Language Declaration</h2>
+            <p>The website specifies the language of the content using the <code>&lt;html lang="en"&gt;</code> tag. This helps screen readers properly interpret the content and apply the correct language settings for users, ensuring an accurate reading experience.</p>
+        </section>
+
+        <section>
+            <h2>2. Skip to Main Content</h2>
+            <p>Offering a <a href="#main-content" class="skip-link">Skip to Main Content</a> link at the top of each page. This allows keyboard and screen reader users to bypass repetitive navigation and go straight to the primary content. This is especially helpful for users who cannot use a mouse or trackpad.</p>
+        </section>
+
+        <section>
+            <h2>3. ARIA Attributes for Enhanced Accessibility</h2>
+            <p>Using ARIA (Accessible Rich Internet Applications) attributes to ensure dynamic content and user interface elements are accessible. For instance:</p>
+            <ul>
+                <li><code>aria-expanded="false"</code> on the burger menu button helps screen readers announce the state of the menu (whether it’s open or closed).</li>
+                <li><code>aria-controls="about-menu"</code> links the button to the menu, so screen readers understand which part of the page is controlled by the button.</li>
+                <li><code>aria-label="Toggle navigation"</code> provides a label for the button, giving screen reader users a clear description of its function.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>4. Main Content Structure</h2>
+            <p>Also using <code>role="main"</code> to identify the primary content area. This allows screen readers to easily navigate to the main content, ensuring a smoother browsing experience for users relying on assistive technologies.</p>
+        </section>
+
+        <section>
+            <h2>5. Clear Headings and Content Structure</h2>
+            <p>Headings, such as <code>&lt;h2&gt;</code> and <code>&lt;h3&gt;</code>, are used to logically structure the content. This makes it easy for screen reader users to navigate through sections quickly.</p>
+        </section>
+
+        <section>
+            <h2>6. Descriptive Links</h2>
+            <p>Ensuring all links have descriptive text so users can easily understand where they will be taken. For example, <a href="../../MyWebSites/index.php" target="_blank"><strong>Projects</strong></a> clearly describes that it links to the Projects section of the site.</p>
+        </section>
+
+        <section>
+            <h2>7. Icons with Text</h2>
+            <p>Icons are paired with descriptive text, making them accessible to both sighted users and those relying on screen readers. For example, the "About" link has both an icon and the word "About" to describe its purpose.</p>
+        </section>
+
+        <section>
+            <h2>8. Accessible Footer</h2>
+            <p>The footer of the site uses <code>role="contentinfo"</code> to identify it as containing important information, such as copyright and accessibility statements. This helps screen readers easily locate this section of the page.</p>
+        </section>
+
+        <section>
+            <h2>9. Focus Management</h2>
+            <p>Ensuring that interactive elements like the burger menu button are focusable and have proper focus management. This allows keyboard users to navigate through the page easily and interact with all elements.</p>
+        </section>
+
+        <section>
+            <h2>10. WCAG Compliance</h2>
+            <p>This website follows WCAG (Web Content Accessibility Guidelines) to ensure that it is accessible to everyone, including people with disabilities. By adhering to these guidelines,I strive to create an inclusive web experience.</p>
+        </section>
+        </div>
+    </main>
+<!-- Footer --> 
+<footer role="contentinfo" class="footer">
+  <div class="footer-container">
+    <!-- Footer Links Section -->
+    <div class="footer-links">
+        <!-- Link to Return to aboutPortfolio.html -->
+
+      <p><a href="../aboutPortfolio.html" class="back-to-about">Back to About Portfolio</a>You are visiting and reading <a href="./accessibility.html">Accessibility Statement</a>.</p>
+      <p class="footer-copyright">© 2025 Ambel Basha — Full Stack Developer & Cybersecurity Enthusiast</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+
+</html>

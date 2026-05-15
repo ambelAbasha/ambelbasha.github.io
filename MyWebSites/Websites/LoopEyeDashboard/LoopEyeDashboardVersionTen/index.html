@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enhanced YouTube Live Stream Dashboard</title>
+  <link rel="stylesheet" href="Styles/styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+
+    header {
+      background-color: #2c3e50;
+      color: #fff;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    .add-camera {
+      margin: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .add-camera button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #28a745;
+      color: white;
+    }
+
+    .add-camera button:hover {
+      background-color: #218838;
+    }
+
+    .camera-grid {
+      display: grid;
+      gap: 20px;
+      padding: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+
+    .camera {
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      background: white;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .video-wrapper {
+      background-color: #000;
+      padding: 10px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 200px;
+      border: none;
+    }
+
+    .controls {
+      padding: 10px;
+    }
+
+    .controls input {
+      width: calc(100% - 20px);
+      padding: 8px;
+      margin: 5px 0;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    .controls button {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #007bff;
+      color: white;
+      margin-top: 5px;
+    }
+
+    .controls button:hover {
+      background-color: #0056b3;
+    }
+
+    .fullscreen-btn {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #007bff;
+      color: white;
+    }
+
+    .fullscreen-btn:hover {
+      background-color: #0056b3;
+    }
+
+    .limit-message {
+      text-align: center;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">YouTube Live Stream Dashboard</div>
+  </header>
+  <main>
+    <div class="add-camera">
+      <button id="addCameraBtn">Add Camera</button>
+    </div>
+    <div id="cameraLimitMessage" class="limit-message"></div>
+    <div class="camera-grid" id="cameraGrid"></div>
+  </main>
+
+  <script>
+    const cameraGrid = document.getElementById("cameraGrid");
+    const addCameraBtn = document.getElementById("addCameraBtn");
+    const cameraLimitMessage = document.getElementById("cameraLimitMessage");
+
+    const cameraLimit = 10;
+    let cameras = [];
+
+    addCameraBtn.addEventListener("click", () => {
+      if (cameras.length >= cameraLimit) {
+        cameraLimitMessage.textContent = "You have reached the maximum limit of cameras.";
+        return;
+      }
+      cameraLimitMessage.textContent = "";
+
+      const cameraId = cameras.length + 1;
+      cameras.push({ id: cameraId, url: "", name: `Camera ${cameraId}` });
+
+      const cameraDiv = document.createElement("div");
+      cameraDiv.className = "camera";
+      cameraDiv.dataset.cameraId = cameraId;
+
+      cameraDiv.innerHTML = `
+        <div class="video-wrapper">
+          <iframe id="video-${cameraId}" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+        <h3 contenteditable="true" onblur="renameCamera(${cameraId}, this.innerText)">
+          Camera ${cameraId}
+        </h3>
+        <div class="controls">
+          <input type="text" placeholder="Enter YouTube live stream URL" id="streamUrl-${cameraId}" onchange="updateStreamUrl(${cameraId})">
+          <button id="submit-${cameraId}" onclick="submitStreamUrl(${cameraId})">Submit</button>
+          <button class="fullscreen-btn" onclick="toggleFullscreen(${cameraId})">Fullscreen</button>
+        </div>
+      `;
+
+      cameraGrid.appendChild(cameraDiv);
+    });
+
+    function submitStreamUrl(cameraId) {
+      const streamUrl = document.getElementById(`streamUrl-${cameraId}`).value;
+      const videoElement = document.getElementById(`video-${cameraId}`);
+      const submitButton = document.getElementById(`submit-${cameraId}`);
+
+      const videoId = extractYouTubeId(streamUrl);
+
+      if (videoId) {
+        const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+        videoElement.src = embedUrl;
+        cameras[cameraId - 1].url = streamUrl;
+        
+        // Change button text and function
+        submitButton.innerText = "Change URL";
+        submitButton.setAttribute("onclick", `changeStreamUrl(${cameraId})`);
+      } else {
+        alert("Invalid YouTube URL");
+      }
+    }
+
+    function changeStreamUrl(cameraId) {
+      const streamUrl = document.getElementById(`streamUrl-${cameraId}`).value;
+      const videoElement = document.getElementById(`video-${cameraId}`);
+
+      const videoId = extractYouTubeId(streamUrl);
+
+      if (videoId) {
+        const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+        videoElement.src = embedUrl;
+        cameras[cameraId - 1].url = streamUrl;
+        console.log(`Camera ${cameraId} stream URL updated.`);
+      } else {
+        alert("Invalid YouTube URL");
+      }
+    }
+
+    // Updated regular expression to handle both normal and live YouTube URLs
+    function extractYouTubeId(url) {
+      const regex = /(?:https?:\/\/(?:www\.)?youtube\.com\/(?:.*[?&]v=|.*\/e(?:mbed)?\/|live\/)([a-zA-Z0-9_-]+))/;
+      const match = url.match(regex);
+      return match ? match[1] : null;
+    }
+
+    function toggleFullscreen(cameraId) {
+      const videoElement = document.getElementById(`video-${cameraId}`);
+      if (videoElement.requestFullscreen) {
+        videoElement.requestFullscreen();
+      } else if (videoElement.mozRequestFullScreen) { /* Firefox */
+        videoElement.mozRequestFullScreen();
+      } else if (videoElement.webkitRequestFullscreen) { /* Chrome, Safari, Opera */
+        videoElement.webkitRequestFullscreen();
+      } else if (videoElement.msRequestFullscreen) { /* IE/Edge */
+        videoElement.msRequestFullscreen();
+      }
+    }
+
+    function renameCamera(cameraId, newName) {
+      cameras[cameraId - 1].name = newName;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+body, html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.outer-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 60%;
+    max-width: 460px;
+    padding: 30px;  /* Slightly increased padding for more "puff" */
+    border-radius: 12px;  /* Slightly more rounded corners */
+    background-color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 16%;
+    
+    /* Soft but noticeable shadow for depth */
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.2), 0px 0px 20px rgba(0, 0, 0, 0.1);
+
+    /* Slightly inflated look with subtle transform */
+    transform: translateY(-5px); /* Moves the container a bit upwards for more floaty effect */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;  /* Smooth transition on hover */
+
+    /* Ensure the container still looks good on hover */
+}
+
+.container:hover {
+    transform: translateY(-8px); /* Slightly more floating effect on hover */
+    box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.3), 0px 0px 25px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+
+/* Code box */
+.code-box {
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background: linear-gradient(to bottom, #f9f9f9, #e6e6e6); /* Gradient for glossy effect */
+    margin-bottom: 10px;
+    position: relative; /* Position relative for pseudo-elements */
+    overflow: hidden; /* Ensure pseudo-elements do not overflow */
+    z-index: 0; /* Ensure pseudo-elements do not overlay text */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Light shadow */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
+/* Glossy effect for top left corner */
+.code-box::before {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top right, rgba(255, 255, 255, 0.6), transparent);
+    border-top-left-radius: 8px;
+    z-index: 1; /* Ensures the pseudo-element is above the background */
+}
+
+/* Glossy effect for top right corner */
+.code-box::after {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top left, rgba(255, 255, 255, 0.6), transparent);
+    border-top-right-radius: 8px;
+    z-index: 1; /* Ensures the pseudo-element is above the background */
+}
+
+/* Additional glossy effects for hover */
+.code-box:hover::before,
+.code-box:hover::after {
+    opacity: 0.8; /* Slightly increase opacity on hover */
+}
+
+h3 {
+    text-align: center;
+    margin: 6px 8px;
+}
+
+/* Return button */
+.return-button {
+    margin-top: 50px;
+    margin-bottom: 190px;
+}
+
+.return-button button {
+    padding: 10px 20px; /* Add padding to the button */
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative; /* Set position to relative for pseudo-elements */
+    overflow: hidden; /* Ensure pseudo-elements don't overflow */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), /* Light shadow */
+                0 4px 20px rgba(0, 0, 0, 0.3); /* Highlight from top */
+    margin: 20px 0; /* Ensure consistent margin */
+}
+
+/* Glossy effect for top left corner */
+.return-button button::before {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top right, rgba(255, 255, 255, 0.6), transparent);
+    border-top-left-radius: 5px; /* Adjust border radius as needed */
+    z-index: 1; /* Ensure the pseudo-element is above the background */
+}
+
+/* Glossy effect for top right corner */
+.return-button button::after {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top left, rgba(255, 255, 255, 0.6), transparent);
+    border-top-right-radius: 5px; /* Adjust border radius as needed */
+    z-index: 1; /* Ensure the pseudo-element is above the background */
+}
+
+.return-button button:hover::before,
+.return-button button:hover::after {
+    opacity: 0.8; /* Slightly increase opacity on hover */
+}
+
+.return-button button:hover {
+    background-color: #076907;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3), /* Light shadow */
+                0 4px 20px rgba(0, 0, 0, 0.4); /* Highlight from top */
+}
+
+.return-button button:active {
+    transform: scale(0.95); /* Slightly shrink the button on click */
+}

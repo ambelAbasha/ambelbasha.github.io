@@ -1,0 +1,142 @@
+<!-- thisPage.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Projects Showcase - About This Page</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header id="about-header" role="banner" class="navbar-container">
+    <div class="welcome-title">About This Page</div>
+
+    <!-- Wrap the button in its own wrapper -->
+    <div class="burger-wrapper">
+      <button id="burger-toggle" class="burger-button" aria-expanded="false" aria-controls="about-menu" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <nav id="about-menu" role="navigation" aria-label="About page sections" hidden>
+      <ul>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../portfolio.html">Portfolio</a></li>
+        <li><a href="../index.php">Web Projects</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- About This Page Section -->
+  <div class="about-page-container">
+    <main class="container">
+      <section class="intro">
+        <h1><i class="fas fa-laptop-code"></i> Web Projects Showcase</h1>
+        <p>This page introduces the <strong>Web Projects Showcase</strong> and explains its purpose. It is designed to provide transparency about my web development work, demonstrating how I integrate multiple technologies across frontend and backend development. The showcase highlights responsive design, dynamic content, and database-driven features that together create an interactive, user-friendly experience.</p>
+      </section>
+
+      <section class="section">
+        <h2><i class="fas fa-cogs"></i> Design and Structure</h2>
+        <div class="blocks">
+          <article class="block">
+            <h3><i class="fas fa-database"></i> Dynamic Content</h3>
+            <p>The page uses a lightweight custom database to store project information. On each load, project links and details are fetched dynamically. This database-driven approach—using SQLite—makes updates easy: changing the database entries automatically updates the page without rewriting HTML.</p>
+          </article>
+
+          <article class="block">
+            <h3><i class="fas fa-puzzle-piece"></i> Hexagonal Layout</h3>
+            <p>Projects are presented in a multi-layered hexagonal tile design. Each tile contains a project link and brief description. This hexagon-style interface adds a modern, organized look and helps distinguish each project visually. The tile design also makes the layout responsive: tiles rearrange gracefully on different screen sizes.</p>
+          </article>
+
+          <article class="block">
+            <h3><i class="fas fa-desktop"></i> Responsive Design</h3>
+            <p>The site uses responsive web design techniques to ensure usability on any device. CSS media queries adjust the layout and typography for desktop, tablet, or smartphone screens, giving a consistent user experience on all devices. For example, the burger (“hamburger”) menu appears on smaller screens to save space, while the footer and content tiles scale fluidly.</p>
+          </article>
+
+          <article class="block">
+            <h3><i class="fas fa-bars"></i> Navigation</h3>
+            <p>A fixed header provides a burger navigation menu. From this menu, users can easily navigate to Home, Portfolio, and other sections of the site (such as Cybersecurity, Linux Scripting, and Metadata). The footer likewise contains quick links to About Me, Home, Portfolio, This Page, and Contact. These links make it easy to jump between main sections of the portfolio from anywhere on the site.</p>
+          </article>
+
+          <article class="block">
+            <h3><i class="fas fa-shield-alt"></i> Security</h3>
+            <p>User interactions are designed with security and clarity in mind. Login and subscription data are handled through secure processes: passwords are stored using industry-standard one-way hashing (rather than reversible encryption). Interactive elements like logout confirmations and password-change forms use clean modal dialogs to guide the user. All these design choices create a simple, clean interface that still follows good security practices.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2><i class="fas fa-project-diagram"></i> Featured Projects</h2>
+        <div class="projects">
+          <article class="project">
+            <h3><i class="fas fa-camera-retro"></i> Raspberry Pi – CCTV</h3>
+            <p>A single-camera solution with Raspberry Pi backend and Java/SQL/JavaScript frontend. Users can rename the camera in real time, toggle fullscreen, and log out via a modal. A lightweight database stores subscriptions and settings; passwords use one-way hashing. This prototype currently streams a sample webcam feed, but it is designed so that a real Raspberry Pi camera can be integrated seamlessly in the future.</p>
+          </article>
+
+          <article class="project">
+            <h3><i class="fas fa-tv"></i> Vision Scope (CCTV Dashboard)</h3>
+            <p>An interactive CCTV management dashboard developed with Java, SQL, JavaScript (AJAX), HTML, and CSS. Users can dynamically add or remove camera feeds by entering a camera URL and a custom name (e.g. “Front Door Camera”). The interface is intuitive: camera names can be edited, unwanted cameras deleted individually or in bulk via friendly modal dialogs. The dashboard also shows personalized user information: the user’s avatar (uploadable by the user), their last login timestamp, and the total number of registered users.</p>
+          </article>
+
+          <article class="project">
+            <h3><i class="fas fa-music"></i> Music Galaxy</h3>
+            <p>A music dashboard with genre sorting, pagination, and light/dark themes. Built with PHP, JavaScript, and SQL. Plans include Spotify API integration. All user data is encrypted for privacy.</p>
+          </article>
+
+          <article class="project">
+            <h3><i class="fas fa-plane"></i> The Fly Now</h3>
+            <p>An air-travel booking platform using PHP and JavaScript. Users can create accounts, search flights, book tickets, and manage bookings. The design is fully responsive, ensuring usability on all devices.</p>
+          </article>
+
+          <article class="project">
+            <h3><i class="fas fa-code"></i> HTML &amp; PHP Examples – Tools Demonstration</h3>
+            <p>A collection of code examples in HTML, PHP, JavaScript, CSS, and MySQL. Includes interactive widgets and database-driven pages, all designed responsively to showcase practical web development patterns.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-container">
+      <ul class="footer-links">
+        <li><a href="../../index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="../../portfolio.html"><i class="fas fa-briefcase"></i> Portfolio</a></li>
+        <li><a href="../index.php"><i class="fas fa-project-diagram"></i> Web Projects Showcase</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- Script for Handling Internal Navigation -->
+  <script>
+    function handleInternalNav(event) {
+      event.preventDefault();
+      const targetId = event.target.getAttribute("href").substring(1);
+      document.getElementById(targetId).scrollIntoView({ behavior: "smooth" });
+    }
+  </script>
+
+  <script>
+    const wrapper = document.querySelector('.burger-wrapper');
+    const btn = document.getElementById('burger-toggle');
+    const menu = document.getElementById('about-menu');
+
+    btn.addEventListener('click', () => {
+      const open = btn.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+      menu.hidden = !open;
+      menu.classList.toggle('show', open);
+      wrapper.classList.toggle('animate-cw', open);
+      wrapper.classList.toggle('animate-ccw', !open);
+    });
+  </script>
+</body>
+
+</html>

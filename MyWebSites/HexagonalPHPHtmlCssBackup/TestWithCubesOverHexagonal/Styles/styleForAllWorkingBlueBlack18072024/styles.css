@@ -1,0 +1,514 @@
+/* General body styles */
+body {
+    margin: 0px;
+    padding: 0px;
+    background: linear-gradient(to bottom right, #383737, #000, #9c9c9c); /* Diagonal gradient background */
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Container styles */
+.hex-container {
+    position: relative;
+    width: calc(100% + 78px); /* Adjusted width to account for the left shift */
+    height: calc(100% + 78px); /* Adjusted height to account for the bottom shift */
+    height: 100%;
+    overflow: hidden;
+    perspective: 1000px; /* Perspective for 3D effect */
+    transform: translateX(-78px); /* Shift scene 78px to the left */
+}
+/* Base hexagon styles */
+.hexagon {
+    position: absolute;
+    width: 154px; /* Enlarged size of each hexagon (150px + 2px left + 2px right) */
+    height: 170.5px; /* Adjusted height for better coverage */
+    background: linear-gradient(to top, #666666, #ffffff); /* Gradient for dark grey to light grey */
+    clip-path: polygon(
+        50% 0%,
+        100% 25%,
+        100% 75%,
+        50% 100%,
+        0% 75%,
+        0% 25%
+    );
+    transform-style: preserve-3d;
+    transform: rotate(90deg); /* Rotate hexagon by 90 degrees */
+    border: 2px solid rgba(0, 0, 0, 0.3); /* Adjusted border color */
+    margin: 0 2px; /* Add 2 pixels of margin on both sides */
+    box-sizing: border-box; /* Ensure border-box sizing */
+    transition: all 0.3s ease-in-out; /* Smooth transition for hover effect */
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.2), /* Base shadow */
+        0 5px 10px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    overflow: hidden; /* Hide overflow to clip glossy effect */
+}
+
+/* Hexagon pseudo-elements */
+.hexagon::before,
+.hexagon::after {
+    content: '';
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    background-color: inherit;
+    clip-path: inherit;
+    transform-style: preserve-3d;
+}
+
+/* Extend white shiny effect over hexagons */
+.hexagon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0)); /* Gradient for diagonal light shade */
+    clip-path: polygon(
+        0% 0%,
+        100% 0%,
+        0% 100% /* Updated to start from top left to bottom right */
+    );
+    transform-style: preserve-3d;
+    z-index: 1; /* Ensure it's above the hexagon */
+    pointer-events: none; /* Ignore pointer events on this pseudo-element */
+    opacity: 0.7; /* Adjust opacity for subtle shine effect */
+    transition: opacity 0.3s ease-in-out; /* Smooth transition for shine effect */
+    box-shadow:
+        inset -5px -5px 10px rgba(255, 255, 255, 0.9), /* White inset shadow */
+        inset 5px 5px 10px rgba(0, 0, 0, 0.7), /* Black inset shadow */
+        0px 0px 8px rgba(255, 255, 255, 0.6); /* Soft highlight */
+}
+
+.hexagon::after {
+    box-shadow:
+        inset -5px -5px 10px rgba(255, 255, 255, 0.6), /* White inset shadow */
+        inset 5px 5px 10px rgba(0, 0, 0, 0.6), /* Black inset shadow */
+        0px 0px 8px rgba(255, 255, 255, 0.6); /* Soft highlight */
+}
+
+/* New pseudo-element for blue-black to transparent glossy effect */
+.hexagon::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom right, rgba(0, 0, 50, 0.7), rgba(0, 0, 0, 0)); /* Blue-black to transparent gradient */
+    clip-path: polygon(
+        0% 0%,
+        100% 0%,
+        100% 100%,
+        0% 100%
+    ); /* Covering the entire hexagon */
+    transform-style: preserve-3d;
+    z-index: 2; /* Ensure it's above the previous pseudo-element */
+    pointer-events: none; /* Ignore pointer events on this pseudo-element */
+    opacity: 0.7; /* Adjust opacity for glossy effect */
+    transition: opacity 0.3s ease-in-out; /* Smooth transition for glossy effect */
+    box-shadow:
+        inset -5px -5px 10px rgba(0, 0, 50, 0.7), /* Blue-black inset shadow */
+        inset 5px 5px 10px rgba(0, 0, 0, 0.5), /* Dark inset shadow */
+        0px 0px 8px rgba(0, 0, 50, 0.3); /* Soft highlight */
+}
+
+/* Different styles for hexagons based on their position */
+.hexagon:nth-child(2n+1) {
+    background: linear-gradient(to bottom right, #1f1d1d, #000); /* Gradient for darker shades */
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.3), /* Stronger shadow from top right */
+        0 10px 15px rgba(0, 0, 0, 0.3); /* Lighter shadow on left */
+}
+
+.hexagon:nth-child(3n+2) {
+    background: linear-gradient(to bottom right, #0e0d0d, #000000); /* Gradient for mid to dark grey */
+    box-shadow:
+        0 15px 30px rgba(0, 0, 0, 0.4), /* Stronger shadow from top right */
+        0 15px 20px rgba(0, 0, 0, 0.4); /* Lighter shadow on left */
+}
+
+.hexagon:nth-child(4n+3) {
+    background: linear-gradient(to bottom right, #161616, #ffffff); /* Gradient for lighter to mid grey */
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.2), /* Stronger shadow from top right */
+        0 5px 10px rgba(0, 0, 0, 0.2); /* Lighter shadow on left */
+}
+
+.hexagon:nth-child(5n+4) {
+    background: linear-gradient(to bottom right, #0f0f0f, #141414); /* Gradient for light grey to dark grey */
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.3), /* Stronger shadow from top right */
+        0 10px 15px rgba(0, 0, 0, 0.3); /* Lighter shadow on left */
+}
+
+.hexagon:nth-child(6n+5) {
+    background: linear-gradient(to bottom right, #1f1e1e, #181616); /* Gradient for lighter grey to mid grey */
+    box-shadow:
+        0 15px 30px rgba(0, 0, 0, 0.4), /* Stronger shadow from top right */
+        0 15px 20px rgba(0, 0, 0, 0.4); /* Lighter shadow on left */
+}
+
+.hexagon:nth-child(7n+6) {
+    background: linear-gradient(to bottom right, #1d1d1d, #0e0d0d); /* Gradient for mid grey to darker grey */
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.2), /* Stronger shadow from top right */
+        0 5px 10px rgba(0, 0, 0, 0.2); /* Lighter shadow on left */
+}
+
+.hexagon:nth-child(8n+7) {
+    background: linear-gradient(to bottom right, #1a1a1a, #020202); /* Dark grey to mid grey */
+    box-shadow:
+        0 10px 20px rgba(0, 0, 0, 0.3), /* Stronger shadow from top right */
+        0 10px 15px rgba(0, 0, 0, 0.3); /* Lighter shadow on left */
+}
+
+.hexagon:nth-child(9n+8) {
+    background: linear-gradient(to bottom right, #101010, #1c1c1c); /* Dark grey to very dark grey */
+    box-shadow:
+        0 15px 25px rgba(0, 0, 0, 0.4), /* Stronger shadow from top right */
+        0 15px 20px rgba(0, 0, 0, 0.4); /* Lighter shadow on left */
+}
+
+.hexagon:nth-child(10n+9) {
+    background: linear-gradient(to bottom right, #cfcece, #000000); /* Mid dark grey to grey */
+    box-shadow:
+        0 10px 20px rgba(0, 0, 0, 0.3), /* Stronger shadow from top right */
+        0 10px 15px rgba(0, 0, 0, 0.3); /* Lighter shadow on left */
+}
+
+/* Glass effect for hexagons */
+.hexagon.glass {
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent white background for glass effect */
+    border: none; /* No border for glass hexagons */
+    transition: all 0.3s ease-in-out; /* Smooth transition for hover effect */
+    position: relative; /* Ensure relative positioning for pseudo-element */
+}
+
+/* Extend white shiny effect over black / dark grey hexagons */
+.hexagon.glass::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0)); /* Gradient for diagonal light shade */
+    clip-path: ellipse(50% 50% at 50% 50%); /* Elliptical shape */
+    transform: rotate(-90deg) scale(1.5); /* Rotate and scale to cover the hexagon */
+    transform-origin: left top; /* Ensure rotation origin is top left */
+    transform-style: preserve-3d;
+    z-index: 1; /* Ensure it's above the hexagon */
+    pointer-events: none; /* Ignore pointer events on this pseudo-element */
+    opacity: 0.7; /* Adjust opacity for subtle shine effect */
+    transition: opacity 0.3s ease-in-out; /* Smooth transition for shine effect */
+}
+
+.hexagon.glass:hover {
+    transform: rotate(-90deg) scale(1.6); /* Scale up on hover for glass effect */
+}
+
+
+.banner {
+    position: absolute; /* Position the banner absolutely */
+    top: 72px; /* Adjusted top position */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust for centering */
+    padding: 12px 28px; /* Padding for the banner */
+    background: 
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.3)), /* Pale top and bottom */
+        linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.9)), /* Cylindrical effect gradient */
+        radial-gradient(circle at center, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.2) 70%); /* Shine effect */
+    box-shadow: 
+        0 8px 16px rgba(0, 0, 0, 0.2), /* Main shadow */
+        inset 0 4px 8px rgba(255, 255, 255, 0.6), /* Inner top highlight */
+        inset 0 -4px 8px rgba(0, 0, 0, 0.2), /* Inner bottom shadow */
+        0 4px 8px rgba(0, 0, 0, 0.1), /* Outer shadow */
+        0 0 0 1px rgba(255, 255, 255, 0.6), /* Light outer border */
+        inset -2px 0 6px rgba(0, 0, 0, 0.2), /* Left inner shadow */
+        inset 2px 0 6px rgba(0, 0, 0, 0.2), /* Right inner shadow */
+        inset 0 -2px 6px rgba(0, 0, 0, 0.1), /* Bottom inner shadow */
+        inset 0 2px 6px rgba(0, 0, 0, 0.1); /* Top inner shadow */
+    border-radius: 50px; /* Slightly rounded edges */
+    font-size: 20px; /* Adjusted font size */
+    font-weight: bold; /* Bold font weight */
+    color: #2d2d2d; /* Dark color */
+    z-index: 10; /* Ensure banner is above other elements */
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.7); /* Light shadow for text */
+    transition: all 0.3s ease-in-out; /* Smooth transition for hover effect */
+    backdrop-filter: blur(10px); /* Slightly blurred background */
+}
+
+.banner:hover {
+    background: 
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.2)), /* Light top and bottom */
+        linear-gradient(to right, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.8)), /* Cylindrical effect gradient */
+        radial-gradient(circle at center, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.3) 70%); /* Shine effect */
+    box-shadow: 
+        0 12px 24px rgba(0, 0, 0, 0.2), /* Stronger main shadow */
+        inset 0 6px 12px rgba(255, 255, 255, 0.6), /* Stronger top highlight */
+        inset 0 -6px 12px rgba(0, 0, 0, 0.2), /* Stronger bottom shadow */
+        0 6px 12px rgba(0, 0, 0, 0.1), /* Outer shadow */
+        0 0 0 1px rgba(255, 255, 255, 0.6), /* Light outer border */
+        inset -2px 0 12px rgba(0, 0, 0, 0.2), /* Left inner shadow */
+        inset 2px 0 12px rgba(0, 0, 0, 0.2), /* Right inner shadow */
+        inset 0 -2px 12px rgba(0, 0, 0, 0.1), /* Bottom inner shadow */
+        inset 0 2px 12px rgba(0, 0, 0, 0.1); /* Top inner shadow */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .container {
+        width: 280px; /* Adjusted width for smaller screens */
+        height: 340px; /* Adjusted height for smaller screens */
+    }
+}
+/* Outer container styles */
+.outer-container {
+    position: relative;
+    width: 620px;
+    height: 620px;
+    margin: 20px auto;
+    top: -46%;
+    transform: translateY(-42.6%);
+    transform-origin: top left;
+    border: 1px solid rgb(69, 245, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 295px;
+}
+
+/* Container styles */
+.container {
+    width: 314px; /* Further reduced width */
+    height: 398px; /* Further reduced height */
+    display: flex;
+    flex-wrap: wrap;
+    padding: 120px; /* Added padding */
+    justify-content: center;
+    align-items: center;
+    gap: 12px; /* Reduced the gap between hexagons horizontally */
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.1),
+        rgba(255, 255, 255, 0)
+    ),
+    linear-gradient(to left, rgba(255, 255, 255, 0.2), rgba(179, 180, 179, 0));
+    background-blend-mode: lighten;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.08);
+    border-radius: 25px;
+    overflow: hidden;
+    transform: rotate(90deg); /* Rotate the hexagonal grid */
+    clip-path: polygon(
+        50% 0%,
+        100% 25%,
+        100% 75%,
+        50% 100%,
+        0% 75%,
+        0% 25%
+    );
+}
+
+/* Adjusted hexagonal frame */
+.hexagonal-frame {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0px; /* Adjusted horizontal gap between hexagons */
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    top: 0;
+    transform: rotate(90deg);
+    clip-path: polygon(
+        50% 0%,
+        100% 25%,
+        100% 75%,
+        50% 100%,
+        0% 75%,
+        0% 25%
+    );
+    border: 1px solid white; /* White border around hexagonal frame */
+}
+
+/* Adjusted row styles */
+.row {
+    display: flex;
+    justify-content: center;
+    gap: 1.1px; /* Reduced horizontal gap between hexagons within a row */
+    margin-top: -9px; /* Ensure no additional margin top */
+    margin-left: -5px;
+}
+/* Reduce bottom margin for hexagons in the first row */
+.row:not(.second-row) .hex {
+    margin-bottom: -30; /* Remove bottom margin */
+}
+
+/* Reduce top margin for hexagons in the second row */
+.row.second-row .hex {
+    margin-top: -100; /* Remove top margin */
+    margin-bottom: 13px; /* Adjusted bottom margin */
+}
+
+/* Adjust the margin between elements in the first row */
+.row:not(.second-row) .hex + .hex {
+    margin-left: 9px; /* Adjust the left margin between elements */
+}
+/* Hexagon styles */
+.hex {
+    width: 122px;
+    height: 146px; /* Adjusted height to reduce vertical spacing */
+    background-color: #6c6;
+    clip-path: polygon(
+        50% 0%,
+        100% 25%,
+        100% 75%,
+        50% 100%,
+        0% 75%,
+        0% 25%
+    );
+    padding: 12px; /* Adjust padding as needed */
+    outline: 5px solid white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    will-change: transform, box-shadow;
+    z-index: 3;
+    position: relative; /* Ensure positioning context for absolute positioning */
+    overflow: hidden; /* Hide overflow to prevent text from spilling */
+    margin-left: -2px; /* Shift each hexagon 12px to the right */
+    margin-bottom: -24px;
+    margin-top: -16px;
+}
+
+/* Hexagon anchor styles */
+.hex a {
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    transform: rotate(-90deg); /* Rotate the text */
+    position: absolute; /* Position relative to .hex */
+    width: 100%; /* Ensure full width of .hex for text */
+    transform-origin: center center; /* Rotate around the center */
+}
+
+/* Hexagon hover effect */
+.hex:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 215, 0, 0.8);
+}
+
+/* Text color change on hover */
+.hex:hover a {
+    color: black; /* Change text color to black on hover */
+}
+
+/* Hexagon expanded state */
+.hex.expanded {
+    transform: scale(1.2);
+}
+
+
+.footer {
+    position: fixed; /* Fixed positioning */
+    bottom: 0; /* Positioned at bottom */
+    left: 3px; /* Positioned at left */
+    right: 3px; /* Positioned at right */
+    width: 100%; /* Full width */
+    height: 36px; /* Height of footer */
+    background-color: rgba(32, 32, 32, 0.8); /* Background color */
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    opacity: 0; /* Initially transparent */
+    transition: opacity 0.3s ease; /* Smooth transition for opacity */
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.footer.visible {
+    opacity: 1; /* Visible state */
+}
+
+.glossy-line::before,
+.glossy-line::after {
+    content: ""; /* Empty content */
+    position: absolute; /* Absolute positioning */
+    top: 0; /* Positioned at top */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    pointer-events: none; /* No pointer events */
+    transition: width 0.3s ease; /* Smooth transition for width */
+}
+
+.glossy-line::before {
+    left: 0; /* Positioned at left */
+    background: linear-gradient(to left bottom, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0)); /* Gradient from left */
+    transition-delay: 0.15s; /* Delay for transition */
+}
+
+.glossy-line::after {
+    right: 0; /* Positioned at right */
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0)); /* Gradient from right */
+    transition-delay: 0.15s; /* Delay for transition */
+}
+
+.footer ul {
+    list-style: none; /* Remove default list style */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+}
+
+.footer ul li {
+    display: inline; /* Display inline */
+    margin: 0 5px; /* Margin around list items */
+}
+
+.footer ul li a {
+    text-decoration: none; /* Remove underline */
+    color: #fff; /* Text color */
+    font-size: 14px; /* Font size */
+    transition: color 0.3s ease; /* Smooth transition for text color */
+}
+
+.footer ul li a:hover {
+    color: #FFAC1C !important; /* Text color on hover */
+}
+.error-message {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #f44336; /* Red background for visibility */
+    border: 1px solid #bb160a;
+    color: white; /* White text */
+    position: fixed; /* Position fixed to handle layout properly */
+    top: 50%; /* Vertically center */
+    left: 50%; /* Horizontally center */
+    transform: translate(-50%, -50%) rotate(-90deg); /* Center the element and rotate */
+    z-index: 1000; /* Ensure it appears on top */
+    border-radius: 5px; /* Optional: Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Subtle shadow for better visibility */
+    opacity: 0.9;
+}
+
+
+

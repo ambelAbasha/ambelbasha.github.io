@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About Me – Ambel Basha</title>
+  <!-- Google Font: Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <!-- AOS (Animate On Scroll) CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- Main CSS -->
+  <link href="../About/Styles/styles.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Header with sticky navbar and theme toggle -->
+<header class="header">
+  <div class="header-inner">
+    <h1 class="logo">Ambel Basha</h1>
+
+    <nav class="main-nav">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#contact-info">Contact</a>
+    </nav>
+
+<div class="theme-switch">
+  <input type="checkbox" id="dark-mode-toggle" class="ios-checkbox" />
+  <label for="dark-mode-toggle" class="toggle">
+    <span class="icon-sun"><i class="fas fa-sun"></i></span>
+    <span class="icon-moon"><i class="fas fa-moon"></i></span>
+  </label>
+</div>
+
+  </div>
+</header>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Get the current URL
+    const currentURL = window.location.href;
+
+    // Convert the URL path to lowercase (keep the protocol, domain, and query parameters intact)
+    const newURL = currentURL.toLowerCase();
+
+    // Check if the URL is different (i.e., contains uppercase letters)
+    if (currentURL !== newURL) {
+        // Redirect to the lowercase version of the URL
+        window.location.replace(newURL);
+    }
+});
+
+</script>
+  <main>
+    <!-- About Section -->
+    <section id="about" class="about-section">
+      <!-- Contact Info -->
+      <div id="contact-info" class="contact-info" data-aos="fade-right">
+<ul>
+  <!-- Email -->
+  <li>
+    <i class="fas fa-envelope"></i> 
+    <a id="mail-link" href="#">Mail</a>
+    <script>
+      (function() {
+        let user = "ambelbasha";
+        let domain = "icloud.com";
+        let email = user + "@" + domain;
+        let link = document.getElementById("mail-link");
+        link.href = "mailto:" + email;
+      })();
+    </script>
+  </li>
+
+  <!-- Phone -->
+  <li>
+    <i class="fas fa-phone"></i> 
+    <a id="phone-link" href="#">Phone</a>
+    <script>
+      (function() {
+        let phone = "+306976919393";
+        let link = document.getElementById("phone-link");
+        link.href = "tel:" + phone;
+      })();
+    </script>
+  </li>
+
+  <!-- Location -->
+  <li>
+    <i class="fas fa-map-marker-alt"></i> Athens, Greece
+  </li>
+
+  <!-- LinkedIn -->
+  <li>
+    <i class="fab fa-linkedin"></i>
+    <a href="https://www.linkedin.com/in/ambel-basha-367156123" target="_blank">LinkedIn</a>
+  </li>
+          <li><i class="fab fa-github"></i> <a href="https://ambelbasha.github.io/" target="_blank">GitHub</a></li>
+        </ul>
+      </div>
+      <!-- Profile Image -->
+      <div class="profile-pic-container" data-aos="fade-up">
+        <img src="../About/Images/ambel.png" alt="Profile picture of Ambel Basha" class="profile-pic">
+      </div>
+      <!-- Summary -->
+      <div class="summary" data-aos="fade-left">
+        <h2>Professional Summary</h2>
+        <p>
+          Seasoned Informatics and Computer Engineering graduate with 4+ years of professional experience in systems software development and network technical support, underpinned by 20+ years of hands-on programming and Unix/Linux scripting expertise. Specialized in full-stack web development (Java, C/C++, PHP, Python, JavaScript, JSP, HTML, CSS) and passionate about cybersecurity and IoT innovation.
+        </p>
+        <p>
+          Currently focused on building advanced, secure IoT solutions—such as CCTV systems using Raspberry Pi 5 and NVMe—while also designing scalable, secure web platforms. Adept in cybersecurity protocols, SD-WAN, and MPLS core network configurations. Actively seeking opportunities in development, security engineering, or systems integration across Linux, Unix, or hybrid infrastructures.
+        </p>
+      </div>
+    </section>
+
+    <!-- Core Skills -->
+    <section id="skills" class="skills-section" data-aos="fade-up">
+      <h2>Core Skills</h2>
+      <ul class="skills-list">
+        <li>Java, C, C++, Python, PHP, JavaScript, JSP</li>
+        <li>HTML, CSS, AJAX, Responsive Design, Dynamic Content</li>
+        <li>Network Security, Firewalls, VPNs, Encryption, CSRF, SQLi Prevention</li>
+        <li>MPLS, SD-WAN, Routing/Switching</li>
+        <li>Linux, Unix, Shell Scripting</li>
+        <li>MySQL, SQL</li>
+        <li>Raspberry Pi, IoT, CCTV Systems</li>
+        <li>Siebel, WCRM, TR-069, Git, SSH</li>
+      </ul>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="experience-section" data-aos="fade-up">
+      <h2>Experience</h2>
+      <div class="experience-card">
+        <h3>Network & Systems Support Engineer – Vodafone 360 Connect</h3>
+        <span class="date-range">Nov 2019 – Mar 2022</span>
+        <ul>
+          <li>Led migrations from third-party ISPs to Vodafone with minimal downtime.</li>
+          <li>Developed diagnostic automation scripts improving security and speed.</li>
+          <li>Handled hardware/software support for enterprise/residential clients.</li>
+          <li>Used CRM tools (Siebel, WCRM, TR-069) to streamline case management.</li>
+          <li>Achieved 90% first-call resolution rate across NGA, VOIP, XDSL, fiber.</li>
+        </ul>
+      </div>
+      <div class="experience-card">
+        <h3>Presales Engineer – ICT, B2B – OTE Group (Intern)</h3>
+        <span class="date-range">May 2019 – October 2022</span>
+        <ul>
+          <li>Prepared solution proposals improving enterprise deal conversion.</li>
+          <li>Designed custom secure LAN/MAN/WAN & VPN solutions.</li>
+          <li>Collaborated across teams to ensure compliance and solution integrity.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="education-section" data-aos="fade-up">
+      <h2>Education</h2>
+      <div class="education-card">
+        <h3>BSc in Informatics & Computer Engineering – University of West Attica</h3>
+        <span class="date-range">2012 – 2020</span>
+        <p>
+          Curriculum included software/hardware engineering, programming, telecommunications, digital systems, Android/web development, QA, and cybersecurity.
+        </p>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="projects-section" data-aos="fade-up">
+      <h2>Projects & Research</h2>
+      <ul class="skills-list">
+        <li><strong>IoT Smart Sensing System (Thesis):</strong> Monitoring with Raspberry Pi & Sense Hat using Python and SSH.</li>
+        <li><strong>Android Apps:</strong> Weather app (real-time), Loan calculator with amortization.</li>
+        <li><strong>Full-Stack Platforms:</strong> Java, Python, PHP, MySQL, JavaScript, HTML, CSS, JSP.</li>
+        <li><strong>Cybersecurity:</strong> Participated in Panoptis 2018; Linux-based MITM & forensic analysis.</li>
+      </ul>
+    </section>
+
+    <!-- Languages -->
+    <section id="languages" class="languages-section" data-aos="fade-up">
+      <h2>Languages</h2>
+      <ul class="languages-list">
+        <li>Albanian (Native)</li>
+        <li>Greek (Fluent)</li>
+        <li>English (Fluent)</li>
+        <li>Italian (Intermediate)</li>
+        <li>French (Intermediate)</li>
+      </ul>
+    </section>
+  </main>
+
+<footer class="footer"> 
+  <div class="footer-container">
+    <ul class="footer-links">
+      <li>
+        <a href="#about">
+          <i class="fas fa-user"></i> About Me
+        </a>
+      </li>
+      <li>
+        <a href="https://www.linkedin.com/in/ambel-basha-367156123/" target="_blank" rel="noopener">
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
+      </li>
+      <li>
+        <a href="../../index.html">
+          <i class="fas fa-home"></i> Home
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/leftfielder" target="_blank">
+          <i class="fab fa-github"></i> GitHub
+        </a>
+      </li>
+      <li>
+        <a href="mailto:ambelbasha@icloud.com">
+          <i class="fas fa-envelope"></i> Mail Me
+        </a>
+      </li>
+    </ul>
+  </div>
+</footer>
+
+  <!-- AOS JavaScript -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script> AOS.init(); </script>
+
+  <script>
+  const toggle = document.getElementById('dark-mode-toggle');
+
+  // Init checkbox state from localStorage (optional) or existing class
+  const isLight = localStorage.getItem('theme') === 'light'
+                || document.body.classList.contains('light-mode');
+
+  if (isLight) {
+    document.body.classList.add('light-mode');
+    toggle.checked = true;
+  }
+
+  toggle.addEventListener('change', () => {
+    if (toggle.checked) {
+      document.body.classList.add('light-mode');
+      localStorage.setItem('theme','light');
+    } else {
+      document.body.classList.remove('light-mode');
+      localStorage.setItem('theme','dark');
+    }
+  });
+</script>
+
+
+
+</body>
+</html>

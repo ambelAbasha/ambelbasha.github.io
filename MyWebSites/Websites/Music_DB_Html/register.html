@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Register</title>
+    <link rel="stylesheet" type="text/css" href="./Styles/Register/register.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        // Function to validate input format
+        function validateInput(input, inputId) {
+            const minLength = 8;
+            const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+
+            if (input.trim().length < minLength) {
+                displayError(inputId, 'Password must be at least 8 characters long.');
+                return false;
+            }
+            if (!passwordPattern.test(input)) {
+                displayError(inputId, "Passwd. must include ^a-zA-Z0-9.");
+                return false;
+            }
+            displayError(inputId, ''); // Clear error message
+            return true;
+        }
+
+        // Function to validate name input
+        function validateName(name, inputId) {
+            if (name.length < 3 || /\d/.test(name) || /[^a-zA-Z\s]/.test(name)) {
+                displayError(inputId, 'Entry not valid');
+                return false;
+            }
+            displayError(inputId, ''); // Clear error message
+            return true;
+        }
+
+        // Function to validate form on submission
+        function validateForm() {
+            var name = document.getElementById('name').value.trim();
+            var surname = document.getElementById('surname').value.trim();
+            var login = document.getElementById('login').value.trim();
+            var password = document.getElementById('password').value.trim();
+
+            var isFormValid = true;
+
+            if (!validateName(name, 'name')) {
+                isFormValid = false;
+            }
+
+            if (surname === '') {
+                displayError('surname', 'Surname is required.');
+                isFormValid = false;
+            } else {
+                displayError('surname', '');
+            }
+
+            if (login === '') {
+                displayError('login', 'Email is required.');
+                isFormValid = false;
+            } else {
+                displayError('login', '');
+            }
+
+            var passwordValid = validateInput(password, 'password');
+            if (!passwordValid) {
+                isFormValid = false;
+            }
+
+            return isFormValid;
+        }
+
+        // Function to display error messages
+        function displayError(inputId, message) {
+            var inputElement = document.getElementById(inputId);
+            if (inputElement) {
+                if (message) {
+                    inputElement.placeholder = message; // Set placeholder to error message
+                    inputElement.classList.add('error'); // Optionally add an error class
+                } else {
+                    inputElement.placeholder = ''; // Clear the placeholder if no error
+                    inputElement.classList.remove('error'); // Remove error class
+                }
+            }
+        }
+
+        // Function to get URL parameters
+        function getUrlParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                message: params.get('message') || '',
+                error: params.get('error') || ''
+            };
+        }
+
+        $(document).ready(function() {
+            // Display messages from URL parameters in the username field
+            const { message, error } = getUrlParams();
+            if (message) {
+                $('#login').attr('placeholder', message); // Set success message in the username input
+                $('#login').removeClass('error'); // Remove error class if present
+            }
+            if (error) {
+                $('#login').attr('placeholder', error); // Set error message in the username input
+                $('#login').addClass('error'); // Optionally add an error class
+            }
+
+            $('#togglePassword').click(function() {
+                const eyeIcon = $(this);
+                const pwdInput = $('#password');
+
+                if (pwdInput.attr('type') === 'password') {
+                    pwdInput.attr('type', 'text');
+                    eyeIcon.removeClass('fa-eye').addClass('fa-eye-slash');
+                } else {
+                    pwdInput.attr('type', 'password');
+                    eyeIcon.removeClass('fa-eye-slash').addClass('fa-eye');
+                }
+            });
+
+            $('#password').on('input', function() {
+                const password = $(this).val();
+                const passwordTooltip = $('#password-tooltip');
+                const passwordError = $('#password-error');
+                const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+
+                // Show tooltip if the length of the password is 1 and hide otherwise
+                if (password.length === 1) {
+                    passwordTooltip.css({
+                        'visibility': 'visible',
+                        'opacity': '1'
+                    });
+                } else if (password.length > 1) {
+                    passwordTooltip.css({
+                        'visibility': 'hidden',
+                        'opacity': '0'
+                    });
+                }
+
+                // Check password validity
+                if (password.length >= 8 && !passwordPattern.test(password)) {
+                    passwordError.show();
+                } else {
+                    passwordError.hide();
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <div id="logo">
+                <div id="typewriter-text">Music Galaxy</div>
+            </div>
+            <div id="banner"></div>
+        </div>
+        <div id="menu">
+            <ul>
+                <li><a href="index.html">Login</a></li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="../Music_DB_Html/menuLinks/New/new.html">New</a></li>
+                <li><a href="menuLinks/Contact/contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div id="main">
+            <div id="sideBarLeft"></div>
+            <div id="central" style="position: relative;">
+                <div id="register">
+                    <div class="background-image"></div>
+                    <table align="center">
+                        <thead>
+                            <tr>
+                                <th colspan="2"><h2>Register</h2></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <form method="post" action="register_user.php" onsubmit="return validateForm()" autocomplete="off">
+                                <tr>
+                                    <td>
+                                        <p><input type="text" name="name" id="name" placeholder="Name" required></p>
+                                        <span id="name-error" class="error-message"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p><input type="text" name="surname" id="surname" placeholder="Surname" required></p>
+                                        <span id="surname-error" class="error-message"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p><input type="email" name="login" id="login" placeholder="Email" required></p>
+                                        <span id="login-error" class="error-message"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="tooltip">
+                                            <p>
+                                                <input type="password" name="password" id="password" class="password-input" placeholder=" Password" required>
+                                                <span class="tooltiptext" id="password-tooltip">8 Char A-z0-9!@#$</span>
+                                                <span class="password-toggle fas fa-eye" id="togglePassword" tabindex="0"></span>
+                                            </p>
+                                        </div>
+                                        <span id="password-error" class="error-message"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p class="submit"><input type="submit" name="commit" value="Register"></p>
+                                    </td>
+                                </tr>
+                            </form>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="sideBarRight"></div>
+        </div>
+        <div id="footer">
+            <div class="footer-links-container">
+                <ul>
+                    <li><a href="../../index.php">Home</a></li>
+                    <li><a href="footerLinks/termsOfUse.html">Terms of Use</a></li>
+                    <li><a href="footerLinks/privacyPolicy.html">Privacy Policy</a></li>
+                    <li><a href="footerLinks/aboutThisPage.html">About This Page</a></li>
+                    <!---<li><p id="footer-credits">© 2024 Ambel Basha. All Rights Reserved.</p></li>--->
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

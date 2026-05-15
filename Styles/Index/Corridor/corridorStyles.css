@@ -1,0 +1,291 @@
+/* ─── Corridor Scroll Container ────────────────────────────────────────── */
+#corridor-hero {
+  position: relative;
+  height: 800vh;     /* 700 vh of scrollable space: offsetHeight − 100vh = 700vh */
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ─── Fixed Overlay Panels ─────────────────────────────────────────────── */
+.corridor-panel {
+  position: fixed;
+  top: 68px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 68px);
+  /* Use small viewport height on mobile to avoid browser chrome overlap */
+  height: calc(100svh - 68px);
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;      /* JS enables when visible */
+  z-index: 3;
+}
+
+#panel-intro              { opacity: 1; justify-content: center; }
+#panel-about-milestone    { justify-content: flex-end;   padding-right: 8vw; }
+#panel-deliver-milestone  { justify-content: flex-start;  padding-left: 8vw;  }
+#panel-skills             { justify-content: flex-start; padding-left: 8vw; }
+#panel-security           { justify-content: flex-end;   padding-right: 8vw; }
+#panel-cta                { justify-content: center; }
+#panel-footer-milestone   { justify-content: center; }
+
+#panel-footer-milestone .panel-content {
+  border-color: rgba(var(--color-accent-1-rgb), 0.38);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.38), 0 0 24px rgba(var(--color-accent-1-rgb), 0.10);
+}
+
+/* Milestone panel — tinted gold border to distinguish from regular acts */
+#panel-about-milestone .panel-content,
+#panel-deliver-milestone .panel-content {
+  border-color: rgba(var(--color-accent-1-rgb), 0.38);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.38), 0 0 24px rgba(var(--color-accent-1-rgb), 0.10);
+}
+
+/* Milestone progress dots */
+.milestone-dots {
+  display: flex;
+  gap: 0.45rem;
+  margin-top: 1rem;
+  justify-content: center;
+}
+.milestone-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(var(--color-accent-1-rgb), 0.35);
+  border: 1px solid rgba(var(--color-accent-1-rgb), 0.6);
+}
+.milestone-dot.active { background: var(--color-accent-1); }
+
+/* ─── Panel Content Boxes ──────────────────────────────────────────────── */
+.panel-content {
+  max-width: 480px;
+  padding: 2rem 2.5rem;
+  background: rgba(var(--color-bg-rgb), 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.22);
+  border-radius: 16px;
+  color: #fff;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.38);
+  transform-origin: center center;
+  /* start hidden in depth — JS drives it to Z=0 as scroll progress enters */
+  transform: perspective(1100px) translateZ(-1100px) scale(0.04);
+}
+
+.panel-content--center {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ─── Panel Label ──────────────────────────────────────────────────────── */
+.panel-label {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: 0.55rem;
+  font-family: var(--font-mono);
+}
+
+/* ─── Panel Headings ───────────────────────────────────────────────────── */
+.panel-content h1 {
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 0 0 0.6rem;
+  background: linear-gradient(to right, var(--color-gradient-warm), var(--color-gradient-cool));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.panel-content h2 {
+  font-size: clamp(1.25rem, 2.8vw, 1.9rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 0.65rem;
+  color: var(--color-text);
+}
+
+.panel-content p {
+  font-size: clamp(0.88rem, 1.4vw, 1rem);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.80);
+  margin: 0 0 0.75rem;
+}
+
+/* ─── Domain List ──────────────────────────────────────────────────────── */
+.domain-list {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.domain-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: clamp(0.80rem, 1.3vw, 0.93rem);
+  color: rgba(255, 255, 255, 0.83);
+}
+
+.domain-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  min-width: 7px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+}
+
+.domain-dot--gold {
+  background-color: var(--color-accent-1);
+}
+
+/* ─── Corridor Link ────────────────────────────────────────────────────── */
+.corridor-link {
+  display: inline-block;
+  margin-top: 1.1rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  color: var(--color-accent-1);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.corridor-link:hover { opacity: 0.72; }
+
+/* ─── Intro Panel — wider box + profile photo ───────────────────────────── */
+#panel-intro .panel-content { max-width: 560px; }
+
+.corridor-picture {
+  width: clamp(110px, 13vw, 210px);
+  height: clamp(110px, 13vw, 210px);
+  margin: 0.7rem auto;
+  background-color: var(--color-bg-alt);
+  background-image: url('../../../Images/ambelTransparent.png');
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 3px rgba(var(--color-primary-rgb), 0.55),
+    0 0 0 6px rgba(var(--color-primary-rgb), 0.15),
+    0 0 32px rgba(var(--color-primary-rgb), 0.30),
+    0 0 64px rgba(var(--color-accent-1-rgb), 0.10);
+}
+
+/* ─── CTA buttons inside corridor panels ───────────────────────────────── */
+#panel-intro .cta-buttons,
+#panel-cta .cta-buttons {
+  margin-top: 1.1rem;
+  gap: 0.65rem;
+}
+
+/* ─── Scroll Hint ──────────────────────────────────────────────────────── */
+#scroll-hint {
+  position: fixed;
+  bottom: 2.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  color: rgba(255, 255, 255, 0.48);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  z-index: 4;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.scroll-hint-arrow {
+  width: 20px;
+  height: 20px;
+  border-right: 2px solid rgba(var(--color-primary-rgb), 0.55);
+  border-bottom: 2px solid rgba(var(--color-primary-rgb), 0.55);
+  transform: rotate(45deg);
+  animation: arrowBounce 1.6s ease-in-out infinite;
+}
+
+@keyframes arrowBounce {
+  0%, 100% { transform: rotate(45deg) translateY(0);   }
+  50%       { transform: rotate(45deg) translateY(5px); }
+}
+
+/* ─── Responsive ───────────────────────────────────────────────────────── */
+@media screen and (max-width: 1024px) {
+  #panel-about-milestone   { padding-right: 4vw; }
+  #panel-deliver-milestone { padding-left: 4vw; }
+  #panel-skills            { padding-left: 4vw; }
+  #panel-security          { padding-right: 4vw; }
+}
+
+@media screen and (max-width: 768px) {
+  #panel-about-milestone,
+  #panel-deliver-milestone,
+  #panel-skills,
+  #panel-security,
+  #panel-footer-milestone { justify-content: center; padding: 0; }
+
+  .panel-content {
+    max-width: calc(100vw - 2rem);
+    padding: 1.4rem 1.4rem;
+  }
+
+  .corridor-picture {
+    width: clamp(90px, 18vw, 150px);
+    height: clamp(90px, 18vw, 150px);
+  }
+
+  #panel-intro .cta-buttons,
+  #panel-cta .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .panel-content {
+    max-width: calc(100vw - 1rem);
+    padding: 1.1rem 1.1rem;
+    border-radius: 12px;
+  }
+
+  .panel-content h1 { font-size: clamp(1.4rem, 7vw, 2rem); }
+  .panel-content h2 { font-size: clamp(1rem, 5vw, 1.35rem); }
+  .panel-content p  { font-size: clamp(0.82rem, 3.5vw, 0.95rem); }
+
+  .domain-list li {
+    font-size: clamp(0.78rem, 3vw, 0.88rem);
+  }
+
+  #scroll-hint { bottom: 1.2rem; font-size: 0.62rem; }
+
+  .corridor-picture {
+    width: clamp(70px, 20vw, 110px);
+    height: clamp(70px, 20vw, 110px);
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .panel-content {
+    max-width: calc(100vw - 0.5rem);
+    padding: 0.9rem 0.9rem;
+  }
+
+  .panel-content h1 { font-size: 1.3rem; }
+  .panel-content h2 { font-size: 1rem; }
+}

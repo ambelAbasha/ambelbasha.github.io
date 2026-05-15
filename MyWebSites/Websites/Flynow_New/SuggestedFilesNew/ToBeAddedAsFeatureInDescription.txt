@@ -1,0 +1,1 @@
+CSRF Security: The hidden CSRF token remains part of the form, protecting against cross-site

@@ -1,0 +1,192 @@
+/* ========== CSS Variables ========== */
+:root {
+  --color-bg: #f5f5f5;
+  --color-white: #ffffff;
+  --color-primary: #0306d1;
+  --color-primary-dark: #010a8b;
+  --color-accent: #FFAC1C;
+  --color-text: #333;
+  --color-error: #ff3b30;
+  --font-base: 'Arial', sans-serif;
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --radius-sm: 5px;
+  --radius-md: 10px;
+  --radius-lg: 15px;
+  --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-bg);
+  font-family: var(--font-base);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  max-width: 400px;
+  box-shadow: var(--shadow-light);
+  text-align: center;
+  border: 0.5px solid var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md);
+  background-color: var(--color-white);
+}
+
+.title {
+  display: inline-block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: linear-gradient(45deg, var(--color-white), #f0f0f0);
+  border: 2px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.title:hover {
+  background: var(--color-accent);
+  color: var(--color-white);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* ========== Header, Title, and Date-Time ========== */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.message {
+  text-align: center;
+  color: green;
+  font-size: 20px;
+  margin-bottom: var(--spacing-md);
+}
+
+form {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md);
+  width: 100%;
+  text-align: center;
+  border: 0.5px solid var(--color-white);
+  margin-top: var(--spacing-lg); /* Added space from the top */
+}
+
+fieldset {
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  margin: 0;
+}
+
+input[type="text"], input[type="password"], input[type="email"] {
+  width: calc(100% - 20px);
+  padding: var(--spacing-sm); /* Increased padding variable */
+  border: 1px solid #ccc;
+  border-radius: var(--radius-lg);
+  text-align: left;
+  margin: var(--spacing-xs) 0;
+  display: block;
+}
+
+input[type="password"], input[type="email"] {
+  margin: var(--spacing-sm) 0;
+}
+
+label {
+  display: block;
+  text-align: left;
+  margin-top: var(--spacing-xs);
+  font-weight: bold;
+}
+
+input::placeholder {
+  color: #aaa;
+  font-size: 14px;
+}
+
+/* ========== Submit Button ========== */
+input[type="submit"] {
+  background: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  padding: var(--spacing-sm);
+  font-size: 1.125rem;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.3s ease, transform 0.1s ease;
+  margin-top: var(--spacing-md);
+}
+
+input[type="submit"]:hover {
+  background: var(--color-primary-dark);
+}
+
+input[type="submit"]:active {
+  transform: scale(0.97);
+}
+
+.password-toggle-icon {
+  position: absolute;
+  top: 51%;
+  left: 17%;
+  right: var(--spacing-xs);
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: var(--color-text);
+}
+
+.password-toggle-icon i {
+  font-size: 14px;
+  transition: color 0.3s ease-in-out;
+}
+
+.password-toggle-icon i:hover {
+  color: #000;
+}
+
+legend {
+  color: var(--color-primary);
+  font-size: 1.75rem;
+  text-align: center;
+  margin-bottom: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: var(--color-white);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-md);
+}
+
+.links {
+  margin-top: var(--spacing-lg);
+  text-align: center;
+  color: var(--color-accent);
+}
+
+.links a {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.links a:hover {
+  color: var(--color-primary-dark);
+}

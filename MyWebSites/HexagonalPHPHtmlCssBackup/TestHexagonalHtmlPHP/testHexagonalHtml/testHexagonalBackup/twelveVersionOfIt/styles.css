@@ -1,0 +1,170 @@
+/* General body styles */
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #dad5d5, #dfdede);
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Container styles */
+.hex-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Base hexagon styles */
+.hexagon {
+    position: absolute;
+    width: 154px; /* Enlarged size of each hexagon (150px + 2px left + 2px right) */
+    height: 172.5px; /* Adjusted height for better coverage */
+    background: linear-gradient(to bottom right, #444, #18ffff); /* Gradient for dark grey to black */
+    clip-path: polygon(
+        50% 0%,
+        100% 25%,
+        100% 75%,
+        50% 100%,
+        0% 75%,
+        0% 25%
+    );
+    transform-style: preserve-3d;
+    transform: rotate(90deg); /* Rotate hexagon by 90 degrees */
+    border: 1px solid rgb(255, 255, 255); /* Adjusted border color */
+    margin: 0 2px; /* Add 2 pixels of margin on both sides */
+    box-sizing: border-box; /* Ensure border-box sizing */
+    transition: all 0.3s ease-in-out; /* Smooth transition for hover effect */
+}
+
+/* Hexagon pseudo-elements */
+.hexagon::before,
+.hexagon::after {
+    content: '';
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    background-color: inherit;
+    clip-path: inherit;
+    transform-style: preserve-3d;
+}
+
+/* Different styles for hexagons based on their position */
+.hexagon:nth-child(2n+1) {
+    background: linear-gradient(to bottom right, #333, #000); /* Gradient for darker shades */
+    box-shadow:
+        -6px 6px 20px rgba(0, 0, 0, 0.8), /* Stronger shadow from top right */
+        -8px 0px 20px rgba(0, 0, 0, 0.6), /* Lighter shadow on left */
+        inset 0px 0px 20px rgba(0, 0, 0, 0.6), /* Dark inset shadow */
+        inset 0px 0px 10px rgba(255, 255, 255, 0.8); /* Highlight inset shadow */
+}
+
+.hexagon:nth-child(3n+2) {
+    background: linear-gradient(to bottom right, #666, #252525); /* Gradient for mid to dark grey */
+    box-shadow:
+        -8px 8px 20px rgba(0, 0, 0, 0.8), /* Stronger shadow from top right */
+        -10px 0px 20px rgba(0, 0, 0, 0.6), /* Lighter shadow on left */
+        inset 0px 0px 20px rgba(0, 0, 0, 0.6), /* Dark inset shadow */
+        inset 0px 0px 10px rgba(255, 255, 255, 0.8); /* Highlight inset shadow */
+}
+
+.hexagon:nth-child(4n+3) {
+    background: linear-gradient(to bottom right, #161616, #ffffff); /* Gradient for lighter to mid grey */
+    box-shadow:
+        -6px 6px 20px rgba(0, 0, 0, 0.8), /* Stronger shadow from top right */
+        -8px 0px 20px rgba(0, 0, 0, 0.6), /* Lighter shadow on left */
+        inset 0px 0px 20px rgba(0, 0, 0, 0.6), /* Dark inset shadow */
+        inset 0px 0px 10px rgba(255, 255, 255, 0.8); /* Highlight inset shadow */
+}
+
+/* Glass effect for hexagons */
+.hexagon.glass {
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent white background for glass effect */
+    border: none; /* No border for glass hexagons */
+    transition: all 0.3s ease-in-out; /* Smooth transition for hover effect */
+    position: relative; /* Ensure relative positioning for pseudo-element */
+}
+
+.hexagon.glass::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.8), rgba(22, 252, 240, 0)); /* Gradient for glass shine effect */
+    clip-path: polygon(
+        50% 0%,
+        100% 25%,
+        100% 75%,
+        50% 100%,
+        0% 75%,
+        0% 25%
+    );
+    transform-style: preserve-3d;
+    z-index: 1; /* Ensure it's above the hexagon */
+    pointer-events: none; /* Ignore pointer events on this pseudo-element */
+}
+
+.hexagon.glass:hover {
+    transform: scale(1.05); /* Scale up on hover for glass effect */
+}
+
+/* Additional styles for pseudo-elements */
+.hexagon::before {
+    box-shadow:
+        inset -8px -8px 20px rgba(255, 255, 255, 0.6), /* White inset shadow */
+        inset 8px 8px 20px rgba(0, 0, 0, 0.6), /* Black inset shadow */
+        0px 0px 15px rgba(255, 255, 255, 0.6); /* Soft highlight */
+    transform: rotateY(0deg) rotateX(0deg) rotateZ(0deg) translateZ(-5px);
+}
+
+.hexagon::after {
+    box-shadow:
+        inset -8px -8px 20px rgba(255, 255, 255, 0.6), /* White inset shadow */
+        inset 8px 8px 20px rgba(0, 0, 0, 0.6), /* Black inset shadow */
+        0px 0px 15px rgba(0, 0, 0, 0.6); /* Soft shadow */
+    transform: rotateY(0deg) rotateX(0deg) rotateZ(0deg) translateZ(5px);
+}
+
+/* Styles for the center and corners of hexagons */
+.hexagon.center {
+    background: #000; /* Black background in the center */
+}
+
+.hexagon.top-left {
+    background: #eee; /* Light grey background at top-left corner */
+}
+
+.hexagon.top-right {
+    background: #eee; /* Light grey background at top-right corner */
+}
+
+.hexagon.bottom-left {
+    background: #eee; /* Light grey background at bottom-left corner */
+}
+
+.hexagon.bottom-right {
+    background: #eee; /* Light grey background at bottom-right corner */
+}
+
+/* Additional Styles for Vibrant Hexagons */
+.hexagon.vibrant {
+    background: linear-gradient(to bottom right, #ff7f50, #ff6347); /* Gradient for coral to tomato */
+    box-shadow:
+        -6px 6px 20px rgba(255, 99, 71, 0.8), /* Stronger shadow from top right */
+        -8px 0px 20px rgba(255, 99, 71, 0.6), /* Lighter shadow on left */
+        inset 0px 0px 20px rgba(0, 0, 0, 0.6), /* Dark inset shadow */
+        inset 0px 0px 10px rgba(255, 255, 255, 0.8); /* Highlight inset shadow */
+}
+
+.hexagon.vibrant::before {
+    box-shadow:
+        inset -8px -8px 20px rgba(255, 99, 71, 0.6), /* Coral inset shadow */
+        inset 8px 8px 20px rgba(0, 0, 0, 0.6), /* Black inset shadow */
+        0px 0px 15px rgba(255, 99, 71, 0.6); /* Soft highlight */
+}
+
+.hexagon.vibrant::after {
+    box-shadow:
+        inset -8px -8px 20px rgba(255, 99, 71, 0.6), /* Coral inset shadow */
+        inset 8px 8px 20px rgba(0, 0, 0, 0.6), /* Black inset shadow */
+        0px 0px 15px rgba(0, 0, 0, 0.6); /* Soft shadow */
+}

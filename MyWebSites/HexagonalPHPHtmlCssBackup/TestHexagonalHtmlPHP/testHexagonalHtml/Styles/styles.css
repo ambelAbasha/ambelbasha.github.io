@@ -1,0 +1,198 @@
+.outer-container {
+    position: relative; /* Relative positioning for child elements */
+    width: fit-content; /* Adjust width to fit content */
+}
+
+.container {
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    gap: 5px; /* Vertical gap between container children */
+    padding: 20px; /* Add padding inside container */
+    position: relative; /* Relative positioning */
+    z-index: 0; /* Ensure it's above pseudo-elements */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0)),
+                linear-gradient(to top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0)); /* Smooth gradient background */
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); /* Hexagonal clip path */
+    width: 360px; /* Adjusted width */
+    height: 440px; /* Adjusted height */
+    text-align: center; /* Center the hexagonal frame */
+    transform: rotate(90deg); /* Rotated the outer container by 90 degrees */
+    background-blend-mode: lighten; /* Blend the gradients together */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); /* Subtle shadow for depth */
+    border-radius: 15px; /* Slightly rounded corners */
+    overflow: hidden; /* Ensure children don't overflow the container */
+    top: 34px; /* Positioned 34px from the top */
+}
+
+.banner {
+    position: absolute; /* Position the banner absolutely */
+    top: 50px; /* Adjusted top position */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust for centering */
+    padding: 12px 28px; /* Padding for the banner */
+    background: 
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.3)), /* Pale top and bottom */
+        linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.9)), /* Cylindrical effect gradient */
+        radial-gradient(circle at center, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.2) 70%); /* Shine effect */
+    box-shadow: 
+        0 8px 16px rgba(0, 0, 0, 0.2), /* Main shadow */
+        inset 0 4px 8px rgba(255, 255, 255, 0.6), /* Inner top highlight */
+        inset 0 -4px 8px rgba(0, 0, 0, 0.2), /* Inner bottom shadow */
+        0 4px 8px rgba(0, 0, 0, 0.1), /* Outer shadow */
+        0 0 0 1px rgba(255, 255, 255, 0.6), /* Light outer border */
+        inset -2px 0 6px rgba(0, 0, 0, 0.2), /* Left inner shadow */
+        inset 2px 0 6px rgba(0, 0, 0, 0.2), /* Right inner shadow */
+        inset 0 -2px 6px rgba(0, 0, 0, 0.2); /* Bottom inner shadow */
+    text-align: center; /* Center the text */
+    width: auto; /* Adjust the width */
+    z-index: 3; /* Ensure it's above other elements */
+    font-family: 'Arial Rounded MT Bold', sans-serif; /* Font for banner text */
+    font-size: 20px; /* Font size */
+    color: #5e5e5e; /* Text color */
+    display: inline-block; /* Inline display */
+    border-radius: 60px; /* Rounded corners */
+    overflow: hidden; /* Ensure content doesn't overflow */
+}
+
+.hexagonal-frame {
+    display: flex; /* Use flexbox for layout */
+    flex-wrap: wrap; /* Allow wrapping of hexagons */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    gap: 20px; /* Gap between hexagons */
+    transform: rotate(-90deg); /* Counter-rotate the hexagonal frame by -90 degrees */
+    margin: -10px 2px -6px -52px; /* Adjusted margins */
+    position: relative; /* Position relative */
+}
+
+.row {
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center content horizontally */
+    gap: 10px; /* Horizontal gap between hexagons */
+}
+
+.row:nth-child(1) {
+    justify-content: space-evenly; /* Center hexagons in first row */
+    margin-bottom: -30px; /* Adjusted margin to visually equalize space */
+}
+
+.row:nth-child(2) {
+    justify-content: center; /* Center hexagons in second row */
+    margin-top: -12px; /* Adjusted margin top for row 2 */
+    margin-bottom: -12px; /* Adjusted margin bottom for row 2 */
+}
+
+.row:nth-child(3) {
+    justify-content: space-evenly; /* Center hexagons in third row */
+    margin-top: -28px; /* Adjusted margin top */
+    margin-bottom: -54px; /* Adjusted margin bottom */
+}
+
+.hex {
+    width: 100px; /* Width of hexagon */
+    height: 115px; /* Height of hexagon */
+    background-color: #6C6; /* Background color of hexagon */
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); /* Hexagon shape */
+    padding: 10px; /* Padding inside hexagon */
+    outline: 5px solid white; /* Outline around hexagon */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9); /* Shadow for hexagon */
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    text-align: center; /* Center text */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition effects */
+    will-change: transform, box-shadow; /* Optimize for animation */
+    z-index: 1; /* Ensure it's above hexagons */
+}
+
+.hex a {
+    color: #fff; /* Text color */
+    text-decoration: none; /* Remove underline */
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    height: 100%; /* Full height */
+    font-size: 12px; /* Font size */
+    font-weight: bold; /* Bold font weight */
+    text-align: center; /* Center text */
+    -webkit-font-smoothing: antialiased; /* Smooth fonts on WebKit */
+    text-rendering: optimizeLegibility; /* Optimize text rendering */
+}
+
+.hex:hover {
+    transform: translateY(-5px); /* Move hexagon up on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Enhanced shadow on hover */
+    background-color: rgba(255, 215, 0, 0.8); /* Background color on hover */
+}
+
+.hex:hover a {
+    color: black; /* Text color on hover */
+}
+
+.hex.expanded {
+    transform: scale(1.2); /* Scale hexagon on expansion */
+}
+
+.footer {
+    position: fixed; /* Fixed positioning */
+    bottom: 0; /* Positioned at bottom */
+    left: 0; /* Positioned at left */
+    width: 100%; /* Full width */
+    height: 36px; /* Height of footer */
+    background-color: rgba(32, 32, 32, 0.8); /* Background color */
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    opacity: 0; /* Initially transparent */
+    transition: opacity 0.3s ease; /* Smooth transition for opacity */
+}
+
+.footer.visible {
+    opacity: 1; /* Visible state */
+}
+
+.glossy-line::before,
+.glossy-line::after {
+    content: ""; /* Empty content */
+    position: absolute; /* Absolute positioning */
+    top: 0; /* Positioned at top */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    pointer-events: none; /* No pointer events */
+    transition: width 0.3s ease; /* Smooth transition for width */
+}
+
+.glossy-line::before {
+    left: 0; /* Positioned at left */
+    background: linear-gradient(to left bottom, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0)); /* Gradient from left */
+    transition-delay: 0.15s; /* Delay for transition */
+}
+
+.glossy-line::after {
+    right: 0; /* Positioned at right */
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0)); /* Gradient from right */
+    transition-delay: 0.15s; /* Delay for transition */
+}
+
+.footer ul {
+    list-style: none; /* Remove default list style */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+}
+
+.footer ul li {
+    display: inline; /* Display inline */
+    margin: 0 5px; /* Margin around list items */
+}
+
+.footer ul li a {
+    text-decoration: none; /* Remove underline */
+    color: #fff; /* Text color */
+    font-size: 14px; /* Font size */
+    transition: color 0.3s ease; /* Smooth transition for text color */
+}
+
+.footer ul li a:hover {
+    color: #FFAC1C !important; /* Text color on hover */
+}

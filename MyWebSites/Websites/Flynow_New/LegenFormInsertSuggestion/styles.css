@@ -1,0 +1,86 @@
+/* Main styling for the body */
+body {
+    margin: 0; /* No default margin */
+    padding: 0; /* No default padding */
+    font-family: Arial, sans-serif; /* Standard sans-serif font */
+    background: #f9f9f9; /* Light background color */
+    display: flex; /* Flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full viewport height */
+    flex-direction: column; /* Align elements vertically */
+}
+
+/* Container for the form */
+.form-container {
+    width: 18%; /* Specify width as a percentage */
+    max-width: 260px; /* Maximum width for the form container */
+    padding: 20px; /* Padding inside the form container */
+    margin: 0 auto; /* Center horizontally */
+    border-radius: 10px; /* Rounded corners */
+    border: 1px solid #ddd; /* Border for definition */
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    background: white; /* White background */
+    text-align: center; /* Center text within the container */
+    display: flex; /* Flexbox for alignment */
+    flex-direction: column; /* Align content vertically */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+}
+
+/* Container for the message below the form */
+.message-container {
+    max-width: 500px; /* Maximum width for the message container */
+    padding: 20px; /* Padding inside the message container */
+    border-radius: 10px; /* Rounded corners */
+    border: 1px solid #ddd; /* Border for definition */
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    background: white; /* White background */
+    margin-top: 20px; /* Space between the form and the message container */
+    text-align: center; /* Center the text within the message container */
+}
+
+/* Styling for form labels */
+.form-container label {
+    font-weight: bold; /* Bold text for labels */
+    display: block; /* Place each label on a new line */
+    text-align: left; /* Align text to the left */
+    margin-bottom: 10px; /* Space between label and input */
+}
+
+/* Styling for input fields in the form */
+.form-container input[type="text"], 
+.form-container input[type="number"], 
+.form-container input[type="email"] {
+    padding: 10px; /* Padding inside input fields */
+    border-radius: 5px; /* Rounded corners */
+    border: 1px solid #ccc; /* Border for definition */
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    width: 100%; /* Input fields take the full width */
+    margin-bottom: 20px; /* Space between input fields */
+    text-align: center; /* Center text within the field */
+}
+
+/* Styling for the 'Check' submit button */
+input[type="submit"] {
+    background: #40e0d0; /* Turquoise background */
+    color: white; /* White text */
+    padding: 10px 20px; /* Padding for the button */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+    transition: background 0.3s, transform 0.3s; /* Smooth transitions */
+    text-align: center; /* Center text within the button */
+}
+
+/* Hover effect for the submit button */
+input[type="submit"]:hover {
+    background: #3bbfc3; /* Darker turquoise on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+/* Click effect for the submit button */
+input[type="submit"]:active {
+    background: #35a6b0; /* Darker on click */
+    transform: translateY(1px); /* Slight depression on click */
+}

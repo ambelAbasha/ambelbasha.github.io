@@ -1,0 +1,298 @@
+/* Body and HTML */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Prevents both vertical and horizontal scrolling */
+}
+
+/* Outer container - use column direction for vertical layout */
+.outer-container {
+    display: flex;
+    flex-direction: column;  /* Align items vertically */
+    justify-content: flex-start;  /* Align items to the top */
+    height: 100vh;  /* Full viewport height */
+    width: 80%;  /* Make container take up 80% of the viewport width */
+    position: relative;
+    padding: 20px;
+    gap: 20px;  /* Space between containers */
+    margin: 0 auto;  /* Center the container horizontally */
+    /* Removed overflow-y: auto to prevent scrolling */
+}
+
+/* Main content container */
+.container {
+    width: 100%;
+    max-width: 100%; /* Ensures full width of the parent container */
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1); /* Lighter shadow */
+    border-radius: 10px;
+    padding: 15px 20px;
+    background-color: #fff;
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
+/* Functions container */
+.functions-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    position: relative; /* Position relative to allow for pseudo-elements */
+    padding: 15px; /* Padding inside the container */
+    border: 1px solid #ccc;
+    border-radius: 8px; /* Match the code box border radius */
+    background: linear-gradient(to bottom, #f9f9f9, #e6e6e6); /* Gradient for glossy effect */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Light shadow */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+/* Glossy effect for top left corner */
+.functions-container::before {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top right, rgba(255, 255, 255, 0.6), transparent);
+    border-top-left-radius: 8px;
+    z-index: 1; /* Ensures the pseudo-element is above the background */
+}
+
+/* Glossy effect for top right corner */
+.functions-container::after {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top left, rgba(255, 255, 255, 0.6), transparent);
+    border-top-right-radius: 8px;
+    z-index: 1; /* Ensures the pseudo-element is above the background */
+}
+
+/* Hover effect for container */
+.functions-container:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Slightly stronger shadow on hover */
+}
+
+/* Additional glossy effects for hover */
+.functions-container:hover::before,
+.functions-container:hover::after {
+    opacity: 0.8; /* Slightly increase opacity on hover */
+}
+
+/* Common button styling for both Function 1 and Function 2 */
+.function-button {
+    position: relative; /* Add position relative for pseudo-elements */
+    padding: 20px 25px; /* Reduced padding */
+    border: 1px solid #ccc;
+    border-radius: 8px; /* Match the code box border radius */
+    margin-right: 26px;
+    margin-left: 26px;
+    background: linear-gradient(to bottom, #f9f9f9, #e6e6e6); /* Gradient for glossy effect */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Light shadow */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transition */
+    font-size: 18px;
+    cursor: pointer;
+    font-weight: bold;
+    z-index: 3;
+}
+
+/* Glossy effect for top left corner */
+.function-button::before {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top right, rgba(255, 255, 255, 0.6), transparent);
+    border-top-left-radius: 8px;
+    z-index: 1; /* Ensures the pseudo-element is above the background */
+}
+
+/* Glossy effect for top right corner */
+.function-button::after {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top left, rgba(255, 255, 255, 0.6), transparent);
+    border-top-right-radius: 8px;
+    z-index: 1; /* Ensures the pseudo-element is above the background */
+}
+
+/* Hover effect for buttons */
+.function-button:hover {
+    background-color: #e5e5e5; /* Slightly darker background on hover */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* Softer shadow on hover */
+    transform: scale(1.02); /* Slight scale effect */
+}
+
+/* Additional glossy effects for hover */
+.function-button:hover::before,
+.function-button:hover::after {
+    opacity: 0.8; /* Slightly increase opacity on hover */
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 400px;
+    border: 2px solid green;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Softer shadow */
+}
+
+.modal p {
+    font-size: 18px;
+    color: #333232;
+}
+
+/* Result Container Styling */
+.result-container {
+    width: 100%;
+    max-width: 98%;
+    background: linear-gradient(to bottom, #f9f9f9, #e6e6e6); /* Gradient effect */
+    border: 1px solid #ccc; /* Lighter border */
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Softer and more pronounced shadow */
+    text-align: center;
+    margin-top: 6px;
+    margin-left: 16px;
+    flex-shrink: 0;  /* Prevent shrinking */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+}
+
+.result-container h3 {
+    font-size: 20px;
+    color: #333;
+}
+
+.result-container #result-content {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Explanation Container */
+.explanation-container {
+    width: 100%;
+    max-width: 98%;
+    background: linear-gradient(to bottom, #fff, #f9f9f9); /* Gradient effect for a soft look */
+    border: 1px solid #ccc; /* Lighter border */
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Softer, more pronounced shadow */
+    margin-top: 6px;
+    margin-left: 16px;
+    flex-shrink: 0;  /* Prevent shrinking */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    position: relative; /* For positioning pseudo-elements */
+}
+
+/* Hover effect for the explanation container */
+.explanation-container:hover {
+    background-color: #f4f4f4; /* Slightly darker background on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Softer shadow on hover */
+    transform: scale(1.0); /* Slight scale effect */
+}
+
+.explanation-container h3 {
+    font-size: 20px;
+    color: #333;
+}
+
+.explanation-container #explanation-content {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Return button */
+.return-button {
+    position: absolute;
+    top: 30px;  /* Adjust top positioning */
+    left: 50%;  /* Center horizontally */
+    transform: translateX(-50%); /* Center alignment fix */
+    z-index: 3;
+}
+.return-button button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative; /* Position relative for pseudo-elements */
+    overflow: hidden; /* Ensure pseudo-elements do not overflow */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Light shadow */
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s; /* Smooth transition */
+}
+
+/* Glossy effect for top left corner */
+.return-button button::before {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top right, rgba(255, 255, 255, 0.6), transparent);
+    border-top-left-radius: 5px; /* Adjust border radius as needed */
+    z-index: 1; /* Ensure the pseudo-element is above the background */
+}
+
+/* Glossy effect for top right corner */
+.return-button button::after {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top left, rgba(255, 255, 255, 0.6), transparent);
+    border-top-right-radius: 5px; /* Adjust border radius as needed */
+    z-index: 1; /* Ensure the pseudo-element is above the background */
+}
+
+.return-button button:hover::before,
+.return-button button:hover::after {
+    opacity: 0.8; /* Slightly increase opacity on hover */
+}
+
+.return-button button:hover {
+    background-color: #076907;
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), /* Light shadow */
+                0 4px 20px rgba(0, 0, 0, 0.3); /* Highlight from top */
+}
+
+/* Remove any animations that might cause movement */
+.return-button button {
+    animation: none;
+    transform: none;
+}

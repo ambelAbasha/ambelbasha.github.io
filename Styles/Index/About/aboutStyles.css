@@ -1,0 +1,368 @@
+/*=============================================
+  About Section
+=============================================*/
+.about {
+  width: 100%;
+  max-width: 1400px;
+  margin: var(--space-lg) auto;
+  padding: 5rem var(--space-sm) var(--space-lg);
+  background: linear-gradient(180deg, var(--color-bg-alt), var(--color-bg));
+  border-radius: var(--radius-lg);
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+  scroll-margin-top: 80px;
+  /* Visibility controlled by IntersectionObserver via .hidden / .visible */
+  z-index: 0;
+}
+
+/* About header sits above WebGL canvas */
+.about-header {
+  position: relative;
+  z-index: 2;
+  transform-origin: center top;
+}
+
+/* ── Container-level fade for IntersectionObserver state transitions ── */
+.about.hidden {
+  opacity: 0;
+  transform: none;
+  transition: none;
+  animation: none;
+}
+
+.about.visible {
+  opacity: 1;
+  transform: none;
+  transition: opacity 1.1s ease;
+  animation: none;
+}
+
+.about.leaving {
+  opacity: 0;
+  transform: none;
+  transition: opacity 0.65s ease-in;
+  animation: none;
+}
+
+/* ── Depth fly-in driven by IntersectionObserver hidden/visible classes ── */
+/* Hidden: content is a tiny dot deep in the Z axis */
+.about.hidden .about-header {
+  opacity: 0;
+  transform: perspective(1400px) translateZ(-2200px) scale(0.03);
+}
+
+/* Visible: flies forward to normal position */
+.about.visible .about-header {
+  opacity: 1;
+  transform: perspective(1400px) translateZ(0px) scale(1);
+  transition:
+    opacity  1.1s ease,
+    transform 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: none; /* suppress any inherited fadeInUp */
+}
+
+/* Reverse-scroll departure: retreats back into depth */
+.about.leaving .about-header {
+  opacity: 0;
+  transform: perspective(1400px) translateZ(-2200px) scale(0.03);
+  transition:
+    opacity   0.65s ease-in,
+    transform 1.0s  cubic-bezier(0.7, 0, 0.84, 0);
+  animation: none;
+}
+
+.about h2 {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  color: var(--color-accent-1);
+  margin-bottom: var(--space-md);
+}
+
+.about p {
+  max-width: 900px;
+  margin: 0 auto var(--space-md);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.8;
+}
+
+/* Fade-In Effect */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/*=============================================
+  About Section Links — neumorphic buttons
+=============================================*/
+.about-links {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  margin-top: var(--space-md);
+  justify-content: center;
+}
+
+.about-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.52rem;
+  padding: 0.76rem 1.55rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 14px;
+  border: 1px solid transparent;
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+  transition:
+    color        0.28s ease,
+    border-color 0.30s ease,
+    box-shadow   0.32s ease,
+    transform    0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* shimmer sweep across button on hover */
+.about-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    108deg,
+    transparent 0%,
+    transparent 35%,
+    rgba(255, 255, 255, 0.06) 50%,
+    transparent 65%,
+    transparent 100%
+  );
+  background-size: 240% 100%;
+  background-position: 260% center;
+  transition: background-position 0.64s ease;
+  pointer-events: none;
+}
+.about-link:hover::after { background-position: -60% center; }
+
+/* arrow icon — animated on hover */
+.btn-arrow {
+  font-size: 0.68rem;
+  opacity: 0.55;
+  transition:
+    transform 0.30s cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity   0.28s ease;
+}
+.about-link:hover .btn-arrow { opacity: 1; }
+
+/* ── Read More — deep teal neumorphic surface ── */
+.about-link-read {
+  background: linear-gradient(148deg, #024352 0%, #012e38 100%);
+  color: rgba(var(--color-primary-rgb), 0.80);
+  border-color: rgba(var(--color-primary-rgb), 0.13);
+  box-shadow:
+    7px 9px 22px rgba(0, 10, 12, 0.84),
+    -3px -4px 13px rgba(4, 100, 115, 0.20),
+    inset 0 1px 0 rgba(var(--color-primary-rgb), 0.09);
+}
+
+.about-link-read:hover {
+  color: rgba(18, 215, 232, 0.96);
+  border-color: rgba(var(--color-primary-rgb), 0.38);
+  transform: translateY(-3px);
+  box-shadow:
+    9px 13px 30px rgba(0, 10, 12, 0.90),
+    -4px -5px 17px rgba(4, 100, 115, 0.28),
+    0 0 36px rgba(var(--color-primary-rgb), 0.22),
+    inset 0 1px 0 rgba(var(--color-primary-rgb), 0.14);
+}
+.about-link-read:hover .btn-arrow { transform: translateX(5px); }
+
+.about-link-read:active {
+  transform: translateY(0) scale(0.975);
+  transition-duration: 0.08s;
+  box-shadow:
+    inset 5px 6px 16px rgba(0, 10, 12, 0.74),
+    inset -2px -3px 10px rgba(4, 100, 115, 0.14);
+}
+
+.about-link-read i:not(.btn-arrow) {
+  color: rgba(var(--color-primary-rgb), 0.50);
+  transition: color 0.26s ease, transform 0.26s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.about-link-read:hover i:not(.btn-arrow) {
+  color: rgba(18, 215, 232, 0.88);
+  transform: scale(1.18);
+}
+
+/* ── Visit Portfolio — deep gold neumorphic surface ── */
+.about-link-portfolio {
+  background: linear-gradient(148deg, #201803 0%, #140f02 100%);
+  color: rgba(var(--color-accent-1-rgb), 0.78);
+  border-color: rgba(var(--color-accent-1-rgb), 0.12);
+  box-shadow:
+    7px 9px 22px rgba(0, 0, 0, 0.86),
+    -3px -4px 13px rgba(105, 82, 5, 0.17),
+    inset 0 1px 0 rgba(var(--color-accent-1-rgb), 0.08);
+}
+
+.about-link-portfolio:hover {
+  color: rgba(255, 218, 96, 0.98);
+  border-color: rgba(var(--color-accent-1-rgb), 0.36);
+  transform: translateY(-3px);
+  box-shadow:
+    9px 13px 30px rgba(0, 0, 0, 0.92),
+    -4px -5px 17px rgba(105, 82, 5, 0.24),
+    0 0 36px rgba(var(--color-accent-1-rgb), 0.20),
+    inset 0 1px 0 rgba(var(--color-accent-1-rgb), 0.13);
+}
+.about-link-portfolio:hover .btn-arrow { transform: translate(4px, -4px); }
+
+.about-link-portfolio:active {
+  transform: translateY(0) scale(0.975);
+  transition-duration: 0.08s;
+  box-shadow:
+    inset 5px 6px 16px rgba(0, 0, 0, 0.78),
+    inset -2px -3px 10px rgba(105, 82, 5, 0.13);
+}
+
+.about-link-portfolio i:not(.btn-arrow) {
+  color: rgba(var(--color-accent-1-rgb), 0.45);
+  transition: color 0.26s ease, transform 0.26s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.about-link-portfolio:hover i:not(.btn-arrow) {
+  color: rgba(255, 218, 96, 0.90);
+  transform: scale(1.18);
+}
+
+/* Droplet Elements
+   -- Put decorative elements behind the main .about content by using negative z-index */
+.droplet-container {
+  position: absolute; /* changed to absolute so it sits inside .about but can be layered */
+  inset: 0;           /* top:0; right:0; bottom:0; left:0; */
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+
+  /* place the entire decorative layer behind the content */
+  z-index: -1;
+  pointer-events: none; /* don't block clicks */
+}
+
+.droplet {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, var(--color-accent-1), var(--color-primary), #964734, #024950);
+  opacity: 0; /* Start hidden */
+  animation: floatingGlow 3s ease-in-out infinite, diffractionGlow 5s ease-in-out infinite;
+  animation-delay: calc(-0.5s * var(--i));
+
+  /* droplets are part of the decorative layer behind content */
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Activate droplets when container is active */
+.droplet-container.active .droplet { opacity: 1; }
+
+/* Keyframes for floating glow effect */
+@keyframes floatingGlow {
+  0%   { transform: translateY(0);  opacity: 0.4; filter: blur(2px)  brightness(1.2); }
+  50%  { transform: translateY(-20px); opacity: 0.7; filter: blur(4px)  brightness(1.4); }
+  100% { transform: translateY(20px); opacity: 0.3; filter: blur(6px)  brightness(1.6); }
+}
+
+/* Keyframes for diffraction glow effect */
+@keyframes diffractionGlow {
+  0%   { opacity: 0; transform: scale(0.8) rotate(0deg);   filter: blur(5px); }
+  50%  { opacity: 1; transform: scale(1.5) rotate(180deg); filter: blur(8px); }
+  100% { opacity: 0; transform: scale(0.8) rotate(360deg); filter: blur(10px); }
+}
+
+/* Background Glowing Effects
+   -- Send pseudo-elements behind content using negative z-index */
+.about::before,
+.about::after {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(45deg, var(--color-accent-1), var(--color-primary), #964734, #024950);
+  border-radius: 50%;
+  filter: blur(15px);
+  opacity: 0.4;
+  animation: diffractionGlow 5s infinite alternate ease-in-out;
+
+  z-index: -1;
+  pointer-events: none;
+}
+.about::before { top: 10%; left: 5%; }
+.about::after  { bottom: 10%; right: 5%; }
+
+/*=============================================
+  About — Responsive
+=============================================*/
+@media (max-width: 1024px) {
+  .about {
+    padding: 3.5rem var(--space-sm) var(--space-lg);
+  }
+}
+
+@media (max-width: 768px) {
+  .about {
+    padding: 2.5rem var(--space-sm) var(--space-md);
+    margin: var(--space-sm) auto;
+    border-radius: var(--radius-md);
+  }
+
+  .about h2 {
+    font-size: clamp(1.6rem, 6vw, 2rem);
+    margin-bottom: var(--space-sm);
+  }
+
+  .about p {
+    font-size: clamp(0.88rem, 3.5vw, 1rem);
+    line-height: 1.65;
+    margin-bottom: var(--space-sm);
+  }
+
+  .about-links {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .about-link {
+    justify-content: center;
+    padding: 0.72rem 1.2rem;
+  }
+
+  /* Suppress heavy blur decorations for performance */
+  .about::before,
+  .about::after { display: none; }
+
+  .droplet-container { display: none; }
+}
+
+@media (max-width: 480px) {
+  .about {
+    padding: 2rem var(--space-xs) var(--space-sm);
+    margin: var(--space-xs) auto;
+  }
+
+  .about h2 { font-size: clamp(1.4rem, 8vw, 1.8rem); }
+
+  .about-link {
+    font-size: 0.78rem;
+    padding: 0.65rem 1rem;
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 360px) {
+  .about { padding: 1.5rem var(--space-xxs) var(--space-xs); }
+  .about h2 { font-size: 1.3rem; }
+}

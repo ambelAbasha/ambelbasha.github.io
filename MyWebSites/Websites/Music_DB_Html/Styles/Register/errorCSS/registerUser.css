@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.message-box {
+    max-width: 360px;
+    padding: 60px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 200px; /* Adjust height as needed */
+}
+
+.countdown {
+    font-size: small;
+    color: red;
+    margin-top: 20px;
+}
+
+/* Tooltip styling */
+.tooltip {
+    display: none; /* Hidden by default */
+    position: absolute; /* Position the tooltip */
+    background-color: #555; /* Dark background */
+    color: #fff; /* White text */
+    text-align: center; /* Center the text */
+    border-radius: 5px; /* Rounded corners */
+    padding: 5px; /* Padding */
+    z-index: 1; /* Make sure it’s on top */
+    left: 50%; /* Center tooltip horizontally */
+    transform: translateX(-50%); /* Adjust positioning */
+}
+
+/* Show tooltip on input field hover */
+input[type="password"]:hover + .tooltip {
+    display: block; /* Show tooltip on hover */
+}

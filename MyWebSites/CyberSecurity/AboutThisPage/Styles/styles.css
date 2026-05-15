@@ -1,0 +1,713 @@
+/* ==============================================
+  :root — Global Variables
+============================================= */
+:root {
+  /* Colors */
+  --color-bg: #003135;
+  --color-bg-alt: #024950;
+  --color-bg-hover: #002428;
+  --color-primary: #0FA4AF;
+  --color-cyan-dark: #0c7075;
+  --color-secondary: #bb4232;
+  --color-secondary-dark: #993528;
+  --color-accent-1: #F5C74F;
+  --color-accent-2: #B8C46E;
+  --color-accent-3: #CFAF9D;
+  --color-text: #ffffff;
+  --color-text-muted: #bb4232;
+  --color-text-dark: #333333;
+  --color-text-darkest: #202020;
+  --color-text-light: #e0e0e0;
+  --color-border: #0FA4AF;
+  --color-shadow: rgba(0, 0, 0, 0.2);
+
+  /* Typography */
+  --font-sans: 'Poppins', sans-serif;
+  --font-size-base: 1rem;
+  --font-size-sm: 0.875rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.5rem;
+  --line-height-base: 1.4;
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xlg: 6rem;
+
+  /* Radii & Shadows */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 2px 6px var(--color-shadow);
+  --shadow-md: 0 4px 12px var(--color-shadow);
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition: 0.3s ease;
+}
+
+/* ==============================================
+  Global & Utility Resets
+============================================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  background: var(--color-bg-alt);
+  color: var(--color-text);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* ==============================================
+  Accessibility
+============================================= */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: var(--space-sm);
+  background: #000;
+  color: #fff;
+  padding: var(--space-xs) var(--space-sm);
+  z-index: 100;
+  transition: top var(--transition);
+}
+
+.skip-link:focus {
+  top: var(--space-sm);
+}
+
+/* ==============================================
+  Header Container
+============================================= */
+#about-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--color-bg-alt);
+  color: white;
+  padding: 10px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+}
+
+#about-header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet, red);
+  background-size: 400% 100%;
+}
+
+/* ==============================================
+  Navbar Container
+============================================= */
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-sm);
+}
+
+.welcome-title {
+  flex: 1;
+  text-align: center;
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  margin: 0;
+  color: var(--color-accent-1);
+}
+
+/* ==============================================
+  Burger Menu Styles
+============================================= */
+/* Ensure the wrapper matches or slightly exceeds the button size */
+.burger-wrapper {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 4rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+/* Button stays a perfect circle too */
+.burger-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: var(--color-text);
+  align-items: center;
+  gap: 4px;
+}
+.burger-button hover {
+  pointer-events: none;
+}
+
+/* The burger lines */
+.burger-button span {
+  position: absolute;
+  width: 30px;
+  height: 4px;
+  gap: 0.2rem;
+  background-color: var(--color-secondary-dark);
+  border-radius: 4px;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  transform-origin: center;
+}
+
+.burger-button span:nth-child(1) {
+  top: 24px;
+}
+
+.burger-button span:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.burger-button span:nth-child(3) {
+  bottom: 24px;
+}
+
+/* Burger to X Animation */
+.burger-button.open span:nth-child(1) {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.burger-button.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger-button.open span:nth-child(3) {
+  bottom: 50%;
+  transform: translateY(50%) rotate(-45deg);
+}
+
+/* Hover State */
+.burger-button span:hover {
+  background-color: var(--color-secondary-dark) !important;
+}
+
+
+/* Border fill animation (optional) */
+.burger-wrapper.animate-cw .burger-button {
+  --fill-angle: 360deg;
+}
+
+.burger-wrapper.animate-ccw .burger-button {
+  --fill-angle: 0deg;
+}
+
+/* Menu */
+#about-menu {
+  position: fixed;
+  top: calc(var(--space-xlg) - 1.5rem);
+  right: 2px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  min-width: 160px;
+  max-width: 200px;
+  max-height: calc(100vh - var(--space-sm));
+  overflow-y: auto;
+  background-color: var(--color-bg-alt);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 102;
+  padding: var(--space-xs);
+  transition: transform 0.3s ease-in-out;
+}
+
+#about-menu.show {
+  display: flex;
+  transform: translateX(0);
+}
+
+#about-menu a {
+  display: block;
+  width: 100%;
+  padding: var(--space-xs) var(--space-lg);
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  border: 2px solid var(--color-border);
+  margin-bottom: 0.2rem; /* Adds vertical space between links */
+}
+
+#about-menu a:hover {
+  background-color: var(--color-accent-1);
+  border: 2px solid var(--color-secondary);
+  color: var(--color-bg);
+  transform: scale(1.05);
+}
+
+#about-menu a:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-primary);
+}
+
+#about-menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Optional: ensure <li> doesn't show marker either */
+#about-menu li {
+  list-style-type: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .burger-wrapper {
+    right: var(--space-sm);
+  }
+
+  .about-page-container {
+    padding: calc(var(--space-xl) + 3rem) var(--space-sm);
+  }
+
+  .about-section ul li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .technology-icons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* ==============================================
+  Responsive Styles
+============================================= */
+@media (max-width: 768px) {
+  .burger-wrapper {
+    right: var(--space-sm);
+  }
+
+  .about-page-container {
+    padding: calc(var(--space-xl) + 3rem) var(--space-sm);
+  }
+
+  .about-section ul li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .technology-icons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+#main-content {
+  margin-top: var(--space-lg); /* Adjust the space as needed */
+}
+
+/* ==============================================
+  Main Content Styling
+============================================= */
+main#main-content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: calc(100vh - 10px - 80px);
+  background: var(--color-bg-hover);
+  padding-top: 30px;
+  padding-left: var(--space-sm);
+  padding-right: var(--space-sm);
+  padding-bottom: var(--space-lg);
+}
+
+/* ==============================================
+  Inner Section Styles (Card)
+============================================= */
+main#main-content > section {
+  width: 100%;
+  max-width: 1100px;
+  background: #fff;
+  padding: var(--space-xs) var(--space-sm);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-md);
+  color: var(--color-text-dark);
+  text-align: left;
+  line-height: 1.6;
+  margin-top: var(--space-lg);
+}
+
+#about-this-page {
+  margin-top: var(--space-lg); /* You can adjust the value as needed */
+}
+
+#about-this-page {
+  padding-top: var(--space-lg); /* Adjust the space as needed */
+}
+
+/* Typography */
+#about-this-page p {
+  margin-bottom: 1.2em;
+  font-size: var(--font-size-lg);
+}
+
+#about-this-page h2 {
+  margin-top: 2em;
+  margin-bottom: 0.6em;
+  font-size: var(--font-size-xl);
+}
+
+#about-this-page h3 {
+  margin-top: var(--space-lg);
+  margin-bottom: 0.6em;
+  font-size: var(--font-size-lg);
+}
+
+/* Style for the list container (fa-ul) */
+.fa-ul {
+  margin: var(--space-sm) 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Style for each list item (fa-ul li) */
+.fa-ul li {
+  position: relative;
+  padding-left: 2em;
+  margin-bottom: var(--space-md);
+  color: var(--color-text-dark); /* Default color for list items */
+  transition: color 0.3s ease;   /* Smooth transition for color change */
+}
+
+/* Style for icons inside the list items */
+.fa-li {
+  position: absolute;
+  left: 0;
+  top: 0.2em;
+  font-size: 1.5em;
+  color: var(--color-primary); /* Set the icon color to primary color */
+  transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition for color and scaling */
+}
+
+/* Hover effect for icons (fa-li) */
+.fa-ul li:hover .fa-li {
+  color: var(--color-secondary); /* Change icon color to secondary on hover */
+  transform: scale(1.1); /* Slightly enlarge the icon */
+}
+
+/* Style the link text inside list items */
+.fa-ul li a {
+  color: var(--color-text-dark); /* Default color for the link */
+  transition: color 0.3s ease;    /* Smooth transition for the color change */
+  text-decoration: none;         /* Remove underline from links */
+}
+
+/* Hover effect for the link */
+.fa-ul li a:hover {
+  color: var(--color-primary); /* Change the link color to primary color on hover */
+}
+
+/* Style for strong text in the list items */
+.fa-ul li strong {
+  color: var(--color-text-dark); /* Default color for the strong text */
+  transition: color 0.3s ease;    /* Smooth transition for the color change */
+}
+
+/* Hover effect for strong text */
+.fa-ul li strong:hover {
+  color: var(--color-primary); /* Change strong text color to primary color on hover */
+}
+
+/* Style for individual icons */
+.fa-ul li .fa-laptop {
+  color: var(--color-primary);  /* Icon color for fa-laptop */
+  font-size: 1.5em;             /* Icon size */
+  transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+.fa-ul li .fa-network-wired {
+  color: var(--color-primary) !important;  /* Icon color for fa-network-wired */
+  font-size: 1.5em;             /* Icon size */
+  transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+/* Hover effect for fa-laptop icon */
+.fa-ul li:hover .fa-laptop {
+  color: var(--color-secondary);  /* Change color on hover */
+  transform: scale(1.1);          /* Enlarge the icon */
+}
+
+/* Hover effect for fa-network-wired icon */
+.fa-ul li:hover .fa-network-wired {
+  color: var(--color-secondary);  /* Change color on hover */
+  transform: scale(1.1);          /* Enlarge the icon */
+}
+
+.key-concepts, .real-world-contributions {
+  margin-top: var(--space-lg);
+  padding-left: var(--space-sm);
+  border-left: 4px solid var(--color-primary);
+}
+
+.key-concepts h3, .real-world-contributions h3 {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--space-md);
+}
+
+.key-concepts .concept-item, .real-world-contributions ul li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.key-concepts .concept-item i, .real-world-contributions ul li i {
+  font-size: 1.5rem;
+  color: var(--color-primary);
+}
+
+.key-concepts .concept-item strong, .real-world-contributions ul li strong {
+  font-size: var(--font-size-lg);
+}
+
+.key-concepts .concept-item p, .real-world-contributions ul li p {
+  font-size: var(--font-size-base);
+  color: var(--color-text-dark);
+}
+
+/* ==============================================
+   Modernized Stylesheet – Cleaned & Optimized
+==============================================*/
+/* Footer */
+footer {
+  background: linear-gradient(180deg, var(--color-bg-alt), var(--color-bg));
+  padding: 10px; /* Reduce padding to decrease vertical space */
+  color: #fff;
+  width: 100%;
+  position: relative;
+  text-align: center;
+}
+
+/* Footer Container */
+.footer-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-sm); /* Reduced padding for smaller spacing */
+  background: var(--color-bg);
+  box-shadow: var(--shadow-md);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 100px; /* Reduced minimum height to make the footer more compact */
+}
+
+/* Footer Links Section */
+.footer-links {
+  display: flex;
+  top: 3rem;
+  justify-content: center; /* Center the entire footer block */
+  gap: 30px; /* Space between the items */
+  align-items: center;
+  width: 100%;
+}
+
+/* About Me, This Page, and Social Section */
+.footer-about, .footer-this-page, .footer-social, .contact-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-about a, .footer-this-page a, .footer-social a, .contact-section {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: var(--font-size-sm);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: color var(--transition), transform var(--transition-fast);
+}
+
+/* Change text and icon color when hovered */
+.footer-about a:hover, .footer-this-page a:hover, .footer-social a:hover, .contact-section:hover {
+  color: var(--color-secondary-dark);
+  transform: scale(1.01);
+}
+
+/* Icons and Section Alignment */
+.footer-about i, .footer-this-page i, .footer-social i, .contact-section i {
+  font-size: 1rem; /* Smaller icon size to match text size */
+  margin-top: -3px; /* Adjust this value to move the icon up */
+}
+
+/* Hover Effect for both text and icon */
+.footer-about a:hover i, .footer-this-page a:hover i, .footer-social a:hover i, .contact-section:hover i {
+  color: var(--color-secondary-dark); /* Change icon color to match text */
+  transform: scale(1.1); /* Scale up the icon on hover */
+}
+
+/* Footer Links Hover Effect */
+.footer-container ul {
+  list-style: none;
+  display: flex;
+  gap: var(--space-lg);
+  justify-content: center; /* Ensures list items are centered */
+}
+
+.footer-container a {
+  color: var(--color-accent-1);
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  padding: 0.25em 0.5em;
+  transition: color var(--transition), transform var(--transition);
+  font-size: var(--font-size-sm); /* Ensure all links inside footer use the same font size */
+}
+
+.footer-container a:hover {
+  color: var(--color-secondary-dark);
+  transform: scale(1.05);
+}
+
+.footer-container ul li a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 4px;
+  border-radius: 5px;
+  background: var(--color-primary);
+  left: 50%;
+  bottom: -5px;
+  transform: translateX(-50%) scaleX(0);
+  transition: width 0.3s ease-out;
+}
+
+.footer-container a:hover::after {
+  width: 100%;
+  transform: translateX(-50%) scaleX(1);
+}
+
+/* Footer Copyright Styling */
+.footer-copyright {
+  font-size: 0.5rem; /* Further reduced font size */
+  color: var(--color-accent-1);
+  margin-top: 4px;
+  margin-bottom: 0; /* Removed bottom margin for compactness */
+  text-align: right; /* Align text to the right */
+  width: 100%; /* Ensures it takes full width for alignment */
+  max-width: 1200px;
+  display: flex;
+  justify-content: flex-end; /* Align the copyright text to the right */
+  padding: 4px 0; /* Further reduced padding to minimize height */
+  position: absolute;
+  bottom: 0; /* Ensure it's aligned at the bottom of the footer */
+  animation: slideInFromRight 1s ease-out; /* Apply the sliding animation */
+  animation-fill-mode: forwards; /* Keep the final state after animation */
+}
+
+/* Responsive: Stack Items Vertically on Smaller Screens */
+@media screen and (max-width: 768px) {
+  .footer-links {
+    flex-direction: column; /* Stack items vertically on small screens */
+    align-items: center;
+    gap: 15px;
+  }
+
+  .footer-about, .footer-this-page, .footer-social, .contact-section {
+    gap: 10px;
+  }
+
+  .footer-copyright {
+    font-size: 0.8rem;
+  }
+}
+
+/* Override Style for fa-icons in Footer */
+.footer-container .footer-links i {
+  font-size: 1rem; /* Adjust icon size to match text size */
+  color: var(--color-accent-1); /* Set the color to --color-secondary */
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+/* Hover Effect for fa-icons */
+.footer-container .footer-links a:hover i {
+  color: var(--color-secondary-dark); /* Change color on hover */
+  transform: scale(1.1); /* Scale up the icon on hover */
+}
+
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.footer-copy {
+  width: 100%;
+  margin: 0;
+  margin-top: var(--space-xs);
+  font-size: 0.8rem;
+  opacity: 0.8;
+  text-align: center;
+}
+
+button {
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  padding: var(--space-sm) var(--space-md);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-base);
+  cursor: pointer;
+  transition: background-color var(--transition);
+}
+
+button:hover {
+  background-color: var(--color-cyan-dark);
+}

@@ -1,0 +1,226 @@
+/* Section Hover */
+.section {
+  padding: 40px;
+  transition: background-color 0.3s ease;
+}
+/* Card hover effect */
+#cyber .card:hover {
+  background-color: var(--color-secondary);  /* Background color change on hover */
+  transform: translateY(-10px);  /* Lift the card slightly */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);  /* Add a shadow for depth */
+  transition: all 0.3s ease;  /* Smooth transition */
+}
+
+/* Make sure card content has a transparent background so it adapts to hover */
+#cyber .card-content {
+  background-color: transparent !important;
+}
+
+/* Card hover effect for the card in grid */
+#cyber .card-grid .card:hover {
+  background-color: var(--color-secondary);  /* Apply secondary color on hover */
+  transform: translateY(-10px);  /* Lift the card slightly */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);  /* Add shadow for visual depth */
+}
+
+#cyber .card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;  /* three equal columns */
+  gap: var(--space-md);
+  justify-content: center;             /* center the entire grid */
+  justify-items: center;               /* center each card within its cell */
+  padding-bottom: var(--space-lg);
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto 7rem;                 /* auto‑center the grid itself */
+}
+
+/* Common card styles */
+#cyber .card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;                /* cards grow to fit content */
+  justify-content: flex-start;
+  width: 100%;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: var(--color-cyan-dark);
+  margin-bottom: 2rem;                 /* consistent spacing */
+
+  /* ⬆️ moved padding here so the dark background fills under all content */
+  padding: 1.5rem;
+}
+
+/* Background image styling */
+#cyber .card-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;       /* all images use the same 16:9 ratio */
+  background-size: cover;
+  background-position: center;
+  border-radius: 15px 15px 0 0;
+}
+
+/* Card content styling */
+#cyber .card-content {
+  /* make transparent so parent’s dark BG shows through */
+  background-color: transparent !important;
+  /* drop inner corners—parent .card handles rounding */
+  border-radius: 0 !important;
+
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;                           /* space between inner elements */
+
+  /* keep your text padding inside the card itself */
+}
+
+/* Title inside card (h3) */
+#cyber .card h3 {
+  text-align: center;
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+/* Adjust line height and margin between h5 and p */
+#cyber .card h5 {
+  font-size: 1.125rem;
+  margin: 0.5rem 0 0.25rem;
+  line-height: 1.3;
+}
+
+/* Paragraph styling */
+#cyber .card p {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* List Styling for Real-World Contributions */
+#cyber .card ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin: 0 0 1rem;
+}
+
+#cyber .card ul li {
+  margin-bottom: 0.5rem;
+}
+
+/* Card Header Styling */
+#cyber .card-header {
+  background-color: var(--color-bg-alt);
+  width: 100%;
+  padding: 1rem;
+  text-align: center;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 15px 15px 0 0;
+}
+
+/* Cybersecurity Card Background Image (first card) */
+#cyber .cybersecurity-card.card {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: var(--color-bg-alt);
+  margin-bottom: 2rem;
+}
+
+/* Second card background */
+#cyber .card:nth-of-type(2) {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: var(--color-bg-alt);
+  margin-bottom: 2rem;
+}
+
+/* Second card background */
+#cyber .card:nth-of-type(3) {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: var(--color-bg-alt);
+  margin-bottom: 2rem;
+}
+/* -----------------------------------------------------------------------------
+   External “intro” card (direct child of #cyber, not in the grid)
+   ----------------------------------------------------------------------------- */
+/* -----------------------------------------------------------------------------
+   External “intro” card (direct child of #cyber, not in the grid)
+   ----------------------------------------------------------------------------- */
+#cyber > .card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: var(--color-secondary);
+}
+
+/* -----------------------------------------------------------------------------
+   Grid cards (only those inside .card-grid)
+   ----------------------------------------------------------------------------- */
+/* Main hover effect on the card */
+#cyber .card-grid .card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  background-color: var(--color-bg-hover);
+}
+
+/* Hover effect for card content */
+#cyber .card-grid .card-content:hover {
+  background-color: var(--color-secondary);
+}
+
+/* Hover effect for h5 elements inside .card-content when card is hovered */
+#cyber .card-grid .card:hover .card-content h5 {
+  color: var(--color-primary) !important;  /* Change text color to primary color on hover */
+  transition: color 0.3s ease;   /* Smooth transition for the color change */
+}
+
+/* Hover effect for list items inside .card-content when card is hovered */
+#cyber .card-grid .card:hover .card-content li {
+  color: var(--color-primary) !important;  /* Change list item color to primary color on hover */
+  transition: color 0.3s ease;   /* Smooth transition for the color change */
+}
+
+/* Prevent card content background from interfering with overall card hover */
+#cyber .card-grid .card:hover .card-content {
+  background-color: transparent; /* Keep the card content background unchanged on card hover */
+}
+
+
+/* Fade-in Animation */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Breakpoints */
+
+/* Medium screens (Tablets) */
+@media (max-width: 992px) {
+  #cyber .card-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* More flexible grid layout for tablets */
+    width: 95%; /* 95% width */
+    margin: 0 auto 5rem;
+  }
+}
+
+/* Small screens (Phones) */
+@media (max-width: 768px) {
+  #cyber .card-grid {
+    grid-template-columns: 1fr; /* Single column on smaller screens */
+    width: 95%; /* 95% width */
+    margin: 0 auto 4rem;
+  }
+}
+
+/* Extra Small Screens (Very small devices like portrait phones) */
+@media (max-width: 480px) {
+  #cyber .card-grid {
+    width: 95%; /* Ensure the grid takes 95% of the screen */
+  }
+}

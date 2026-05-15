@@ -1,0 +1,51 @@
+/* Reset default margin and padding */
+body, h1, h2, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Container styles */
+.container {
+    max-width: 800px; /* Adjust as needed */
+    margin: 20px auto; /* Center the container horizontally with top and bottom margin */
+    padding: 20px; /* Add some padding for better readability */
+    background-color: #f9f9f9; /* Light gray background */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft box shadow */
+}
+
+/* Header styles */
+.header {
+    font-family: Arial, sans-serif; /* Use your desired font */
+    font-size: 24px; /* Adjust as needed */
+    text-align: center; /* Center the header text */
+    margin-bottom: 20px; /* Add some space below the header */
+}
+
+/* Content styles */
+.content {
+    font-family: Arial, sans-serif; /* Use your desired font */
+    font-size: 16px; /* Adjust as needed */
+    line-height: 1.6; /* Improved line spacing for readability */
+    text-align: left; /* Align content to the left */
+}
+
+/* Return button styles */
+.return-button {
+    margin-top: 20px; /* Space above the return button */
+    text-align: center; /* Center the button */
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}

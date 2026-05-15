@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beloved Movies</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* CSS styles for shine effect */
+        .shine-effect {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .shine-effect::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.6), transparent);
+            transform: rotate(-45deg);
+            transition: transform 0.5s;
+        }
+
+        .shine-effect:hover::before {
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="title">
+        <h1>Beloved Movies</h1>
+    </div>
+
+    <div class="container">
+        <!-- Citizen Kane Section -->
+        <div class="shine-effect movie-poster" onclick="openMoviePage('citizenkane.html')">
+            <img src="images/CitizenKane.jpg" alt="Citizen Kane">
+            <div class="movie-description">
+                <p><strong>Citizen Kane</strong></p>
+                <p>Often hailed as the greatest film ever made, Citizen Kane is a masterpiece of storytelling and cinematography. Directed by Orson Welles, the film explores the life of Charles Foster Kane, a newspaper tycoon whose rise to power is overshadowed by personal emptiness. Through innovative narrative techniques and striking visuals, Citizen Kane delves into themes of ambition, power, and the elusive nature of truth. Its profound impact on cinema continues to resonate, inspiring generations of filmmakers and audiences alike. With its complex characters and timeless relevance, Citizen Kane remains a towering achievement in cinematic history.</p>
+            </div>
+        </div>
+
+        <!-- Seven Samurai Section -->
+        <div class="shine-effect movie-poster" onclick="openMoviePage('sevensamurai.html')">
+            <img src="images/SevenSamurai.jpg" alt="Seven Samurai">
+            <div class="movie-description">
+                <p><strong>Seven Samurai</strong></p>
+                <p>A timeless classic from Akira Kurosawa, Seven Samurai is an epic tale of honor, sacrifice, and camaraderie. Set in 16th-century Japan, the film follows a group of masterless samurai who are hired to defend a village from bandits. Through masterful direction and gripping action sequences, Kurosawa explores themes of duty, loyalty, and the human condition. The characters, each with their own strengths and flaws, undergo profound transformations as they confront the harsh realities of war and sacrifice. Seven Samurai's influence on cinema is immeasurable, shaping the language of storytelling and inspiring countless filmmakers around the world. With its rich storytelling and powerful performances, Seven Samurai stands as a testament to the enduring power of cinema.</p>
+            </div>
+        </div>
+
+        <!-- Casablanca Section -->
+        <div class="shine-effect movie-poster" onclick="openMoviePage('casablanca.html')">
+            <img src="images/Casablanca.jpg" alt="Casablanca">
+            <div class="movie-description">
+                <p><strong>Casablanca</strong></p>
+                <p>With unforgettable performances and iconic dialogue, Casablanca remains one of the most beloved films of all time. Set during World War II, the film follows Rick Blaine, a cynical expatriate who runs a nightclub in Casablanca. When his former lover, Ilsa Lund, reappears with her husband, resistance leader Victor Laszlo, Rick is forced to confront his past and make a difficult choice. Against the backdrop of political intrigue and wartime tension, Casablanca explores themes of love, sacrifice, and the human capacity for redemption. Its timeless appeal lies in its memorable characters, sharp dialogue, and powerful emotional resonance. As one of Hollywood's greatest achievements, Casablanca continues to captivate audiences with its stirring tale of love and sacrifice in a world torn apart by war.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <a href="#">News</a>
+        <a href="#">About</a>
+        <a href="#">Subscribe</a>
+    </div>
+
+    <script>
+        function openMoviePage(movie) {
+            window.open(movie, '_blank');
+        }
+    </script>
+</body>
+</html>

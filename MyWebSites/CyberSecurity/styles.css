@@ -1,0 +1,804 @@
+/* =============================================
+  :root — Global Variables (Responsive Ready)
+============================================= */
+:root {
+  --color-bg: #003135;
+  --color-bg-alt: #024950;
+  --color-bg-hover: #002428;
+  --color-primary: #0FA4AF;
+  --color-cyan-dark: #0c7075;
+  --color-secondary: #bb4232;
+  --color-secondary-dark: #993528;
+  --color-accent-1: #F5C74F;
+  --color-accent-2: #B8C46E;
+  --color-accent-3: #CFAF9D;
+  --color-text: #ffffff;
+  --color-text-muted: #bb4232;
+  --color-border: #0FA4AF;
+  --color-shadow: rgba(0, 0, 0, 0.2);
+  --font-sans: 'Poppins', sans-serif;
+  --font-size-base: 1rem;
+  --font-size-sm: 0.875rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.5rem;
+  --line-height-base: 1.4;
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xlg: 6rem;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 2px 6px var(--color-shadow);
+  --shadow-md: 0 4px 12px var(--color-shadow);
+  --transition-fast: 0.2s ease;
+  --transition: 0.3s ease;
+
+  /* Responsive font scaling */
+  /* XS fluid font size (new) */
+  --font-size-fluid-xs: clamp(0.7rem, 0.45vw, 0.8rem);
+  --font-size-fluid-sm: clamp(0.8rem, 0.6vw, 0.9rem);
+  --font-size-fluid-base: clamp(1rem, 1vw, 1.2rem);
+  --font-size-fluid-lg: clamp(1.2rem, 1.5vw, 1.5rem);
+  --font-size-fluid-xl: clamp(1.5rem, 2vw, 2rem);
+  --font-size-fluid-xxl: clamp(2rem, 3vw, 2.5rem);
+}
+
+/* =============================================
+  Basic Reset and Responsiveness
+============================================= */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+  font-size: 100%;
+}
+
+body {
+  user-select: none;
+  margin: 0;
+  padding: 40px 0 0;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-fluid-base);
+  line-height: var(--line-height-base);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  pointer-events: none;
+}
+
+body * {
+  pointer-events: auto;
+}
+
+/* =============================================
+  Responsive Typography Utility
+============================================= */
+.h1 {
+  font-size: var(--font-size-fluid-xxl);
+}
+
+.h2 {
+  font-size: var(--font-size-fluid-xl);
+}
+
+.h3 {
+  font-size: var(--font-size-fluid-lg);
+}
+
+.p {
+  font-size: var(--font-size-fluid-base);
+}
+
+.small {
+  font-size: var(--font-size-fluid-sm);
+}
+
+/* =============================================
+  Media Queries for Responsive Adjustments
+============================================= */
+@media (max-width: 768px) {
+  :root {
+    --space-sm: 0.75rem;   /* Reduced from 1rem */
+    --space-md: 1rem;      /* Reduced from 1.5rem */
+    --space-lg: 1.5rem;
+    --font-size-base: 0.95rem;
+    --font-size-sm: 0.8rem;
+  }
+
+  body {
+    padding-top: 30px; /* Reduced from 40px */
+  }
+
+  .burger-wrapper {
+    width: 45px;  /* Slightly smaller */
+    height: 45px;
+  }
+
+  .welcome-title {
+    font-size: clamp(1.6rem, 5vw, 2.3rem); /* Slightly smaller title */
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --space-sm: 0.5rem;   /* Reduced from 0.75rem */
+    --space-md: 0.75rem;  /* Reduced from 1rem */
+    --space-lg: 1rem;
+    --font-size-base: 0.85rem;
+    --font-size-sm: 0.75rem;
+  }
+
+  html {
+    font-size: 90%;
+  }
+
+  body {
+    padding-top: 2px; /* Reduced from 30px */
+  }
+
+  .burger-wrapper {
+    width: 40px;  /* Smaller size */
+    height: 40px;
+  }
+
+  .welcome-title {
+    font-size: clamp(1.4rem, 5vw, 2.1rem); /* Even smaller title */
+  }
+}
+
+/* =============================================
+  Animations
+============================================= */
+@keyframes slideDown {
+  from { top: -120px; }
+  to { top: 0; }
+}
+
+@keyframes rainbowFlow {
+  from { background-position: 0% 0; }
+  to { background-position: 100% 0; }
+}
+
+/* =============================================
+  Main Header
+============================================= */
+#main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(180deg, var(--color-bg-alt), var(--color-bg));
+  color: white;
+  padding: 0.5rem 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  z-index: 100;
+  animation: slideDown 0.6s ease-in-out forwards;
+}
+
+#main-header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet, red);
+  background-size: 400% 100%;
+  animation: rainbowFlow 10s linear infinite;
+}
+
+@media (max-width: 768px) {
+  #main-header {
+    padding: 0.15rem 0;  /* Reduced padding for tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  #main-header {
+    padding: 0.1rem 0;  /* Further reduced padding for mobile devices */
+  }
+}
+
+/* =============================================
+  Navbar and Burger Menu
+============================================= */
+.navbar-container {
+  max-width: 1400px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 4;
+  padding: 0;
+}
+
+#pageTitle {
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  font-weight: bold;
+  color: var(--highlight-color);
+  text-align: center;
+  flex-grow: 1;
+  position: relative;
+  left: 0;
+  margin: 0 auto;
+}
+
+/* =============================================
+  Burger Menu and Language Button (Updated)
+============================================= */
+#toggleLanguageButton {
+  position: fixed;
+  top: 0;
+  left: 3rem;
+  padding: 6px;
+  width: 32px;
+  height: 34px;
+  box-shadow: var(--shadow-sm);
+  background: var(--color-bg);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition);
+  z-index: 101;
+}
+
+/* Burger Wrapper */
+.burger-wrapper {
+  position: fixed;  /* Fixed position for consistent placement */
+  top: 10px;       /* Place it closer to the top */
+  right: 7rem;  /* Place it 20px from the right side of the screen */
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  box-shadow: var(--shadow-sm);  /* Add shadow for better visibility */
+  z-index: 101;
+  pointer-events: auto;  /* Ensure pointer events are active */
+  display: flex;
+  justify-content: center; /* Center contents inside the wrapper */
+  align-items: center;    /* Center contents inside the wrapper */
+}
+
+/* Burger Menu */
+.burger-menu {
+  --fill-angle: 0deg;
+  position: relative;  /* Keep it inside the wrapper */
+  width: 36px;        /* Adjust size for visibility */
+  height: 36px;
+  background-color: var(--color-text); /* White background for burger icon */
+  color: var(--color-secondary);
+  border: 4px solid transparent;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  pointer-events: auto;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  transition: background 0.3s, --fill-angle var(--anim-duration) linear;
+  border-image: conic-gradient(
+    rgba(0, 0, 0, 0.6) var(--fill-angle),
+    transparent var(--fill-angle)
+  ) 1;
+}
+
+/* Burger Menu Spans */
+.burger-menu span {
+  position: absolute;
+  width: 30px;
+  height: 4px;
+  background-color: var(--color-secondary-dark);
+  border-radius: 4px;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  transform-origin: center;
+}
+
+.burger-menu span:nth-child(1) { 
+  top: 6px;
+}
+
+.burger-menu span:nth-child(2) { 
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.burger-menu span:nth-child(3) { 
+  bottom: 6px;
+}
+
+/* Burger Menu Open State */
+.burger-menu.open span:nth-child(1) {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.burger-menu.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger-menu.open span:nth-child(3) {
+  bottom: 50%;
+  transform: translateY(50%) rotate(-45deg);
+}
+
+/* Hover Effect */
+.burger-menu:hover span {
+  background-color: #381805;
+}
+
+.burger-wrapper.animate-cw .burger-menu {
+  --fill-angle: 360deg;
+}
+
+.burger-wrapper.animate-ccw .burger-menu {
+  --fill-angle: 0deg;
+}
+#menu a {
+  display: block;
+  width: 100%;
+  padding: var(--space-xs) var(--space-sm);
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  text-decoration: none;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  text-align: center;
+  transition: background-color var(--transition),
+              color var(--transition),
+              transform var(--transition);
+}
+
+#menu a:hover {
+  background-color: var(--color-accent-1);
+  border-color: var(--color-secondary);
+  color: var(--color-bg-alt);
+  transform: scale(1.05);
+}
+
+#menu a:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-primary);
+}
+/* =============================================
+  Responsive Adjustments
+============================================= */
+@media (max-width: 768px) {
+  #headerContainer {
+    justify-content: center;
+    padding: var(--space-xs) var(--space-sm);
+  }
+
+  #toggleLanguageButton {
+    left: var(--space-xxs);
+    top: 10px;
+    right: auto;
+  }
+
+  #pageTitle {
+    text-align: center;
+    width: 100%;
+  }
+
+  .burger-menu {
+    right: var(--space-sm);
+    top: var(--space-xs);
+    transform: none;
+  }
+}
+
+@media (max-width: 480px) {
+  #headerContainer {
+    padding: var(--space-xs) var(--space-xs);
+  }
+
+  #toggleLanguageButton {
+    top: var(--space-xxs);
+    left: var(--space-xs);
+    right: auto;
+  }
+
+  .burger-menu {
+    top: var(--space-xs);
+    right: var(--space-xs);
+  }
+}
+
+/* ================================
+   Dropdown Container Update
+=================================== */
+/* ================================
+   Dropdown Container Update
+=================================== */
+.cyber-menu,
+#cyberSecurity-menu1,
+#about-menu,
+#home-menu {
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  background-color: #222;
+
+  width: auto;
+  min-width: 200px;
+  max-width: none;
+
+  position: fixed; /* Fixed positioning to stay at the top of the screen */
+  top: 8%; /* Adjust top position to control the vertical placement */
+  margin-top: 0; /* Remove margin-top, since fixed positioning handles it */
+
+  /* ✅ Correct spacing from the right edge */
+  right: 0.2rem; /* Ensure there's no extra space */
+  left: auto; /* Ensure it is not left-aligned */
+  transform: translateX(0); /* No horizontal shift needed */
+
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+/* ================================
+   Ensure Full-Width Link Items
+=================================== */
+.cyber-menu a,
+#cyberSecurity-menu1 a,
+#about-menu a,
+#home-menu a {
+  display: block;
+  width: 100%;
+  box-sizing: border-box; /* ✅ ensures padding doesn't cause overflow */
+  padding: var(--space-xs) var(--space-sm);
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  text-align: center;
+  border: 2px solid var(--color-border);
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+/* ================================
+   7. Enhanced Link Styles
+   Matches #portfolio-menu Aesthetic
+=================================== */
+.cyber-menu,
+#cyberSecurity-menu1,
+#about-menu,
+#home-menu {
+  align-items: center;
+  overflow-y: auto;
+  max-height: calc(100vh - var(--space-sm)); /* Limit height */
+  background-color: var(--color-bg-alt);     /* Updated background */
+  border: 1px solid var(--color-primary);    /* Subtle border */
+  border-radius: var(--radius-md);           /* Rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);  /* Smooth shadow */
+  padding: var(--space-xs);                  /* Inner spacing */
+  transition: transform 0.3s ease-in-out;
+}
+
+
+/* ================================
+   8. “Show” State for Submenus
+=================================== */
+.cyber-menu.show,
+#cyberSecurity-menu1.show,
+#about-menu.show,
+#home-menu.show {
+  display: flex; /* Ensure submenu shows */
+}
+
+/* ================================
+   Submenu Base Styling
+==================================== */
+.submenu {
+  display: none;
+  flex-direction: column;
+  gap: 0px;
+  padding: 0px;
+  background-color: #222;
+  
+  width: auto;
+  min-width: 200px;
+  max-width: none;
+
+  position: absolute;
+  top: -100%;  /* Positions the submenu above the parent menu item */
+  margin-top: 0;  /* Remove extra margin to make it closer to the menu item */
+  
+  /* Align submenus directly above the parent item */
+  right: 0;  /* Align the submenu to the right edge of the parent */
+  left: auto;  /* Ensure it's not also aligned with the left */
+  transform: translateX(0);  /* No horizontal shift */
+  
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+/* ================================
+   Submenu Link Styling
+==================================== */
+.submenu a {
+  display: block;
+  width: 100%;
+  box-sizing: border-box; /* Prevent overflow caused by padding */
+  padding: var(--space-xs) var(--space-xs); /* Even padding on both sides */
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  text-align: left; /* Align links to the left */
+  border: 2px solid var(--color-border);
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+/* ================================
+   Hover Effect for Links
+==================================== */
+.submenu a:hover {
+  background-color: var(--color-accent-1);
+  border-color: var(--color-secondary);
+  color: var(--color-bg);
+  transform: scale(1.05);
+}
+
+/* ================================
+   Focus Effect for Links
+==================================== */
+.submenu a:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-primary);
+}
+
+
+/* ================================
+   10. Container and PDF Block
+=================================== */
+.container {
+  width: 80%;
+  margin: 1rem auto 0 auto;/* Added 2px to the top margin */
+  text-align: center;
+  padding-top: 10px;
+}
+
+.pdf-block {
+  width: 80%;
+  height: 130vh;
+  margin: 10px auto 20px;
+  background-color: #fff;
+  padding: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+}
+
+.pdf-block::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, var(--color-bg-alt), var(--color-bg-hover));
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.pdf-block h2 {
+  margin-bottom: 10px;
+}
+
+.pdf-block object {
+  width: 100%;
+  height: 130%;
+  max-width: 100%;
+  max-height: 130%;
+}
+
+/*=============================================
+  Modal
+=============================================*/
+.modal {
+  position: fixed;
+  top: 6.7%; left: 46.4%;
+  transform: translate(-31%, -50%);
+  background-color: rgba(0,0,0,0.1);
+  padding: 1px;
+  border-radius: var(--radius-sm);
+  display: none;
+  color: var(--color-text);
+  text-align: center;
+  z-index: 1001;
+}
+
+.modal-content {
+  padding: 1px;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+}
+
+#modalMessage {
+  font-size: var(--font-size-base);
+}
+/* ==============================================
+  Footer Section
+============================================== */
+.footer {
+  background: linear-gradient(180deg, var(--color-bg-alt), var(--color-bg));
+  color: var(--color-text);
+  padding: var(--space-sm) 0;
+  text-align: center;
+  border-radius: var(--radius-lg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer {
+  scroll-margin-top: 4rem; /* adjust to your navbar’s height */
+}
+
+.footer-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-md);
+  background: var(--color-bg);
+  box-shadow: inset 0 10px 20px rgba(0, 0, 0, 0.1), inset 0 -10px 20px rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column; /* Stack links and copyright vertically */
+  justify-content: center;
+  align-items: center;     /* Center content horizontally */
+  position: relative;      /* Positioning context for absolute children */
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center; /* Center items horizontally */
+  align-items: center;
+  gap: var(--space-sm);
+  width: 100%;
+}
+
+.footer-nav {
+  list-style-type: none;
+  font-weight: 500;
+  margin: 0;
+  display: flex;
+  justify-content: center; /* Center the list items */
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.footer-nav li a {
+  color: var(--color-accent-1);
+  text-decoration: none;
+  font-weight: 500;
+  /* use the XS fluid font-size alias you created */
+  font-size: var(--font-size-fluid-sm, 0.7rem);
+  position: relative;
+  padding: var(--space-xs) var(--space-sm);
+  transition: color var(--transition), transform var(--transition-fast);
+  display: flex;
+  align-items: center;
+}
+
+.footer-nav li a i {
+  margin-right: 4px; /* Smaller space between icon and text */
+  transform: translateY(-2px); /* Shift the icon slightly upwards */
+}
+
+.footer-nav li a:hover {
+  color: var(--color-secondary);
+  transform: scale(1.01);
+}
+
+.footer-nav li a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 4px;
+  border-radius: 5px;
+  background: var(--color-primary);
+  left: 50%;
+  bottom: -5px;
+  transform: translateX(-50%) scaleX(0);
+  transition: width 0.3s ease-out;
+}
+
+.footer-nav li a:hover::after {
+  width: 64%;
+  transform: translateX(-50%) scaleX(1);
+}
+
+/* Footer Copyright Styling */
+.footer-copyright {
+  font-size: 0.5rem;
+  color: var(--color-accent-1);
+  margin-top: 4px;
+  margin-bottom: 0;
+  text-align: right;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: flex-end;
+  padding: 4px 0;
+  position: absolute;
+  right: 0.25rem;
+  bottom: 0;
+  animation: slideInFromRight 1s ease-out;
+  animation-fill-mode: forwards;
+}
+
+/* Slide-in Animation for the Copyright Text */
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+/*=============================================
+  Buttons and Links
+=============================================*/
+button {
+  background-color: var(--color-secondary);
+  color: white;
+  padding: 8px 12px;
+  border-radius: var(--radius-lg);
+  border: none;
+  cursor: pointer;
+  margin-top: 1.6rem; /* Adds space above the button */
+  position: relative;  /* Ensure 'top' behaves as expected if needed */
+  top: 0; /* Reset 'top' if you don't want to shift the button downward */
+}
+
+button:hover {
+  background-color: var(--color-secondary-dark);
+}
+
+.nav-button{
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  background: linear-gradient(to bottom, #f9f9f9, #e6e6e6);
+  color: rgb(32, 32, 32);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  border-radius: var(--radius-md);
+  margin: 0 10px;
+  box-shadow: var(--shadow-sm);
+  transition: background-color var(--transition), box-shadow var(--transition), transform var(--transition);
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.nav-button:hover {
+  background-color: #e5e5e5;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+  transform: scale(1.01);
+}
+
+.nav-button:active {
+  background-color: #d3d3d3;
+  transform: scale(0.98);
+}

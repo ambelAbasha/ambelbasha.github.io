@@ -1,0 +1,223 @@
+/* styles.css */
+
+/* Base styles for body and html */
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Outer container to center content */
+.outer-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container with box shadow and border */
+.container {
+    position: relative;
+    border: 5px solid lightgrey;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 30%;
+    margin-bottom: 20px;
+    background-color: #4CAF50;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Pseudo-elements for visual effects */
+.container::before,
+.container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.6), transparent);
+    border-radius: 10px;
+    transition: opacity 0.3s ease;
+}
+
+.container::before {
+    transform: skewX(-20deg) translateX(-100%);
+}
+
+.container::after {
+    transform: skewX(20deg) translateX(100%);
+}
+
+.container:hover::before,
+.container:hover::after {
+    opacity: 0.8;
+}
+
+/* Time container with gradient background and shadow */
+.time-container {
+    position: relative;
+    padding: 20px;
+    border-radius: 50px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.8));
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+/* Pseudo-elements for time container hover effects */
+.time-container::before,
+.time-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.6), transparent);
+    border-radius: 50px;
+    transition: opacity 0.3s ease;
+}
+
+.time-container::before {
+    transform: skewX(-180deg) translateX(-100%);
+}
+
+.time-container::after {
+    transform: skewX(180deg) translateX(100%);
+}
+
+.time-container:hover::before,
+.time-container:hover::after {
+    opacity: 0.8;
+}
+
+/* Return button styling */
+.return-button {
+    text-align: center;
+    margin-top: 160px;
+    margin-bottom: 100px;
+}
+
+/* Return button styles */
+.return-button button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), 0 4px 20px rgba(0, 0, 0, 0.3);
+    margin: 20px 0;
+}
+
+/* Glossy effect for button corners */
+.return-button button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top right, rgba(255, 255, 255, 0.6), transparent);
+    border-top-left-radius: 5px;
+    z-index: 1;
+}
+
+.return-button button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top left, rgba(255, 255, 255, 0.6), transparent);
+    border-top-right-radius: 5px;
+    z-index: 1;
+}
+
+.return-button button:hover::before,
+.return-button button:hover::after {
+    opacity: 0.8;
+}
+
+.return-button button:hover {
+    background-color: #076907;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3), 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.return-button button:active {
+    transform: scale(0.95);
+}
+
+/* Media queries for responsiveness */
+
+/* Adjustments for smaller screens */
+@media (max-width: 768px) {
+    .container {
+        margin-top: 15%;
+        margin-bottom: 15px;
+        padding: 15px;
+    }
+
+    .time-container {
+        font-size: 18px;
+        padding: 15px;
+    }
+
+    .return-button {
+        margin-top: 100px;
+        margin-bottom: 50px;
+    }
+
+    .return-button button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}
+
+/* Further adjustments for mobile devices */
+@media (max-width: 480px) {
+    .container {
+        margin-top: 10%;
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+
+    .time-container {
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    .return-button {
+        margin-top: 80px;
+        margin-bottom: 40px;
+    }
+
+    .return-button button {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+}

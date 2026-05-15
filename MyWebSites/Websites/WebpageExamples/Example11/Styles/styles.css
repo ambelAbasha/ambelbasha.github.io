@@ -1,0 +1,239 @@
+/* Body and HTML */
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+/* Outer container */
+.outer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+/* Container */
+.container {
+    width: 24%;
+    height: auto;
+    margin: 30%;
+    padding: 20px;
+    border: 1px solid #979b97;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adding box shadow */
+    background: linear-gradient(145deg, #c4c4c4, #ffffff); /* Adding gradient background */
+}
+
+/* Form */
+form {
+    text-align: center;
+}
+
+/* Input */
+input[type="number"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Submit button */
+.submit-button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: #45a049;
+}
+
+/* Message */
+#message {
+    margin-top: 20px;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+/* Pagination */
+#pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(to bottom, #f0f0f0, #dcdcdc); /* Gradient for glossy effect */
+    color: #333;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    margin: 0 5px;
+    border: 1px solid transparent;
+    position: relative; /* Position relative for pseudo-elements */
+    overflow: hidden; /* Ensure pseudo-elements do not overflow */
+    z-index: 0; /* Ensure pseudo-elements do not overlay text */
+    transition: background-color 0.3s, box-shadow 0.3s, border-color 0.3s; /* Smooth transition */
+}
+
+/* Glossy effect for top left corner */
+.pagination-button::before {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top right, rgba(255, 255, 255, 0.6), transparent);
+    border-top-left-radius: 5px;
+    z-index: 1; /* Ensures the pseudo-element is above the background */
+}
+
+/* Glossy effect for top right corner */
+.pagination-button::after {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top left, rgba(255, 255, 255, 0.6), transparent);
+    border-top-right-radius: 5px;
+    z-index: 1; /* Ensures the pseudo-element is above the background */
+}
+
+.pagination-button:hover {
+    background: linear-gradient(to bottom, #ccc, #bfbfbf); /* Change gradient */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    border-color: #999;
+}
+
+.current-page {
+    background: linear-gradient(to bottom, #35e4be, #20d5ec); /* Gradient for glossy effect */
+    color: rgb(72, 73, 73);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+/* Return button */
+.return-button {
+    position: absolute;
+    bottom: 140px; /* Maintaining the specified bottom position */
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-block; /* Added to center the button */
+}
+.return-button button {
+    padding: 10px 20px; /* Add padding to the button */
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative; /* Set position to relative for pseudo-elements */
+    overflow: hidden; /* Ensure pseudo-elements don't overflow */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), /* Light shadow */
+                0 4px 20px rgba(0, 0, 0, 0.3); /* Highlight from top */
+    margin: 20px 0; /* Ensure consistent margin */
+}
+
+/* Glossy effect for top left corner */
+.return-button button::before {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top right, rgba(255, 255, 255, 0.6), transparent);
+    border-top-left-radius: 5px; /* Adjust border radius as needed */
+    z-index: 1; /* Ensure the pseudo-element is above the background */
+}
+
+/* Glossy effect for top right corner */
+.return-button button::after {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top left, rgba(255, 255, 255, 0.6), transparent);
+    border-top-right-radius: 5px; /* Adjust border radius as needed */
+    z-index: 1; /* Ensure the pseudo-element is above the background */
+}
+
+.return-button button:hover::before,
+.return-button button:hover::after {
+    opacity: 0.8; /* Slightly increase opacity on hover */
+}
+
+.return-button button:hover {
+    background-color: #076907;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3), /* Light shadow */
+                0 4px 20px rgba(0, 0, 0, 0.4); /* Highlight from top */
+}
+
+.return-button button:active {
+    transform: scale(0.95); /* Slightly shrink the button on click */
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .container {
+        width: 40%; /* Adjust width for medium screens */
+        margin: 10%;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 60%; /* Adjust width for small screens */
+        margin: 5%;
+    }
+
+    .return-button {
+        bottom: 10px; /* Adjust the bottom positioning */
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 80%; /* Adjust width for mobile screens */
+        margin: 5%;
+    }
+
+    .return-button {
+        bottom: 10px; /* Further adjust the bottom positioning */
+    }
+
+    .submit-button {
+        width: 40%; /* Make the button take up full width on mobile */
+    }
+}
+
+
+

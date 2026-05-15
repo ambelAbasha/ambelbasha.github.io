@@ -1,0 +1,160 @@
+/* ===============================
+   Footer Wrapper
+================================== */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  background: linear-gradient(180deg, var(--color-bg-alt), var(--color-bg));
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 6px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.7s ease-out; /* Slow hide transition */
+  transform: translateY(100%); /* Hide initially */
+}
+
+/* ===============================
+   Footer Container
+================================== */
+.footer-container {
+  background: var(--color-bg);
+  padding: 2px 4px;
+  margin: 4px 0;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.2), inset 0 -4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-lg);
+  position: relative;
+  min-height: 50px;
+  opacity: 0;
+  pointer-events: auto;
+  transition: opacity 0.7s ease-out, transform 0.4s ease-out; /* Slow hide transition */
+}
+
+/* Initially hide the footer */
+footer, .footer-container {
+  transform: translateY(100%); /* Hide footer off-screen */
+  opacity: 0;
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out; /* Quick appear, smooth hide */
+}
+
+/* Visible state for footer */
+footer.visible, .footer-container.visible {
+  transform: translateY(0); /* Show footer in place */
+  opacity: 1;
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out; /* Fast appear */
+}
+
+/* ===============================
+   Link Sections
+================================== */
+.footer-links,
+.footer-about,
+.footer-this-page,
+.footer-social,
+.contact-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+
+/* Link styling for footer links */
+.footer-about a, .footer-this-page a, .footer-social a, .contact-section a, .footer-links a {
+  color: var(--color-accent-1);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover effects for footer links */
+.footer-about a:hover, .footer-this-page a:hover, .footer-social a:hover, .contact-section a:hover, .footer-links a:hover {
+  color: var(--color-secondary-dark);
+  transform: scale(1.0);
+}
+
+/* Underline effect with ::after pseudo-element for links */
+.footer-about a::after, .footer-this-page a::after, .footer-social a::after, .contact-section a::after, .footer-links a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: var(--color-primary);
+  left: 50%;
+  bottom: -4px;
+  transform: translateX(-50%) scaleX(0);
+  transition: width 0.3s ease-out, transform 0.2s ease-out;
+}
+
+/* Underline effect on hover for links */
+.footer-about a:hover::after, .footer-this-page a:hover::after, .footer-social a:hover::after, .contact-section a:hover::after, .footer-links a:hover::after {
+  width: 100%;
+  transform: translateX(-50%) scaleX(1);
+}
+
+/* Icon alignment for footer links */
+.footer-about i, .footer-this-page i, .footer-social i, .contact-section i, .footer-links i {
+  font-size: 0.65rem;
+  margin-top: -1px;
+}
+
+/* ===============================
+   Copyright Section
+================================== */
+.footer-copyright {
+  font-size: 0.5rem;
+  color: var(--color-accent-1);
+  margin-top: 4px;
+  margin-bottom: 0;
+  text-align: right;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: flex-end;
+  padding: 4px 0;
+  position: absolute;
+  bottom: 0;
+  animation: slideInFromRight 1s ease-out; /* Shortened time for smooth transition */
+  animation-fill-mode: forwards;
+}
+
+/* Keyframes for slide-in animation */
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%); /* Start off-screen to the right */
+    opacity: 0; /* Fully transparent */
+  }
+  100% {
+    transform: translateX(0); /* End at the original position */
+    opacity: 1; /* Fully visible */
+  }
+}
+
+/* Responsive: Stack Items Vertically on Smaller Screens */
+@media screen and (max-width: 768px) {
+  .footer-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  .footer-about, .footer-this-page, .footer-social, .contact-section {
+    gap: 10px;
+  }
+  .footer-copyright {
+    font-size: 0.8rem;
+  }
+}

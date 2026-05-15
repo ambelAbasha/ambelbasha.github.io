@@ -1,0 +1,198 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    min-height: 100vh;
+    position: relative;
+}
+
+nav {
+    margin-top: -9px;
+    margin-bottom: 10px;
+    background-color: #444;
+    color: #fff;
+    padding-bottom: 2px;
+    text-align: center;
+    display: flex; /* Add display flex */
+    justify-content: center; /* Horizontally center the links */
+    align-items: center; /* Vertically center the links */
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #666;
+}
+
+.container {
+    position: relative;
+    width: 96%;
+    min-height: 90vh;
+    margin: 1% auto;
+    padding-top: 6%;
+    background-image: url('Images/Background.jpg'); /* Set background image */
+    background-size: cover; /* Cover the entire container */
+    background-position: center; /* Center the background image */
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.banner {
+    position: absolute;
+    top: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 66.8%;
+    height:20px;
+    padding: 20px;
+    background-color: rgba(255, 192, 203, 0.7);
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+	border-color: #000000;
+	border: 1px solid;
+}
+
+.sidebar-left,
+.sidebar-right {
+    width: 32%;
+    height: 86%;
+    background-color: rgba(255, 251, 152, 0.7);
+    border-radius: 15px;
+    position: absolute;
+    top: 106px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-left {
+    left: 4px;
+    padding-top: 5%;
+    padding-bottom: 6%;
+	margin-bottom: 2%;
+}
+
+.sidebar-right {
+    right: 4px;
+    padding-top: 5%;
+    padding-bottom: 6%;
+	margin-bottom: 2%;
+}
+
+/* My additional styles */
+.central-area {
+    width: 34%;
+    margin: -6px 32.5% 14px 32.5%;
+    padding-top: 20px;
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-bottom: -10px;
+    background-color: rgba(173, 216, 230, 0.7);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column-reverse; /* Reversing the order */
+	border-color: #ffffff;
+	border: 1px solid;
+}
+
+.upper-central-container,
+.lower-central-container {
+    flex: 1;
+    border-radius: 15px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.upper-central-container {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.lower-central-container {
+    opacity: 0.7;
+    border-color: #ffffff;
+    border: 4px;
+}
+
+.upper-central-container h2,
+.upper-central-container form,
+.lower-central-container svg {
+    margin: 10;
+}
+
+.upper-central-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.upper-central-container label,
+.upper-central-container input,
+.upper-central-container button {
+    margin-bottom: 10px;
+}
+
+.upper-central-container input[type="number"] {
+    width: 100%;
+    margin: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+	border: none;
+}
+
+.upper-central-container button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px;
+	border-color: #000000;
+	border: 6px solid;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.upper-central-container button:hover {
+    background-color: #45a049;
+}
+
+.lower-central-container svg {
+    width: 200px; /* Adjust width as needed */
+    height: 200px; /* Adjust height as needed */
+    background-color: #ffcc00; /* Example color */
+    border-radius: 50%;
+    animation: drawNautilus 5s ease forwards;
+}
+
+/* Your Keyframes */
+@keyframes drawNautilus {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* My Keyframes */
+@keyframes drawNautilus {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}

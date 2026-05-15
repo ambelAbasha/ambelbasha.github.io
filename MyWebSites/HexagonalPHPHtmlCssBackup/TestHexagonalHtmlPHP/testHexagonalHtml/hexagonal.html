@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio webpage showcasing projects created by Ambel Basha.">
+    <meta name="keywords" content="portfolio, projects, web development, Ambel Basha">
+    <meta name="author" content="Ambel Basha">
+    <title>Webpages Projects</title>
+    <link rel="stylesheet" href="Styles/backgroundStyles.css"> <!-- Link to your CSS file -->
+    <!-- <link rel="stylesheet" href="./Styles/styles.css"> --> 
+    <script src="script.js" defer></script>
+    <!-- PHP script for fetching and displaying projects from the database -->
+</head>
+<body>
+    <div class="hex-container" id="hexContainer">
+        <!-- Hexagons will be dynamically added here -->
+    </div><div class="hex-container" id="hexContainer">
+        <!-- Hexagons will be dynamically added here -->
+    </div>
+    <div class="outer-container">
+        <div id="container" class="container">
+            <div class="hexagonal-frame">
+                <?php
+                    // Database connection details
+                    $servername = "localhost";
+                    $username = "root";
+                    $password = "";
+                    $dbname = "projects_db";
+
+                    // Attempt to connect to the database
+                    $conn = new mysqli($servername, $username, $password, $dbname);
+
+                    // Check connection
+                    if ($conn->connect_error) {
+                        die("Connection failed: " . $conn->connect_error);
+                    }
+
+                    // Set charset to UTF-8
+                    $conn->set_charset("utf8");
+
+                    // SQL query to fetch links from the database
+                    $sql = "SELECT title, description, url FROM projects LIMIT 7";
+                    $result = $conn->query($sql);
+
+                    // Check if there are any links in the database
+                    if ($result && $result->num_rows > 0) {
+                        $counter = 0;
+
+                        // Display links fetched from the database
+                        while($row = $result->fetch_assoc()) {
+                            if ($counter == 0 || $counter == 2 || $counter == 5) {
+                                echo '<div class="row">';
+                            }
+
+                            echo '<div class="hex" onclick="expandHex(this)">';
+                            echo '<a href="http://localhost/' . $row["url"] . '" target="_blank">' . $row["title"] . ' - ' . $row["description"] . '</a>';
+                            echo '</div>';
+
+                            $counter++;
+
+                            if ($counter == 2 || $counter == 5 || $counter == 7) {
+                                echo '</div>';
+                            }
+                        }
+                    } else {
+                        echo "No projects found.";
+                    }
+
+                    // Close the database connection
+                    $conn->close();
+                ?>
+            </div>
+        </div>
+    </div>
+    <!-- Banner -->
+    <div class="banner">
+        <h2>Webpages Projects</h2>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer glossy-line">
+        <ul>
+            <li><a href="../index.html" onclick="navigateLink(event, this)">Home</a></li>
+            <li><a href="./About/about.html" onclick="navigateLink(event, this)">About</a></li>
+            <li><a href="https://gr.linkedin.com/in/ambel-basha-367156123" target="_blank" rel="noopener noreferrer" onclick="navigateLink(event, this)">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Script to expand hexagon -->
+    <script>
+        function expandHex(element) {
+            // Add a class to the container to trigger expansion
+            document.getElementById('container').classList.add('expanded-container');
+
+            // Add a class to the clicked hex element to trigger expansion
+            element.classList.add('expanded');
+
+            // Use setTimeout to call the resetHex function after a certain duration
+            setTimeout(function() {
+                resetHex(element);
+            }, 3000);
+        }
+
+        function resetHex(element) {
+            // Remove the expanded class to revert the hex element to its original state
+            element.classList.remove('expanded');
+
+            // Remove the expanded-container class to revert the container to its original state
+            document.getElementById('container').classList.remove('expanded-container');
+        }
+
+        function navigateLink(event, link) {
+            event.preventDefault(); // Prevent the default action of opening a new tab
+
+            // Check if the link is already open in another tab
+            var existingTab = window.open(link.href, '_blank');
+            if (existingTab) {
+                existingTab.focus(); // If tab exists, focus on it
+            } else {
+                window.location.href = link.href; // Otherwise, open a new tab
+            }
+        }
+    </script>
+    <script src="Scripts/backgroundScript.js"></script> <!-- Link to JavaScript file -->
+    <script src="Scripts/script.js"></script> <!-- Link to JavaScript file -->
+</body>
+</html>

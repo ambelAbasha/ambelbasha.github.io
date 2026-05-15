@@ -1,0 +1,177 @@
+body, html {
+  height: 100%;
+  margin: 0;
+}
+.outer-container{
+  width: 99%;
+  height: auto;
+  align-items: center;
+
+}
+
+.container {
+  width: 30%;
+  max-width: 600px; /* Ensuring a maximum width for responsiveness */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) perspective(500px); /* Add perspective for 3D effect */
+  border-radius: 15px;
+  padding: 16px;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(200, 200, 200, 0.8), rgba(255, 255, 255, 0.8));
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2), 0 10px 15px rgba(0, 0, 0, 0.1); /* Deep 3D shadow */
+  overflow: auto; /* Add scrollbars if content overflows */
+  box-sizing: border-box; /* Ensures padding is included in the element’s total width/height */
+  z-index: 1;
+  transform-style: preserve-3d; /* Allow for 3D children to be visible */
+}
+
+/* Adding the inner shadow effect for depth */
+.container::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 15px;
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.3); /* Inner shadow for depth */
+  transform: translate(-50%, -50%) scale(0.98); /* Slightly shrink for "stuffed" effect */
+  z-index: -1; /* Put the inner shadow behind content */
+}
+
+/* Styling for h3 tag with the class 'h2' */
+.h2 {
+  display: block; /* Ensures it takes up full available width */
+  width: 100%; /* Makes sure it spans the full width of the container */
+  margin-top: 20px; /* Adding a bit more spacing at the top */
+  font-size: 1.8em; /* Slightly larger font size for better emphasis */
+  font-weight: bold;
+  color: #333; /* Dark grey color for text */
+  text-align: center; /* Center the text */
+  z-index: 4; /* Ensures the element is layered properly (if needed with other elements) */
+  text-transform: uppercase; /* Optional: makes the text uppercase for emphasis */
+  letter-spacing: 1px; /* Adds a slight spacing between letters for readability */
+  padding: 10px 0; /* Adds some padding to make the text block more distinct */
+  background-color: #f4f4f4; /* Light background color to make it stand out */
+  border-radius: 5px; /* Rounded corners for the background */
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1); /* Softer shadow, reduced blur for clearer effect */
+  margin-left: auto; /* Centers the element horizontally */
+  margin-right: auto; /* Centers the element horizontally */
+  text-rendering: optimizeLegibility; /* Improves text rendering for clarity */
+}
+
+/* Optional hover effect to make the text stand out when hovered */
+.h2:hover {
+  color: #007bff; /* Change the text color on hover */
+  background-color: #e0e0e0; /* Slightly darker background on hover */
+  /* Removed transform scale to avoid any blurriness */
+  transition: all 0.3s ease; /* Smooth transition for color */
+}
+
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  position: relative;
+  border-radius: 3px;
+  overflow: hidden; /* Ensure pseudo-elements don't overflow */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Light shadow */
+}
+
+/* Additional glossy effects for hover */
+table:hover::before,
+table:hover::after {
+  opacity: 0.8; /* Slightly increase opacity on hover */
+}
+
+/* Rest of your table styles */
+th, td {
+  border: 1px solid black;
+  padding: 6px; /* Decrease padding for smaller row height */
+  text-align: left;
+  font-size: 16px;
+}
+
+th:nth-child(1), th:nth-child(2) {
+  background-color: #add8e6;
+}
+
+td:nth-child(2) {
+  background-color: #313638;
+  color: green;
+  font-family: Monaco, monospace;
+}
+
+td:nth-child(odd) {
+  border-right: 1px solid white;
+}
+
+.return-button {
+  text-align: center; /* Center the button text */
+  position: absolute;
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Adjust to perfectly center the button */
+  bottom: 160px; /* Position the button from the bottom */
+}
+
+.return-button button {
+  padding: 10px 20px; /* Add padding to the button */
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  position: relative; /* Set position to relative for pseudo-elements */
+  overflow: hidden; /* Ensure pseudo-elements don't overflow */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), /* Light shadow */
+              0 4px 20px rgba(0, 0, 0, 0.3); /* Highlight from top */
+  margin: 20px 0; /* Ensure consistent margin */
+}
+
+/* Glossy effect for top left corner */
+.return-button button::before {
+  content: ""; /* Empty content for pseudo-element */
+  position: absolute; /* Absolute positioning */
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 50%;
+  background: linear-gradient(to top right, rgba(255, 255, 255, 0.6), transparent);
+  border-top-left-radius: 5px; /* Adjust border radius as needed */
+  z-index: 1; /* Ensure the pseudo-element is above the background */
+}
+
+/* Glossy effect for top right corner */
+.return-button button::after {
+  content: ""; /* Empty content for pseudo-element */
+  position: absolute; /* Absolute positioning */
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 50%;
+  background: linear-gradient(to top left, rgba(255, 255, 255, 0.6), transparent);
+  border-top-right-radius: 5px; /* Adjust border radius as needed */
+  z-index: 1; /* Ensure the pseudo-element is above the background */
+}
+
+.return-button button:hover::before,
+.return-button button:hover::after {
+  opacity: 0.8; /* Slightly increase opacity on hover */
+}
+
+.return-button button:hover {
+  background-color: #076907;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3), /* Light shadow */
+              0 4px 20px rgba(0, 0, 0, 0.4); /* Highlight from top */
+}
+
+.return-button button:active {
+  transform: scale(0.95); /* Slightly shrink the button on click */
+}

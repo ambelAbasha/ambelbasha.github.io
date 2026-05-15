@@ -1,0 +1,71 @@
+<!-- Web Development Section -->
+<div id="content-1" class="hover-text-content">
+    <h2 class="header">Web Development</h2>
+    <p>The <strong>"Web Development"</strong> section of my portfolio offers an overview of my more advanced projects, showcasing how I integrate various technologies to build fully functional websites. This section demonstrates my ability to handle both front-end and back-end development, incorporating responsive design principles, database management, and dynamic content rendering.</p>
+
+    <p><strong>Key Projects:</strong></p>
+    <ul>
+        <li><strong>1. Music Galaxy:</strong> A music database built with HTML, CSS, PHP, JavaScript, and SQL. Features include genre sorting, pagination, light/dark theme switch, Spotify API integration (work in progress), and user data encryption for privacy and safety.</li>
+        <li><strong>2. The Fly Now:</strong> An air travel booking website using PHP, HTML, CSS, and JavaScript. Users can create accounts, book tickets, and manage their bookings. The design is responsive and user-friendly.</li>
+        <li><strong>3. HTML & PHP Examples – Tools Demonstration:</strong> A collection of small to large code examples, showcasing my skills in HTML, PHP, JS, CSS, and MySQL. Features include interactive buttons, database integration, and responsive design across devices.</li>
+    </ul>
+
+    <p><strong>Technologies Used:</strong> HTML, JavaScript, Java, PHP, MySQL, SQL, CSS, AJAX. I focus on creating seamless, dynamic user experiences while ensuring security, responsiveness, and functionality. New projects are currently in development, with several ideas anticipated for integration in the near future.</p>
+
+    <!-- Read more section -->
+    <div id="extra-content-1" class="extra-content">
+        <p>Here are additional details on how I manage project timelines, handle collaborations, and ensure that everything adheres to the latest best practices in web development. These practices not only help in delivering high-quality products but also contribute to a seamless user experience.</p>
+    </div>
+
+    <!-- Read More Button Container -->
+    <div class="read-more-btn-container">
+        <button id="read-more-btn-1" class="read-more-btn" onclick="toggleReadMore(1)">Read More</button>
+    </div>
+</div>
+
+<!-- Cyber Security Section -->
+<div id="content-5" class="hover-text-content">
+    <h2 class="header">Cyber Security</h2>
+    <p><strong>Cyber Security</strong> is a key component across all my projects, from vulnerability prevention to securing custom databases. This section covers critical concepts for protecting digital systems, including:</p>
+    
+    <ul>
+        <li><strong>Known Vulnerabilities:</strong> Recognizing common software weaknesses and their impact.</li>
+        <li><strong>Cryptography & Cryptanalysis:</strong> Applying encryption and decryption for data security.</li>
+        <li><strong>Password Security:</strong> Implementing secure password management techniques.</li>
+        <li><strong>SQL Injection & Buffer Overflow:</strong> Preventing exploits like SQL injection and buffer overflows.</li>
+    </ul>
+
+    <p>I also contributed to the <strong>National Exercise Panoptis 2018</strong>, handling real-world cyber defense tasks, such as:</p>
+
+    <ul>
+        <li><strong>Linux Forensics:</strong> Investigating and addressing security breaches on Linux servers.</li>
+        <li><strong>Network Forensics:</strong> Monitoring traffic to detect unauthorized activity.</li>
+    </ul>
+
+    <p>My skills in <strong>Linux Scripting</strong>, <strong>SSH</strong>, and <strong>Telnet</strong> have been crucial for securing <strong>Raspberry Pi</strong> setups and integrating <strong>IoT</strong> projects like the <strong>Sense Hat</strong>, focusing on secure remote access via SSH.</p>
+
+    <!-- Read more section -->
+    <div id="extra-content-2" class="extra-content">
+        <p>Further details on my work with IoT devices like Raspberry Pi, how I applied security principles to real-world scenarios, and the latest trends in cyber defense can be found here. I focus on building secure, scalable solutions in the realm of cybersecurity.</p>
+    </div>
+
+    <!-- Read More Button Container -->
+    <div class="read-more-btn-container">
+        <button id="read-more-btn-2" class="read-more-btn" onclick="toggleReadMore(2)">Read More</button>
+    </div>
+</div>
+
+<!-- JavaScript to handle the "Read More" toggle -->
+<script>
+    function toggleReadMore(section) {
+        var extraContent = document.getElementById('extra-content-' + section);
+        var btn = document.getElementById('read-more-btn-' + section);
+        if (extraContent.style.display === 'none') {
+            extraContent.style.display = 'block';
+            btn.textContent = 'Read Less';
+        } else {
+            extraContent.style.display = 'none';
+            btn.textContent = 'Read More';
+        }
+    }
+</script>

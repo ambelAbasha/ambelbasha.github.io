@@ -1,0 +1,750 @@
+:root {
+  /* ===============================
+     Colors
+  =============================== */
+  --color-bg-dark: #001f21;
+  --color-bg-mid: #003135;
+  --color-bg-light: #00565c;
+  --color-cyan-dark: #0c7075;
+  --color-hex-gradient-start: #666666;
+  --color-hex-gradient-end: #ffffff;
+  --color-glass-bg: rgba(0, 0, 0, 0.6);
+  --color-glass-overlay-1: rgba(255, 255, 255, 0.6);
+  --color-glass-overlay-2: rgba(0, 0, 0, 0.4);
+  --color-outline: #f0f0f0;
+  --color-link-hover: rgb(76, 0, 255);
+  --color-triangle: #ffffff;
+  --color-footer-bg: rgba(32, 32, 32, 0.8);
+
+  /* ===============================
+     Typography
+  =============================== */
+  --font-primary: Arial, Helvetica, sans-serif;
+  --font-size-small: 11px;
+  --font-size-base: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 20px;
+  --font-weight-bold: bold;
+
+  /* ===============================
+     Layout Sizes & Spacing
+  =============================== */
+  --hex-width: 154px;
+  --hex-height: 170.5px;
+  --hex-gap: 11px;
+  --container-padding: 120px;
+  --footer-height: 36px;
+  --footer-radius: 8px;
+
+  /* Spacing scale (vertical & horizontal paddings/margins) */
+  --space-xxs: 2px;
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
+  --space-3xl: 48px;
+
+  /* Shadows & Radii */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 2px 6px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  /* Transition */
+  --transition: 0.3s ease;
+  --transition-fast: 0.2s ease;
+
+  /* cyan RGB helper for sweep (RGB of --color-cyan-dark: #0c7075) */
+  --cyan-r: 12,112,117;
+}
+
+/* General body styles */
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom right, #003135, #001f21, #00565c); /* Refined gradient within dark cyan/teal spectrum */
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 120px; /* Make space for the footer */
+}
+
+/* ---------------------------
+   Hex container + single-run sweep
+   --------------------------- */
+.hex-container {
+    position: relative;
+    width: calc(100vw + 100px); /* Make width larger than left shift */
+    height: calc(100vh + 150px);
+    overflow: hidden;
+    perspective: 1000px;
+    transform: translateY(-220px) translateX(-84px);
+    z-index: 0; /* base layer */
+}
+
+/* Smooth single-run cyan-tinted sweep (updated visibility & blur) */
+.hex-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -200%;            /* start well offscreen */
+  width: 400%;            /* wide band that will slide across */
+  height: 100%;
+  /* Multi-stop translucent gradient for soft edges + stronger center */
+  background: linear-gradient(
+    120deg,
+    rgba(var(--cyan-r), 0) 30%,         /* No visible light at start */
+    rgba(var(--cyan-r), 0.1) 42%,       /* Slightly visible */
+    rgba(var(--cyan-r), 0.3) 50%,       /* Light cyan center */
+    rgba(var(--cyan-r), 0.6) 95%,       /* Strong peak */
+    rgba(var(--cyan-r), 0.3) 58%,       /* Soft tailout */
+    rgba(var(--cyan-r), 0) 70%          /* No visible light at the end */
+  );
+
+  filter: blur(6px);                /* Softer, less aggressive blur */
+  mix-blend-mode: screen;           /* Allow blend with background */
+  pointer-events: none;
+  z-index: -5;
+  will-change: transform, opacity;
+
+  /* Smooth, graceful single-run animation */
+  animation: sweep 6s cubic-bezier(.22, .9, .34, 1) 1 forwards;
+}
+
+/* Smooth fade-in, glide across, then smooth fade-out */
+@keyframes sweep {
+  0%   { transform: translateX(-50%); opacity: 0; }
+  10%  { opacity: 0.55; }            /* gentle fade-in */
+  50%  { transform: translateX(0%); opacity: 1; }  /* center / peak */
+  90%  { opacity: 0.22; }            /* start fading smoothly */
+  100% { transform: translateX(50%); opacity: 0; } /* offscreen & invisible */
+}
+
+.hexagon {
+    position: absolute;
+    width: 154px;
+    height: 170.5px;
+    background: linear-gradient(to top, #666666, #ffffff);
+    clip-path: polygon(
+        50% 0%,
+        100% 25%,
+        100% 75%,
+        50% 100%,
+        0% 75%,
+        0% 25%
+    );
+    transform-style: preserve-3d;
+    transform: rotate(90deg); /* Rotate hexagon by 90 degrees */
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    margin: 1px 2px;
+    box-sizing: border-box;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/*
+Center the number inside the hexagon without rotation 
+.hexagon-number {
+    font-size: 16px;
+    color: #000000;
+    transform: rotate(-90deg); /* Counteract the 90-degree rotation of the hexagon 
+}
+*/
+
+/* Hexagon pseudo-elements */
+.hexagon::before,
+.hexagon::after {
+    content: '';
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    background-color: inherit;
+    clip-path: inherit;
+    transform-style: preserve-3d;
+}
+
+/* Extend white shiny effect over hexagons */
+.hexagon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0)); /* Gradient for diagonal light shade */
+    clip-path: polygon(
+        0% 0%,
+        100% 0%,
+        0% 100% /* Updated to start from top left to bottom right */
+    );
+    transform-style: preserve-3d;
+    z-index: 1; /* Ensure it's above the hexagon */
+    pointer-events: none; /* Ignore pointer events on this pseudo-element */
+    opacity: 0.7; /* Adjust opacity for subtle shine effect */
+    transition: opacity 0.3s ease-in-out; /* Smooth transition for shine effect */
+    box-shadow:
+        inset -5px -5px 10px rgba(255, 255, 255, 0.9), /* Base shine */
+        inset 5px 5px 10px rgba(255, 255, 255, 0.7); /* Soft shine */
+}
+
+/* Hover effect on hexagons */
+.hexagon:hover::before {
+    opacity: 1; /* Fully visible shine on hover */
+}
+
+.hexagon:hover {
+    transform: rotate(0deg) scale(1.05); /* Rotate and slightly scale up hexagon */
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.5), /* Increased shadow */
+        0 10px 20px rgba(0, 0, 0, 0.4); /* Soft shadow */
+}
+
+/* Glass effect for hexagons */
+.hexagon.glass {
+    position: relative; /* Ensure relative positioning for pseudo-element */
+    background: rgba(0, 0, 0, 0.6); /* Darker semi-transparent background for base */
+    border: none; /* No border for glass hexagons */
+    transition: all 0.3s ease-in-out; /* Smooth transition for hover effect */
+    overflow: hidden; /* Ensure contents don't overflow */
+}
+
+/* Add the glass effect overlay */
+.hexagon.glass::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to bottom right, 
+        rgba(255, 255, 255, 0.6), /* Darker black */
+        rgba(255, 255, 255, 0.8) 50%, 
+        rgba(0, 0, 0, 0.4) 50%, 
+        rgba(226, 222, 222, 0.9) /* Slightly lighter black */
+    ); /* Darker black gradient for glass effect */
+    clip-path: polygon(
+        50% 0%, 
+        100% 25%, 
+        100% 75%, 
+        50% 100%, 
+        0% 75%, 
+        0% 25%
+    ); /* Match the hexagon shape */
+    opacity: 0.4; /* Adjust transparency for more pronounced effect */
+    transform: rotate(0deg) scale(1.05); /* Slight rotation and scaling for effect */
+    z-index: 1; /* Ensure it's above the hexagon */
+    pointer-events: none; /* Ignore pointer events on this pseudo-element */
+    transition: opacity 0.3s ease-in-out; /* Smooth transition for shine effect */
+    box-shadow:
+        inset -5px -5px 10px rgba(3, 9, 36, 0.8), /* Darker black inset shadow */
+        inset 5px 5px 10px rgba(255, 255, 255, 0.7), /* Darker inset shadow */
+        0px 0px 8px rgba(0, 0, 0, 0.5); /* Soft highlight */
+}
+
+/* Hexagon pseudo-elements */
+.hexagon::before,
+.hexagon::after {
+    content: '';
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    background-color: inherit;
+    clip-path: inherit;
+    transform-style: preserve-3d;
+}
+
+/* Extend white shiny effect over hexagons */
+.hexagon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0)); /* Slightly lighter gradient for shine */
+    clip-path: polygon(
+        0% 0%,
+        100% 0%,
+        0% 100%
+    );
+    transform-style: preserve-3d;
+    z-index: 1; /* Ensure it's above the hexagon */
+    pointer-events: none; /* Ignore pointer events on this pseudo-element */
+    opacity: 0.5; /* Adjust opacity for subtle shine effect */
+    transition: opacity 0.3s ease-in-out; /* Smooth transition for shine effect */
+    box-shadow:
+        inset -5px -5px 10px rgba(255, 255, 255, 0.8), /* Slightly lighter white inset shadow */
+        inset 5px 5px 10px rgba(255, 255, 255, 0.9), /* Black inset shadow */
+        0px 0px 8px rgba(255, 255, 255, 0.7); /* Soft highlight */
+}
+
+/* Hover effect on hexagons with glass effect */
+.hexagon.glass:hover::before {
+    opacity: 0.9; /* Increase opacity on hover */
+    transform: rotate(0deg) scale(1.1); /* Slightly larger on hover for better effect */
+}
+
+.hexagon.glass:hover {
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.5), /* Increased shadow on hover */
+        0 10px 20px rgba(0, 0, 0, 0.4); /* Lighter shadow */
+}
+
+/* Animated background hexagons */
+@keyframes slide-background {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: -100% -100%;
+    }
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .container {
+        width: 280px; /* Adjusted width for smaller screens */
+        height: 340px; /* Adjusted height for smaller screens */
+    }
+}
+/* Outer container styles */
+.outer-container {
+    position: relative;
+    width: 620px;
+    height: 620px;
+    margin: 26px auto;
+    top: -71.6%;
+    transform: translateY(-57.2%);
+
+    left:-11.5px;
+    transform-origin: top left;
+    /* border: 1px solid rgb(69, 245, 0); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 320px;
+}
+
+/* Container styles */
+.container {
+    width: 314px; /* Further reduced width */
+    height: 398px; /* Further reduced height */
+    display: flex;
+    flex-wrap: wrap;
+    padding: 120px; /* Added padding */
+    justify-content: center;
+    align-items: center;
+    gap: 11px; /* Reduced the gap between hexagons horizontally */
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.1),
+        rgba(255, 255, 255, 0)
+    ),
+    linear-gradient(to left, rgba(255, 255, 255, 0.2), rgba(179, 180, 179, 0));
+    background-blend-mode: lighten;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.08);
+    border-radius: 25px;
+    overflow: hidden;
+    transform: rotate(-45.90deg); /* Rotate the hexagonal grid */
+    clip-path: polygon(
+        50% 0%,
+        100% 25%,
+        100% 75%,
+        50% 100%,
+        0% 75%,
+        0% 25%
+    );
+    /* border: 1px solid rgb(69, 245, 0); For debugging reasons */
+}
+
+/* Adjusted hexagonal frame */
+.hexagonal-frame {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    left: 17px;
+    gap: 0px; /* Adjusted horizontal gap between hexagons */
+    background: radial-gradient(circle, #0a0a0a27 0%, #00000054 20%, rgba(6, 93, 15, 0) 50%);
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    top: 0;
+    transform: rotate(-60.05deg);
+    clip-path: polygon(
+        50% 0%,
+        100% 25%,
+        100% 75%,
+        50% 100%,
+        0% 75%,
+        0% 25%
+    );
+   /*border: 1px solid white; /* White border around hexagonal frame */
+}
+
+/* Row styles for tighter vertical spacing */
+.row {
+    display: flex;
+    justify-content: center;
+    gap: 1.1px; /* Keep horizontal gap minimal */
+    margin-top: -15.5px; /* Apply negative margin to bring rows closer */
+    margin-left: -9.5px; /* Adjust for horizontal alignment */
+}
+
+/* Remove additional bottom margin for hexagons in the first row */
+.row:not(.second-row) .hex {
+    margin-bottom: -24px; /* Apply a tighter bottom margin */
+}
+
+/* Adjust top and bottom margins for hexagons in the second row */
+.row.second-row .hex {
+    margin-top: -22px; /* Reduce top margin to tighten spacing */
+    margin-bottom: 8px; /* Adjust bottom margin as needed */
+}
+
+/* Adjust the left margin between hexagons within a row */
+.row:not(.second-row) .hex + .hex {
+    margin-left: 3px; /* Adjust horizontal spacing as needed */
+}
+
+.hex {
+    position: relative;
+    width: 127px;
+    height: 151px;
+    clip-path: polygon(
+        50% 0%,
+        100% 25%,
+        100% 75%,
+        50% 100%,
+        0% 75%,
+        0% 25%
+    );
+    padding: 11px;
+    border: 3px solid inline #e2e2e2; /* Ensures visible outer border */
+    box-shadow: 
+        inset 0 15px 20px rgba(255, 255, 255, 0.3), 
+        inset 0 -10px 18px rgba(2, 197, 155, 0.25),
+        0 10px 20px rgba(0, 0, 0, 0.2),
+        0 8px 16px rgba(0, 0, 0, 0.2);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    will-change: transform, box-shadow;
+    z-index: 3;
+    overflow: hidden;
+    margin-left: -1px;
+    margin-bottom: -22px;
+    margin-top: -16.5px;
+
+    background-image: linear-gradient(
+        145deg,
+        rgba(5, 220, 228, 0.35) 0%,
+        rgba(3, 163, 182, 0.3) 30%,
+        rgba(0, 95, 115, 0.25) 100%
+    );
+    border-radius: 12px;
+
+    /* Optional: Add a soft glow effect */
+    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.1));
+}
+
+.hex::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 160%;
+    height: 160%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    background: radial-gradient(
+        circle at center,
+        rgba(0, 0, 0, 0.685) 0%,
+        rgba(0, 0, 0, 0) 70%
+    );
+    z-index: 1;
+}
+
+.hex::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(
+        50% 0%,
+        100% 25%,
+        100% 75%,
+        50% 100%,
+        0% 75%,
+        0% 25%
+    );
+    background: transparent;
+    box-shadow: 0 0 0 2px rgba(28, 5, 233, 0.6);
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Add this to your CSS file or within a <style> block */
+
+/* Floating animation with rotation */
+@keyframes floatIn {
+  0% {
+    transform: translateY(-100px) rotate(45deg); /* Start above with a 45-degree rotation */
+    opacity: 0; /* Invisible at the start */
+  }
+  100% {
+    transform: translateY(0) rotate(0deg); /* Final position without rotation */
+    opacity: 1; /* Fully visible */
+  }
+}
+
+/* Hexagon styling with animation */
+.hex {
+  animation: floatIn 1s ease-out forwards;
+  transition: transform 0.5s ease-out; /* Smooth transition when triggered */
+  opacity: 0; /* Initially hidden until animation runs */
+}
+
+.hex::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 160%;
+    height: 160%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    background: radial-gradient(
+        circle at center,
+        rgba(0, 0, 0, 0.685) 0%,
+        rgba(0, 0, 0, 0) 70%
+    );
+    z-index: 1;
+}
+
+.hex::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(
+        50% 0%,
+        100% 25%,
+        100% 75%,
+        50% 100%,
+        0% 75%,
+        0% 25%
+    );
+    background: transparent;
+    box-shadow: 0 0 0 2px rgba(28, 5, 233, 0.6);
+    z-index: 2;
+    pointer-events: none;
+}
+
+/*  block */
+.hex a {
+    background: none;
+    color: #ca0738;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    transform: rotate(60deg);
+    transform-origin: center center;
+    z-index: 1003;
+}
+
+.hex .line-top,
+.hex .line-bottom {
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: linear-gradient(to right, transparent, yellow, transparent);
+    z-index: 1004;
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+.yellow-line {
+    width: 100%;
+    height: 4px;
+    background-color: yellow;
+    margin: 10px 0;
+    animation: slideLine 2s ease-in-out;
+}
+
+.hex:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    background-color: var(--color-);
+}
+
+.hex:hover a {
+    color: rgb(211, 157, 8);
+    font-size: 11px;
+}
+
+.hex.expanded {
+    transform: scale(1.2);
+}
+
+/* Triangle at the bottom of the container */
+.triangle {
+  position: absolute;
+  bottom: -8%; /* Move the triangle lower */
+  left: 52%; /* Center horizontally */
+  transform: translateX(-52%); /* Adjust for horizontal centering */
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #ffffff; /* White triangle pointing downward */
+  z-index: 2; /* Ensure it’s on top */
+}
+
+/* Overlay to extend the hover area */
+.triangle-overlay {
+  position: absolute;
+  top: -25px; /* Adjust the top to extend the area above the triangle */
+  bottom: -15px; /* Extend below the triangle to create a larger hover area */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Adjust for horizontal centering */
+  width: 40px; /* Extend size to cover padding area */
+  height: 40px; /* Extend size to cover padding area */
+  z-index: 1; /* Ensure it’s below the triangle but still covers the hover area */
+}
+
+/* Show footer when either the triangle or its overlay is hovered */
+.outer-container:hover .footer,
+.triangle:hover ~ .footer,
+.triangle-overlay:hover ~ .footer {
+    opacity: 1; /* Show footer */
+}
+
+/* Error message styles */
+.error-message {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #f44336; /* Red background for visibility */
+    border: 1px solid #bb160a;
+    color: white; /* White text */
+    position: fixed; /* Position fixed to handle layout properly */
+    top: 50%; /* Vertically center */
+    left: 50%; /* Horizontally center */
+    transform: translate(-50%, -50%) rotate(59.7deg); /* Center the element and rotate */
+    z-index: 1000; /* Ensure it appears on top */
+    border-radius: 5px; /* Optional: Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Subtle shadow for better visibility */
+    opacity: 0.9;
+}
+.modal {
+    display: none;  /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);  /* Overlay */
+    padding-top: 100px;
+}
+.modal-content {
+    background-color: #fff;
+    margin: 12.8% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 16px;
+    width: 28%;
+    max-height: 150px;
+}
+.button-container {
+    pointer-events: auto; /* Ensure the buttons are clickable */
+}
+
+.modal-content {
+    pointer-events: auto; /* Allow interactions inside the modal */
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-around;
+}
+.button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.button:hover {
+    background-color: #45a049;
+}
+
+
+.modal h2{
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.modal p{
+    text-align: center;
+    font-size: 16px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.button {
+    padding: 8px 16px;
+    margin: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 4px;
+    background-color: #09a81e;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #077b13; /* Darker shade on hover */
+}
+
+.button:active {
+    background-color: #065d0f; /* Even darker shade on click */
+}

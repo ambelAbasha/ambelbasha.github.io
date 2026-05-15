@@ -1,0 +1,508 @@
+/* Specific styles for top, bottom, left, and right hexagons */
+.hexagon.top-left {
+    background: linear-gradient(to top right, #444444, #070707); /* Dark grey to light grey */
+}
+
+.hexagon.top-right {
+    background: linear-gradient(to top left, #b98f05, #ce0101); /* Dark grey to light grey */
+}
+
+.hexagon.bottom-left {
+    background: linear-gradient(to bottom right, #ffffff, #020202); /* Dark grey to light grey */
+}
+
+.hexagon.bottom-right {
+    background: linear-gradient(to bottom left, #0a0a0a, #ffffff); /* Dark grey to light grey */
+}
+
+.hexagon.top {
+    background: linear-gradient(to top, #444444, #ffffff); /* Dark grey to light grey */
+}
+
+.hexagon.bottom {
+    background: linear-gradient(to bottom, #504d4d, #ffffff); /* Dark grey to light grey */
+}
+
+.hexagon.left {
+    background: linear-gradient(to left, #868585, #969595); /* Dark grey to light grey */
+}
+
+.hexagon.right {
+    background: linear-gradient(to right, #444444, #ffffff); /* Dark grey to light grey */
+}
+/* Light Gray Variations */
+.hexagon:nth-child(19) { background: #f0f0f0; box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1)!important; }
+.hexagon:nth-child(20) { background: #d9d9d9; box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); }
+.hexagon:nth-child(21) { background: #c0c0c0; box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3); }
+.hexagon:nth-child(22) { background: #a9a9a9; box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4); }
+.hexagon:nth-child(23) { background: #808080; box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5); }
+.hexagon:nth-child(24) { background: #696969; box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6); }
+.hexagon:nth-child(25) { background: #585858; box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7); }
+.hexagon:nth-child(26) { background: #3c3c3c; box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8); }
+.hexagon:nth-child(21) {
+    background: linear-gradient(to right, #161616, #ffffff) !important;
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.2) ,
+        0 5px 10px rgba(0, 0, 0, 0.2) !important;
+}
+
+.hexagon:nth-child(22) {
+    background: linear-gradient(to right, #161616, #ffffff) !important;
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.2) ,
+        0 5px 10px rgba(0, 0, 0, 0.2) !important;
+}
+
+.hexagon:nth-child(23) {
+    background: linear-gradient(to right, #161616, #ffffff) !important;
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.2) ,
+        0 5px 10px rgba(0, 0, 0, 0.2) !important;
+}
+
+.hexagon:nth-child(24) {
+    background: linear-gradient(to right, #161616, #ffffff) !important;
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.2) ,
+        0 5px 10px rgba(0, 0, 0, 0.2) !important;
+}
+
+.hexagon:nth-child(26) {
+    background: linear-gradient(to right, #cecdcd, #ffffff) !important;
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.2) ,
+        0 5px 10px rgba(0, 0, 0, 0.2) !important;
+}
+/* Solid White with Light Shadows */
+.hexagon:nth-child(37),
+.hexagon:nth-child(41) { 
+    background: #FFFFFF;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.1); 
+}
+.hexagon:nth-child(38) { background: #ffffff; box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); }
+
+/* Solid Black with Strong Shadows */
+.hexagon:nth-child(6),
+.hexagon:nth-child(10),
+.hexagon:nth-child(12),
+.hexagon:nth-child(28),
+.hexagon:nth-child(45) {
+    background: #000000;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 15px 20px rgba(0, 0, 0, 0.4);
+}
+.hexagon:nth-child(39),
+.hexagon:nth-child(40),
+.hexagon:nth-child(49) {
+    background: #000000;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), 0 10px 15px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Dark Gray Gradient */
+.hexagon:nth-child(7),
+.hexagon:nth-child(9),
+.hexagon:nth-child(36),
+.hexagon:nth-child(42) {
+    background: linear-gradient(to bottom right, #111111, #000000) !important;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5), 0 12px 18px rgba(0, 0, 0, 0.4);
+}
+
+/* Unique Styles */
+.hexagon:nth-child(4) {
+    background: linear-gradient(to right, #161616, #ffffff) !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+.hexagon:nth-child(27) {
+    background: #c9c8c8;
+    box-shadow: 0 5px 10px rgba(116, 111, 111, 0.9);
+}
+.hexagon:nth-child(29) { background: #f0f0f0; box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); }
+.hexagon:nth-child(30) { background: #d9d9d9; box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); }
+.hexagon:nth-child(31) { background: #c0c0c0; box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3); }
+.hexagon:nth-child(32) { background: #a9a9a9; box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4); }
+.hexagon:nth-child(33) { background: #808080; box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5); }
+.hexagon:nth-child(34) { background: #696969; box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6); }
+.hexagon:nth-child(43) { background: #8c8c8c; box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5); }
+.hexagon:nth-child(44) { background: #777777; box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6); }
+.hexagon:nth-child(45) { background: #073b01; box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6); }
+.hexagon:nth-child(50) {
+    background: linear-gradient(to bottom right, #1f1d1d, #ffffff) !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), 0 10px 15px rgba(0, 0, 0, 0.3);
+}
+
+.hexagon:nth-child(37) {
+    background: linear-gradient(to right, #161616, #ffffff) !important; /* Light to dark gradient */
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.2) , /* Stronger shadow from top right */
+        0 5px 10px rgba(0, 0, 0, 0.2) !important; /* Lighter shadow on left */
+}
+
+.hexagon:nth-child(39) {
+    background: linear-gradient(to right, #161616, #000000) !important; /* Light to dark gradient */
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.2) , /* Stronger shadow from top right */
+        0 5px 10px rgba(0, 0, 0, 0.2) !important; /* Lighter shadow on left */
+}
+.hexagon:nth-child(53) {
+    background: linear-gradient(to bottom right, #1f1d1d, #0c0c0c) !important; /* Gradient from dark to light */
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.3), /* Strong shadow for depth */
+        0 10px 15px rgba(0, 0, 0, 0.2); /* Softer shadow */
+}
+.hexagon:nth-child(54) {
+    background: linear-gradient(to bottom right, #0c0c0c, #000000) !important; /* Gradient from dark to light */
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.3), /* Strong shadow for depth */
+        0 10px 15px rgba(0, 0, 0, 0.2); /* Softer shadow */
+}
+
+.hexagon:nth-child(55) {
+    background: #000000 !important; /* Darker gray */
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.4), /* Slightly deeper shadow */
+        0 10px 15px rgba(0, 0, 0, 0.3);
+}
+
+.hexagon:nth-child(56) {
+    background: #333333; /* Dark gray */
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.5), /* Strong shadow */
+        0 10px 15px rgba(0, 0, 0, 0.4);
+}
+
+.hexagon:nth-child(57) {
+    background: linear-gradient(to right, #161616, #ffffff) !important;
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.2) ,
+        0 5px 10px rgba(0, 0, 0, 0.2) !important;
+}
+
+.hexagon:nth-child(58) {
+    background: linear-gradient(to bottom right, #0a0a0a, #000000) !important; /* Dark gray gradient */
+    box-shadow:
+        0 12px 28px rgba(0, 0, 0, 0.5),
+        0 12px 18px rgba(0, 0, 0, 0.4);
+}
+
+.hexagon:nth-child(59) {
+    background: #1a1a1a; /* Very dark shade */
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.8), /* Strong shadow */
+        0 10px 15px rgba(0, 0, 0, 0.7);
+}
+
+.hexagon:nth-child(60) {
+    background: #111111; /* Almost black */
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.9), /* Intense shadow */
+        0 10px 15px rgba(0, 0, 0, 0.8);
+}
+
+.hexagon:nth-child(61) {
+    background: #000000; /* Solid black */
+    box-shadow:
+        0 15px 30px rgba(0, 0, 0, 1), /* Deep black shadow */
+        0 15px 20px rgba(0, 0, 0, 0.9); /* Extra depth */
+}
+
+.hexagon:nth-child(65),
+.hexagon:nth-child(70),
+.hexagon:nth-child(71),
+.hexagon:nth-child(72),
+.hexagon:nth-child(86),
+.hexagon:nth-child(87),
+.hexagon:nth-child(97) {
+    background: #000000 !important; /* Solid black with higher priority */
+    box-shadow: none !important; /* Remove any shadows to avoid conflicts */
+}
+.hexagon:nth-child(67) {
+    background: linear-gradient(to bottom right, #111111, #000000) !important; /* Dark gray gradient */
+    box-shadow:
+        0 12px 28px rgba(0, 0, 0, 0.5),
+        0 12px 18px rgba(0, 0, 0, 0.4);
+}
+.hexagon:nth-child(69) {
+    background: linear-gradient(to bottom right, #111111, #000000) !important; /* Dark gray gradient */
+    box-shadow:
+        0 12px 28px rgba(0, 0, 0, 0.5),
+        0 12px 18px rgba(0, 0, 0, 0.4);
+}
+
+.hexagon:nth-child(73) {
+    background: linear-gradient(to bottom right, #030303, #000000) !important; /* Almost black to dark gray */
+    box-shadow:
+        0 13px 30px rgba(0, 0, 0, 0.6),
+        0 13px 20px rgba(0, 0, 0, 0.5);
+}
+.hexagon:nth-child(75) {
+    background: linear-gradient(to bottom right, #030303, #000000) !important; /* Almost black to dark gray */
+    box-shadow:
+        0 13px 30px rgba(0, 0, 0, 0.6),
+        0 13px 20px rgba(0, 0, 0, 0.5);
+}
+.hexagon:nth-child(83) {
+    background: linear-gradient(to bottom right, #111111, #000000) !important; /* Dark gray gradient */
+    box-shadow:
+        0 12px 28px rgba(0, 0, 0, 0.5),
+        0 12px 18px rgba(0, 0, 0, 0.4);
+}
+.hexagon:nth-child(85) {
+    background: linear-gradient(to bottom right, #161616, #000000) !important; /* Darker gradient */
+    box-shadow:
+        0 14px 32px rgba(0, 0, 0, 0.7),
+        0 14px 22px rgba(0, 0, 0, 0.6);
+}
+
+.hexagon:nth-child(88) {
+    background: linear-gradient(to bottom right, #141414, #000000) !important; /* Very dark gray gradient */
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.8),
+        0 15px 25px rgba(0, 0, 0, 0.7);
+}
+
+.hexagon:nth-child(98) {
+    background: linear-gradient(to right, #0f0f0f, #141414); /* Light to dark gradient */
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.3) , /* Stronger shadow from top right */
+        0 10px 15px rgba(0, 0, 0, 0.3) !important; /* Lighter shadow on left */
+    background: #000000 !important; /* Solid black with higher priority */
+    box-shadow: none !important; /* Remove any shadows to avoid conflicts */
+}
+.hexagon:nth-child(100) {
+    background: linear-gradient(to bottom right, #111111, #000000) !important; /* Dark gray gradient */
+    box-shadow:
+        0 12px 28px rgba(0, 0, 0, 0.5),
+        0 12px 18px rgba(0, 0, 0, 0.4);
+}
+.hexagon:nth-child(102) {
+    background: linear-gradient(to bottom right, #101010, #000000) !important; /* Deep dark gradient */
+    box-shadow:
+        0 16px 37px rgba(0, 0, 0, 0.85),
+        0 16px 27px rgba(0, 0, 0, 0.75);
+}
+
+.hexagon:nth-child(103) {
+    background: linear-gradient(to bottom right, #0e0e0e, #000000) !important; /* Darker black gradient */
+    box-shadow:
+        0 17px 40px rgba(0, 0, 0, 0.9),
+        0 17px 30px rgba(0, 0, 0, 0.8);
+}
+
+.hexagon:nth-child(104) {
+    background: linear-gradient(to bottom right, #000000, #000000) !important; /* Very dark gradient */
+    box-shadow:
+        0 18px 42px rgba(0, 0, 0, 0.95),
+        0 18px 32px rgba(0, 0, 0, 0.85);
+}
+
+.hexagon:nth-child(106) {
+    background: linear-gradient(to bottom right, #000000, #080808) !important; /* Very dark gradient */
+    box-shadow:
+        0 18px 42px rgba(0, 0, 0, 0.95),
+        0 18px 32px rgba(0, 0, 0, 0.85);
+}
+
+.hexagon:nth-child(68) {
+    background: linear-gradient(to right, #161616, #ffffff) !important;
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.2) ,
+        0 5px 10px rgba(0, 0, 0, 0.2) !important;
+}
+
+.hexagon:nth-child(74) {
+    background: linear-gradient(to right, #161616, #ffffff) !important;
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.2) ,
+        0 5px 10px rgba(0, 0, 0, 0.2) !important;
+}
+
+.hexagon:nth-child(84) {
+    background: linear-gradient(to right, #161616, #ffffff) !important;
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.2) ,
+        0 5px 10px rgba(0, 0, 0, 0.2) !important;
+}
+
+.hexagon:nth-child(89) {
+    background: linear-gradient(to right, #161616, #ffffff) !important;
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.2) ,
+        0 5px 10px rgba(0, 0, 0, 0.2) !important;
+}
+
+.hexagon:nth-child(101) {
+    background: linear-gradient(to right, #161616, #ffffff) !important;
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.2) ,
+        0 5px 10px rgba(0, 0, 0, 0.2) !important;
+}
+
+.hexagon:nth-child(105) {
+    background: linear-gradient(to right, #161616, #ffffff) !important;
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.2) ,
+        0 5px 10px rgba(0, 0, 0, 0.2) !important;
+}
+.hexagon:nth-child(117) {
+    background: linear-gradient(to right, #ffffff, #797676) !important;
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.2) ,
+}
+.hexagon:nth-child(118) {
+    background: linear-gradient(to right, #ffffff, #797676) !important;
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.2) ,
+}
+.hexagon:nth-child(119) {
+    background: linear-gradient(to right, #ffffff, #797676) !important;
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.2) ,
+        0 5px 10px rgba(0, 0, 0, 0.2) !important;
+}
+.hexagon:nth-child(120) {
+    background: linear-gradient(to right, #a5a3a3, #ffffff) !important;
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.2) ,
+        0 5px 10px rgba(0, 0, 0, 0.2) !important;
+}
+
+.hexagon:nth-child(107),
+.hexagon:nth-child(108),
+.hexagon:nth-child(109) {
+    background: linear-gradient(to right, #1d1d1d, #0e0d0d) !important; /* Light to dark gradient */
+    box-shadow: 
+        0 5px 15px rgba(0, 0, 0, 0.2), /* Stronger shadow from top right */
+        0 5px 10px rgba(0, 0, 0, 0.2) !important; /* Lighter shadow on left */
+}
+
+/* Specific styles for top, bottom, left, and right hexagons */
+.hexagon.top-left {
+    background: linear-gradient(to top right, #444444, #070707); /* Dark grey to light grey */
+}
+
+.hexagon.top-right {
+    background: linear-gradient(to top left, #e0e0e0, #0a0a0a); /* Dark grey to light grey */
+}
+
+.hexagon.bottom-left {
+    background: linear-gradient(to bottom right, #ffffff, #020202); /* Dark grey to light grey */
+}
+
+.hexagon.bottom-right {
+    background: linear-gradient(to bottom left, #0a0a0a, #ffffff); /* Dark grey to light grey */
+}
+
+.hexagon.top {
+    background: linear-gradient(to top, #444444, #ffffff); /* Dark grey to light grey */
+}
+
+.hexagon.bottom {
+    background: linear-gradient(to bottom, #ffffff, #ffffff); /* Dark grey to light grey */
+}
+
+.hexagon.left {
+    background: linear-gradient(to left, #000000, #131212); /* Dark grey to light grey */
+}
+
+.hexagon.right {
+    background: linear-gradient(to right, #444444, #ffffff); /* Dark grey to light grey */
+}
+
+/* Different styles for hexagons based on their position */
+.hexagon:nth-child(2n+1) {
+    background: linear-gradient(to right, #0f0f0f, #000); /* Light to dark gradient */
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.3), /* Stronger shadow from top right */
+        0 10px 15px rgba(0, 0, 0, 0.3); /* Lighter shadow on left */
+}
+
+.hexagon:nth-child(3n+2) {
+    background: linear-gradient(to right, #080808, #070707); /* Light to dark gradient */
+    box-shadow:
+        0 15px 30px rgba(0, 0, 0, 0.4), /* Stronger shadow from top right */
+        0 15px 20px rgba(0, 0, 0, 0.4); /* Lighter shadow on left */
+}
+
+.hexagon:nth-child(4n+3) {
+    background: linear-gradient(to right, #161616, #ffffff); /* Light to dark gradient */
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.2), /* Stronger shadow from top right */
+        0 5px 10px rgba(0, 0, 0, 0.2); /* Lighter shadow on left */
+}
+
+.hexagon:nth-child(5n+4) {
+    background: linear-gradient(to right, #0f0f0f, #141414); /* Light to dark gradient */
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.3), /* Stronger shadow from top right */
+        0 10px 15px rgba(0, 0, 0, 0.3); /* Lighter shadow on left */
+}
+
+.hexagon:nth-child(6n+5) {
+    background: linear-gradient(to right, #000000, #181616); /* Light to dark gradient */
+    box-shadow:
+        0 15px 30px rgba(0, 0, 0, 0.4), /* Stronger shadow from top right */
+        0 15px 20px rgba(0, 0, 0, 0.4); /* Lighter shadow on left */
+}
+
+.hexagon:nth-child(7n+6) {
+    background: linear-gradient(to right, #1d1d1d, #0e0d0d); /* Light to dark gradient */
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.2), /* Stronger shadow from top right */
+        0 5px 10px rgba(0, 0, 0, 0.2); /* Lighter shadow on left */
+}
+
+.hexagon:nth-child(8n+7) {
+    background: linear-gradient(to right, #020202, #ffffff); /* Light to dark gradient */
+    box-shadow:
+        0 10px 20px rgba(0, 0, 0, 0.3), /* Stronger shadow from top right */
+        0 10px 15px rgba(0, 0, 0, 0.3); /* Lighter shadow on left */
+}
+
+.hexagon:nth-child(9n+8) {
+    background: linear-gradient(to right, #101010, #1c1c1c); /* Light to dark gradient */
+    box-shadow:
+        0 15px 25px rgba(255, 255, 255, 0.4), /* Stronger shadow from top right */
+        0 15px 20px rgba(0, 0, 0, 0.4); /* Lighter shadow on left */
+}
+
+.hexagon:nth-child(10n+9) {
+    background: linear-gradient(to right, #cfcece, #000000); /* Light to dark gradient */
+    box-shadow:
+        0 10px 20px rgba(0, 0, 0, 0.3), /* Stronger shadow from top right */
+        0 10px 15px rgba(0, 0, 0, 0.3); /* Lighter shadow on left */
+}
+
+/* Add more styles as needed */
+.hexagon:nth-child(11n+10) {
+    background: linear-gradient(to right, #d4d0d0, #202020); /* Light to dark gradient */
+    box-shadow:
+        0 12px 22px rgba(0, 0, 0, 0.3), /* Custom shadow */
+        0 12px 16px rgba(0, 0, 0, 0.3); /* Custom shadow */
+}
+
+.hexagon:nth-child(12n+11) {
+    background: linear-gradient(to right, #ffffff, #232323); /* Light to dark gradient */
+    box-shadow:
+        0 15px 25px rgba(255, 252, 252, 0.35), /* Custom shadow */
+        0 15px 20px rgba(0, 0, 0, 0.35); /* Custom shadow */
+}
+
+.hexagon:nth-child(13n+12) {
+    background: linear-gradient(to right, #111111, #000000); /* Light to dark gradient */
+    box-shadow:
+        0 18px 28px rgba(0, 0, 0, 0.4), /* Custom shadow */
+        0 18px 23px rgba(0, 0, 0, 0.4); /* Custom shadow */
+}
+
+.hexagon:nth-child(14n+13) {
+    background: linear-gradient(to right, #d8d6d6, #050505); /* Light to dark gradient */
+    box-shadow:
+        0 20px 30px rgba(0, 0, 0, 0.4), /* Custom shadow */
+        0 20px 25px rgba(156, 156, 156, 0.4); /* Custom shadow */
+}
+
+.hexagon:nth-child(15n+14) {
+    background: linear-gradient(to right, #030303, #676767); /* Light to dark gradient */
+    box-shadow:
+        0 22px 32px rgba(0, 0, 0, 0.45), /* Custom shadow */
+        0 22px 27px rgba(0, 0, 0, 0.45); /* Custom shadow */
+}

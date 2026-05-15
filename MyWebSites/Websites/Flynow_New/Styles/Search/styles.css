@@ -1,0 +1,413 @@
+/* ================================ */
+/* General Styles */
+/* ================================ */
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: auto;
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+/* ================================ */
+/* Main Content Container */
+/* ================================ */
+.main-container {
+    width: 100%;
+    max-width: 1800px;
+    margin: 3% auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* ================================ */
+/* Departure & Return Containers */
+/* ================================ */
+.departure-container, .return-container {
+    width: 98%;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 30px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.departure-header, .return-header {
+    text-align: center;
+    font-size: 5rem;
+    font-weight: bold;
+    color: rgba(128, 122, 122, 0.42);
+    border-bottom: 2px solid #ccc;
+    margin-bottom: 20px;
+}
+
+/* ================================ */
+/* Results Container */
+/* ================================ */
+.results-container {
+    width: 110%;
+    max-width: 1700px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    margin: 20px 0;
+    box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.02);
+    background: linear-gradient(to top, rgba(211, 211, 211, 0.1), white, rgba(211, 211, 211, 0.1));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ================================ */
+/* Button Styles */
+/* ================================ */
+.return-button-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.return-button, .button {
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #ffffff;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.return-button {
+    background-color: #007BFF;
+}
+
+.return-button:hover {
+    background-color: #0056b3;
+}
+
+.button {
+    background: #3809af;
+    margin-top: 60px;
+}
+
+.button:hover {
+    transform: translateY(-3px);
+}
+
+/* ================================ */
+/*           Table Styles           */
+/* ================================ */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    text-align: left;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Clean, modern font */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for a floating effect */
+}
+
+th {
+    background-color: #4400ff; /* Elegant deep blue */
+    color: #fff;
+    font-weight: bold;
+    padding: 12px;
+    text-transform: u; /* Adds a professional touch */
+    letter-spacing: 1px;
+    border: none;
+    border-bottom: 2px solid #ddd; /* Lighter border for a minimal look */
+}
+
+tr {
+    background-color: #f9f9f9; /* Light, clean background for rows */
+    border: 1px solid #eee; /* Subtle borders for a clean look */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth hover effect */
+}
+
+tr:hover {
+    background-color: #f1f1f1; /* Slightly darker hover effect */
+    transform: scale(1.01); /* Slight zoom effect for sophistication */
+}
+
+td {
+    padding: 15px 20px;
+    font-size: 16px;
+    color: #1f1e1e; /* Dark text for readability */
+    border-top: 1px solid #eee; /* Thin top border for separation */
+}
+
+td:first-child {
+    font-weight: bold; /* Emphasize the first column (e.g., flight names or codes) */
+}
+
+td:last-child {
+    text-align: right; /* Align prices or other values to the right for better visual hierarchy */
+}
+
+/* Optional: Zebra striping for rows to enhance readability */
+tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+/* ================================ */
+/* No Flights Message */
+/* ================================ */
+.no-flights-message {
+    color: #ff3333;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    background-color: rgba(255, 51, 51, 0.1);
+    border: 1px inset #ff3333;
+    border-radius: 5px;
+    width: 80%;
+    margin: 40px auto;
+    padding: 10px;
+}
+
+/* ================================ */
+/* Booking Confirmation */
+/* ================================ */
+.booking-confirmation {
+    background-color: #f0f8ff;
+    border: 1px solid #b0e0e6;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+}
+
+.booking-confirmation h2 {
+    color: #2e8b57;
+    margin-bottom: 10px;
+}
+
+/* ================================ */
+/* Submit Button */
+/* ================================ */
+input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 14px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 36px;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+input[type="submit"]:active {
+    background-color: #004099;
+    transform: scale(1);
+}
+
+/* ================================ */
+/* Sticky Total Price Container */
+/* ================================ */
+.total-container {
+    display: none; /* Initially hidden */
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    text-align: center;
+    position: relative;
+}
+
+.total-price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: inline-block;
+    position: relative;
+}
+
+.total-price span {
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+/* ================================ */
+/* Game Bonus Flowing Effect Styles */
+/* ================================ */
+.price-update {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+    color: green;
+    opacity: 0;
+    animation: priceUpdate 1s forwards;
+}
+
+@keyframes priceUpdate {
+    0% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-20px);
+    }
+    50% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(10px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(0px);
+    }
+}
+
+/* Checkbox Styling */
+.checkbox {
+    width: 20px;
+    position: relative;
+    z-index: 10;
+}
+
+.checkbox label {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    border-radius: 2px;
+    box-shadow: inset 0px 1px 1px white, 3px 3px 9px rgba(0, 0, 0, 0.5);
+}
+
+.checkbox label:after {
+    content: '';
+    width: 9px;
+    height: 5px;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    border: 3px solid #1890cf;
+    border-top: none;
+    border-right: none;
+    opacity: 0;
+    transform: rotate(-45deg);
+}
+
+.checkbox input[type=checkbox] {
+    visibility: hidden;
+}
+
+.checkbox input[type=checkbox]:checked + label:after {
+    opacity: 1;
+}/* .checkbox end */
+
+.total-price {
+    position: relative; /* Changed from absolute to relative for better positioning */
+    font-family: 'Courier New', Courier, monospace; /* Keep the font family as is */
+    text-align: right; /* Align text to the right */
+    padding: 10px 20px; /* Space around the content */
+    margin: 20px 0; /* Optional: add margin to provide space above and below */
+    background-color: rgba(255, 255, 255, 0.8); /* Optional: add a light background */
+    border-radius: 5px; /* Optional: rounded corners for aesthetics */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow for depth */
+    pointer-events: none; /* Prevent interactions, ensuring dynamic updates don't affect it */
+}
+
+input[type="submit"] {
+    background-color: #007bff; /* Blue background */
+    color: white; /* White text */
+    border: none; /* Remove default border */
+    padding: 14px 20px; /* Add some padding */
+    font-size: 16px; /* Increase font size */
+    font-weight: bold; /* Make text bold */
+    cursor: pointer; /* Show pointer on hover */
+    border-radius: 36px; /* Slightly rounded corners */
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+input[type="submit"]:active {
+    background-color: #004099; /* Even darker when clicked */
+    transform: scale(1); /* Reset zoom effect */
+}
+
+.total-container {
+    position: sticky;
+    bottom: 0;
+    background: white;
+    padding: 10px;
+    border-top: 2px solid #ccc;
+}
+
+/*
+ Debugging information styles 
+.debug-info {
+    margin: 7px;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #ffffff; /* Background color for visibility 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow for depth 
+}
+
+.debug-info h2 {
+    color: #333;
+}
+
+.debug-info table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.debug-info th,
+.debug-info td {
+    padding: 8px;
+    text-align: left;
+}
+
+.debug-info th {
+    background-color: #f2f2f2;
+}
+
+/* Styles for the debugger container 
+.debugger-container {
+    width: 100%; /* Full width 
+    max-width: 1200px; /* Max width for responsiveness 
+    padding: 20px; /* Inner spacing 
+    margin: 20px auto; /* Center with auto margins 
+    border: 1px solid #ccc; /* Border for visibility 
+    border-radius: 10px; /* Rounded corners 
+    background-color: #ffffff; /* White background 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Shadow for depth 
+    display: flex; /* Flexbox for layout 
+    flex-direction: column; /* Stack child elements 
+    align-items: center; /* Center child elements 
+}
+*/

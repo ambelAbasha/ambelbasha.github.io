@@ -1,0 +1,154 @@
+/* General body styles */
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #dad5d5, #dfdede);
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Container styles */
+.hex-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Hexagon container styles */
+#hexContainer {
+    min-height: calc((150px * 0.75) * (numRows + 1));
+    position: relative;
+}
+
+/* Base hexagon styles */
+.hexagon {
+    position: absolute;
+    width: 154px; /* Enlarged size of each hexagon (150px + 2px left + 2px right) */
+    height: 172.5px; /* Adjusted height for better coverage */
+    clip-path: polygon(
+        50% 0%,
+        100% 25%,
+        100% 75%,
+        50% 100%,
+        0% 75%,
+        0% 25%
+    );
+    transform-style: preserve-3d;
+    transform: rotate(90deg); /* Rotate hexagon by 90 degrees */
+    margin: 0 2px; /* Add 2 pixels of margin on both sides */
+    box-sizing: border-box; /* Ensure border-box sizing */
+}
+
+/* Border styles for grey or white hexagons */
+.hexagon.border-black {
+    border: 2px solid #000; /* Solid black border for contrast */
+}
+
+/* Different styles for hexagons based on their position */
+.hexagon:nth-child(2n+1) {
+    background: linear-gradient(to bottom right, #333, #000); /* Gradient for darker shades */
+    box-shadow:
+        -6px 6px 20px rgba(0, 0, 0, 0.8), /* Stronger shadow from top right */
+        -8px 0px 20px rgba(0, 0, 0, 0.6), /* Lighter shadow on left */
+        inset 0px 0px 20px rgba(0, 0, 0, 0.6), /* Dark inset shadow */
+        inset 0px 0px 10px rgba(255, 255, 255, 0.8); /* Highlight inset shadow */
+}
+
+.hexagon:nth-child(3n+2) {
+    background: linear-gradient(to bottom right, #666, #444); /* Gradient for mid to dark grey */
+    box-shadow:
+        -8px 8px 20px rgba(0, 0, 0, 0.8), /* Stronger shadow from top right */
+        -10px 0px 20px rgba(0, 0, 0, 0.6), /* Lighter shadow on left */
+        inset 0px 0px 20px rgba(0, 0, 0, 0.6), /* Dark inset shadow */
+        inset 0px 0px 10px rgba(255, 255, 255, 0.8); /* Highlight inset shadow */
+}
+
+.hexagon:nth-child(4n+3) {
+    background: linear-gradient(to bottom right, #999, #ffffff); /* Gradient for lighter to mid grey */
+    box-shadow:
+        -6px 6px 20px rgba(0, 0, 0, 0.8), /* Stronger shadow from top right */
+        -8px 0px 20px rgba(0, 0, 0, 0.6), /* Lighter shadow on left */
+        inset 0px 0px 20px rgba(0, 0, 0, 0.6), /* Dark inset shadow */
+        inset 0px 0px 10px rgba(255, 255, 255, 0.8); /* Highlight inset shadow */
+}
+
+/* Additional styles for pseudo-elements */
+.hexagon::before,
+.hexagon::after {
+    content: '';
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    background-color: inherit;
+    clip-path: inherit;
+    transform-style: preserve-3d;
+}
+
+/* Styles for the center and corners of hexagons */
+.hexagon.center {
+    background: #000; /* Black background in the center */
+}
+
+.hexagon.top-left {
+    background: #eee; /* Light grey background at top-left corner */
+}
+
+.hexagon.top-right {
+    background: #eee; /* Light grey background at top-right corner */
+}
+
+.hexagon.bottom-left {
+    background: #eee; /* Light grey background at bottom-left corner */
+}
+
+.hexagon.bottom-right {
+    background: #eee; /* Light grey background at bottom-right corner */
+}
+
+/* Additional Styles for Vibrant Hexagons */
+.hexagon.vibrant {
+    background: linear-gradient(to bottom right, #ff7f50, #ff6347); /* Gradient for coral to tomato */
+    box-shadow:
+        -6px 6px 20px rgba(255, 99, 71, 0.8), /* Stronger shadow from top right */
+        -8px 0px 20px rgba(255, 99, 71, 0.6), /* Lighter shadow on left */
+        inset 0px 0px 20px rgba(0, 0, 0, 0.6), /* Dark inset shadow */
+        inset 0px 0px 10px rgba(255, 255, 255, 0.8); /* Highlight inset shadow */
+}
+
+.hexagon.vibrant::before {
+    box-shadow:
+        inset -8px -8px 20px rgba(255, 99, 71, 0.6), /* Coral inset shadow */
+        inset 8px 8px 20px rgba(0, 0, 0, 0.6), /* Black inset shadow */
+        0px 0px 15px rgba(255, 99, 71, 0.6); /* Soft highlight */
+}
+
+.hexagon.vibrant::after {
+    box-shadow:
+        inset -8px -8px 20px rgba(255, 99, 71, 0.6), /* Coral inset shadow */
+        inset 8px 8px 20px rgba(0, 0, 0, 0.6), /* Black inset shadow */
+        0px 0px 15px rgba(0, 0, 0, 0.6); /* Soft shadow */
+}
+
+.hexagon.electric {
+    background: linear-gradient(to bottom right, #7b68ee, #4169e1); /* Gradient for medium slate blue to royal blue */
+    box-shadow:
+        -6px 6px 20px rgba(65, 105, 225, 0.8), /* Stronger shadow from top right */
+        -8px 0px 20px rgba(65, 105, 225, 0.6), /* Lighter shadow on left */
+        inset 0px 0px 20px rgba(0, 0, 0, 0.6), /* Dark inset shadow */
+        inset 0px 0px 10px rgba(255, 255, 255, 0.8); /* Highlight inset shadow */
+}
+
+.hexagon.electric::before {
+    box-shadow:
+        inset -8px -8px 20px rgba(65, 105, 225, 0.6), /* Medium slate blue inset shadow */
+        inset 8px 8px 20px rgba(0, 0, 0, 0.6), /* Black inset shadow */
+        0px 0px 15px rgba(65, 105, 225, 0.6); /* Soft highlight */
+}
+
+.hexagon.electric::after {
+    box-shadow:
+        inset -8px -8px 20px rgba(65, 105, 225, 0.6), /* Medium slate blue inset shadow */
+        inset 8px 8px 20px rgba(0, 0, 0, 0.6), /* Black inset shadow */
+        0px 0px 15px rgba(0, 0, 0, 0.6); /* Soft shadow */
+}

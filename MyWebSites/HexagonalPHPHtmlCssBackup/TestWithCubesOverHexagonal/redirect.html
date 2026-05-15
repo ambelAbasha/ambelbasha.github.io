@@ -1,0 +1,61 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+        const INSTANCE_KEY = 'uniquePageInstanceId';
+
+        window.onload = function() {
+            const params = new URLSearchParams(window.location.search);
+            const redirectUrl = params.get('url');
+
+            if (redirectUrl) {
+                const storedInstanceId = localStorage.getItem(INSTANCE_KEY);
+
+                if (storedInstanceId) {
+                    if (window.name !== storedInstanceId) {
+                        // Set window.name to match the existing instance and redirect
+                        window.name = storedInstanceId;
+                        if (isValidUrl(redirectUrl)) {
+                            console.log("Redirecting to existing instance:", decodeURIComponent(redirectUrl));
+                            window.location.href = decodeURIComponent(redirectUrl);
+                        } else {
+                            console.error("Invalid URL:", redirectUrl);
+                            document.body.innerHTML = "<p>Redirect URL not found.</p>";
+                        }
+                    } else {
+                        // Reload the main application page since this is the existing instance
+                        if (isValidUrl(redirectUrl)) {
+                            console.log("Already in existing instance, reloading main page:", decodeURIComponent(redirectUrl));
+                            window.location.href = decodeURIComponent(redirectUrl);
+                        } else {
+                            console.error("Invalid URL:", redirectUrl);
+                            document.body.innerHTML = "<p>Redirect URL not found.</p>";
+                        }
+                    }
+                } else {
+                    // Handle the case for new instance creation
+                    const newInstanceId = Date.now().toString();
+                    localStorage.setItem(INSTANCE_KEY, newInstanceId);
+                    window.name = newInstanceId;
+                    console.log("New instance created, redirecting to:", decodeURIComponent(redirectUrl));
+                    window.location.href = decodeURIComponent(redirectUrl);
+                }
+            } else {
+                console.error("No URL specified for redirection.");
+                document.body.innerHTML = "<p>No URL specified for redirection.</p>";
+            }
+        };
+
+        function isValidUrl(url) {
+            const origin = window.location.origin;
+            return url.startsWith(origin) || url.startsWith('/') || url.startsWith('./') || url.startsWith('../');
+        }
+    </script>
+</head>
+<body>
+    <p>Redirecting you to the existing instance...</p>
+</body>
+</html>

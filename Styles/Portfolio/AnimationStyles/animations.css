@@ -1,0 +1,49 @@
+.background-svg-wrapper {
+  position: fixed;               /* Keeps it fixed when scrolling */
+  top: 0;
+  left: 0;
+  width: 100vw;                  /* Full viewport width */
+  height: 100vh;                 /* Full viewport height */
+  pointer-events: none;          /* Allows clicks through the SVG */
+  z-index: 0;                    /* Behind content */
+  overflow: hidden;              /* Prevents scrollbars */
+  display: flex;                 /* Flexbox for alignment */
+  justify-content: center;       /* Center the SVG horizontally */
+  align-items: center;           /* Center the SVG vertically */
+}
+
+.background-svg-wrapper svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;             /* Ensures it fills the screen while preserving aspect ratio */
+  min-width: 100%;               /* Prevents shrinking below viewport width */
+  min-height: 100%;              /* Prevents shrinking below viewport height */
+}
+
+circle {
+  fill: rgba(255, 0, 0, 0);
+}
+
+line {
+  stroke: var(--color-cyan-dark);
+  stroke-width: 2;
+  stroke-linecap: round;         /* Smooth edges */
+}
+
+/* Responsive tweaks for smaller devices */
+@media (max-width: 768px) {
+  .background-svg-wrapper svg {
+    object-fit: cover;           /* Ensure it still covers full area */
+    min-width: 100%;
+    min-height: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .background-svg-wrapper svg {
+    object-fit: cover;           /* Ensure full coverage without distortion */
+    min-width: 100%;
+    min-height: 100%;
+  }
+}

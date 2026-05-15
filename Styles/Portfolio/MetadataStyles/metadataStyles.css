@@ -1,0 +1,36 @@
+/* Metadata Section Layout */
+#metadata {
+  padding: var(--space-lg);
+  text-align: center;
+  width: 100%;
+}
+
+/* Grid Layout for Metadata Cards */
+#metadata .card-grid {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+  justify-items: center;
+  padding-top: var(--space-md);
+  padding-bottom: var(--space-xlg);
+}
+
+
+/* Hover Effect for Cards */
+#metadata .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  background-color: var(--color-secondary);
+}
+
+#metadata .card:hover img {
+  transform: scale(1.05); /* Slight zoom-in effect */
+}
+
+/* Optional: Add responsiveness for small screens */
+@media (max-width: 768px) {
+  #metadata .card-grid {
+    grid-template-columns: 1fr; /* Stack cards vertically on smaller screens */
+  }
+}

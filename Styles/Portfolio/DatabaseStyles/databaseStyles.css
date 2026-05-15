@@ -1,0 +1,440 @@
+/* Make h2 smaller */
+h2 {
+  font-size: var(--font-size-xl); /* Use variable for font size */
+  margin-bottom: var(--space-sm); /* Use variable for spacing */
+}
+
+/* Align h1 and h2 in a row using Flexbox */
+#database-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm); /* Unified gap using variable */
+}
+
+#database-header h1,
+#database-header h2 {
+  margin: 0;
+}
+
+#database-header h1 {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs); /* Use variable for gap */
+}
+
+#database-header h2 {
+  font-size: var(--font-size-xl); /* Use variable */
+}
+
+#database-header h1 {
+  font-size: var(--font-size-xxl); /* Use variable for h1 font size */
+}
+
+/* Card Grid */
+#database .card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-md);
+  justify-content: center;
+  padding-bottom: var(--space-lg);
+  width: 95%;
+  max-width: 1560px;
+  margin: 0 auto 7rem;
+  box-sizing: border-box;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+/* General Card */
+.database-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 95%;
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  background: var(--color-bg-alt);
+  box-sizing: border-box;
+  transition: background-color var(--transition);
+}
+
+/* Hover effect on #database-content */
+#database-content:hover {
+  transform: scale(1.0);
+  background-color: var(--color-secondary);
+  box-shadow: var(--shadow-md); /* Unified shadow using variable */
+  transition: transform var(--transition), background-color var(--transition), box-shadow var(--transition);
+}
+
+/* Hover effect for the general card */
+.database-card:hover,
+.vulnerabilities-card:hover {
+  background-color: var(--color-bg);
+}
+
+/* Ensure grid adapts on smaller screens */
+@media (max-width: 992px) {
+  #database .card-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  #database .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .database-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #database-content {
+    width: 100%;
+  }
+
+  .database-card {
+    padding: var(--space-sm); /* Adjust padding for smaller screens */
+  }
+}
+
+/* Normal opacity for all cards */
+.database-columns .database-card,
+.vulnerabilities-columns .vulnerabilities-card {
+  opacity: 1;
+  transition: opacity var(--transition);
+}
+
+/* Hover effect for a single card */
+.database-columns .database-card:hover,
+.vulnerabilities-columns .vulnerabilities-card:hover {
+  opacity: 1;
+}
+
+/* Dim all other cards on hover using general sibling selector */
+.database-columns .database-card:hover ~ .database-card,
+.vulnerabilities-columns .vulnerabilities-card:hover ~ .vulnerabilities-card {
+  opacity: 0.5;
+}
+
+/* Global & Section Layout */
+#database-content,
+#vulnerabilities-content,
+h2 {
+  position: relative;
+  z-index: 5;
+}
+
+#database,
+#vulnerabilities {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-lg) 0;
+  margin-top: var(--space-sm);
+  z-index: 5;
+  width: 99%;
+  max-width: 1590px;
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Card Header */
+.card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--space-xs); /* Using variable for gap */
+  margin: 0 auto var(--space-sm);
+  padding: 0;
+  text-align: center;
+  position: relative;
+}
+
+.card-header::before {
+  content: '';
+  display: block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 2.2rem;
+  height: 2.6rem;
+}
+
+.card-header h2 {
+  color: var(--color-accent-1); /* Using variable for color */
+  margin: 0;
+  padding: 0;
+}
+
+.material-symbols-outlined {
+  font-size: 5rem;
+  color: var(--color-accent-1);
+}
+
+/* --------------------------------------------- */
+/* Content Containers */
+#database-content,
+#vulnerabilities-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 95%;
+  max-width: 1490px;
+  margin: 0 auto var(--space-lg);
+  background-color: var(--color-cyan-dark);
+  padding: var(--space-md);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: background-color var(--transition),
+              box-shadow var(--transition),
+              transform var(--transition);
+  text-align: center;
+  gap: var(--space-md);
+  box-sizing: border-box;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+}
+
+/* Card Grid Rows */
+.database-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  justify-content: center;
+  margin-bottom: var(--space-lg);
+}
+
+.database-row .database-card {
+  flex: 1 1 300px;
+  max-width: 100%;
+  transition: opacity var(--transition);
+  opacity: 1;
+}
+
+.database-row:hover .database-card {
+  opacity: 0.5;
+}
+
+.database-row .database-card:hover {
+  opacity: 1 !important;
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: var(--shadow-md);
+}
+
+.database-card,
+.vulnerabilities-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg-alt);
+  padding: var(--space-sm);
+  padding-top: 4rem;
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  transition: transform var(--transition),
+              box-shadow var(--transition),
+              background-color var(--transition),
+              filter var(--transition);
+  cursor: pointer;
+  opacity: 0;
+  animation: fadeInUp 1s forwards;
+  text-decoration: none;
+  color: inherit;
+  filter: brightness(1) saturate(1);
+  box-sizing: border-box;
+}
+
+.database-card:hover p,
+.vulnerabilities-card:hover p {
+  color: var(--color-text);
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* General Animation for the Card Header Icons */
+@keyframes appearFromBack {
+  0% {
+    transform: scale(0) translateZ(-100px); /* Start from the back and scaled down */
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) translateZ(0); /* End in original position and scale */
+    opacity: 1;
+  }
+}
+
+/* Apply Animation to the integration icon */
+.database-card.integration .card-header::before,
+.vulnerabilities-card.integration .card-header::before {
+  background-image: url('../DatabaseStyles/Icons/databaseCloud.png');
+  width: 2.6rem;
+  height: 3.1rem;
+  animation: appearFromBack 1s ease-out forwards;
+  opacity: 1; /* Ensure icons have full opacity by default */
+}
+
+/* Apply Animation to the secure icon */
+.database-card.secure .card-header::before,
+.vulnerabilities-card.secure .card-header::before {
+  background-image: url('../DatabaseStyles/Icons/SecureDatabase.png');
+  width: 2.3rem;
+  height: 3rem;
+  animation: appearFromBack 1s ease-out forwards;
+  opacity: 1;
+}
+
+/* Apply Animation to the vulnerabilities icon */
+.database-card.vulnerabilities .card-header::before,
+.vulnerabilities-card.vulnerabilities .card-header::before {
+  background-image: url('../DatabaseStyles/Icons/SQL_Injection.png');
+  width: 2.4rem;
+  height: 2.4rem;
+  animation: appearFromBack 1s ease-out forwards;
+  opacity: 1;
+}
+
+/* When hovering one of the icons, reduce opacity of the others */
+.database-card.integration:hover ~ .database-card.secure .card-header::before,
+.database-card.integration:hover ~ .vulnerabilities-card.vulnerabilities .card-header::before,
+.vulnerabilities-card.integration:hover ~ .database-card.secure .card-header::before,
+.vulnerabilities-card.integration:hover ~ .database-card.vulnerabilities .card-header::before,
+.database-card.secure:hover ~ .database-card.integration .card-header::before,
+.database-card.secure:hover ~ .vulnerabilities-card.vulnerabilities .card-header::before,
+.vulnerabilities-card.secure:hover ~ .database-card.integration .card-header::before,
+.vulnerabilities-card.secure:hover ~ .database-card.vulnerabilities .card-header::before,
+.database-card.vulnerabilities:hover ~ .database-card.integration .card-header::before,
+.database-card.vulnerabilities:hover ~ .vulnerabilities-card.secure .card-header::before {
+  opacity: 0.3; /* Reduce opacity for non-hovered icons */
+}
+
+/* To ensure perspective effect works smoothly */
+.card-header {
+  perspective: 800px; /* Add perspective to the card header */
+}
+
+.database-card,
+.vulnerabilities-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg-alt);
+  padding: var(--space-sm);
+  padding-top: 1rem;
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform var(--transition),
+              box-shadow var(--transition),
+              background-color var(--transition),
+              filter var(--transition);
+  cursor: pointer;
+  opacity: 0;
+  animation: fadeInUp 1s forwards;
+  text-decoration: none;
+  color: inherit;
+  filter: brightness(1) saturate(1);
+  box-sizing: border-box;
+}
+
+.database-card::before,
+.vulnerabilities-card::before {
+  content: "";
+  position: absolute;
+  top: 7px;  /* Adjust distance from the top */
+  left: 7px;  /* Adjust distance from the left */
+  right: 7px;  /* Adjust distance from the right */
+  bottom: 7px;  /* Adjust distance from the bottom */
+  box-shadow: 0 6px 15px rgba(2, 66, 66, 1.8);  /* Add shadow for visual depth */
+  border-radius: var(--radius-md);  /* Match the border-radius of the card */
+  pointer-events: none;  /* Ensures the border doesn't block interactions */
+  transition: border-color 0.3s ease;  /* Smooth transition for border color */
+}
+
+.database-card:hover::before,
+.vulnerabilities-card:hover::before {
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);  /* Add shadow for visual depth */
+}
+
+
+.database-card:hover p,
+.vulnerabilities-card:hover p {
+  color: var(--color-text);
+}
+
+/* ---------------------------------------------
+   Media Queries
+--------------------------------------------- */
+
+@media (max-width: 992px) {
+  #database-header-intro,
+  #vulnerabilities-header-intro {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .database-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-header::before {
+    margin-bottom: var(--space-sm);
+  }
+
+  #database-header-intro,
+  #vulnerabilities-header-intro {
+    padding-left: 1rem;
+    background-size: 1.5rem 1.5rem;
+  }
+
+  #database-header-intro h2,
+  #vulnerabilities-header-intro h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  #database-header-intro h2,
+  #vulnerabilities-header-intro h2 {
+    font-size: 1.2rem;
+  }
+
+  .card-header h2 {
+    font-size: 1rem;
+  }
+
+  #database-content,
+  #vulnerabilities-content {
+    padding: var(--space-sm);
+  }
+
+  .database-columns .database-card,
+  .vulnerabilities-columns .vulnerabilities-card {
+    padding: var(--space-xs);
+  }
+}

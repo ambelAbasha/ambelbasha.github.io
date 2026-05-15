@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>System Architecture — Ambel Basha</title>
+  <meta name="description" content="Full system architecture overview for Ambel Basha's portfolio — web applications, database layer, security model, and infrastructure." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- ── Navigation ── -->
+  <nav class="arch-nav">
+    <a href="../index.html" class="arch-nav-back">
+      <i class="fa-solid fa-arrow-left"></i> Home
+    </a>
+    <span class="arch-nav-title">System Architecture</span>
+    <a href="../portfolio.html" class="arch-nav-link">Portfolio</a>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <header class="arch-hero">
+    <p class="arch-eyebrow">Ambel Basha · Full-Stack & Security Engineer</p>
+    <h1>System Architecture<br><span class="arch-hero-accent">Overview</span></h1>
+    <p class="arch-hero-sub">
+      How every layer — presentation, application, data, and infrastructure — fits together
+      and how security is woven through each one from the start.
+    </p>
+  </header>
+
+  <main class="arch-main">
+
+    <!-- ══════════════════════════════════════
+         SECTION 1 · SYSTEM OVERVIEW
+    ══════════════════════════════════════ -->
+    <section class="arch-section">
+      <div class="section-header">
+        <span class="section-num">01</span>
+        <h2>System Overview</h2>
+        <p class="section-sub">Four layers from browser to hardware</p>
+      </div>
+
+      <div class="arch-diagram">
+
+        <!-- Layer 1: Client -->
+        <div class="diag-layer">
+          <div class="diag-layer-label">Client</div>
+          <div class="diag-nodes">
+            <div class="diag-node diag-node--primary">
+              <i class="fa-solid fa-globe"></i>
+              <span>Browser</span>
+              <small>HTML · CSS · JS · Canvas · WebGL</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="diag-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+
+        <!-- Layer 2: Presentation -->
+        <div class="diag-layer">
+          <div class="diag-layer-label">Presentation</div>
+          <div class="diag-nodes">
+            <div class="diag-node diag-node--primary">
+              <i class="fa-solid fa-house"></i>
+              <span>Landing Page</span>
+              <small>index.html · WebGL · Corridor scroll</small>
+            </div>
+            <div class="diag-node diag-node--primary">
+              <i class="fa-solid fa-briefcase"></i>
+              <span>Portfolio</span>
+              <small>portfolio.html · Wormhole canvas</small>
+            </div>
+            <div class="diag-node diag-node--muted">
+              <i class="fa-solid fa-project-diagram"></i>
+              <span>Architecture</span>
+              <small>This document</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="diag-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+
+        <!-- Layer 3: Application -->
+        <div class="diag-layer">
+          <div class="diag-layer-label">Application</div>
+          <div class="diag-nodes diag-nodes--wide">
+            <div class="diag-node diag-node--accent">
+              <i class="fa-brands fa-php"></i>
+              <span>MyWebSites Hub</span>
+              <small>PHP · Apache · Session auth · Role-based access</small>
+            </div>
+            <div class="diag-node diag-node--accent">
+              <i class="fa-brands fa-java"></i>
+              <span>CCTV Backend</span>
+              <small>Java · Apache Tomcat · AJAX endpoints</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="diag-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+
+        <!-- Layer 4: Projects -->
+        <div class="diag-layer">
+          <div class="diag-layer-label">Projects</div>
+          <div class="diag-nodes">
+            <div class="diag-node diag-node--project">
+              <i class="fa-solid fa-camera"></i>
+              <span>RPI CCTV</span>
+              <small>Java · JS · AJAX · SQL</small>
+            </div>
+            <div class="diag-node diag-node--project">
+              <i class="fa-solid fa-gauge-high"></i>
+              <span>Dashboard</span>
+              <small>JS · HTML · CSS</small>
+            </div>
+            <div class="diag-node diag-node--project">
+              <i class="fa-solid fa-compact-disc"></i>
+              <span>Music Galaxy</span>
+              <small>PHP · MySQL · AES</small>
+            </div>
+            <div class="diag-node diag-node--project">
+              <i class="fa-solid fa-plane"></i>
+              <span>Fly Now</span>
+              <small>PHP · MySQL · JS</small>
+            </div>
+            <div class="diag-node diag-node--project">
+              <i class="fa-solid fa-code"></i>
+              <span>PHP Tools</span>
+              <small>PHP · MySQL · HTML</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="diag-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+
+        <!-- Layer 5: Data -->
+        <div class="diag-layer">
+          <div class="diag-layer-label">Data</div>
+          <div class="diag-nodes">
+            <div class="diag-node diag-node--data">
+              <i class="fa-solid fa-database"></i>
+              <span>MySQL · MariaDB</span>
+              <small>Normalized schemas · Foreign key constraints · Indexed queries</small>
+            </div>
+            <div class="diag-node diag-node--data">
+              <i class="fa-solid fa-lock"></i>
+              <span>Encryption Layer</span>
+              <small>bcrypt passwords · AES field encryption · PDO prepared statements</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="diag-arrow"><i class="fa-solid fa-arrow-down"></i></div>
+
+        <!-- Layer 6: Infrastructure -->
+        <div class="diag-layer">
+          <div class="diag-layer-label">Infrastructure</div>
+          <div class="diag-nodes">
+            <div class="diag-node diag-node--infra">
+              <i class="fa-brands fa-github"></i>
+              <span>GitHub Pages</span>
+              <small>Static hosting · CDN · TLS</small>
+            </div>
+            <div class="diag-node diag-node--infra">
+              <i class="fa-solid fa-server"></i>
+              <span>Apache · XAMPP</span>
+              <small>PHP runtime · Local dev · Production server</small>
+            </div>
+            <div class="diag-node diag-node--infra">
+              <i class="fa-brands fa-raspberry-pi"></i>
+              <span>Raspberry Pi</span>
+              <small>IoT hardware · CCTV capture · Sense HAT</small>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.arch-diagram -->
+    </section>
+
+    <!-- ══════════════════════════════════════
+         SECTION 2 · PROJECT REGISTRY
+    ══════════════════════════════════════ -->
+    <section class="arch-section">
+      <div class="section-header">
+        <span class="section-num">02</span>
+        <h2>Project Registry</h2>
+        <p class="section-sub">Each application — purpose, stack, and key design decisions</p>
+      </div>
+
+      <div class="project-grid">
+
+        <div class="project-card">
+          <div class="project-card-head">
+            <span class="project-icon"><i class="fa-solid fa-camera"></i></span>
+            <div>
+              <h3>Raspberry Pi · CCTV System</h3>
+              <span class="project-type">Full-Stack · IoT · Real-Time</span>
+            </div>
+          </div>
+          <p>End-to-end surveillance system running on Raspberry Pi hardware. Java backend serves AJAX endpoints that the browser consumes for live camera management — rename feeds, toggle fullscreen, and handle authenticated logout without a page reload.</p>
+          <div class="project-stack">
+            <span>Java</span><span>JavaScript</span><span>AJAX</span><span>MySQL</span><span>CSS</span><span>Apache Tomcat</span>
+          </div>
+          <ul class="project-decisions">
+            <li>AJAX-driven UI eliminates full-page reloads under live video feeds</li>
+            <li>Session-based authentication gates all camera control endpoints</li>
+            <li>SQL schema stores camera metadata; Java ORM handles query lifecycle</li>
+          </ul>
+        </div>
+
+        <div class="project-card">
+          <div class="project-card-head">
+            <span class="project-icon project-icon--secondary"><i class="fa-solid fa-gauge-high"></i></span>
+            <div>
+              <h3>CCTV Dashboard</h3>
+              <span class="project-type">Admin Panel · Role-Based Access</span>
+            </div>
+          </div>
+          <p>Administrative control panel for the multi-camera CCTV system. Handles role-based access control, credential management, live connection diagnostics, and persistent Remember Me sessions — all in a pure front-end layer that talks to the Java backend.</p>
+          <div class="project-stack">
+            <span>JavaScript</span><span>HTML5</span><span>CSS3</span>
+          </div>
+          <ul class="project-decisions">
+            <li>Role separation: operator view vs. admin view rendered from the same endpoints</li>
+            <li>Persistent session via secure cookie with HttpOnly flag</li>
+            <li>Live connection status polling without WebSocket overhead</li>
+          </ul>
+        </div>
+
+        <div class="project-card">
+          <div class="project-card-head">
+            <span class="project-icon"><i class="fa-solid fa-compact-disc"></i></span>
+            <div>
+              <h3>Music Galaxy</h3>
+              <span class="project-type">Full-Stack · Encrypted Data</span>
+            </div>
+          </div>
+          <p>Full-stack music platform with genre browsing, paginated result sets, and dark/light theming. User data is AES-encrypted at rest. The architecture is designed for Spotify API expansion without schema changes — the data model is provider-agnostic.</p>
+          <div class="project-stack">
+            <span>PHP</span><span>MySQL</span><span>JavaScript</span><span>AES</span><span>bcrypt</span>
+          </div>
+          <ul class="project-decisions">
+            <li>Passwords hashed with bcrypt; sensitive profile fields AES-encrypted in the database</li>
+            <li>Pagination via SQL LIMIT/OFFSET — avoids loading full catalogue into memory</li>
+            <li>Theme preference stored in localStorage with server-side fallback</li>
+          </ul>
+        </div>
+
+        <div class="project-card">
+          <div class="project-card-head">
+            <span class="project-icon project-icon--secondary"><i class="fa-solid fa-plane"></i></span>
+            <div>
+              <h3>The Fly Now</h3>
+              <span class="project-type">Full-Stack · Booking System</span>
+            </div>
+          </div>
+          <p>Air travel booking platform with live flight search, account management, booking history, and a fully responsive layout from mobile to widescreen. PHP handles all session state and booking transactions; the frontend is pure HTML/CSS/JS.</p>
+          <div class="project-stack">
+            <span>PHP</span><span>MySQL</span><span>JavaScript</span><span>HTML5</span><span>CSS3</span>
+          </div>
+          <ul class="project-decisions">
+            <li>Booking transactions use SQL transactions to prevent partial writes</li>
+            <li>Search filters applied server-side to minimize data transfer</li>
+            <li>Session lifetime governed by server-side timeout, not client cookie expiry</li>
+          </ul>
+        </div>
+
+        <div class="project-card project-card--full">
+          <div class="project-card-head">
+            <span class="project-icon"><i class="fa-solid fa-code"></i></span>
+            <div>
+              <h3>HTML &amp; PHP Tools</h3>
+              <span class="project-type">Toolkit · Rapid Prototyping</span>
+            </div>
+          </div>
+          <p>A curated collection of full-stack patterns: database-driven tables, validated form processors, and responsive UI components. Each tool is a standalone module that can be dropped into any PHP/MySQL project as a starting point — built to be readable, not clever.</p>
+          <div class="project-stack">
+            <span>PHP</span><span>MySQL</span><span>JavaScript</span><span>HTML5</span><span>PDO</span>
+          </div>
+          <ul class="project-decisions">
+            <li>All database interaction uses PDO prepared statements — injection-proof by construction</li>
+            <li>Form validation runs both client-side (UX) and server-side (security)</li>
+            <li>Components are stateless modules — no shared global state between tools</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         SECTION 3 · SECURITY ARCHITECTURE
+    ══════════════════════════════════════ -->
+    <section class="arch-section">
+      <div class="section-header">
+        <span class="section-num">03</span>
+        <h2>Security Architecture</h2>
+        <p class="section-sub">Defense applied at every layer — not added after the fact</p>
+      </div>
+
+      <div class="security-grid">
+
+        <div class="security-layer">
+          <div class="security-layer-num">L1</div>
+          <div class="security-layer-body">
+            <h3><i class="fa-solid fa-shield-halved"></i> Input &amp; Transport</h3>
+            <p>Every path from browser to server is hardened before logic executes.</p>
+            <ul>
+              <li><strong>XSS prevention</strong> — output encoding on all user-supplied strings</li>
+              <li><strong>SQLi prevention</strong> — PDO prepared statements throughout; no string concatenation in queries</li>
+              <li><strong>HTTPS / TLS</strong> — all traffic encrypted in transit; HTTP connections rejected</li>
+              <li><strong>Input validation</strong> — whitelist validation server-side; client-side validation is UX only</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="security-layer">
+          <div class="security-layer-num">L2</div>
+          <div class="security-layer-body">
+            <h3><i class="fa-solid fa-user-lock"></i> Authentication &amp; Session</h3>
+            <p>Access control enforced at the session boundary, not inside business logic.</p>
+            <ul>
+              <li><strong>Session tokens</strong> — server-generated, rotated on privilege change</li>
+              <li><strong>HttpOnly cookies</strong> — session ID inaccessible to JavaScript</li>
+              <li><strong>Role-based access</strong> — operator / admin separation; middleware checks on every protected route</li>
+              <li><strong>Timeout enforcement</strong> — server-side session expiry, not client cookie TTL</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="security-layer">
+          <div class="security-layer-num">L3</div>
+          <div class="security-layer-body">
+            <h3><i class="fa-solid fa-lock"></i> Data Encryption</h3>
+            <p>Sensitive data is protected at rest, independent of database access controls.</p>
+            <ul>
+              <li><strong>bcrypt</strong> — password hashing with adaptive work factor; no reversible storage</li>
+              <li><strong>AES encryption</strong> — sensitive profile fields encrypted at the application layer before write</li>
+              <li><strong>SSL/TLS connections</strong> — database connections encrypted end-to-end</li>
+              <li><strong>Minimal privilege</strong> — DB users scoped to the minimum operations each application needs</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="security-layer">
+          <div class="security-layer-num">L4</div>
+          <div class="security-layer-body">
+            <h3><i class="fa-brands fa-linux"></i> Infrastructure &amp; Forensics</h3>
+            <p>System-level hardening and incident detection capabilities.</p>
+            <ul>
+              <li><strong>iptables firewall</strong> — allowlist-only inbound rules; default deny</li>
+              <li><strong>Log forensics</strong> — <code>journalctl</code>, <code>/var/log/syslog</code>, <code>netstat</code> monitoring pipelines</li>
+              <li><strong>Process auditing</strong> — <code>ps aux</code> and <code>grep</code>-based anomaly detection scripts</li>
+              <li><strong>Panoptis 2018</strong> — real-world contribution to Greece's national cybersecurity exercise: Linux forensics and live network traffic analysis</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         SECTION 4 · DATA FLOW
+    ══════════════════════════════════════ -->
+    <section class="arch-section">
+      <div class="section-header">
+        <span class="section-num">04</span>
+        <h2>Request &amp; Data Flow</h2>
+        <p class="section-sub">A typical authenticated request through the stack</p>
+      </div>
+
+      <div class="flow-diagram">
+        <div class="flow-step">
+          <div class="flow-step-icon"><i class="fa-solid fa-user"></i></div>
+          <div class="flow-step-body">
+            <h4>User Request</h4>
+            <p>Browser sends HTTPS request with session cookie</p>
+          </div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="flow-step-icon"><i class="fa-solid fa-server"></i></div>
+          <div class="flow-step-body">
+            <h4>Apache / PHP</h4>
+            <p>Session validated · Input sanitised · Route resolved</p>
+          </div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="flow-step-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <div class="flow-step-body">
+            <h4>Security Middleware</h4>
+            <p>Role check · CSRF token verified · Rate limit checked</p>
+          </div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="flow-step-icon"><i class="fa-solid fa-database"></i></div>
+          <div class="flow-step-body">
+            <h4>PDO · MySQL</h4>
+            <p>Prepared statement executed · AES-decrypted on read · Result set returned</p>
+          </div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="flow-step-icon"><i class="fa-solid fa-file-code"></i></div>
+          <div class="flow-step-body">
+            <h4>Response</h4>
+            <p>HTML rendered · Output encoded · HTTPS delivered</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         SECTION 5 · TECH STACK REFERENCE
+    ══════════════════════════════════════ -->
+    <section class="arch-section">
+      <div class="section-header">
+        <span class="section-num">05</span>
+        <h2>Tech Stack Reference</h2>
+        <p class="section-sub">Complete technology inventory by domain</p>
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Domain</th>
+              <th>Technologies</th>
+              <th>Purpose</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="td-label"><i class="fa-solid fa-globe"></i> Frontend</span></td>
+              <td><code>HTML5 · CSS3 · JavaScript · AJAX · Canvas · WebGL</code></td>
+              <td>User interfaces, animations, real-time UI updates</td>
+            </tr>
+            <tr>
+              <td><span class="td-label"><i class="fa-brands fa-php"></i> Backend</span></td>
+              <td><code>PHP · Java · Apache · Apache Tomcat</code></td>
+              <td>Server-side logic, routing, session management, AJAX endpoints</td>
+            </tr>
+            <tr>
+              <td><span class="td-label"><i class="fa-solid fa-database"></i> Database</span></td>
+              <td><code>MySQL · MariaDB · PDO</code></td>
+              <td>Relational data storage with normalized schemas and prepared statements</td>
+            </tr>
+            <tr>
+              <td><span class="td-label"><i class="fa-solid fa-lock"></i> Security</span></td>
+              <td><code>bcrypt · AES · HTTPS/TLS · OWASP · iptables</code></td>
+              <td>Password hashing, field encryption, transport security, firewall rules</td>
+            </tr>
+            <tr>
+              <td><span class="td-label"><i class="fa-brands fa-linux"></i> Linux</span></td>
+              <td><code>Bash · systemd · cron · sed · awk · grep · journalctl · netstat</code></td>
+              <td>Automation scripts, service management, forensic log analysis</td>
+            </tr>
+            <tr>
+              <td><span class="td-label"><i class="fa-solid fa-fingerprint"></i> Metadata</span></td>
+              <td><code>EXIF · MIME · GPS/GeoTIFF · METS · TEI</code></td>
+              <td>Structural, geographic, and administrative metadata extraction and analysis</td>
+            </tr>
+            <tr>
+              <td><span class="td-label"><i class="fa-brands fa-raspberry-pi"></i> IoT</span></td>
+              <td><code>Raspberry Pi · Sense HAT · Alexa Voice Service</code></td>
+              <td>Hardware-to-cloud prototype, CCTV capture, BSc thesis project</td>
+            </tr>
+            <tr>
+              <td><span class="td-label"><i class="fa-solid fa-server"></i> Infrastructure</span></td>
+              <td><code>GitHub Pages · Apache/XAMPP · Git</code></td>
+              <td>Static hosting, PHP runtime, version control</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         SECTION 6 · KNOWLEDGE DOMAINS
+    ══════════════════════════════════════ -->
+    <section class="arch-section">
+      <div class="section-header">
+        <span class="section-num">06</span>
+        <h2>Knowledge Domains</h2>
+        <p class="section-sub">Areas studied and applied in depth</p>
+      </div>
+
+      <div class="domain-grid">
+        <div class="domain-card">
+          <i class="fa-solid fa-bug domain-icon"></i>
+          <h4>Known Vulnerabilities</h4>
+          <p>CVE analysis, common weakness enumeration, impact assessment, and patch management strategy.</p>
+        </div>
+        <div class="domain-card">
+          <i class="fa-solid fa-key domain-icon"></i>
+          <h4>Cryptography</h4>
+          <p>Symmetric (AES) and asymmetric encryption, hashing algorithms, digital signatures, and key management.</p>
+        </div>
+        <div class="domain-card">
+          <i class="fa-solid fa-user-shield domain-icon"></i>
+          <h4>Password Security</h4>
+          <p>bcrypt adaptive hashing, salting, storage discipline, and credential management frameworks.</p>
+        </div>
+        <div class="domain-card">
+          <i class="fa-solid fa-syringe domain-icon"></i>
+          <h4>Injection &amp; Overflow</h4>
+          <p>SQL injection prevention via parameterized queries, XSS output encoding, and buffer overflow mitigation techniques.</p>
+        </div>
+        <div class="domain-card">
+          <i class="fa-solid fa-magnifying-glass domain-icon"></i>
+          <h4>Linux Forensics</h4>
+          <p>Live-system breach investigation, process analysis, log correlation, and network traffic inspection.</p>
+        </div>
+        <div class="domain-card">
+          <i class="fa-solid fa-network-wired domain-icon"></i>
+          <h4>Network Analysis</h4>
+          <p>Traffic monitoring with <code>netstat</code> and <code>tcpdump</code>, firewall rule authoring, and anomaly detection scripts.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer class="arch-footer">
+    <div class="arch-footer-inner">
+      <div class="arch-footer-links">
+        <a href="../index.html"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="../portfolio.html"><i class="fa-solid fa-briefcase"></i> Portfolio</a>
+        <a href="../MyWebSites/About/index.html#contact"><i class="fa-solid fa-envelope"></i> Contact</a>
+      </div>
+      <p class="arch-footer-copy">© 2025 Ambel Basha — Full-Stack Developer &amp; Security Engineer</p>
+    </div>
+  </footer>
+
+</body>
+</html>

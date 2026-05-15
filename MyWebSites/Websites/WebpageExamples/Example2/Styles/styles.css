@@ -1,0 +1,264 @@
+/* Centering container */
+.outer-container {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Main container styling */
+.container {
+    width: 400px;
+    height: auto;
+    border: 5px solid lightgrey;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    z-index: 3;
+}
+
+/* Loading bar styling */
+#loadingBar {
+    width: 100%;
+    height: 10px;
+    background-color: #f3f3f3;
+    border-radius: 5px;
+    margin-top: 10px;
+    display: none; /* Hide it initially */
+    position: relative;
+    overflow: hidden;
+}
+
+#loadingBar::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%; /* Starting width */
+    background-color: #00FFFF;
+    animation: loadingAnimation 3s ease-in-out infinite;
+}
+
+/* Show loading bar once it is visible */
+#loadingBar.loading::after {
+    width: 100%; /* Full width after animation */
+}
+
+@keyframes loadingAnimation {
+    0% { width: 0%; }
+    50% { width: 50%; }
+    100% { width: 100%; }
+}
+
+/* Hidden class */
+.hidden {
+    display: none;
+}
+
+
+/* Submit button styling */
+.submit-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: green;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
+
+.submit-button:hover {
+    background-color: darkgreen;
+}
+
+/* Label styling */
+label {
+    display: block;
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* Input number styling */
+input[type="number"] {
+    width: 80px;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: center;
+}
+
+/* Table styling */
+table {
+    width: 99%;
+    border-collapse: separate;
+    border-spacing: 10px 5px;
+}
+
+table td {
+    padding: 14px;
+    border: 1px solid #A9A9A9;
+    position: relative;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.8));
+    text-align: center;
+    border-radius: 20px;
+}
+
+table td:before,
+table td:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to bottom, transparent, rgba(192, 192, 192, 0.8), transparent);
+}
+
+table td:after {
+    top: auto;
+    bottom: 0;
+    background: linear-gradient(to top, transparent, rgba(192, 192, 192, 0.8), transparent);
+}
+
+/* Pagination */
+#pagination {
+    text-align: center;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(to bottom, #f0f0f0, #dcdcdc);
+    color: #333;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    margin: 0 5px;
+    border: 1px solid transparent;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+    transition: background-color 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+
+.pagination-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top right, rgba(255, 255, 255, 0.6), transparent);
+    border-top-left-radius: 5px;
+    z-index: 1;
+}
+
+.pagination-button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top left, rgba(255, 255, 255, 0.6), transparent);
+    border-top-right-radius: 5px;
+    z-index: 1;
+}
+
+.pagination-button:hover {
+    background: linear-gradient(to bottom, #ccc, #bfbfbf);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    border-color: #999;
+}
+
+.current-page {
+    background: linear-gradient(to bottom, #35e4be, #20d5a5);
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+}
+
+.current-page:hover {
+    background: linear-gradient(to bottom, #20d5a5, #35e4be);
+}
+
+
+/* Return Button Container */
+.return-button {
+    text-align: center;
+    margin-bottom: 100px;
+    padding-bottom: 10px;
+    z-index: 1; /* Ensure button stays on top */
+  }
+  
+  /* Return Button */
+  .return-button button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), 0 4px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid green;
+  }
+  
+  /* Glossy effect for top left corner */
+  .return-button button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top right, rgba(255, 255, 255, 0.6), transparent);
+    border-top-left-radius: 5px;
+    z-index: 1;
+  }
+  
+  /* Glossy effect for top right corner */
+  .return-button button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top left, rgba(255, 255, 255, 0.6), transparent);
+    border-top-right-radius: 5px;
+    z-index: 1;
+  }
+  
+  .return-button button:hover::before,
+  .return-button button:hover::after {
+    opacity: 0.8;
+  }
+  
+  .return-button button:hover {
+    background-color: #076907;
+    border: 1px solid rgb(4, 80, 14);
+  }

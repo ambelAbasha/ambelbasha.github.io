@@ -1,0 +1,95 @@
+/* General container with perspective */
+.hex-container {
+    position: relative;
+    width: calc(100vw + 100px); /* Make width larger than left shift */
+    height: calc(100vh + 150px);
+    overflow: hidden;
+    perspective: 1000px; /* Add depth to the 3D scene */
+    transform: translateY(-220px) translateX(-84px);
+    z-index: 0;
+}
+
+/* Hexagon base styles */
+.hexagon {
+    position: absolute;
+    width: 154px;
+    height: 170.5px;
+    background: linear-gradient(to top, #666666, #ffffff);
+    clip-path: polygon(
+        50% 0%,
+        100% 25%,
+        100% 75%,
+        50% 100%,
+        0% 75%,
+        0% 25%
+    );
+    transform-style: preserve-3d;
+    transition: all 0.4s ease-in-out; /* Smooth transition */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1; /* Default z-index for normal hexagons */
+}
+
+/* Apply a scale transformation for the central hexagons */
+.hexagon.central {
+    transform: scale(1) translateZ(0); /* Central hexagon stays the same */
+}
+
+/* Animation for immediate neighbors */
+.hexagon.neighbor {
+    transform: scale(0.85) translateZ(-100px); /* Neighbors pulled back */
+}
+
+/* Keyframes for dynamic hexagon behavior */
+@keyframes pullBack {
+    0% {
+        transform: scale(1) translateZ(0); /* Default scale for center */
+    }
+    50% {
+        transform: scale(0.9) translateZ(-50px); /* Slight pull back at 50% */
+    }
+    100% {
+        transform: scale(1) translateZ(0); /* Back to normal state */
+    }
+}
+
+/* Add perspective to make the pulling effect stronger */
+.hexagon.neighbor {
+    transform: scale(0.85) translateZ(-100px); /* Neighbors pulled back */
+    transition: transform 0.4s ease-in-out; /* Smooth animation */
+}
+
+/* Specific styles for each hexagon (add for each hexagon accordingly) */
+.hexagon.top-left {
+    background: linear-gradient(to top right, #444444, #070707);
+}
+.hexagon.top-right {
+    background: linear-gradient(to top left, #b98f05, #ce0101);
+}
+.hexagon.bottom-left {
+    background: linear-gradient(to bottom right, #ffffff, #020202);
+}
+.hexagon.bottom-right {
+    background: linear-gradient(to bottom left, #0a0a0a, #ffffff);
+}
+.hexagon.top {
+    background: linear-gradient(to top, #444444, #6d6d6d);
+}
+.hexagon.bottom {
+    background: linear-gradient(to bottom, #504d4d, #ffffff);
+}
+.hexagon.left {
+    background: linear-gradient(to left, #868585, #969595);
+}
+.hexagon.right {
+    background: linear-gradient(to right, #444444, #ffffff);
+}
+
+/* Styles for hexagon neighbors (pushed back perspective) */
+.hexagon.neighbor {
+    transform: scale(0.85) translateZ(-100px);
+    transition: transform 0.4s ease-in-out;
+}

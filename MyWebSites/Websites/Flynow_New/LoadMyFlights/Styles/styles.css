@@ -1,0 +1,470 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+    display: flex; /* Use Flexbox for vertical alignment */
+    justify-content: center; /* Center content horizontally */
+    align-items: flex-start; /* Align items to the top */
+    min-height: 100vh; /* Ensure the body takes at least the full height of the viewport */
+}
+
+/* General Container Styles */
+.container {
+    width: 80%; /* Set to 80% to give a responsive width */
+    max-width: 1700px; /* Maximum width of the container */
+    margin: 100px auto; /* Centered horizontally and adds top margin */
+    padding: 20px; /* Padding inside the container */
+    background-color: #f8f9fa; /* Light background color */
+    border: 1px solid #dee2e6; /* Light border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Results container positioning */
+.results-container {
+    margin-top: auto; /* Pushes it down towards the bottom */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px; /* Less padding on smaller screens */
+    }
+}
+
+/* Header Styles */
+.container h1 {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Paragraph Styles */
+.container p {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Rounded corners */
+tr:first-child th:first-child,
+tr td:first-child,
+tr:last-child td:first-child {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+tr:first-child th:last-child,
+tr td:last-child,
+tr:last-child td:last-child {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+/* Header styling */
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Navigation Styles */
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.no-flights{
+    align-items: center;
+}
+
+/* Box-sizing for consistent layout */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Button Container */
+.button-container {
+    display: flex;
+    justify-content: space-between; /* Align buttons to the left and right */
+    gap: 10px; /* Space between buttons */
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  
+  /* Flexbox Container for Aligning Text and Button */
+  .button-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the content */
+    gap: 10px; /* Space between text and button */
+    text-align: center; /* Center text for better readability */
+  }
+  
+  /* Adjust position of the buttons */
+  .button-wrapper.left {
+    justify-content: flex-start; /* Align "Remove Flight" button to the left */
+  }
+  
+  .button-wrapper.right {
+    justify-content: flex-end; /* Align "Logout" button to the right */
+  }
+  
+  /* Button Styles */
+  .button {
+    padding: 12px 24px; /* Adjust padding for consistent size */
+    font-size: 16px; /* Set consistent font size for all buttons */
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #007bff;
+    border-radius: 36px;
+    border: none;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    box-sizing: border-box;
+    min-width: 180px; /* Ensures the buttons have the same width */
+    text-align: center; /* Center the text inside the button */
+  }
+  
+  /* Hover Effect for Button */
+  .button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Active Button Effect */
+  .button:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Media Query for Smaller Screens */
+  @media (max-width: 768px) {
+    /* Stack the elements vertically on smaller screens */
+    .button-wrapper {
+      flex-direction: column; /* Stack vertically */
+      gap: 10px; /* Space between the elements */
+    }
+  
+    .button-wrapper.left, .button-wrapper.right {
+      justify-content: center; /* Center content on small screens */
+    }
+  
+    .button-wrapper span {
+      font-size: 16px; /* Slightly smaller text on mobile */
+    }
+  
+    .button {
+      width: 100%; /* Make the button take full width on small screens */
+      padding: 12px; /* Adjust padding for smaller screen */
+    }
+  }
+  
+  /* Media Query for Extra Small Screens (Mobile) */
+  @media (max-width: 480px) {
+    .button-wrapper span {
+      font-size: 14px; /* Smaller font size for very small screens */
+    }
+  
+    .button {
+      font-size: 14px; /* Adjust button font size for smaller screens */
+      padding: 10px 18px; /* Adjust button padding for smaller screens */
+    }
+  }
+  
+  /* Specific Button Styles */
+#book-another-flight {
+    background-color: #007bff;
+  }
+  
+#remove-selected {
+    background-color: #28a745;
+  }
+  
+#logout-button {
+    background-color: #dc3545;
+    padding: 12px 24px; /* Adjust padding to match other buttons */
+    font-size: 16px; /* Set consistent font size for consistency */
+    border-radius: 36px; /* Rounded corners */
+    box-sizing: border-box; /* Ensure padding is included in the element's size */
+    display: inline-flex;
+    align-items: center; /* Vertically center text and icon */
+    justify-content: center; /* Horizontally center text and icon */
+}
+  
+/* Active Button Effect */
+.button:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Specific Button Styles */
+#book-another-flight {
+  background-color: #007bff;
+}
+
+#remove-selected {
+  background-color: #28a745;
+  border: none;
+}
+
+/* Button Hover Effects */
+#book-another-flight:hover {
+  background-color: #0056b3;
+}
+
+#remove-selected:hover {
+  background-color: #218838;
+}
+
+#logout-button:hover {
+  background-color: #c82333;
+}
+
+/* Ensuring Links Appear as Buttons */
+a.button {
+  text-decoration: none;
+  color: #ffffff !important;
+  font-weight: bold;
+}
+
+/* Responsive Table Styles */
+@media (max-width: 600px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+    
+    th {
+        display: none;
+    }
+    
+    tr {
+        margin-bottom: 15px;
+    }
+    
+    td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+    
+    td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 10px;
+        text-align: left;
+    }
+}
+
+.alert {
+    border: 1px solid #4CAF50;
+    background-color: #dff0d8;
+    color: #3c763d;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Basic modal styling (shared) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+}
+
+/* Basic modal styling (shared) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1000; /* Ensure it's above other content */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  overflow: auto; /* Ensure the modal content doesn't overflow */
+  justify-content: center; /* Center the modal horizontally */
+  align-items: center; /* Center the modal vertically */
+  animation: fadeIn 0.3s ease-out; /* Fade-in effect */
+  pointer-events: auto; /* Allow clicks on modal surface */
+}
+
+/* Modal content styling (shared) */
+.modal-content {
+  top:40%;
+  left: 40%;
+  background-color: #ffffff; /* Solid white background */
+  position: relative;
+  padding: 20px; /* Added padding for spacing */
+  border-radius: 8px;
+  border: 1px inset solid #2dff03e3; /* Green border for the modal */
+  text-align: center;
+  width: 90%; /* Default width for responsiveness */
+  max-width: 400px; /* Ensure modal doesn't get too large */
+  height: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Box shadow for depth */
+  pointer-events: all; /* Allow interaction with modal content */
+}
+
+/* Close button styling (X) */
+.modal .close {
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  cursor: pointer;
+  color: #333;
+  font-size: 1.8rem;
+  transition: color 0.3s;
+}
+
+.modal .close:hover {
+  color: #218838; /* Change to green on hover */
+}
+
+/* Add fade-in animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Modal button container */
+.modal-buttons {
+  margin-top: 10px; /* Add spacing between buttons */
+}
+
+/* Glassy button styling (shared) */
+.glassy-button {
+    padding: 10px 20px; /* Button padding */
+    margin: 0 10px; /* Space between buttons */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    color: white; /* Text color */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+}
+
+/* Confirm button styling (shared) */
+.button-confirm {
+    background-color: #28a745; /* Green background for confirm */
+}
+
+.button-confirm:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+/* Cancel button styling (shared) */
+.button-cancel {
+    background-color: #dc3545; /* Red background for cancel */
+}
+
+.button-cancel:hover {
+    background-color: #c82333; /* Darker red on hover */
+}
+
+/* Styling for the Logout Confirmation Modal */
+#logoutModal .modal-content {
+    width: 30%; /* Slightly wider for clarity */
+    height: auto; /* Adjust height based on content */
+}
+
+#logoutModal .modal-content h2 {
+    font-size: 1.5em; /* Larger header for logout */
+    margin-bottom: 15px;
+}
+
+#logoutModal .modal-content p {
+    font-size: 1.1em; /* Slightly larger text for clarity */
+    margin-bottom: 20px;
+}
+
+/* Styling for the Flight Removal Confirmation Modal */
+#confirmation-modal .modal-content {
+    width: 35%; /* Slightly wider for flight removal */
+    height: auto; /* Adjust height based on content */
+}
+
+#confirmation-modal .modal-content p {
+    font-size: 1em; /* Adjust text size */
+    margin-bottom: 20px;
+}
+
+#confirmation-modal #modalContent {
+    font-size: 0.9em; /* Slightly smaller for flight details */
+    color: #444; /* Darker color for better readability */
+    margin-bottom: 20px;
+}
+
+/* Close button styling (X) */
+.modal .close {
+    position: absolute;
+    top: 10px;
+    right: 16px;
+    cursor: pointer;
+    color: #333;
+    font-size: 1.8rem;
+    transition: color 0.3s;
+  }
+  
+  .modal .close:hover {
+    color: #218838; /* Change to green on hover */
+  }
+  
+.success-message {
+    background-color: #dff0d8;
+    color: #3c763d;
+    font-weight: bold;
+    text-align: center;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cell {
+    flex: 1;
+    padding: 5px 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.no-flights {
+    text-align: center;
+    margin-top: 20px;
+}

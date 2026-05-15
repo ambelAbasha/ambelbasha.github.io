@@ -1,0 +1,91 @@
+* {
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0; /* Background color */
+}
+
+.circle-container {
+    position: relative;
+    width: 400px; /* Adjust for outer circle size */
+    height: 400px; /* Adjust for outer circle size */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.outer-circle {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: rgba(0, 255, 255, 0.2); /* Outer circle color */
+    z-index: 1;
+}
+
+.inner-circle {
+    position: absolute;
+    width: 240px; /* Adjust for inner circle size */
+    height: 240px; /* Adjust for inner circle size */
+    border-radius: 50%;
+    background: #f0f0f0; /* Inner circle color */
+    z-index: 2;
+}
+
+.elements {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.element {
+    position: absolute;
+    width: 80px; /* Width for brick shape */
+    height: 40px; /* Height for brick shape */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #00ffff; /* Element color */
+    border-radius: 10px; /* Slight rounding for brick corners */
+    font-weight: bold;
+    z-index: 3; /* Ensure this is above other elements */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Optional shadow for 3D effect */
+}
+
+/* Ensure anchor fills the element area to be clickable */
+.element a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black; /* Change text color if needed */
+    text-decoration: none; /* Remove underline from links */
+    position: absolute; /* Ensure it covers the element */
+    top: 0; /* Align to top */
+    left: 0; /* Align to left */
+}
+
+/* Positioning the elements around the circle */
+.element:nth-child(1) { transform: rotate(0deg) translateY(-180px) rotate(90deg); }
+.element:nth-child(2) { transform: rotate(30deg) translateY(-180px) rotate(-30deg); }
+.element:nth-child(3) { transform: rotate(60deg) translateY(-180px) rotate(-60deg); }
+.element:nth-child(4) { transform: rotate(90deg) translateY(-180px) rotate(-90deg); }
+.element:nth-child(5) { transform: rotate(120deg) translateY(-180px) rotate(-120deg); }
+.element:nth-child(6) { transform: rotate(150deg) translateY(-180px) rotate(-150deg); }
+.element:nth-child(7) { transform: rotate(180deg) translateY(-180px) rotate(-180deg); }
+.element:nth-child(8) { transform: rotate(210deg) translateY(-180px) rotate(-210deg); }
+.element:nth-child(9) { transform: rotate(240deg) translateY(-180px) rotate(-240deg); }
+.element:nth-child(10) { transform: rotate(270deg) translateY(-180px) rotate(-270deg); }
+.element:nth-child(11) { transform: rotate(300deg) translateY(-180px) rotate(-300deg); }
+.element:nth-child(12) { transform: rotate(330deg) translateY(-180px) rotate(-330deg); }

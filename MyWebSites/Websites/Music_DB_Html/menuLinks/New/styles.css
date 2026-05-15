@@ -1,0 +1,77 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f9f9f9;
+}
+
+.container {
+  text-align: center;
+  width: 80%;
+  height: 80%;
+}
+
+.link {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 18px;
+  transition: background-color 0.3s;
+}
+
+.link:hover {
+  background-color: #0056b3;
+}
+
+iframe {
+  width: 100%;
+  height: 80%;
+  border: none;
+}
+
+.return-button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px;
+  width: 60px; /* Set width to 30px */
+  background-color: #C9E5E5;
+  color: #333;
+  border: 1px solid #99c2c2;
+  border-radius: 10px;
+  font-size: 18px;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s;
+}
+
+.return-button:hover {
+  background-color: #b3d9d9;
+}
+
+.return-button::before,
+.return-button::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  width: 100%;
+  height: 20px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));
+  transition: transform 0.5s;
+}
+
+.return-button::after {
+  top: auto;
+  bottom: -10px;
+  transform: scaleY(-1);
+}
+
+.return-button:hover::before,
+.return-button:hover::after {
+  transform: translateY(10px);
+}

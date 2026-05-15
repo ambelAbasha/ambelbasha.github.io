@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <title>Ambel Basha | Full-Stack Developer & Security Engineer</title>
+
+  <meta name="description" content="Ambel Basha – Full-Stack Developer and Security Engineer. I build secure, production-ready web systems — from application architecture to cybersecurity hardening and Linux automation." />
+  <meta name="keywords" content="Ambel Basha, Full-Stack Developer, Web Development, Cybersecurity, JavaScript, PHP, HTML, CSS, SQL, Linux, Security Engineer, Portfolio" />
+  <meta name="author" content="Ambel Basha" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Ambel Basha — Full-Stack Developer & Security Engineer" />
+  <meta property="og:description" content="I build secure, production-ready web systems — full-stack development, cybersecurity hardening, database architecture, and Linux automation." />
+  <meta property="og:image" content="https://ambelbasha.github.io/WebPages/Images/ambel.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ambelbasha.github.io/WebPages/" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Ambel Basha — Full-Stack Developer & Security Engineer" />
+  <meta name="twitter:description" content="Secure web systems, cybersecurity solutions, and automation — built end-to-end." />
+  <meta name="twitter:image" content="https://ambelbasha.github.io/WebPages/Images/ambel.png" />
+
+  <link rel="canonical" href="https://ambelbasha.github.io/WebPages/" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="Styles/Index/About/aboutStyles.css" />
+  <link rel="stylesheet" href="Styles/Index/Footer/footerStyles.css" />
+  <link rel="stylesheet" href="Styles/Index/General/generalStyles.css" />
+  <link rel="stylesheet" href="Styles/Index/HeroCTAButtons/heroCTAButtons.css" />
+  <link rel="stylesheet" href="Styles/Index/NavbarBurgerMenu/navbarBurgerMenuStyles.css" />
+  <link rel="stylesheet" href="Styles/Index/Skills&Responsive/skills&ResponsiveStyles.css" />
+  <link rel="stylesheet" href="Styles/Index/Corridor/corridorStyles.css" />
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+
+  <!-- Scripts -->
+  <script src="Scripts/Index/DigitalClock/digitalClock.js" defer></script>
+  <script src="Scripts/Index/Intersection/observer.js" defer></script>
+  <script src="Scripts/Index/Scroll/scrollToPortfolio.js" defer></script>
+  <script src="Scripts/Index/smoothScrollingMenu.js" defer></script>
+  <script src="Scripts/Index/SkillsOutlineBorder/skillsOutlineBorder.js" defer></script>
+  <script src="Scripts/Index/MenuToggler/toggleMenu.js" defer></script>
+  <script src="Scripts/Index/VisitorCount/visitorCount.js" defer></script>
+  <script src="Scripts/Index/VisibleHero/visibleHero.js" defer></script>
+  <script src="Scripts/Index/WebGl/heroWebGL.js" defer></script>
+  <script src="Scripts/Index/WebGl/aboutSkillsWebGL.js" defer></script>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Ambel Basha",
+    "url": "https://ambelbasha.github.io/WebPages/",
+    "sameAs": [
+      "https://www.linkedin.com/in/ambel-basha-367156123",
+      "https://github.com/ambelbasha"
+    ],
+    "jobTitle": "Full-Stack Developer & Security Engineer",
+    "worksFor": { "@type": "Organization", "name": "Freelance" },
+    "knowsAbout": ["Web Development", "Cybersecurity", "Linux Scripting", "Databases", "Metadata Systems", "IoT"]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Ambel Basha — Portfolio",
+    "url": "https://ambelbasha.github.io/WebPages/",
+    "description": "Full-Stack Developer and Security Engineer specializing in secure web systems, cybersecurity hardening, and Linux automation.",
+    "mainEntityOfPage": "https://ambelbasha.github.io/WebPages/portfolio.html"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ambelbasha.github.io/WebPages/" },
+      { "@type": "ListItem", "position": 2, "name": "Portfolio", "item": "https://ambelbasha.github.io/WebPages/portfolio.html" }
+    ]
+  }
+  </script>
+
+</head>
+
+<body>
+
+<!-- WebGL background — must be first child so DOM order places it below every section -->
+<div id="webgl-viewport" aria-hidden="true">
+  <canvas id="webgl-canvas"></canvas>
+</div>
+
+<!-- Navbar -->
+<nav class="landing-navbar">
+  <div class="navbar-container">
+    <a href="#home" class="navbar-brand">Ambel Basha</a>
+    <div class="landing-primary-container">
+      <div class="burger-wrapper">
+        <button id="landing-burger-menu" class="burger-menu" aria-expanded="false" aria-label="Toggle navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <div id="menu" class="landing-menu" aria-hidden="true">
+
+        <div class="menu-section-label" style="--item-delay:0.04s">Navigate</div>
+
+        <a href="#home" class="menu-item" onclick="return handleInternalNav(event)" data-section="home" style="--item-delay:0.07s">
+          <span class="menu-indicator"></span>
+          <span class="menu-icon-box"><i class="fa fa-house" aria-hidden="true"></i></span>
+          <span class="menu-text">
+            <span class="menu-name">Home</span>
+            <span class="menu-sub">Start here</span>
+          </span>
+        </a>
+
+        <a href="#about" class="menu-item" onclick="return handleInternalNav(event)" data-section="about" style="--item-delay:0.11s">
+          <span class="menu-indicator"></span>
+          <span class="menu-icon-box"><i class="fa-solid fa-user" aria-hidden="true"></i></span>
+          <span class="menu-text">
+            <span class="menu-name">About</span>
+            <span class="menu-sub">The story</span>
+          </span>
+        </a>
+
+        <a href="#skills" class="menu-item" onclick="return handleInternalNav(event)" data-section="skills" style="--item-delay:0.15s">
+          <span class="menu-indicator"></span>
+          <span class="menu-icon-box"><i class="fa-solid fa-layer-group" aria-hidden="true"></i></span>
+          <span class="menu-text">
+            <span class="menu-name">Skills</span>
+            <span class="menu-sub">Stack &amp; tools</span>
+          </span>
+        </a>
+
+        <a href="#footer-container" class="menu-item" onclick="return handleInternalNav(event)" data-section="contact" style="--item-delay:0.19s">
+          <span class="menu-indicator"></span>
+          <span class="menu-icon-box"><i class="fa-solid fa-envelope" aria-hidden="true"></i></span>
+          <span class="menu-text">
+            <span class="menu-name">Contact</span>
+            <span class="menu-sub">Let's talk</span>
+          </span>
+        </a>
+
+        <div class="menu-rule" style="--item-delay:0.21s"></div>
+
+        <div class="menu-section-label" style="--item-delay:0.23s">Work</div>
+
+        <a href="portfolio.html" class="menu-item cta-btn-menu portfolio-link" onclick="return handleInternalNav(event)" style="--item-delay:0.27s">
+          <span class="menu-indicator"></span>
+          <span class="menu-icon-box"><i class="fa-solid fa-briefcase" aria-hidden="true"></i></span>
+          <span class="menu-text">
+            <span class="menu-name">Portfolio</span>
+            <span class="menu-sub">Selected work</span>
+          </span>
+          <span class="menu-badge">New</span>
+        </a>
+
+        <div class="menu-rule" style="--item-delay:0.29s"></div>
+
+        <div class="menu-status" style="--item-delay:0.31s">
+          <span class="status-dot"></span>
+          <span class="status-text">Available for projects</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Home anchor — target for navbar #home links -->
+<span id="home" aria-hidden="true"></span>
+
+<!-- Corridor Hero — 700 vh of scroll drives camera through 7 acts (4 original + 3 milestones) -->
+<section id="corridor-hero" aria-label="Portfolio introduction">
+
+  <!-- Act 0: Intro -->
+  <div id="panel-intro" class="corridor-panel" role="banner">
+    <div class="panel-content panel-content--center">
+      <span class="panel-label">Ambel Basha</span>
+      <h1>I Build Things<br>That Hold Up.</h1>
+      <div class="corridor-picture" role="img" aria-label="Ambel Basha profile photo"></div>
+      <p>Full-Stack Developer &amp; Security Engineer — web systems built to work, and built to stay secure.</p>
+      <div class="cta-buttons">
+        <a href="portfolio.html" class="cta-btn">
+          <i class="fas fa-briefcase" aria-hidden="true"></i> See My Work
+        </a>
+      </div>
+      <a href="#about" class="cta-btn learn-more-link">Scroll to explore</a>
+    </div>
+  </div>
+
+  <!-- Milestone A: About Me -->
+  <div id="panel-about-milestone" class="corridor-panel">
+    <div class="panel-content">
+      <span class="panel-label">Milestone · Who I Am</span>
+      <h2>Developer.<br>By nature. By design.</h2>
+      <p>I'm Ambel — a Computer Engineer who treats building and securing as one discipline, not two separate jobs. Most developers hand security off. I don't.</p>
+      <ul class="domain-list">
+        <li><span class="domain-dot domain-dot--gold"></span>Curious about how systems break — and how to prevent it</li>
+        <li><span class="domain-dot domain-dot--gold"></span>End-to-end ownership: design → build → harden → ship</li>
+        <li><span class="domain-dot domain-dot--gold"></span>Based in Athens, Greece — open to global work</li>
+      </ul>
+      <a href="#about" class="corridor-link">My full story ↓</a>
+      <div class="milestone-dots">
+        <div class="milestone-dot active"></div>
+        <div class="milestone-dot"></div>
+        <div class="milestone-dot"></div>
+        <div class="milestone-dot"></div>
+        <div class="milestone-dot"></div>
+        <div class="milestone-dot"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Milestone B: What I Solve -->
+  <div id="panel-deliver-milestone" class="corridor-panel">
+    <div class="panel-content">
+      <span class="panel-label">Milestone · What I Solve</span>
+      <h2>Problems I Solve<br>for You</h2>
+      <p>Whatever stage your project is at — I bring it forward. Here's what that looks like in practice.</p>
+      <ul class="domain-list">
+        <li><span class="domain-dot"></span>Need a website or app — built properly, not just delivered</li>
+        <li><span class="domain-dot"></span>Data scattered or exposed — I organize and lock it down</li>
+        <li><span class="domain-dot"></span>Repetitive tasks draining your team — I automate them</li>
+        <li><span class="domain-dot"></span>Worried about security gaps — I find and close them</li>
+        <li><span class="domain-dot"></span>Existing system needs work — I audit, harden, and improve it</li>
+      </ul>
+      <a href="#skills" class="corridor-link">See the full stack ↓</a>
+      <div class="milestone-dots">
+        <div class="milestone-dot"></div>
+        <div class="milestone-dot active"></div>
+        <div class="milestone-dot"></div>
+        <div class="milestone-dot"></div>
+        <div class="milestone-dot"></div>
+        <div class="milestone-dot"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Act 1: Skills Constellation -->
+  <div id="panel-skills" class="corridor-panel">
+    <div class="panel-content">
+      <span class="panel-label">The Stack</span>
+      <h2>Full-Spectrum<br>Engineering</h2>
+      <ul class="domain-list">
+        <li><span class="domain-dot"></span>Web — PHP · JavaScript · Python · Java · C++</li>
+        <li><span class="domain-dot"></span>Databases — MySQL · MariaDB · schema design</li>
+        <li><span class="domain-dot"></span>Security — OWASP · SQLi &amp; XSS prevention · crypto</li>
+        <li><span class="domain-dot"></span>Linux — Bash · deployment pipelines · forensics</li>
+        <li><span class="domain-dot"></span>Metadata — TEI · METS · archival systems</li>
+        <li><span class="domain-dot"></span>IoT — Raspberry Pi · Sense HAT · Alexa VS</li>
+        <li><span class="domain-dot"></span>QA — TDD · manual &amp; automated testing</li>
+      </ul>
+      <a href="#skills" class="corridor-link">See skills in detail ↓</a>
+    </div>
+  </div>
+
+  <!-- Act 2: Security Octahedra -->
+  <div id="panel-security" class="corridor-panel">
+    <div class="panel-content">
+      <span class="panel-label">Security-First</span>
+      <h2>Hardened by Design</h2>
+      <p>Security is built into every system from day one — not patched on after something breaks.</p>
+      <ul class="domain-list">
+        <li><span class="domain-dot domain-dot--gold"></span>OWASP threat modeling &amp; SQLi / XSS prevention</li>
+        <li><span class="domain-dot domain-dot--gold"></span>Encrypted data pipelines &amp; cryptography</li>
+        <li><span class="domain-dot domain-dot--gold"></span>Buffer overflow &amp; injection mitigation</li>
+        <li><span class="domain-dot domain-dot--gold"></span>Audit &amp; hardening of existing infrastructure</li>
+      </ul>
+      <p>In plain terms: your users' data stays private, your application resists attacks, and vulnerabilities are closed before they're exploited.</p>
+    </div>
+  </div>
+
+  <!-- Act 3: CTA Convergence -->
+  <div id="panel-cta" class="corridor-panel">
+    <div class="panel-content panel-content--center">
+      <span class="panel-label">Let's Work Together</span>
+      <h2>Your next project<br>deserves a solid foundation.</h2>
+      <p>New build, security audit, or hardening something existing — I deliver complete, documented work. Available for freelance and full-time engagements.</p>
+      <div class="cta-buttons">
+        <a href="MyWebSites/About/index.html#contact" class="cta-btn">
+          <i class="fas fa-envelope" aria-hidden="true"></i> Get in Touch
+        </a>
+        <a href="Architecture/architecture.html" class="cta-btn">
+          <i class="fas fa-project-diagram" aria-hidden="true"></i> Architecture
+        </a>
+      </div>
+      <a href="portfolio.html" class="corridor-link">Browse the portfolio →</a>
+    </div>
+  </div>
+
+  <!-- Milestone C: Footer / Connect -->
+  <div id="panel-footer-milestone" class="corridor-panel">
+    <div class="panel-content panel-content--center">
+      <span class="panel-label">Milestone · End of Journey</span>
+      <h2>Every great project<br>starts with one question.</h2>
+      <p>You've seen what I build and how I think. If any of it clicked — reach out. No pitch, no pressure. Just a conversation about what we could make together.</p>
+      <ul class="domain-list">
+        <li><span class="domain-dot domain-dot--gold"></span>I reply within 24 hours</li>
+        <li><span class="domain-dot"></span>Open to freelance &amp; full-time roles</li>
+        <li><span class="domain-dot domain-dot--gold"></span>Based in Athens — available globally</li>
+      </ul>
+      <a href="#footer-container" class="corridor-link">Scroll to connect ↓</a>
+      <div class="milestone-dots">
+        <div class="milestone-dot"></div>
+        <div class="milestone-dot"></div>
+        <div class="milestone-dot"></div>
+        <div class="milestone-dot"></div>
+        <div class="milestone-dot"></div>
+        <div class="milestone-dot active"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll hint — fades out after first scroll -->
+  <div id="scroll-hint" aria-hidden="true">
+    <span>Scroll to explore</span>
+    <div class="scroll-hint-arrow"></div>
+  </div>
+
+</section>
+
+<!-- About Section -->
+<main id="about" class="about animate-on-scroll">
+  <header class="about-header">
+    <div class="container">
+      <h2>About Me</h2>
+      <p class="hero-overview">
+        A Computer Engineer who delivers
+        <span class="highlight-secure">secure</span>,
+        <span class="highlight-efficient">efficient</span>, and
+        <span class="highlight-innovative">purposeful solutions</span> — not just code.
+      </p>
+      <p>
+        Computer Engineering graduate from UNIWA, Athens. I build full-stack web applications
+        with security as a core discipline — every system I ship is also hardened against the
+        attacks that expose data or take services offline. From protected databases and encrypted
+        pipelines to Bash-automated infrastructure and IoT prototypes, I work across the full
+        depth of a system — not just the layer users see.
+      </p>
+      <p>
+        New build, security audit, performance fix, or end-to-end development — I deliver
+        complete, documented work that holds up under real-world conditions.
+      </p>
+      <p class="about-links">
+        <a href="MyWebSites/About/index.html" class="about-link about-link-read">
+          <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+          <span>Read More</span>
+          <i class="fa-solid fa-arrow-right btn-arrow" aria-hidden="true"></i>
+        </a>
+        <a href="portfolio.html" class="about-link about-link-portfolio">
+          <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+          <span>Visit Portfolio</span>
+          <i class="fa-solid fa-arrow-up-right-from-square btn-arrow" aria-hidden="true"></i>
+        </a>
+      </p>
+    </div>
+  </header>
+</main>
+
+<!-- Skills Section -->
+<section id="skills" class="skills animate-on-scroll">
+  <div class="container">
+    <h2>What I Bring</h2>
+    <div class="skill-boxes">
+      <a href="portfolio.html#web" class="skill-box">
+        <h3>Web Development</h3>
+        <p>End-to-end web applications using PHP, JavaScript, Java, Python, C++, HTML, and CSS — from a minimal prototype to a production system.</p>
+        <span class="skill-bar" aria-hidden="true"></span>
+      </a>
+      <a href="portfolio.html#database" class="skill-box">
+        <h3>Databases</h3>
+        <p>Secure, normalized database design with MySQL and MariaDB — properly indexed, performance-tuned, and guarded against injection.</p>
+        <span class="skill-bar" aria-hidden="true"></span>
+      </a>
+      <a href="portfolio.html#cyber" class="skill-box">
+        <h3>Cybersecurity</h3>
+        <p>OWASP-based threat modeling, SQLi and XSS prevention, buffer overflow mitigation, cryptography, and data encryption — applied, not theoretical.</p>
+        <span class="skill-bar" aria-hidden="true"></span>
+      </a>
+      <a href="portfolio.html#linux" class="skill-box">
+        <h3>Linux &amp; Automation</h3>
+        <p>Advanced Bash scripting for deployment pipelines, system monitoring, forensic analysis, and administrative automation workflows.</p>
+        <span class="skill-bar" aria-hidden="true"></span>
+      </a>
+      <a href="portfolio.html#metadata" class="skill-box">
+        <h3>Metadata Systems</h3>
+        <p>Descriptive, structural, and administrative metadata using TEI, METS, and custom schemas — for archives, research systems, and digital libraries.</p>
+        <span class="skill-bar" aria-hidden="true"></span>
+      </a>
+      <a href="portfolio.html" class="skill-box">
+        <h3>IoT &amp; Hardware</h3>
+        <p>Hardware-to-cloud prototypes with Raspberry Pi, Sense HAT, and Alexa Voice Service — including my BSc thesis project.</p>
+        <span class="skill-bar" aria-hidden="true"></span>
+      </a>
+      <a href="portfolio.html" class="skill-box">
+        <h3>Quality Assurance</h3>
+        <p>Manual and automated testing with a TDD discipline — catching defects at the design stage, not after deployment.</p>
+        <span class="skill-bar" aria-hidden="true"></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer id="footer-container" class="footer">
+  <div class="footer-container">
+    <div class="footer-hub" role="navigation" aria-label="Footer navigation">
+      <button class="footer-hub-trigger" aria-label="Expand navigation links" aria-expanded="false">
+        <i class="fas fa-compass" aria-hidden="true"></i>
+      </button>
+      <a href="MyWebSites/About/about.html" class="hub-link hub-link--1">
+        <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+        <span>About</span>
+      </a>
+      <a href="../WebPages/About/LandingPage/aboutLanding.html" class="hub-link hub-link--2">
+        <i class="fa-solid fa-file-lines" aria-hidden="true"></i>
+        <span>This Page</span>
+      </a>
+      <a href="MyWebSites/About/about.html#contact" class="hub-link hub-link--3">
+        <i class="fa-solid fa-phone" aria-hidden="true"></i>
+        <span>Contact</span>
+      </a>
+      <a href="#home" class="hub-link hub-link--4">
+        <i class="fa fa-home" aria-hidden="true"></i>
+        <span>Home</span>
+      </a>
+    </div>
+
+    <div id="visitor-count-section">
+      <p id="total-visits">
+        <span class="label">Total visits:</span>
+        <span class="number"><span class="prefix">+</span><span class="digits"></span></span>
+      </p>
+      <p id="unique-visits">
+        <span class="label">Unique visits:</span>
+        <span class="number"><span class="prefix">+</span><span class="digits"></span></span>
+      </p>
+    </div>
+    <div class="footer-copyright-wrapper">
+      <p class="footer-copyright">© 2025 Ambel Basha — Full Stack Developer &amp; Cybersecurity Enthusiast</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function handleInternalNav(event) {
+    if (event.ctrlKey || event.metaKey || event.shiftKey || event.button !== 0) {
+      return true;
+    }
+    return true;
+  }
+
+  /* ── Scroll-progress rainbow bar ──────────────────────────────────────── */
+  (function () {
+    function updateBar() {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const prog = scrollable > 0
+        ? Math.min(window.scrollY / scrollable, 1)
+        : 0;
+      document.documentElement.style.setProperty('--scroll-prog', prog.toFixed(4));
+    }
+    window.addEventListener('scroll', updateBar, { passive: true });
+    updateBar(); /* initialise at 0 on load */
+  })();
+
+  /* Footer hub — curved basket animation */
+  document.addEventListener('DOMContentLoaded', () => {
+    const hub = document.querySelector('.footer-hub');
+    const btn = document.querySelector('.footer-hub-trigger');
+    if (!hub || !btn) return;
+
+    let closeTimer = null;
+
+    function openHub() {
+      if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
+      hub.classList.remove('is-closing');
+      hub.classList.add('is-open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeHub() {
+      if (!hub.classList.contains('is-open') && !hub.classList.contains('is-closing')) return;
+      hub.classList.remove('is-open');
+      hub.classList.add('is-closing');
+      btn.setAttribute('aria-expanded', 'false');
+      /* 0.44s anim + 0.12s max delay = 560ms until last icon reaches center */
+      closeTimer = setTimeout(() => {
+        hub.classList.remove('is-closing');
+        closeTimer = null;
+      }, 580);
+    }
+
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      hub.classList.contains('is-open') ? closeHub() : openHub();
+    });
+
+    document.addEventListener('click', e => {
+      if ((hub.classList.contains('is-open')) && !hub.contains(e.target)) closeHub();
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeHub();
+    });
+  });
+</script>
+
+</body>
+</html>

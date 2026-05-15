@@ -1,0 +1,648 @@
+/* ==============================================
+   Fixed Header with Reduced Vertical Spacing
+==============================================*/
+
+:root {
+  --color-bg: #003135;
+  --color-bg-alt: #024950;
+  --color-bg-hover: #002428;
+  --color-primary: #0FA4AF;
+  --color-cyan-dark: #0c7075;
+  --color-secondary: #bb4232;
+  --color-secondary-dark: #993528;
+  --color-accent-1: #F5C74F;
+  --color-accent-2: #B8C46E;
+  --color-accent-3: #CFAF9D;
+  --color-text: #ffffff;
+  --color-text-muted: #bb4232;
+  --color-border: #0FA4AF;
+  --color-shadow: rgba(0,0,0,0.2);
+  --main-color: #0b666e;
+  --background-color: #022a2e;
+  --highlight-color: #ffbb00;
+  --secondary-color: #964734;
+  --bg-color: #f4f4f4;
+  --text-color: rgb(116, 33, 0);
+  --anim-duration: 4s;
+}
+
+#main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(180deg, var(--color-bg-alt), var(--color-bg));
+  color: white;
+  padding: 4px 0; /* reduced vertical padding */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  z-index: 100;
+  animation: slideDown 0.6s ease-in-out forwards;
+}
+
+/* Rainbow Flow Keyframes */
+@keyframes rainbowFlow {
+  0% {
+    background-position: 0% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+#main-header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet, red);
+  background-size: 400% 100%;
+  animation: rainbowFlow 10s linear infinite;
+}
+
+/* ==============================================
+   Fixed Header & Navbar with Correctly Enlarged Title
+============================================== */
+
+.navbar-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: center; /* Center the title container */
+  align-items: center;
+  position: relative;
+  padding: 12px 0;
+  z-index: 4;
+  width: 100%; /* Ensure full width */
+}
+
+.welcome-title {
+  font-size: min(19rem, 167vw); /* Scales with viewport width */
+  font-weight: 800;
+  color: var(--highlight-color);
+  text-align: center;
+  flex-grow: 1; /* Allow title to grow */
+  line-height: 1.4;
+  margin: 0 auto;
+  pointer-events: auto;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+  white-space: nowrap;
+  width: 100%; /* Ensures the title has enough space to grow */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .welcome-title {
+    font-size: 7rem; /* Adjust for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome-title {
+    font-size: 5rem; /* Further adjust for very small screens */
+  }
+}
+
+/* Ensure the center group is flexed for proper alignment */
+.center-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  pointer-events: auto;
+}
+
+#visitor-count-section {
+  display: flex;
+  gap: 0.7rem;
+  justify-content: center;
+  margin-top: 0.1rem; /* reduced vertical spacing */
+  font-size: 0.85rem;
+  color: var(--color-text);
+}
+
+#visitor-count-section p { margin: 0; }
+
+.highlight {
+  color: var(--highlight-color);
+  font-weight: bold;
+  font-size: 1.8rem;
+}
+
+/* Burger Menu */
+.burger-wrapper {
+  position: absolute;
+  top: 51%;
+  right: -4.9rem;
+  transform: translateY(-51%);
+  width: 48px;
+  height: 48px;
+  pointer-events: none;
+  z-index: 101;
+}
+
+.burger-menu {
+  --fill-angle: 0deg;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  border: 4px solid transparent;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: background 0.3s, --fill-angle var(--anim-duration) linear;
+  border-image: conic-gradient(rgba(0, 0, 0, 0.6) var(--fill-angle), transparent var(--fill-angle)) 1;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.burger-menu span {
+  position: absolute;
+  width: 30px;
+  height: 4px;
+  background-color: var(--secondary-color);
+  border-radius: 4px;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  transform-origin: center;
+}
+
+/* ==============================================
+   Floating Elements Animation
+==============================================*/
+
+/* Keyframes for elements floating in from hidden positions */
+@keyframes floatInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px) translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+  }
+}
+
+@keyframes floatInFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px) translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+  }
+}
+
+@keyframes floatInFromTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatInFromBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply to elements */
+.nav-left, .nav-right {
+  animation: floatInFromLeft 1s ease-out forwards;
+}
+
+.center-group {
+  animation: floatInFromTop 1s ease-out forwards;
+}
+
+/* Staggering visitor counts individually */
+#visitor-count-section p:nth-child(1) {
+  animation: floatInFromBottom 1s ease-out 0.3s forwards;
+}
+
+#visitor-count-section p:nth-child(2) {
+  animation: floatInFromBottom 1s ease-out 0.6s forwards;
+}
+
+.burger-menu span:nth-child(1) { top: 8px; }
+.burger-menu span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+.burger-menu span:nth-child(3) { bottom: 8px; }
+
+.burger-menu.open span:nth-child(1) {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+.burger-menu.open span:nth-child(2) {
+  opacity: 0;
+}
+.burger-menu.open span:nth-child(3) {
+  bottom: 50%;
+  transform: translateY(50%) rotate(-45deg);
+}
+
+.burger-menu:hover span {
+  background-color: #381805;
+}
+
+.burger-wrapper.animate-cw .burger-menu { --fill-angle: 360deg; }
+.burger-wrapper.animate-ccw .burger-menu { --fill-angle: 0deg; }
+
+/* Webpages Menu */
+.webpages-menu {
+  position: fixed;
+  top: 4.97rem;
+  right: calc(0.3rem + 0.5px); /* Adjusted to include border and padding */
+  display: none;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.2rem;
+  min-width: 180px;
+  max-width: 210px;
+  max-height: calc(100vh - 4rem);
+  overflow-y: auto;
+  background-color: #0a5e64;
+  border: 0.5px solid #052d30;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  z-index: 102;
+  padding: 0.3rem;
+  width: auto;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.webpages-menu.show {
+  display: flex;
+}
+
+/* Webpages Menu Anchor Tags */
+.webpages-menu a {
+  display: block;
+  width: 94%; /* Ensure the anchor tags span the full width of the parent */
+  padding: 0.65rem 0.1rem; /* Reduced left padding */
+  font-size: 1rem;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border: 3px solid var(--color-border);
+}
+
+.webpages-menu a:hover {
+  background-color: #F5C74F;
+  border: 3px solid var(--secondary-color);
+  color: #024950;
+}
+
+/* Ensure the parent container is a flex container */
+.navbar-container {
+  display: flex;
+  justify-content: center; /* Horizontally center the child elements */
+  align-items: center;     /* Vertically center the child elements */
+  width: 100%;             /* Ensure the container takes up the full width */
+  height: 100%;            /* Ensure the container takes up the full height */
+}
+
+/* Style for the welcome title */
+.welcome-title {
+  font-size: 2.1rem;
+  font-weight: bold;
+  color: var(--highlight-color);
+  text-align: center;      /* Center the text within the title */
+  flex-grow: 1;            /* Allow the title to take the available space */
+}
+
+/* Clock */
+.clock {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  font-family: 'Courier New', monospace;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-color);
+  background: transparent;
+  border-radius: 5px;
+  z-index: 2;
+}
+
+/* Visitor Count Section */
+#visitor-count-section {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 12px;
+  gap: 5px;
+  position: absolute;
+  right: 10px;
+  top: 52%;
+  transform: translateY(-52%);
+  z-index: 3; /* Make sure it's above the background elements */
+}
+
+#visitor-count-section p {
+  display: inline-block;
+  width: 150px;
+  text-align: right;
+  font-family: monospace;
+  white-space: nowrap;
+  position: relative;
+}
+
+#visitor-count-section p .number .prefix,
+#visitor-count-section p .number .digits {
+  display: inline;
+  margin: 0;
+}
+
+/* Fade-out transition for labels */
+.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
+
+/* Floating visit increment animation */
+@keyframes floatUp {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-15px);
+    opacity: 0;
+  }
+}
+
+.visit-animation {
+  position: absolute;
+  font-size: 12px;
+  font-weight: bold;
+  color: #ffcc00;
+  left: 100%;
+  margin-left: 5px;
+  animation: floatUp 1s ease-out forwards;
+  pointer-events: none;
+}
+
+
+/* Projects Dropdown */
+.projects-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.projects-link {
+  display: inline-block;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  background-color: var(--main-color);
+  color: white;
+  text-decoration: none;
+  border: 1px solid var(--highlight-color);
+  border-radius: 0.25rem;
+  width: 100%;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.projects-link::after {
+  content: "▾";
+  margin-left: 0.5em;
+  font-size: 0.8em;
+  vertical-align: middle;
+}
+
+.projects-link:hover {
+  background-color: var(--highlight-color);
+  color: var(--background-color);
+  border-color: var(--secondary-color);
+  transform: scale(1.05);
+}
+
+.projects-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 0.2rem);
+  left: 0;
+  background-color: var(--main-color);
+  border: 1px solid var(--highlight-color);
+  border-radius: 0.25rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  flex-direction: column;
+  min-width: 180px;
+  z-index: 1001;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.projects-container:hover .projects-dropdown {
+  display: flex;
+  opacity: 1;
+  transform: translateY(10px);
+}
+
+.projects-dropdown a {
+  padding: 0.6rem 1rem;
+  color: white;
+  text-decoration: none;
+  border-bottom: 1px solid var(--background-color);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.projects-dropdown a:hover {
+  background-color: var(--highlight-color);
+  color: var(--background-color);
+}
+
+.projects-dropdown a:last-child {
+  border-bottom: none;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.3rem 0;
+}
+
+.dropdown-item a {
+  padding-left: 0;
+  font-size: 0.9rem;
+  border: none;
+}
+
+.visit-animation {
+  position: absolute;
+  font-size: 12px;
+  font-weight: bold;
+  color: #ffcc00;
+  left: 100%;
+  margin-left: 5px;
+  animation: floatUp 1s ease-out forwards;
+  pointer-events: none;
+}
+
+/* Projects Dropdown */
+.projects-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.projects-link {
+  display: inline-block;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  background-color: var(--main-color);
+  color: white;
+  text-decoration: none;
+  border: 1px solid var(--highlight-color);
+  border-radius: 0.25rem;
+  width: 100%;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.projects-link::after {
+  content: "▾";
+  margin-left: 0.5em;
+  font-size: 0.8em;
+  vertical-align: middle;
+}
+
+.projects-link:hover {
+  background-color: var(--highlight-color);
+  color: var(--background-color);
+  border-color: var(--secondary-color);
+  transform: scale(1.05);
+}
+
+.projects-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 0.2rem);
+  left: 0;
+  background-color: var(--main-color);
+  border: 1px solid var(--highlight-color);
+  border-radius: 0.25rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  flex-direction: column;
+  min-width: 180px;
+  z-index: 1001;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.projects-container:hover .projects-dropdown {
+  display: flex;
+  opacity: 1;
+  transform: translateY(10px);
+}
+
+.projects-dropdown a {
+  padding: 0.6rem 1rem;
+  color: white;
+  text-decoration: none;
+  border-bottom: 1px solid var(--background-color);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.projects-dropdown a:hover {
+  background-color: var(--highlight-color);
+  color: var(--background-color);
+}
+
+.projects-dropdown a:last-child {
+  border-bottom: none;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.3rem 0;
+}
+
+.dropdown-item a {
+  padding-left: 0;
+  font-size: 0.9rem;
+  border: none;
+}
+
+
+@media (max-width: 768px) {
+  /* Navbar Container */
+  .navbar-container {
+    flex-direction: column;
+    align-items: center;
+  }
+.clock {
+  font-size: 0.6rem;
+}
+  /* Burger Menu */
+  .burger-wrapper {
+    right: 2rem; /* Adjust for smaller screens */
+    top: 2rem;  /* Adjust for smaller screens */
+  }
+
+  /* Welcome title */
+  .welcome-title {
+    font-size: 1.2rem; /* Smaller font size */
+    margin-left: -2rem;
+  }
+
+  /* Webpages Menu */
+  .webpages-menu {
+    right: 0;
+    top: 5rem; /* Adjust position */
+    max-width: 40%;
+    min-width: 50%;
+  }
+
+  .webpages-menu a {
+    padding: 0.8rem;
+    font-size: 1rem; /* Slightly smaller font size for mobile */
+  }
+
+  /* Footer and Visitor Count */
+  .footer-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #visitor-count-section {
+    text-align: left;
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
+  /* Projects Dropdown */
+  .projects-container {
+    width: 100%;
+  }
+
+  .projects-link {
+    width: 100%; /* Ensures the link is full width */
+  }
+
+  .projects-dropdown {
+    min-width: 100%;
+  }
+}

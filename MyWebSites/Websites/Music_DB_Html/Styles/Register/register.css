@@ -1,0 +1,720 @@
+/* General Body Styles */
+body {
+    margin: 40px 0;
+    padding: 0;
+    line-height: 18px;
+    font-family: Arial, sans-serif;
+    color: #333;
+    background: #ffffff url('../../Images/musicGalaxyTwo.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden; /* Optional: Hide scrollbars */
+}
+
+/* Video background wrapper (Initially hidden) */
+.background-wrapper {
+    position: fixed; /* Keep the video fixed */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Ensure video stays behind other content */
+    display: none; /* Hide the video by default */
+}
+
+/* Video Styles */
+#background-video {
+    position: absolute; /* Position video inside the wrapper */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Make sure the video covers the screen */
+    z-index: -1; /* Send video behind the content */
+}
+
+.outer-container {
+    width: calc(100% - 80px); /* Adjusted width considering margin and padding */
+    margin: 40px auto; /* Center the container horizontally and add top margin */
+    padding: 0 40px; /* Adjusted padding */
+}
+
+/* Video Styles */
+#background-video {
+    position: absolute; /* Position video inside the wrapper */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Make sure the video covers the screen */
+    z-index: -1; /* Send video behind the content */
+}
+
+.outer-container {
+    width: calc(100% - 80px); /* Adjusted width considering margin and padding */
+    margin: 40px auto; /* Center the container horizontally and add top margin */
+    padding: 0 40px; /* Adjusted padding */
+}
+
+#wrapper {
+    width: 84%;  /* Keep the width at 80% of the container */
+    margin: 0 auto;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;  /* Stack children vertically */
+    justify-content: flex-start;  /* Align items to the top */
+    height: 70vh;  /* Use viewport height (70% of the viewport height) */
+    margin-top: 10vh;  /* Space above the wrapper (5% of viewport height) */
+}
+
+/* Move the header down inside the wrapper */
+#header {
+    margin-top: 4vh;  /* Move header down by 4% of the viewport height */
+    margin-bottom: -12vh;  /* Negative margin to pull header up (this will move the header up by 12% of the viewport height) */
+    padding: 0;
+    width: 100%;
+    height: 30vh;  /* Fixed height based on viewport height (approximately 28% of the viewport height) */
+    position: relative;
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    #header {
+        height: auto;  /* Let header height adjust to content */
+        margin-top: 4vh;  /* Keep it consistent on smaller screens */
+    }
+}
+
+#logo,
+#banner {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* Styling for logo */
+#logo {
+    float: left;
+    width: 33%;
+    height: calc(50% + 8px); /* Extend height by 8px */
+    background-color: #C9E5E5; /* Fallback color */
+    background-image: url("logo.gif");
+    border-top-left-radius: 20px;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    opacity: 0.9;
+    background: linear-gradient(to bottom, 
+        rgba(214, 247, 247, 0.3) 0%,        /* Light color at the top */
+        rgba(214, 247, 247, 0.2) 20%,       /* Light fade towards the dense middle */
+        rgba(97, 166, 166, 0.8) 50%,        /* Expanded dense middle color */
+        rgba(97, 166, 166, 0.7) 75%,        /* Richer middle section */
+        rgba(214, 247, 247, 0.4) 90%,       /* Light fade towards the bottom */
+        rgba(214, 247, 247, 0.3) 100%       /* Light color at the bottom */
+    );
+    border-left: 1px solid rgb(76, 153, 153); /* Left border */
+    border-right: none; /* Remove right border */
+    border-top: 1px solid rgb(76, 153, 153); /* Top border */
+    border-bottom: none; /* Remove bottom border */
+    border-radius: 20px 0 0 0; /* Ensure the border follows the border-radius */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Ensure content does not spill over */
+}
+
+/* Center the typewriter text */
+#typewriter-text {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    transform: translate(-40%, -50%); /* Center text horizontally and vertically */
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 28px; /* Adjust as needed */
+    font-weight: bold; /* Make text bold */
+    color: #333; /* Choose a color that fits your design */
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid red; /* Red blinking cursor */
+    z-index: 10; /* Ensure text is on top */
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5); /* Discreet white shadow */
+    animation: typewriter 4s steps(30, end) 1s 1 normal both,
+               blink-caret 500ms step-end infinite,
+               blink-red 1s step-start 3;
+}
+
+/* Adjust for smaller screens */
+@media (max-width: 768px) {
+    #typewriter-text {
+        font-size: 11px; /* Smaller font size on smaller screens */
+        left: 2%;  /* Ensure text stays centered */
+        transform: translate(-50%, -50%); /* Maintain centering */
+    }
+}
+
+/* Adjust for very small screens */
+@media (max-width: 480px) {
+    #typewriter-text {
+        font-size: 9px; /* Even smaller font size for very small screens */
+        left: 2%;  /* Ensure text stays centered */
+        transform: translate(-50%, -50%); /* Keep text centered */
+    }
+}
+
+@keyframes typewriter {
+    from {
+        width: 0;
+    }
+    to {
+        width: 40%;
+    }
+}
+
+@keyframes blink-caret {
+    from, to {
+        border-color: transparent;
+    }
+    50% {
+        border-color: red;
+    }
+}
+
+/* Styling for banner */
+#banner {
+    float: right;
+    width: 67%;
+    height: calc(50% + 8px); /* Extend height by 8px */
+    background-color: #C9E5E5; /* Fallback color */
+    border-top-left-radius: 0;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    opacity: 0.9;
+    background: linear-gradient(to bottom, 
+        rgba(214, 247, 247, 0.3) 0%,        /* Light color at the top */
+        rgba(214, 247, 247, 0.2) 20%,       /* Light fade towards the dense middle */
+        rgba(97, 166, 166, 0.8) 50%,        /* Expanded dense middle color */
+        rgba(97, 166, 166, 0.7) 75%,        /* Richer middle section */
+        rgba(214, 247, 247, 0.4) 90%,       /* Light fade towards the bottom */
+        rgba(214, 247, 247, 0.3) 100%       /* Light color at the bottom */
+    );
+    border-right: 1px solid rgb(76, 153, 153); /* Right border */
+    border-left: none; /* Remove left border */
+    border-top: 1px solid rgb(76, 153, 153); /* Top border */
+    border-bottom: none; /* Remove bottom border */
+    border-radius: 0 20px 0 0; /* Ensure the border follows the border-radius */
+}
+
+#menu {
+    position: relative;
+    float: left;
+    width: 100%;
+    height: 30px;
+    background: linear-gradient(to bottom, rgba(252, 215, 3, 0.979), #FBB917);
+    box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+/* Glossy effect for top left corner */
+#menu::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top right, rgba(255, 255, 255, 0.6), transparent);
+    border-top-left-radius: 5px;
+    z-index: 1;
+}
+
+/* Glossy effect for top right corner */
+#menu::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top left, rgba(255, 255, 255, 0.6), transparent);
+    border-top-right-radius: 5px;
+    z-index: 1;
+}
+
+#menu ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center; /* Center the list items */
+}
+
+#menu ul li {
+    display: inline-block; /* Use inline-block for horizontal alignment */
+}
+
+#menu ul li a {
+    display: inline-block; /* Use inline-block for better alignment */
+    padding: 5px 42px 0;
+    height: 25px;
+    text-align: center;
+    font-size: 14px;
+    text-decoration: none;
+    color: #020202;
+    font-weight: bold;
+    outline: none;
+}
+
+#menu li .current {
+    color: #FBB917;
+}
+
+#menu li a:hover {
+    color: #FFFFFF;
+    background-color: #000000;
+    z-index: 10 !important;  /* Ensure hover state is above everything else */
+}
+
+/* Main Content Styles */
+#main {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 560px;
+    position: relative;
+    display: flex; /* Enable Flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    background-color: #DCECEC; /* Background color for fallback */
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    text-align: center;
+    color: #fff;
+    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.4); /* Stronger inset shadow */
+    overflow: hidden; /* Ensure pseudo-elements are contained */
+    background: linear-gradient(to bottom, 
+        rgba(214, 247, 247, 0.7) 0%, 
+        rgba(214, 247, 247, 0.3) 10%, 
+        rgba(145, 207, 207, 1) 40%, 
+        rgba(97, 166, 166, 1) 60%, 
+        rgba(145, 207, 207, 0.3) 90%, 
+        rgba(214, 247, 247, 0.7) 100%
+    );
+    /* background-image: url(../../Images/musicGalaxy.jpeg); */
+}
+
+#main::before,
+#main::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 20%; /* Adjust height for the gradient effect */
+    background: linear-gradient(to top, rgba(245, 252, 252, 0.7), rgba(245, 252, 252, 0));
+    z-index: 1;
+    pointer-events: none;
+}
+
+#main::before {
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to top, rgba(245, 252, 252, 0.2), rgba(245, 252, 252, 0));
+}
+
+#main::after {
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(245, 252, 252, 0.2), rgba(245, 252, 252, 0));
+}
+
+/* Sidebar Left */
+#sidebarLeft {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    padding: 0 3px; /* Adjusted padding */
+    float: left;
+    width: 33%;
+    height: 360px; /* Increased height by 10px */
+    border-radius: 10px;
+    background: rgba(201, 229, 229, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+    opacity: 0.9;
+}
+
+#sidebarLeft::before,
+#sidebarLeft::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 25%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+#sidebarLeft::before {
+    top: 0;
+    left: 0;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+}
+
+#sidebarLeft::after {
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+}
+
+/* Sidebar Right */
+#sidebarRight {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    padding: 0 3px; /* Adjusted padding */
+    float: right;
+    width: 33%;
+    height: 360px; /* Increased height by 10px */
+    border-radius: 10px;
+    background: rgba(201, 229, 229, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+    opacity: 0.9;
+    background-size: cover; /* Ensure the background image covers the container */
+    background-repeat: no-repeat;
+    background-position: center; /* Center the background image */
+    border: 1px solid #0a0a0a;
+}
+
+#sidebarRight::before,
+#sidebarRight::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 25%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+#sidebarRight::before {
+    top: 0;
+    left: 0;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+}
+
+#sidebarRight::after {
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+}
+
+/* Central container */
+#central {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    padding: 0;
+    width: 32%;
+    height: 360px; /* Height adjustment */
+    /* background: rgba(201, 229, 229, 0.2); /* Slightly transparent background for glass effect */
+    backdrop-filter: blur(10px); /* Glass-like blur effect */
+    -webkit-backdrop-filter: blur(10px); /* For Safari */
+    border-radius: 20px; /* Apply border radius to all corners */
+    position: relative;
+    overflow: hidden;
+    opacity: 0.9;
+    /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Optional shadow for better visibility */
+}
+
+#central::before,
+#central::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+#central::before {
+    top: 0;
+    height: 10%; /* Reduced height for the top gradient effect */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0)); /* Top glossy effect */
+}
+
+#central::after {
+    bottom: 0;
+    height: 10%; /* Reduced height for the bottom gradient effect */
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.001), rgba(255, 255, 255, 0)); /* Bottom glossy effect */
+}
+/* Table container */
+#table {
+    width: 60%;
+    height: 150px;
+    background-color: #C9E5E5;
+    border-radius: 50px;
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5);
+    overflow: hidden;
+    margin-top: 42px; /* Increased margin-top by 8px to shift all elements down */
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+/* Header cells */
+th {
+    background-color: #C9E5E5;
+    border-radius: 5px;
+    border: 1px solid darkcyan; /* Single line for border */
+    text-align: center;
+    padding: 11px 5px 5px 5px; /* Increased top padding by 6px */
+    height: 23px; /* Increased height by 6px to accommodate padding */
+    color: #FBB917;
+    font-size: 16px;
+}
+
+/* Data cells */
+td {
+    width: 17px;
+    padding: 6px 5px 5px 5px; /* Increased top padding by 6px */
+    background-color: #C9E5E5;
+    font-size: 11px;
+    text-align: center; /* Changed from 'middle' to 'center' */
+    vertical-align: middle;
+    white-space: nowrap; /* Corrected 'text-wrap' to 'white-space: nowrap' */
+    border-radius: 5px;
+    border: 1px solid darkcyan; /* Single line for border */
+}
+
+/* 3D effect for table header (Login) */
+th h2 {
+    font-size: 24px; /* Larger font size for emphasis */
+    font-weight: bold;
+    color: #FBB917;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 3D text shadow effect */
+    margin: 0;
+    padding: 5px; /* Match the padding of td */
+    height: 34px; /* Adjust height for better alignment */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Enhanced 3D Effect for th and td */
+th, td {
+    background: linear-gradient(to bottom, #d6f7f7, #91cfcf, #61a6a6, #347d7d); /* Enhanced gradient for more intense 3D effect */
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), inset 0 -1px 0 rgba(0, 0, 0, 0.2), 0 2px 6px rgba(0, 0, 0, 0.3); /* More intense shadow for depth */
+}
+
+/* CSS for eye icon */
+.password-container {
+    position: relative;
+    color: #272727;
+    display: flex; /* Use flexbox to make sure the contents adjust properly */
+    align-items: center; /* Vertically center the elements */
+}
+
+/* Positioning the toggle button */
+.password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 3;
+}
+
+/* Ensure the icon adjusts well on small screens */
+@media (max-width: 768px) {
+    .password-container {
+        width: 100%; /* Ensure the container takes up full width on smaller screens */
+    }
+
+    .password-toggle {
+        right: -155px; /* Adjust right position to make space for smaller screens */
+    }
+}
+
+.password-toggle i {
+    font-size: 20px;
+    color: #000000;
+}
+
+/* Style for the submit button inside the td */
+.submit input[type="submit"] {
+    width: 100%;
+    padding: 5px; /* Adjust padding to fit within the table */
+    font-size: 11px; /* Match the font size of td */
+    font-weight: bold;
+    color: #FBB917;
+    background-color: #C9E5E5;
+    border: 1px solid darkcyan;
+    border-radius: 5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), inset 0 -1px 0 rgba(0, 0, 0, 0.2), 0 2px 6px rgba(0, 0, 0, 0.3); /* 3D effect for button */
+}
+
+.submit input[type="submit"]:hover {
+    background-color: #91cfcf;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Footer */
+#footer {
+    margin-top: 20px;
+    padding: 10px 0 15px;
+    width: calc(100%-8px);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.5), #000000); /* Enhanced cylindrical effect */
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.5); /* Shadow for a more 3D effect */
+    text-align: center;
+    font-size: 12px;
+    position: fixed;
+    bottom: 0;
+    left: 3px;
+    right: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1000;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6x;
+    border-bottom-left-radius: 9px; /* Rounded corners for the top edges */
+    border-bottom-right-radius: 9px; /* Rounded corners for the top edges */
+}
+
+/* Footer Links Container */
+.footer-links-container {
+    display: flex;
+    align-items: center;
+    padding-top: 7px;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Footer Links */
+.footer-links-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.footer-links-container ul li {
+    margin: 0 15px;
+}
+
+.footer-links-container ul li a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.85);
+    transition: color 0.3s ease-in-out;
+    font-size: 13px;
+}
+
+.footer-links-container ul li a:hover {
+    color: #FBB917;
+}
+
+/* Success Message Container */
+#success-message {
+    margin-bottom: 6px;
+    background-color: rgb(255, 255, 255); /* Green background for success */
+    color: rgb(102, 226, 0); /* White text color */
+    z-index: 10;
+}
+
+ /* Optional inline styles for better cross-browser compatibility */
+ .error-message {
+    color: red;
+    font-size: 0.9em;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden; /* Hidden by default */
+    width: 130px;
+    background-color: #252525;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* Adjust based on your layout */
+    left: 50%;
+    margin-left: -80px; /* Centering tooltip */
+    opacity: 1;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+/* Eye icon styling */
+.password-toggle {
+    position: absolute;
+    right: 176px; /* Adjust as needed */
+    top: 75%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 1.2em; /* Adjust size as needed */
+    color: #333; /* Ensure icon color contrasts well */
+    z-index: 2; /* Ensure it's above other elements */
+}
+
+/* Password input field styling */
+.password-input {
+    width: 100%;
+    padding-right: 2.5em; /* Make room for the eye icon */
+    box-sizing: border-box;
+}
+
+/* Message Container */
+.message-container {
+    position: absolute;
+    bottom: 0; /* Align to the bottom of the #main container */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Center horizontally */
+    width: 29.9%; /* Full width of the #main container */
+    background-color: red; /* Red background color */
+    color: white; /* White text color */
+    text-align: center; /* Center align text */
+    padding: 10px; /* Padding around the text */
+    box-sizing: border-box; /* Include padding in the width */
+    font-size: 9px; /* Adjust font size as needed */
+    border-radius: 12px;
+    z-index: 2; /* Ensure it appears above other content */
+    display: none; /* Initially hidden */
+}
+
+/* Title styling */
+.message-container h5 {
+    margin: 0; /* Remove default margin */
+    font-size: 12px; /* Adjust font size for title */
+    font-weight: bold; /* Make title bold */
+    margin-bottom: 5px; /* Space between title and message */
+}
+.footer-credits{
+    font-size: 12px;
+    color: #ffffff;
+    font-weight: 100;
+}
+/* Responsive Styling for Message Container */
+@media (max-width: 600px) {
+    .message-container {
+        width: 90%; /* Adjust width to fit smaller screens */
+    }
+}

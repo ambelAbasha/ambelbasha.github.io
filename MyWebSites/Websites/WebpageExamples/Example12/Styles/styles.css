@@ -1,0 +1,220 @@
+/* Global Styles for Body and HTML */
+body, html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif; /* Ensure font consistency */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f4f4; /* Light background for the entire page */
+}
+
+/* Outer Container - Centers content and adds padding */
+.outer-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px; /* Bottom padding for the entire container */
+}
+
+/* Container for the Matrix (Box) */
+.container {
+    width: 70%;
+    max-width: 530px; /* Maximum width for larger screens */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Soft shadow around the container */
+    background-color: #fff;
+    text-align: center;
+    margin-bottom: 20px; /* Space between the box and the return button */
+}
+
+/* Box that contains the Table */
+.box {
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background: linear-gradient(to bottom, #f9f9f9, #e6e6e6); /* Soft gradient for glossy effect */
+    margin-bottom: 10px;
+    position: relative; /* Position relative for pseudo-elements */
+    overflow: hidden; /* Prevent pseudo-elements from overflowing */
+    z-index: 0; /* Ensures pseudo-elements stay behind text */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Light shadow effect */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transitions for hover effects */
+}
+
+/* Glossy Effect for Top-Left Corner (Pseudoelement) */
+.box::before {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top right, rgba(255, 255, 255, 0.6), transparent); /* Light glossy effect */
+    border-top-left-radius: 8px;
+    z-index: 1; /* Keeps glossy effect above background */
+}
+
+/* Glossy Effect for Top-Right Corner (Pseudoelement) */
+.box::after {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top left, rgba(255, 255, 255, 0.6), transparent); /* Light glossy effect */
+    border-top-right-radius: 8px;
+    z-index: 1; /* Keeps glossy effect above background */
+}
+
+/* Hover Effect for Glossy Corners */
+.box:hover::before,
+.box:hover::after {
+    opacity: 0.8; /* Increase opacity slightly on hover */
+}
+
+/* Heading (h3) Styling */
+h3 {
+    text-align: center;
+    margin-top: 0; /* Remove top margin */
+    color: #333; /* Dark color for better readability */
+    font-size: 1.1rem; /* Adjusted font size */
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse; /* Prevents double borders */
+    margin: 0 auto; /* Centers the table horizontally */
+}
+
+/* Table Data Cell Styling */
+td {
+    padding: 8px; /* Add padding inside cells */
+    border: 1px solid #ddd; /* Light border around cells */
+    text-align: center;
+    vertical-align: middle; /* Center content vertically */
+    background-color: #f9f9f9;
+    font-size: 13px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+/* Table Data Cell Hover Effect */
+td:hover {
+    background-color: #e0e0e0; /* Change background on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Light shadow effect */
+}
+
+/* Return Button Container (Centered) */
+.return-button {
+    display: flex;
+    justify-content: center; /* Center the button horizontally */
+    margin-top: 40px; /* Space between the box and the button */
+}
+
+/* Return Button Styling */
+.return-button button {
+    padding: 10px 20px;
+    background: linear-gradient(to bottom, #4CAF50, #388E3C); /* Green gradient for glossy effect */
+    border: none;
+    color: white;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative; /* Position for pseudo-elements */
+    overflow: hidden; /* Prevent pseudo-elements from overflowing */
+    z-index: 0; /* Keeps pseudo-elements behind the text */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Light shadow */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
+/* Glossy Effect for Top-Left Corner on Button */
+.return-button button::before {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top right, rgba(255, 255, 255, 0.6), transparent); /* Light glossy effect */
+    border-top-left-radius: 5px;
+    z-index: 1; /* Ensures glossy effect is above button background */
+}
+
+/* Glossy Effect for Top-Right Corner on Button */
+.return-button button::after {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top left, rgba(255, 255, 255, 0.6), transparent); /* Light glossy effect */
+    border-top-right-radius: 5px;
+    z-index: 1; /* Ensures glossy effect is above button background */
+}
+
+/* Hover Effect for Return Button */
+.return-button button:hover {
+    background-color: #979b97; /* Slight color change on hover */
+}
+/* Responsive Styles */
+
+/* For small screens (mobile and tablet) */
+@media (max-width: 768px) {
+    /* Container */
+    .container {
+        top: 12%;
+        width: 90%;
+        padding: 15px;
+    }
+
+    /* Table Cell Styling */
+    td {
+        font-size: 12px; /* Smaller text size for better readability */
+        padding: 6px; /* Reduced padding */
+    }
+
+    /* Heading */
+    h3 {
+        font-size: 1rem; /* Smaller font size for better fit */
+    }
+
+    /* Return Button */
+    .return-button button {
+        font-size: 14px; /* Smaller font size for mobile */
+        padding: 8px 16px; /* Adjusted padding for smaller screens */
+    }
+}
+
+/* For very small screens (mobile devices) */
+@media (max-width: 480px) {
+    /* Container */
+    .container {
+        top: 6%;
+        width: 100%;
+        padding: 10px;
+    }
+
+    /* Box */
+    .box {
+        padding: 5px; /* Reduced padding for small screens */
+    }
+
+    /* Heading */
+    h3 {
+        font-size: 0.9rem; /* Further reduced font size */
+    }
+
+    /* Return Button */
+    .return-button button {
+        font-size: 12px; /* Even smaller font size */
+        padding: 6px 12px; /* Smaller padding */
+    }
+}

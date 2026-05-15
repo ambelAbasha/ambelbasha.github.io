@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoopEye Streaming Dashboard</title>
+    <link rel="stylesheet" href="Styles/styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">LoopEye Streaming Dashboard</div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Settings</a>
+            <a href="#">Logs</a>
+            <a href="#">Profile</a>
+            <a href="#">Logout</a>
+        </nav>
+    </header>
+    <main>
+        <section class="overview">
+            <div class="card">
+                <h3>Total Users</h3>
+                <p>25</p>
+            </div>
+            <div class="card">
+                <h3>Total Cameras</h3>
+                <p id="total-cameras">0</p>
+            </div>
+        </section>
+        <section class="camera-feed">
+            <h2>Camera Feeds</h2>
+            <button class="add-camera-btn" id="addCameraBtn">Add Camera</button>
+            <div id="cameraLimitMessage" class="limit-message"></div>
+            <div class="camera-grid" id="camera-grid"></div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 LoopEye. All rights reserved.</p>
+    </footer>
+    <script src="Scripts/updateGridLayout.js"></script>
+</body>
+</html>

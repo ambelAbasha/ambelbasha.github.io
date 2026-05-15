@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Register</title>
+    <link rel="stylesheet" type="text/css" href="./Styles/Register/register.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        function validateInput(input, inputId) {
+            const minLength = 8;
+            const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+
+            if (input.trim().length < minLength) {
+                displayError(inputId, 'Password must be at least 8 characters long.');
+                return false;
+            }
+            if (!passwordPattern.test(input)) {
+                displayError(inputId, "Password must include an uppercase letter, a lowercase letter, a digit, and a special character.");
+                return false;
+            }
+            displayError(inputId, ''); // Clear error message
+            return true;
+        }
+
+        function validateName(name, inputId) {
+            if (name.length < 3 || /\d/.test(name) || /[^a-zA-Z\s]/.test(name)) {
+                displayError(inputId, 'Entry not valid');
+                return false;
+            }
+            displayError(inputId, ''); // Clear error message
+            return true;
+        }
+
+        function validateForm() {
+            var name = document.getElementById('name').value.trim();
+            var surname = document.getElementById('surname').value.trim();
+            var email = document.getElementById('email').value.trim();
+            var login = document.getElementById('login').value.trim(); // Make sure to have this field in your form
+            var password = document.getElementById('password').value.trim();
+
+            var isFormValid = true;
+
+            // Validate name
+            if (!validateName(name, 'name')) {
+                isFormValid = false;
+            }
+
+            // Validate surname
+            if (!validateName(surname, 'surname')) {
+                isFormValid = false;
+            }
+
+            // Validate email
+            if (email === '' || !validateEmail(email)) {
+                displayError('email', 'Please enter a valid email address.');
+                isFormValid = false;
+            } else {
+                displayError('email', '');
+            }
+
+            // Validate login
+            if (login === '') {
+                displayError('login', 'Login is required.');
+                isFormValid = false;
+            } else {
+                displayError('login', '');
+            }
+
+            // Validate password
+            var passwordValid = validateInput(password, 'password');
+            if (!passwordValid) {
+                isFormValid = false;
+            }
+
+            return isFormValid;
+        }
+
+        function validateEmail(email) {
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailPattern.test(email);
+        }
+
+        function displayError(inputId, message) {
+            var errorSpan = document.getElementById(inputId + '-error');
+            if (errorSpan) {
+                errorSpan.textContent = message;
+            }
+        }
+
+        $(document).ready(function() {
+            $('#togglePassword').click(function() {
+                const eyeIcon = $(this);
+                const pwdInput = $('#password');
+
+                if (pwdInput.attr('type') === 'password') {
+                    pwdInput.attr('type', 'text');
+                    eyeIcon.removeClass('fa-eye').addClass('fa-eye-slash');
+                } else {
+                    pwdInput.attr('type', 'password');
+                    eyeIcon.removeClass('fa-eye-slash').addClass('fa-eye');
+                }
+            });
+
+            $('form').submit(function(event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                if (!validateForm()) {
+                    return; // If form is invalid, don't proceed
+                }
+
+                // Prepare data for AJAX submission
+                var formData = $(this).serialize(); // Serialize form data
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'register_user.php',
+                    data: formData,
+                    dataType: 'json', // Expect JSON response
+                    success: function(response) {
+                        if (response.error) {
+                            // If there's an error (like email already exists)
+                            $('#email').val(response.email); // Set the email input value to the existing email
+                            displayError('email', response.error); // Show error message
+                        } else {
+                            // Handle successful registration (e.g., redirect or show success message)
+                            alert('Registration successful!');
+                            // Optionally redirect or clear the form here
+                            $('form')[0].reset(); // Reset the form after successful registration
+                            $('.error-message').text(''); // Clear any existing error messages
+                        }
+                    },
+                    error: function() {
+                        // Handle AJAX error
+                        alert('An error occurred while processing your request.');
+                    }
+                });
+            });
+        });
+    </script>
+    <style>
+        /* Tooltip styling */
+        .tooltip {
+            display: inline-block;
+            position: relative;
+            cursor: pointer; 
+        }
+
+        /* Tooltip content */
+        .tooltip::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%; 
+            left: 50%;
+            transform: translateX(-50%); 
+            background-color: rgba(0, 0, 0, 0.8); 
+            color: #fff; 
+            padding: 5px 10px; 
+            border-radius: 5px; 
+            white-space: nowrap; 
+            opacity: 0; 
+            visibility: hidden; 
+            transition: opacity 0.3s; 
+            z-index: 100; 
+        }
+
+        /* Show the tooltip on hover */
+        .tooltip:hover::after {
+            opacity: 1; 
+            visibility: visible; 
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <div id="logo">
+                <div id="typewriter-text">Music Galaxy</div>
+            </div>
+            <div id="banner"></div>
+        </div>
+        <div id="menu">
+            <ul>
+                <li><a href="index.html">Login</a></li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="menuLinks/New/new.html">New</a></li>
+                <li><a href="menuLinks/Contact/contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div id="main">
+            <div id="sideBarLeft"></div>
+            <div id="central" style="position: relative;">
+                <div id="register">
+                    <div class="background-image"></div>
+                    <form method="post" action="register_user.php" autocomplete="off">
+                        <table align="center">
+                            <thead>
+                                <tr>
+                                    <th colspan="2"><h2>Register</h2></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <p><input type="text" name="name" id="name" placeholder="Name" required></p>
+                                        <span id="name-error" class="error-message"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p><input type="text" name="surname" id="surname" placeholder="Surname" required></p>
+                                        <span id="surname-error" class="error-message"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p><input type="email" name="email" id="email" placeholder="Email" required></p>
+                                        <span id="email-error" class="error-message"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="tooltip" data-tooltip="Password must be at least 8 char., include UP./low.case lett., num., and $peci@l char.">
+                                            <p>
+                                                <input type="password" name="password" id="password" class="password-input" placeholder="8 Char Az09!@" required>
+                                                <span class="password-toggle fas fa-eye" id="togglePassword" tabindex="0"></span>
+                                            </p>
+                                        </div>
+                                        <span id="password-error" class="error-message"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p class="submit"><input type="submit" value="Register"></p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </div>
+            <div id="sideBarRight"></div>
+        </div>
+        <div id="footer">
+            <div class="footer-links-container">
+                <ul>
+                    <li><a href="../../index.php">Home</a></li>
+                    <li><a href="footerLinks/termsOfUse.html">Terms of Use</a></li>
+                    <li><a href="footerLinks/privacyPolicy.html">Privacy Policy</a></li>
+                    <li><a href="footerLinks/aboutThisPage.html">About This Page</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

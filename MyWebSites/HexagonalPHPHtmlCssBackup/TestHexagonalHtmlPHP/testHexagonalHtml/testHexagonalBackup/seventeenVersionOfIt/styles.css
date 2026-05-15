@@ -1,0 +1,195 @@
+/* General body styles */
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom right, #383737, #000, #9c9c9c); /* Diagonal gradient background */
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.hex-container {
+    position: relative;
+    width: 100vw; /* Make container exactly viewport width */
+    height: 100%;
+    overflow: hidden;
+    perspective: 1000px;
+    padding-left: 40px; /* Add left padding equal to the shift */
+    box-sizing: border-box; /* Include padding in width */
+    transform: translateX(0); /* Remove translateX */
+}
+
+/* Base hexagon styles */
+.hexagon {
+    position: absolute;
+    width: 154px; /* Enlarged size of each hexagon (150px + 2px left + 2px right) */
+    height: 170.5px; /* Adjusted height for better coverage */
+    background: linear-gradient(to top, #666666, #ffffff); /* Gradient for dark grey to light grey */
+    clip-path: polygon(
+        50% 0%,
+        100% 25%,
+        100% 75%,
+        50% 100%,
+        0% 75%,
+        0% 25%
+    );
+    transform-style: preserve-3d;
+    transform: rotate(90deg); /* Rotate hexagon by 90 degrees */
+    border: 2px solid rgba(0, 0, 0, 0.3); /* Adjusted border color */
+    margin: 0 2px; /* Add 2 pixels of margin on both sides */
+    box-sizing: border-box; /* Ensure border-box sizing */
+    transition: all 0.3s ease-in-out; /* Smooth transition for hover effect */
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.2), /* Base shadow */
+        0 5px 10px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    overflow: hidden; /* Hide overflow to clip glossy effect */
+}
+
+/* Hexagon pseudo-elements */
+.hexagon::before,
+.hexagon::after {
+    content: '';
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    background-color: inherit;
+    clip-path: inherit;
+    transform-style: preserve-3d;
+}
+
+/* Extend white shiny effect over hexagons */
+.hexagon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0)); /* Gradient for diagonal light shade */
+    clip-path: polygon(
+        0% 0%,
+        100% 0%,
+        0% 100% /* Updated to start from top left to bottom right */
+    );
+    transform-style: preserve-3d;
+    z-index: 1; /* Ensure it's above the hexagon */
+    pointer-events: none; /* Ignore pointer events on this pseudo-element */
+    opacity: 0.7; /* Adjust opacity for subtle shine effect */
+    transition: opacity 0.3s ease-in-out; /* Smooth transition for shine effect */
+}
+
+/* Additional styles for pseudo-elements */
+.hexagon::before {
+    box-shadow:
+        inset -5px -5px 10px rgba(255, 255, 255, 0.9), /* White inset shadow */
+        inset 5px 5px 10px rgba(0, 0, 0, 0.7), /* Black inset shadow */
+        0px 0px 8px rgba(255, 255, 255, 0.6); /* Soft highlight */
+    transform: rotateY(0deg) rotateX(0deg) rotateZ(0deg) translateZ(-3px);
+}
+
+.hexagon::after {
+    box-shadow:
+        inset -5px -5px 10px rgba(255, 255, 255, 0.6), /* White inset shadow */
+        inset 5px 5px 10px rgba(0, 0, 0, 0.6), /* Black inset shadow */
+        0px 0px 8px rgba(255, 255, 255, 0.6); /* Soft highlight */
+    transform: rotateY(0deg) rotateX(0deg) rotateZ(0deg) translateZ(-4px);
+}
+
+/* Different styles for hexagons based on their position */
+.hexagon:nth-child(2n+1) {
+    background: linear-gradient(to bottom right, #1f1d1d, #000); /* Gradient for darker shades */
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.3), /* Stronger shadow from top right */
+        0 10px 15px rgba(0, 0, 0, 0.3); /* Lighter shadow on left */
+}
+
+.hexagon:nth-child(3n+2) {
+    background: linear-gradient(to bottom right, #0e0d0d, #000000); /* Gradient for mid to dark grey */
+    box-shadow:
+        0 15px 30px rgba(0, 0, 0, 0.4), /* Stronger shadow from top right */
+        0 15px 20px rgba(0, 0, 0, 0.4); /* Lighter shadow on left */
+}
+
+.hexagon:nth-child(4n+3) {
+    background: linear-gradient(to bottom right, #161616, #ffffff); /* Gradient for lighter to mid grey */
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.2), /* Stronger shadow from top right */
+        0 5px 10px rgba(0, 0, 0, 0.2); /* Lighter shadow on left */
+}
+
+.hexagon:nth-child(5n+4) {
+    background: linear-gradient(to bottom right, #0f0f0f, #141414); /* Gradient for light grey to dark grey */
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.3), /* Stronger shadow from top right */
+        0 10px 15px rgba(0, 0, 0, 0.3); /* Lighter shadow on left */
+}
+
+.hexagon:nth-child(6n+5) {
+    background: linear-gradient(to bottom right, #1f1e1e, #181616); /* Gradient for lighter grey to mid grey */
+    box-shadow:
+        0 15px 30px rgba(0, 0, 0, 0.4), /* Stronger shadow from top right */
+        0 15px 20px rgba(0, 0, 0, 0.4); /* Lighter shadow on left */
+}
+
+.hexagon:nth-child(7n+6) {
+    background: linear-gradient(to bottom right, #535050, #0e0d0d); /* Gradient for mid grey to darker grey */
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.2), /* Stronger shadow from top right */
+        0 5px 10px rgba(0, 0, 0, 0.2); /* Lighter shadow on left */
+}
+
+.hexagon:nth-child(8n+7) {
+    background: linear-gradient(to bottom right, #1a1a1a, #020202); /* Dark grey to mid grey */
+    box-shadow:
+        0 10px 20px rgba(0, 0, 0, 0.3), /* Stronger shadow from top right */
+        0 10px 15px rgba(0, 0, 0, 0.3); /* Lighter shadow on left */
+}
+
+.hexagon:nth-child(9n+8) {
+    background: linear-gradient(to bottom right, #101010, #1c1c1c); /* Dark grey to very dark grey */
+    box-shadow:
+        0 15px 25px rgba(0, 0, 0, 0.4), /* Stronger shadow from top right */
+        0 15px 20px rgba(0, 0, 0, 0.4); /* Lighter shadow on left */
+}
+
+.hexagon:nth-child(10n+9) {
+    background: linear-gradient(to bottom right, #2e2e2e, #000000); /* Mid dark grey to grey */
+    box-shadow:
+        0 10px 20px rgba(0, 0, 0, 0.3), /* Stronger shadow from top right */
+        0 10px 15px rgba(0, 0, 0, 0.3); /* Lighter shadow on left */
+}
+
+/* Glass effect for hexagons */
+.hexagon.glass {
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent white background for glass effect */
+    border: none; /* No border for glass hexagons */
+    transition: all 0.3s ease-in-out; /* Smooth transition for hover effect */
+    position: relative; /* Ensure relative positioning for pseudo-element */
+}
+
+/* Extend white shiny effect over black / dark grey hexagons */
+.hexagon.glass::before {
+    content: '';
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0;
+    background: linear-gradient(to bottom left, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0)); /* Gradient for diagonal light shade */
+    clip-path: polygon(
+        0% 0%,
+        100% 0%,
+        0% 100% /* Updated to start from top left to bottom right */
+    );
+    transform: rotate(-45deg) scale(1.5); /* Rotate and scale to cover the hexagon */
+    transform-origin: left top; /* Ensure rotation origin is top left */
+    transform-style: preserve-3d;
+    z-index: 1; /* Ensure it's above the hexagon */
+    pointer-events: none; /* Ignore pointer events on this pseudo-element */
+    opacity: 0.7; /* Adjust opacity for subtle shine effect */
+    transition: opacity 0.3s ease-in-out; /* Smooth transition for shine effect */
+}
+
+.hexagon.glass:hover {
+    transform: rotate(-45deg) scale(1.6); /* Scale up on hover for glass effect */
+}

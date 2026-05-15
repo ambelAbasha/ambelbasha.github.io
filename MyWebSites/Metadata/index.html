@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="View and interact with an embedded Google Slides presentation.">
+    <meta name="keywords" content="Google Slides, Presentation, Fullscreen, Autoplay">
+    <title>Embedded Google Slides</title>
+    <link rel="stylesheet" href="../Metadata/Styles/styles.css">
+</head>
+<body>
+<header id="main-header">
+  <nav id="navbar" aria-label="Main navigation">
+    <div class="navbar-container">
+      <h1 class="welcome-title">
+  Welcome to <span class="highlight">Metadata Section</span>
+</h1>
+
+      <div class="burger-wrapper">
+        <div class="metadata-menu-container">
+          <button id="metadata-burger-menu" class="burger-menu" aria-expanded="false" aria-controls="metadata-menu" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <div id="metadata-menu" class="metadata-menu" aria-hidden="true">
+            <a href="index.html" target="_blank">Metadata</a>
+            <a href="../../portfolio.html">Portfolio</a>
+            <a href="../../index.html">Home</a>
+          </div>
+        </div>
+      </div> <!-- Close burger-wrapper div -->
+    </div> <!-- Close navbar-container div -->
+  </nav>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+    <div class="ppt-container" id="pptContainer">
+        <!-- Embedded Google Slides Presentation -->
+       <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTv4QxaFf_zLGZb8JrTf8uf6bvnTvdvaqxPEOlFH2yzTqNowMFcxzNUX67FdP1maQ/pubembed?start=false&loop=false&delayms=3000"
+    frameborder="0" width="1280" height="749"
+    allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">
+</iframe>
+    </div>  
+
+    <!-- Button Container -->
+    <div class="button-container">
+        <button id="fullscreenBtn" class="cta-btn primary">Fullscreen</button>
+        <button id="autoplayBtn" class="cta-btn primary">Autoplay</button>
+    </div>
+
+    <!-- Info Bar -->
+    <div class="info-bar">
+        <p>Please press: <strong>F</strong> for fullscreen and <strong>A</strong> for autoplay.</p>
+        <p>The autoplay interval is automatically set to 15 seconds.</p>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const fullscreenBtn = document.getElementById('fullscreenBtn');
+        const autoplayBtn = document.getElementById('autoplayBtn');
+        const pptContainer = document.getElementById('pptContainer');
+        const pptFrame = document.getElementById('pptFrame');
+        
+        // Fullscreen Functionality
+        fullscreenBtn.addEventListener('click', toggleFullscreen);
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'F' || event.key === 'f') {
+                toggleFullscreen();
+            }
+        });
+
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                pptContainer.requestFullscreen?.() || pptContainer.mozRequestFullScreen?.() || pptContainer.webkitRequestFullscreen?.() || pptContainer.msRequestFullscreen?.();
+            } else {
+                document.exitFullscreen?.();
+            }
+        }
+
+        // Autoplay Functionality
+        let isAutoplaying = false; // Flag to track autoplay state
+        autoplayBtn.addEventListener('click', startAutoplay);
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'A' || event.key === 'a') {
+                startAutoplay();
+            }
+        });
+
+        function startAutoplay() {
+            if (!isAutoplaying) { // Check if autoplay is already active
+                const autoplayUrl = "https://docs.google.com/presentation/d/1JFisrenHPYIgV3FhMUTVaH5jO4xc6LsZ/embed?start=true&loop=true&delayms=15000";
+                pptFrame.src = autoplayUrl;
+                isAutoplaying = true; // Set the flag to true
+            } else {
+                alert('Autoplay is already active!'); // Optional alert
+            }
+        }
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const burgerMenu = document.getElementById('metadata-burger-menu');
+        const metadataMenu = document.getElementById('metadata-menu');
+  
+        let isOpen = false;
+
+        // Add event listener directly to the burger menu
+        burgerMenu.addEventListener('click', function() {
+            isOpen = !isOpen;
+            burgerMenu.setAttribute('aria-expanded', isOpen);
+            metadataMenu.setAttribute('aria-hidden', !isOpen);
+            metadataMenu.classList.toggle('open', isOpen);
+            burgerMenu.classList.toggle('open', isOpen); // Toggle burger button open class
+        });
+    });
+
+</script>
+
+</body>
+</html>

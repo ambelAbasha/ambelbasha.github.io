@@ -1,0 +1,249 @@
+/* Main styling for the body */
+body {
+    margin: 0; /* No default margin */
+    padding: 0; /* No default padding */
+    font-family: Arial, sans-serif; /* Standard sans-serif font */
+    background: #f9f9f9; /* Light background color */
+    display: flex; /* Flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full viewport height */
+    flex-direction: column; /* Align elements vertically */
+}
+
+/* Container for the form */
+.form-container {
+    position: relative;
+    width: 18%;
+    max-width: 320px; /* Maximum width for the form container */
+    padding: 20px; /* Padding inside the form container (adjusted to create space) */
+    margin: 16px 20px 26px; /* Center horizontally */
+    border-radius: 15px; /* Rounded corners */
+    border: 1px solid #ddd; /* Border for definition */
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+    background: linear-gradient(
+        to bottom,
+        #d3d3d1, /* Grayish silver at the right */
+        rgba(211, 211, 211, 0.15), /* Slightly glossy in the middle */
+        #d3d3d1  /* Grayish silver at the right */
+    );
+    text-align: center; /* Center text within the container */
+    display: flex; /* Flexbox for alignment */
+    flex-direction: column; /* Align content vertically */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center horizontally */
+}
+
+/* Add space around text fields and text areas */
+input[type="text"],
+input[type="email"],
+textarea {
+    margin: 10px 0; /* Space above and below each field */
+    padding: 8px; /* Padding inside the input fields */
+    width: 100%; /* Make input fields full width of the container */
+    border-radius: 5px; /* Rounded corners for inputs */
+    border: 1px solid #ccc; /* Border for input fields */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    box-sizing: border-box; /* Include padding and border in the element's total width */
+}
+
+/* Center the text area specifically */
+textarea {
+    height: 130px; /* Set a height for the text area */
+    width: 100%; /* Make text area full width of the container */
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box; /* Include padding and border in the element's total width */
+}
+
+/* Optionally style the button if present */
+button {
+    margin: 10px 0; /* Space above and below the button */
+    padding: 10px 15px; /* Padding inside the button */
+    border-radius: 5px; /* Rounded corners for the button */
+    border: none; /* Remove default border */
+    background-color: #007BFF; /* Button color */
+    color: white; /* Button text color */
+    cursor: pointer; /* Change cursor on hover */
+}
+
+/* Container for the message below the form */
+.message-container {
+    max-width: 500px; /* Maximum width for the message container */
+    padding: 20px; /* Padding inside the message container */
+    border-radius: 10px; /* Rounded corners */
+    border: 1px solid #ddd; /* Light border for definition */
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    background: #f9f9f9; /* Light grey background for better contrast */
+    margin-top: 40px; /* Space between the form and the message container */
+    text-align: center; /* Center the text within the message container */
+    display: none; /* Hide the message container by default */
+    font-family: Arial, sans-serif; /* Consistent font for readability */
+    color: #333; /* Dark text for contrast */
+}
+
+/* Additional styling for visibility when shown */
+.message-container.visible {
+    display: block; /* Show the message container when needed */
+}
+
+
+/* Styling for form labels */
+.form-container label {
+    font-weight: bold; /* Bold text for labels */
+    display: block; /* Place each label on a new line */
+    text-align: left; /* Align text to the left */
+    margin-bottom: 10px; /* Space between label and input */
+}
+
+/* Styling for input fields */
+.form-container input[type="text"], 
+.form-container input[type="number"], 
+.form-container input[type="email"] {
+    padding: 10px; /* Padding inside input fields */
+    border-radius: 5px; /* Rounded corners */
+    border: 1px solid #ccc; /* Border for definition */
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow for inputs */
+    width: 100%; /* Input fields take the full width */
+    margin-left: 0; /* No extra margin on the left */
+    margin-right: 0; /* No extra margin on the right */
+    text-align: center; /* Center the text within the input field */
+	position: relative;
+}
+
+/* Styling for the 'Check' submit button with enhanced effects */
+input[type="submit"] {
+    background: linear-gradient(to right, #40e0d0, #36c6c2); /* Turquoise gradient */
+    color: white; /* White text */
+    padding: 12px 24px; /* More padding for a larger button */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Change cursor to pointer */
+    transition: all 0.3s ease; /* Smooth transition for hover/click effects */
+    text-align: center; /* Center the text */
+    font-size: 16px; /* Larger font size */
+}
+
+/* Hover effect for the 'Check' button */
+input[type="submit"]:hover {
+    background: linear-gradient(to right, #36c6c2, #32a8a0); /* Darker on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Click effect for the 'Check' button */
+input[type="submit"]:active {
+    background: linear-gradient(to right, #32a8a0, #318595); /* Darker on click */
+    transform: scale(0.98); /* Slight depression on click */
+}
+
+/* Styling for the "Search" button */
+.search-button {
+    background: linear-gradient(to right, #6a1b9a, #8e24aa); /* Purple gradient */
+    color: white; /* White text */
+    padding: 12px 24px; /* Padding for the button */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor for interaction */
+    font-size: 16px; /* Larger font size for better readability */
+    font-weight: bold; /* Bold text for emphasis */
+    transition: background 0.3s, transform 0.3s; /* Smooth transitions */
+    text-align: center; /* Center the text within the button */
+}
+
+/* Hover effect for the "Search" button */
+.search-button:hover {
+    background: linear-gradient(to right, #8e24aa, #ab47bc); /* Brighter purple on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+/* Click effect for the "Search" button */
+.search-button:active {
+    background: linear-gradient(to right, #5e35b1, #6a1b9a); /* Darker purple on click */
+    transform: translateY(1px); /* Slight depression on click */
+}
+/* Positioning the navigation arrows */
+.nav-container {
+    position: absolute;
+    top: 46%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust for exact centering */
+    width: 100%; /* Full width for positioning */
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-triangle {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.nav-triangle:hover {
+    background-color: #0056b3;
+}
+
+p {
+    margin: 10px 0;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #218838;
+}
+/* Basic modal styling */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    top: 50%; /* Centered vertically */
+    transform: translate(-50%, -50%);
+    width: 24%;
+    background-color: rgba(0, 0, 0, 0.7); /* Darker overlay for better visibility */
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Modal content styling */
+.modal-content {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    margin: 0 auto;
+    width: 90%;
+}
+
+/* Button container styling */
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+

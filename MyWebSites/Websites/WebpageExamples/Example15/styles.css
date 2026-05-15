@@ -1,0 +1,226 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+    font-family: Arial, sans-serif; /* Set a default font for the body */
+}
+
+/* .container styling */
+.container {
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    flex-direction: column;
+    width: 70%; /* Keep container width relatively wide */
+    max-width: 800px; /* Allow container to grow larger on wide screens */
+    min-height: 250px; /* Reduced the height of the container */
+    border-radius: 10px; /* Rounded corners */
+    padding: 15px; /* Reduced padding to make the container more compact */
+    position: relative; /* For stacking context */
+    z-index: 1; /* Ensure it's below the box */
+    box-sizing: border-box;
+    margin: 0 auto; /* Centering horizontally without pushing too high */
+    height: 100vh; /* Make the container fill the viewport height */
+}
+
+/* Inflated 3D effect for the box inside the container */
+.box {
+    width: 80%; /* Keep the box width relative to the container */
+    max-width: 500px; /* Limit the box width */
+    min-height: 250px; /* Reduced minimum height for the box */
+    padding: 15px; /* Reduced padding inside the box */
+    border: 2px solid lightgrey;
+    margin-bottom: 70px;
+    border-radius: 15px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(200, 200, 200, 0.8), rgba(255, 255, 255, 0.6));
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2), 0 10px 15px rgba(0, 0, 0, 0.1);
+    transform: translateZ(0) perspective(120px); /* 3D perspective */
+    transform-style: preserve-3d;
+    z-index: 2; /* Keep box above other elements */
+    box-sizing: border-box;
+    transition: all 0.3s ease-in-out;
+    margin-top: 0; /* Reset top margin to ensure it's aligned properly */
+}
+
+/* Glossy effect for top left corner of the box */
+.box::before {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top right, rgba(255, 255, 255, 0.3), transparent); /* Glossy effect */
+    border-top-left-radius: 15px; /* Match container's border radius */
+    z-index: 3; /* Ensure this is above the box content */
+}
+
+/* Glossy effect for top right corner of the box */
+.box::after {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top left, rgba(255, 255, 255, 0.3), transparent); /* Glossy effect */
+    border-top-right-radius: 15px; /* Match container's border radius */
+    z-index: 3; /* Ensure this is above the box content */
+}
+
+/* Adding inner shadow effect for depth */
+.box::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 15px;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.3); /* Inner shadow for depth */
+    transform: translate(-50%, -50%) scale(0.98); /* Slightly shrink for "stuffed" effect */
+    z-index: -1; /* Put the inner shadow behind content */
+}
+
+/* Hover effect for more pronounced 3D look */
+.box:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), 0 12px 40px rgba(0, 0, 0, 0.2); /* More shadow depth */
+}
+
+/* Active state for further 3D interaction */
+.box:active {
+    transform: perspective(500px) scale(0.99); /* Slightly shrink on click to simulate pressing */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1), 0 10px 30px rgba(0, 0, 0, 0.1); /* Decrease shadow for pressed effect */
+}
+
+/* Additional glossy effects for hover */
+.box:hover::before,
+.box:hover::after {
+    opacity: 0.8; /* Slightly increase opacity on hover */
+}
+
+/* Form styling */
+.form-container {
+    display: flex;
+    flex-direction: column; /* Arrange items in a column */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+/* Input field styling */
+.input-field {
+    width: 40%; /* Set width to 80% of the container */
+    height: 45px; /* Set height for uniformity */
+    margin: 15px 0; /* Added top and bottom margin */
+    padding: 0 20px; /* Horizontal padding */
+    text-align: center; /* Center text inside input */
+    font-size: 16px; /* Font size */
+    border-radius: 25px; /* Rounded corners */
+    border: 2px solid #ccc; /* Light border */
+    box-sizing: border-box; /* Prevent overflow */
+    transition: border 0.3s ease-in-out; /* Transition effect */
+}
+
+/* Focus and hover effects for the input field */
+.input-field:hover,
+.input-field:focus {
+    border-color: #007BFF; /* Blue border on focus/hover */
+    outline: none; /* Remove default outline */
+}
+
+/* Submit button styling */
+.submit-button {
+    padding: 10px 20px;
+    border-radius: 30px; /* Rounded corners for button */
+    background: linear-gradient(to bottom, #4CAF50, #388E3C);
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover effects for submit button */
+.submit-button:hover {
+    background: linear-gradient(to bottom, #66BB6A, #43A047);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Active effect for submit button */
+.submit-button:active {
+    transform: scale(0.98); /* Slight shrink effect on click */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+/* Center the return button horizontally and place it below the container */
+.return-button {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    margin-top: 30px; /* Add spacing between box and button */
+    width: 100%; /* Ensure full width for centering */
+}
+
+/* Styling for return button */
+.return-button button {
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative; /* Set position to relative for pseudo-elements */
+    overflow: hidden; /* Ensure pseudo-elements don't overflow */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), /* Light shadow */
+                0 4px 20px rgba(0, 0, 0, 0.3); /* Highlight from top */
+    margin: 20px 0; /* Ensure consistent margin */
+}
+
+/* Glossy effect for top left corner */
+.return-button button::before {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top right, rgba(255, 255, 255, 0.6), transparent);
+    border-top-left-radius: 5px; /* Adjust border radius as needed */
+    z-index: 1; /* Ensure the pseudo-element is above the background */
+}
+
+/* Glossy effect for top right corner */
+.return-button button::after {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top left, rgba(255, 255, 255, 0.6), transparent);
+    border-top-right-radius: 5px; /* Adjust border radius as needed */
+    z-index: 1; /* Ensure the pseudo-element is above the background */
+}
+
+.return-button button:hover::before,
+.return-button button:hover::after {
+    opacity: 0.8; /* Slightly increase opacity on hover */
+}
+
+.return-button button:hover {
+    background-color: #076907;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3), /* Light shadow */
+                0 4px 20px rgba(0, 0, 0, 0.4); /* Highlight from top */
+}
+
+.return-button button:active {
+    transform: scale(0.95); /* Slightly shrink the button on click */
+}

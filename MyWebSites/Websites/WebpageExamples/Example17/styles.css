@@ -1,0 +1,612 @@
+/* Base styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+/* Styles for form.php */
+.form-page .outer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: #ffffff; /* Light background for better contrast */
+}
+
+.form-page .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 34vh;
+    flex-direction: column;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    width: 1340px; /* Adjust width as needed */
+}
+
+.form-page .heading-choice {
+    text-align: center;
+    margin-bottom: 20px;
+    color : #4CAF50;
+    font-weight: bold;
+    text-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+.form-page .form-group {
+    margin-bottom: 15px;
+}
+
+/* Text input styling */
+input[type="text"] {
+    width: 68%; /* Full width */
+    padding: 10px; /* Padding */
+    border: 1px solid #ccc; /* Border */
+    border-radius: 5px; /* Rounded corners */
+}
+
+/* Return button container */
+.form-page .return-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 50px;
+}
+
+/* Return button styling */
+.form-page .return-button button {
+    padding: 10px 20px; /* Add padding to the button */
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative; /* Set position to relative for pseudo-elements */
+    overflow: hidden; /* Ensure pseudo-elements don't overflow */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), /* Light shadow */
+                0 4px 20px rgba(0, 0, 0, 0.3); /* Highlight from top */
+    margin: 20px 0; /* Ensure consistent margin */
+}
+
+/* Glossy effect for top left corner */
+.form-page .return-button button::before {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top right, rgba(255, 255, 255, 0.6), transparent);
+    border-top-left-radius: 10px; /* Adjust border radius as needed */
+    z-index: 1; /* Ensure the pseudo-element is above the background */
+}
+
+/* Glossy effect for top right corner */
+.form-page .return-button button::after {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top left, rgba(255, 255, 255, 0.6), transparent);
+    border-top-right-radius: 5px; /* Adjust border radius as needed */
+    z-index: 1; /* Ensure the pseudo-element is above the background */
+}
+
+/* Hover effect for return button */
+.form-page .return-button button:hover {
+    background-color: #076907;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3), /* Light shadow */
+            0 4px 20px rgba(0, 0, 0, 0.4); /* Highlight from top */
+}
+
+/* Additional glossy effects for hover */
+.form-page .return-button button:hover::before,
+.form-page .return-button button:hover::after {
+    opacity: 0.8; /* Slightly increase opacity on hover */
+}
+
+/* Active effect for return button */
+.form-page .return-button button:active {
+    transform: scale(0.95); /* Slightly shrink the button on click */
+}
+
+/* Custom aqua style with glossy shiny effect */
+.custom-select-label {
+    color: rgb(13, 13, 14); /* Aqua color */
+    text-shadow: 0 0 10px rgba(249, 253, 253, 0.5); /* Shiny effect */
+}
+
+/* Custom Select Styling */
+.custom-select {
+    background: linear-gradient(to bottom, #4CAF50, #388E3C); /* Gradient for glossy effect */
+    color: white; /* White text color */
+    border: 1px solid #4CAF50; /* Border to match the button */
+    border-radius: 15px; /* Smaller border-radius */
+    padding: 8px 18px; /* Reduced padding */
+    cursor: pointer; /* Cursor on hover */
+    position: relative; /* Position relative for pseudo-elements */
+    overflow: hidden; /* Ensure pseudo-elements do not overflow */
+    z-index: 0; /* Ensure pseudo-elements do not overlay text */
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 5px 15px rgba(0, 0, 0, 0.1); /* Inner and outer shadows for 3D effect */
+    transition: box-shadow 0.3s ease, background 0.3s ease, transform 0.3s ease; /* Smooth transition */
+    font-size: 14px; /* Adjust font size */
+    width: 120px; /* Smaller width */
+}
+
+/* Custom Select Option Styling */
+.custom-select option {
+    background-color: white; /* White background color for options */
+    color: black; /* Black text color for options */
+    padding: 5px 7px; /* Adjusted padding */
+    font-size: 14px; /* Adjust font size */
+    width: 40px; /* Set a specific width for the options */
+    text-align: center; /* Center text */
+    border-radius: 5px; /* Smaller border-radius */
+}
+
+/* Adding Before and After Pseudo-Elements */
+.custom-select::before,
+.custom-select::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 15px; /* Smaller circular effect */
+    z-index: -1; /* Place behind the content */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0; /* Initially hidden */
+}
+
+.custom-select::before {
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0) 80%); /* Less intense glossy highlight */
+}
+
+.custom-select::after {
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0) 80%); /* Softer highlight */
+}
+
+.custom-select:hover {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7), 0 5px 15px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+    background: linear-gradient(to bottom, #45a049, #269e26, #45a049); /* Slightly brighter background on hover */
+    transform: translateY(-0.5px); /* Smaller lift on hover */
+}
+
+.custom-select:hover::before,
+.custom-select:hover::after {
+    opacity: 1; /* Show on hover */
+    transform: scale(0.5); /* Grow to full size */
+}
+.index-page .outer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 40vh; /* Adjusted minimum height */
+    padding: 20px;
+    background-color: #ffffff; /* Light background for better contrast */
+}
+
+.index-page .page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center content vertically */
+    width: 100%;
+    max-width: 1800px;
+    height: auto; /* Let the height adjust based on content */
+    margin: auto; /* Center the container horizontally */
+    padding-top: 50px;
+}
+
+.index-page .result-container {
+    border-radius: 10px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    background-color: white;
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+}
+
+/* Result header styling */
+.index-page .result-header {
+    font-weight: bold;
+    font-size: 1.5em;
+    padding: 16px 16px;
+    border-radius: 20px;
+    border: 1px solid #4CAF50;
+    margin-bottom: 20px;
+    background: linear-gradient(to bottom, #4CAF50, rgba(128, 243, 157, 0.5), #4CAF50); /* Gradient for glossy effect */
+    position: relative; /* Added for pseudo-elements */
+    overflow: hidden; /* Ensuring pseudo-element doesn't overflow */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Light shadow */
+}
+
+/* Glossy effect for top left corner */
+.index-page .result-header::before {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top right, rgba(255, 255, 255, 0.6), transparent);
+    border-top-left-radius: 10px;
+    z-index: 1; /* Ensures the pseudo-element is above the background */
+}
+
+/* Glossy effect for top right corner */
+.index-page .result-header::after {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top left, rgba(255, 255, 255, 0.6), transparent);
+    border-top-right-radius: 10px;
+    z-index: 1; /* Ensures the pseudo-element is above the background */
+}
+
+/* Hover effect for result header */
+.index-page .result-header:hover {
+    background: linear-gradient(to bottom, #66BB6A, rgba(154, 247, 177, 0.5), #43A047); /* Change gradient */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+    transform: translateY(-0.1px); /* Slight lift */
+}
+
+/* Additional glossy effects for hover */
+.index-page .result-header:hover::before,
+.index-page .result-header:hover::after {
+    opacity: 0.8; /* Slightly increase opacity on hover */
+}
+
+/* Table styling */
+.index-page table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    table-layout: fixed; /* Add this to ensure fixed layout */
+}
+
+/* Header row styling */
+.index-page th {
+    padding: 12px 15px;
+    text-align: center;
+    background-color: #4CAF50;
+    color: white;
+    border: none; /* Remove default borders */
+}
+
+/* Apply outer border and rounded corners to the first header cell */
+.index-page th:first-child {
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    border-radius: 4px 0 0 4px; /* Top-left and bottom-left corners */
+}
+
+/* Apply outer border and rounded corners to the last header cell */
+.index-page th:last-child {
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    border-radius: 0 4px 4px 0; /* Top-right and bottom-right corners */
+}
+
+/* Apply outer border to the middle header cells */
+.index-page th:not(:first-child):not(:last-child) {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+/* Remove border for data cells */
+.index-page td {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid #dddddd;
+}
+
+/* Style for even rows */
+.index-page tr:nth-child(even) {
+    background-color: white;
+    border-radius: 4px;
+}
+
+/* Style for odd rows */
+.index-page tr:nth-child(odd) {
+    background-color: #e0f7e0; /* Paler green */
+    border-radius: 4px;
+}
+
+.index-page tr:hover {
+    background-color: #f5f5f5;
+}
+
+/* Set fixed width for specific columns */
+.index-page th:nth-child(1), .index-page td:nth-child(1) {
+    width: 70px; /* Adjust as needed for the first column */
+}
+
+.index-page th:nth-child(2), .index-page td:nth-child(2) {
+    width: 70px; /* Adjust as needed for the second column */
+}
+
+.index-page th:nth-child(3), .index-page td:nth-child(2) {
+    width: 170px; /* Adjust as needed for the second column */
+}
+/* Deletion message styling */
+.index-page .deletion-message {
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #4CAF50;
+    background-color: #F9F9F9;
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+/* Pagination controls */
+.index-page .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Align vertically */
+    padding: 10px; /* Padding for comfort */
+    margin-top: 20px; /* Spacing around pagination */
+    margin-bottom: 30px;
+}
+
+.index-page .pagination a,
+.index-page .pagination span { /* Added span for the current page number */
+    margin: 0 5px;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(to bottom, #4CAF50, #388E3C); /* Gradient for glossy effect */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    position: relative; /* Added for pseudo-element */
+    overflow: hidden; /* Ensuring pseudo-element doesn't overflow */
+}
+
+/* Glossy effect for top left corner */
+.index-page .pagination a::before,
+.index-page .pagination span::before {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top right, rgba(255, 255, 255, 0.6), transparent);
+    border-top-left-radius: 10px;
+    z-index: 1; /* Ensures the pseudo-element is above the background */
+}
+
+/* Glossy effect for top right corner */
+.index-page .pagination a::after,
+.index-page .pagination span::after {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top left, rgba(255, 255, 255, 0.6), transparent);
+    border-top-right-radius: 10px;
+    z-index: 1; /* Ensures the pseudo-element is above the background */
+}
+
+/* Pagination links hover effect */
+.index-page .pagination a:hover,
+.index-page .pagination span:hover {
+    background: linear-gradient(to bottom, #66BB6A, #43A047); /* Change gradient */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+    transform: translateY(-2px); /* Slight lift */
+}
+
+/* Styling for active page */
+.index-page .pagination a.active {
+    background: linear-gradient(to bottom, #31f1ff, #2dc6d4); /* Adjusted background color for better visibility */
+    color: #000; /* Ensuring good contrast with the background */
+    font-size: 14px; /* Increased font size for improved readability */
+    padding: 10px 14px; /* Added padding for better spacing */
+    border-radius: 4px; /* Rounded corners for a softer look */
+    text-decoration: none; /* Removed underline */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.4); /* Added a softer shadow for depth */
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s; /* Smooth transition for hover effect */
+}
+
+/* Hover effect for active page */
+.index-page .pagination a.active:hover {
+    background: linear-gradient(to bottom, #2dc6d4, #1ea0a8); /* Darker background color on hover for visual feedback */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Enhanced shadow on hover */
+    transform: translateY(-2px); /* Slight lift */
+}
+
+/* Additional glossy effects for hover */
+.index-page .pagination a:hover::before,
+.index-page .pagination span:hover::before,
+.index-page .pagination a:hover::after,
+.index-page .pagination span:hover::after {
+    opacity: 0.8; /* Slightly increase opacity on hover */
+}
+/* Return button container */
+.index-page .return-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Return button styling */
+.index-page .return-button button {
+    padding: 10px 20px; /* Add padding to the button */
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative; /* Set position to relative for pseudo-elements */
+    overflow: hidden; /* Ensure pseudo-elements don't overflow */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), /* Light shadow */
+                0 4px 20px rgba(0, 0, 0, 0.3); /* Highlight from top */
+    margin: 20px 0; /* Ensure consistent margin */
+}
+
+/* Glossy effect for top left corner */
+.index-page .return-button button::before {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top right, rgba(255, 255, 255, 0.6), transparent);
+    border-top-left-radius: 10px; /* Adjust border radius as needed */
+    z-index: 1; /* Ensure the pseudo-element is above the background */
+}
+
+/* Glossy effect for top right corner */
+.index-page .return-button button::after {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top left, rgba(255, 255, 255, 0.6), transparent);
+    border-top-right-radius: 5px; /* Adjust border radius as needed */
+    z-index: 1; /* Ensure the pseudo-element is above the background */
+}
+
+/* Hover effect for return button */
+.index-page .return-button button:hover {
+    background-color: #076907;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3), /* Light shadow */
+            0 4px 20px rgba(0, 0, 0, 0.4); /* Highlight from top */
+}
+
+/* Additional glossy effects for hover */
+.index-page .return-button button:hover::before,
+.index-page .return-button button:hover::after {
+    opacity: 0.8; /* Slightly increase opacity on hover */
+}
+/* Submit button styling */
+.submit-button {
+    background: linear-gradient(to bottom, #4CAF50, #388E3C); /* Gradient for glossy effect */
+    top: 28px;
+    padding: 10px 20px; /* Adjusted padding */
+    border-radius: 10px; /* Rounded corners */
+    border: none; /* No border */
+    color: white; /* White text color */
+    cursor: pointer; /* Cursor on hover */
+    margin: 20px auto; /* Centered horizontally with margin */
+    position: relative; /* Position relative for pseudo-elements */
+    overflow: hidden; /* Ensure pseudo-elements do not overflow */
+    z-index: 0; /* Ensure pseudo-elements do not overlay text */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Light shadow */
+    transition: box-shadow 0.3s ease, background 0.3s ease, transform 0.3s ease; /* Smooth transition */
+    font-size: 16px; /* Adjust font size */
+}
+
+/* Glossy effect for top left corner */
+.submit-button::before {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top right, rgba(255, 255, 255, 0.6), transparent);
+    border-top-left-radius: 10px;
+    z-index: 1; /* Ensures the pseudo-element is above the background */
+}
+
+/* Glossy effect for top right corner */
+.submit-button::after {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top left, rgba(255, 255, 255, 0.6), transparent);
+    border-top-right-radius: 10px;
+    z-index: 1; /* Ensures the pseudo-element is above the background */
+}
+
+/* Hover effect for submit button */
+.submit-button:hover {
+    background: linear-gradient(to bottom, #66BB6A, #43A047); /* Change gradient */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+    transform: translateY(-2px); /* Slight lift */
+}
+
+/* Additional glossy effects for hover */
+.submit-button:hover::before,
+.submit-button:hover::after {
+    opacity: 0.8; /* Slightly increase opacity on hover */
+}
+.h2{
+    font-weight: bold;
+}
+#delete-modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            justify-content: center;
+            align-items: center;
+}
+
+#delete-modal {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#delete-modal > div {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+#delete-modal button {
+            margin: 10px;
+}

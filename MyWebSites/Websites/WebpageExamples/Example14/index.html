@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Capital - Country</title>
+    <!-- Link to external CSS files -->
+    <link rel="stylesheet" type="text/css" href="./Styles/formStyles.css">
+</head>
+<body>
+    <div class="outer-container">
+        
+        <div class="container">
+            <div class="box">
+                <h3 class="form-header">Enter the Country to find the Capital</h3>
+                <p>Or the Capital to find the Country it belongs to</p>
+                <!-- Form for entering the country or capital -->
+                <form name="countries" method="post" action="result.php">
+                    <textarea name="val" placeholder="Enter value" pattern="[a-zA-Z\s]+" required title="Please enter only letters."></textarea>
+
+                    <div class="select-wrapper">
+                        <select name="option" size="1">
+                            <option value="1">Capital</option>
+                            <option value="2">Country</option>
+                        </select>
+                    </div>
+
+                    <div class="submit-wrapper">
+                        <input type="submit" value="Submit">
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Return button styled -->
+        <div class="return-button">
+            <button onclick="window.location.href='../index.html'">Back</button>
+        </div>
+    </div>
+</body>
+</html>

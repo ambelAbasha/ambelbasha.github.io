@@ -1,0 +1,347 @@
+/* General reset and full viewport height */
+body, html {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Outer container to center content vertically and horizontally */
+.outer-container {
+    width: 100%;
+    height: calc(100vh - 70px); /* Take full height minus button space */
+    display: flex;
+    justify-content: center; /* Horizontally center content */
+    align-items: center; /* Vertically center content */
+    padding: 10px; /* Optional padding for a little space around */
+    box-sizing: border-box;
+}
+
+/* .container styling */
+.container {
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    flex-direction: column;
+    width: 70%; /* Keep container width relatively wide */
+    max-width: 800px; /* Allow container to grow larger on wide screens */
+    min-height: 250px; /* Reduced the height of the container further */
+    border-radius: 10px; /* Rounded corners */
+    padding: 15px; /* Reduced padding to make the container more compact */
+    position: relative; /* For stacking context */
+    z-index: 1; /* Ensure it's below the box */
+    box-sizing: border-box;
+    margin: 0 auto; /* Centering horizontally without pushing too high */
+}
+
+/* Inflated 3D effect for the box inside the container */
+.box {
+    width: 80%; /* Keep the box width relative to the container */
+    max-width: 500px; /* Limit the box width */
+    min-height: 250px; /* Reduced minimum height for the box */
+    padding: 15px; /* Reduced padding inside the box */
+    border: 2px solid lightgrey;
+    margin-bottom: 70px;
+    border-radius: 15px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(200, 200, 200, 0.8), rgba(255, 255, 255, 0.6));
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2), 0 10px 15px rgba(0, 0, 0, 0.1);
+    transform: translateZ(0) perspective(420px); /* 3D perspective */
+    transform-style: preserve-3d;
+    z-index: 2; /* Keep box above other elements */
+    box-sizing: border-box;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Glossy effect for top left corner of the box */
+.box::before {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top right, rgba(255, 255, 255, 0.3), transparent); /* Glossy effect */
+    border-top-left-radius: 15px; /* Match container's border radius */
+    z-index: 3; /* Ensure this is above the box content */
+}
+
+/* Glossy effect for top right corner of the box */
+.box::after {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top left, rgba(255, 255, 255, 0.3), transparent); /* Glossy effect */
+    border-top-right-radius: 15px; /* Match container's border radius */
+    z-index: 3; /* Ensure this is above the box content */
+}
+
+/* Adding inner shadow effect for depth */
+.box::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 15px;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.3); /* Inner shadow for depth */
+    transform: translate(-50%, -50%) scale(0.98); /* Slightly shrink for "stuffed" effect */
+    z-index: -1; /* Put the inner shadow behind content */
+}
+
+/* Hover effect for more pronounced 3D look */
+.box:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), 0 12px 40px rgba(0, 0, 0, 0.2); /* More shadow depth */
+}
+
+/* Active state for further 3D interaction */
+.box:active {
+    transform: perspective(500px) scale(0.99); /* Slightly shrink on click to simulate pressing */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2), 0 10px 30px rgba(0, 0, 0, 0.15); /* Decrease shadow for pressed effect */
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+/* Table cell styling */
+th, td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+    z-index: 3;
+}
+
+/* Header cell styling with glossy glass shine effect */
+th {
+    position: relative; /* Set position to relative for pseudo-elements */
+    background-color: #f2f2f2; /* Background color */
+    z-index: 3;
+}
+
+/* Glossy effect for top left corner */
+th::before {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top right, rgba(255, 255, 255, 0.5), transparent);
+    border-top-left-radius: 10px; /* Adjust as needed */
+    z-index: 1; /* Ensure the pseudo-element is above the background */
+}
+
+/* Glossy effect for top right corner */
+th::after {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top left, rgba(255, 255, 255, 0.397), transparent);
+    border-top-right-radius: 10px; /* Adjust as needed */
+    z-index: 1; /* Ensure the pseudo-element is above the background */
+}
+/* Styling the container where the output message is displayed */
+.outputMessage {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333;
+    margin-top: 20px;
+}
+
+/* Result success styling (for successful results like capital or country names) */
+.result-success {
+    color: #4CAF50; /* Green for success */
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* Result error styling (for error messages like "Not found") */
+.result-error {
+    color: #f44336; /* Red for error */
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.result-error strong {
+    color: #d32f2f; /* Darker red for strong text */
+}
+
+/* Return button styling */
+.return-button {
+    margin-top: 20px; /* Add space above the return button */
+    display: inline-block;
+}
+.return-button button {
+    padding: 10px 20px; /* Add padding to the button */
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: 10px; /* Add margin to separate button from table */
+    cursor: pointer;
+    position: relative; /* Set position to relative for pseudo-elements */
+    overflow: hidden; /* Ensure pseudo-elements don't overflow */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), /* Light shadow */
+                0 4px 20px rgba(0, 0, 0, 0.3); /* Highlight from top */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* Smooth transition */
+}
+
+/* Glossy effect for top left corner */
+.return-button button::before {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top right, rgba(255, 255, 255, 0.6), transparent);
+    border-top-left-radius: 5px; /* Adjust border radius as needed */
+    z-index: 1; /* Ensure the pseudo-element is above the background */
+}
+  
+/* Glossy effect for top right corner */
+.return-button button::after {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top left, rgba(255, 255, 255, 0.6), transparent);
+    border-top-right-radius: 5px; /* Adjust border radius as needed */
+    z-index: 1; /* Ensure the pseudo-element is above the background */
+}
+
+.return-button button:hover::before,
+.return-button button:hover::after {
+    opacity: 0.8; /* Slightly increase opacity on hover */
+}
+
+.return-button button:hover {
+    background-color: #076907;
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), /* Light shadow */
+                0 4px 20px rgba(0, 0, 0, 0.3); /* Highlight from top */
+}
+
+/* Remove any animations that might cause movement */
+.return-button button {
+    animation: none;
+    transform: none;
+}
+/* Responsiveness for small screens (up to 480px) */
+@media screen and (max-width: 480px) {
+    .outer-container {
+        width: 90%;
+    }
+
+    .box {
+        padding: 8px;
+    }
+
+    table {
+        font-size: 10px;
+    }
+
+    th, td {
+        padding: 6px;
+    }
+
+    .return-button button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}
+
+/* Responsiveness for medium screens (up to 768px) */
+@media screen and (max-width: 768px) {
+    .container {
+        width: 95%;
+        margin-top: 5%;
+    }
+
+    .box {
+        padding: 10px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 10px;
+    }
+
+    .return-button button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}
+
+/* Responsiveness for larger screens (from 1024px to 1440px) */
+@media screen and (min-width: 1024px) {
+    .container {
+        width: 80%;
+        margin-top: 5%;
+    }
+
+    .box {
+        padding: 20px;
+        max-width: 600px; /* Increased box width on large screens */
+    }
+
+    .outer-container {
+        height: auto; /* Allow content to adjust as needed */
+    }
+}
+
+/* Responsiveness for very large screens (bigger than 1440px) */
+@media screen and (min-width: 1440px) {
+    .container {
+        width: 70%; /* Make container more spacious on large desktops */
+        margin-top: 3%;
+    }
+
+    .box {
+        padding: 20px;
+        max-width: 700px; /* Further expand box width */
+    }
+
+    .outer-container {
+        height: auto;
+    }
+
+    table {
+        font-size: 14px; /* Increase table font size for readability */
+    }
+
+    th, td {
+        padding: 15px; /* Increase padding for better readability */
+    }
+
+    .return-button button {
+        font-size: 18px; /* Increase button size for desktop users */
+        padding: 10px 20px; /* Larger padding for desktop buttons */
+    }
+}

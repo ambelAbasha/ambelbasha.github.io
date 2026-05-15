@@ -1,0 +1,345 @@
+/* Global Styles */
+body {
+  background-color: white;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align at the top instead of centering */
+  height: 100vh; /* Full viewport height */
+  position: relative;
+  box-sizing: border-box; /* Ensures padding does not affect body width/height */
+}
+
+/* Wrapper Styles */
+.wrapper {
+  width: 100%;
+  height: auto;
+  padding: 0 15px; /* Added padding to prevent content from touching edges */
+  box-sizing: border-box; /* Ensures padding doesn't affect the width */
+}
+
+/* Container Styles */
+.container {
+  position: relative; /* For proper positioning */
+  width: 100%;
+  max-width: 800px; /* Limiting width for larger screens */
+  min-height: 60vh; /* Minimum height for the container */
+  margin-top: 40px; /* Adds space from the top */
+  left: 30%;
+  margin-bottom: 20px; /* Optional margin for the bottom */
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align content from the top */
+  background-color: #f9f9f9;
+  z-index: 1;
+  box-sizing: border-box; /* Ensures padding doesn't affect the width */
+}
+
+/* Table Container */
+.table-container {
+  width: 100%;
+  height: auto;
+  text-align: center;
+  margin-bottom: 20px; /* Increased margin for spacing */
+}
+
+h3 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px; /* Increased margin */
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+  table-layout: fixed; /* Ensures consistent table layout */
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px 15px; /* Added more padding for better readability */
+  text-align: center;
+  vertical-align: middle; /* Ensures text is vertically aligned in the middle */
+  min-height: 50px; /* Ensures that all table cells have a minimum height */
+  line-height: 1.5; /* Prevents text from affecting the height */
+}
+
+th {
+  background-color: #f2f2f2;
+  color: #333;
+  font-size: 16px;
+}
+
+td {
+  font-size: 13px;
+  color: #555;
+  transition: color 0.3s ease-in-out; /* Smooth transition for color changes */
+}
+
+/* Add smooth transition for color change to avoid sudden shifts */
+td, th {
+  transition: color 0.3s ease-in-out; /* Smooth transition for color changes */
+}
+
+/* Return Button Container */
+.return-button {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  z-index: 1; /* Ensure button stays on top */
+}
+
+/* Return Button */
+.return-button button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), 0 4px 20px rgba(0, 0, 0, 0.3);
+  border: 1px solid green;
+}
+
+/* Glossy effect for top left corner */
+.return-button button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 50%;
+  background: linear-gradient(to top right, rgba(255, 255, 255, 0.6), transparent);
+  border-top-left-radius: 5px;
+  z-index: 1;
+}
+
+/* Glossy effect for top right corner */
+.return-button button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 50%;
+  background: linear-gradient(to top left, rgba(255, 255, 255, 0.6), transparent);
+  border-top-right-radius: 5px;
+  z-index: 1;
+}
+
+.return-button button:hover::before,
+.return-button button:hover::after {
+  opacity: 0.8;
+}
+
+.return-button button:hover {
+  background-color: #076907;
+  border: 1px solid rgb(4, 80, 14);
+}
+
+/* Responsive Table Styles */
+@media (max-width: 768px) {
+  .container {
+    width: 96%;
+    padding: 10px;
+  }
+
+  table {
+    font-size: 12px;
+  }
+
+  .return-button button {
+    font-size: 14px;
+    padding: 8px 18px;
+  }
+}
+
+/* Color Explanation Table */
+/* Color Explanation Table */
+.color-explanation {
+  margin-top: 20px; /* Increased margin for spacing */
+  padding: 8px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.color-table {
+  width: 100%;
+  border-collapse: collapse; /* Ensures no spacing between table cells */
+  table-layout: fixed; /* Forces fixed width layout */
+}
+
+/* Styles for the header (th) and table cells (td) */
+.color-table th,
+.color-table td {
+  text-align: center;
+  font-size: 14px; /* Ensures readability */
+  padding: 0; /* Remove padding for exact control over size */
+  border: 1px solid #ddd; /* Add border for better clarity */
+}
+
+/* Ensure the first column and all its cells are square */
+.color-table td:nth-child(1),
+.color-table th:nth-child(1) {
+  width: 40px; /* Set fixed width to 40px */
+  height: 40px; /* Set fixed height to 40px */
+  background-color: transparent; /* Ensure no background color */
+  vertical-align: middle; /* Ensure vertical centering */
+  line-height: 40px; /* Ensure text is vertically centered */
+  display: flex;
+  justify-content: center; /* Ensure horizontal centering */
+  align-items: center; /* Ensure vertical centering */
+}
+
+/* Additional styles for the rest of the columns */
+.color-table td:nth-child(2) {
+  font-weight: bold;
+  color: #333;
+}
+
+.color-table td:nth-child(3) {
+  font-style: italic;
+  color: #666;
+}
+
+/* Add this to your CSS file */
+.yelloworange {
+  background-color: #FFA500; /* Yellow-orange color */
+}
+
+/* Common button styling for both Function 1 and Function 2 */
+#update-thresholds-btn {
+  position: relative; /* Add position relative for pseudo-elements */
+  padding: 10px 15px; /* Reduced padding */
+  border: 1px solid #ccc;
+  border-radius: 8px; /* Match the code box border radius */
+  margin-right: 26px;
+  margin-left: 26px;
+  background: linear-gradient(to bottom, #f9f9f9, #e6e6e6); /* Gradient for glossy effect */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Light shadow */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease, opacity 0.3s ease; /* Smooth transition for multiple properties */
+  font-size: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  z-index: 3;
+  outline: none; /* Remove outline on focus */
+}
+
+/* Glossy effect for top left corner */
+#update-thresholds-btn::before {
+  content: ""; /* Empty content for pseudo-element */
+  position: absolute; /* Absolute positioning */
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 50%;
+  background: linear-gradient(to top right, rgba(255, 255, 255, 0.6), transparent);
+  border-top-left-radius: 8px;
+  z-index: 1; /* Ensures the pseudo-element is above the background */
+}
+
+/* Glossy effect for top right corner */
+#update-thresholds-btn::after {
+  content: ""; /* Empty content for pseudo-element */
+  position: absolute; /* Absolute positioning */
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 50%;
+  background: linear-gradient(to top left, rgba(255, 255, 255, 0.6), transparent);
+  border-top-right-radius: 8px;
+  z-index: 1; /* Ensures the pseudo-element is above the background */
+}
+
+/* Hover effect for buttons */
+#update-thresholds-btn:hover {
+  background-color: #e5e5e5; /* Slightly darker background on hover */
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* Softer shadow on hover */
+  transform: scale(1.01); /* Slight scale effect to emphasize hover */
+}
+
+/* Active state for button (when clicked) */
+#update-thresholds-btn:active {
+  background-color: #d8d8d8; /* Slightly darker background when clicked */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Smaller shadow on click */
+  transform: scale(1); /* Prevent scale effect when clicked */
+}
+
+/* Additional glossy effects for hover */
+#update-thresholds-btn:hover::before,
+#update-thresholds-btn:hover::after {
+  opacity: 0.8; /* Slightly increase opacity on hover */
+}
+
+.db-message {
+  text-align: center;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.db-message.success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.db-message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.db-message .icon {
+  margin-right: 5px;
+}
+
+/* Modal container */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  padding-top: 60px; /* Position the modal at the center */
+  text-align: center;
+}
+
+/* Modal content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 300px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+/* Style for the modal message */
+.modal-content span {
+  font-size: 18px;
+  color: green; /* Change to green for success */
+}
+

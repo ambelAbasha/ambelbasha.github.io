@@ -1,0 +1,509 @@
+/*=============================================
+  :root — Global Variables
+=============================================*/
+:root {
+  /* Colors */
+  --color-bg: #003135;
+  --color-bg-alt: #024950;
+  --color-bg-hover: #002428;
+  --color-primary: #0FA4AF;
+  --color-secondary: #bb4232;
+  --color-secondary-dark: #993528;
+  --color-accent-1: #F5C74F;
+  --color-accent-2: #B8C46E;
+  --color-accent-3: #CFAF9D;
+  --color-text: #ffffff;
+  --color-text-muted: #bb4232;
+  --color-border: #0FA4AF;
+  --color-shadow: rgba(0,0,0,0.2);
+
+  /* Typography */
+  --font-sans: 'Poppins', sans-serif;
+  --font-size-base: 1rem;
+  --font-size-sm: 0.875rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.5rem;
+  --line-height-base: 1.4;
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xlg: 6rem;
+
+  /* Radii & Shadows */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 2px 6px var(--color-shadow);
+  --shadow-md: 0 4px 12px var(--color-shadow);
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition: 0.3s ease;
+}
+
+/*=============================================
+  Global & Utility Resets
+=============================================*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+  padding-top: 40px;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* ====================
+   Header & Animation
+   ==================== */
+
+/* Header Slide-Down Animation */
+@keyframes slideDown {
+  from { top: -120px; }
+  to   { top:    0; }
+}
+
+/* Rainbow Flow Keyframes */
+@keyframes rainbowFlow {
+  from { background-position: 0% 0; }
+  to   { background-position: 100% 0; }
+}
+
+/* Main Header */
+#main-header {
+  position: fixed;
+  top: 0; /* Adjusted to stay at the top */
+  left: 0;
+  width: 100%;
+  background-color: var(--color-bg-alt);
+  color: white;
+  padding: 5px 0; /* Reduced vertical padding */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  z-index: 100;
+  animation: slideDown 0.6s ease-in-out forwards;
+}
+
+/* Static rainbow bar (no animation) */
+#main-header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    red, orange, yellow, green, blue, indigo, violet, red
+  );
+  background-size: 400% 100%; /* quadruple width for smooth flow */
+}
+
+/* Navbar and Burger Menu */
+.navbar-container {
+  max-width: 1400px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 4;
+  padding: 0; /* Removed padding */
+  border: none; /* Removed border */
+}
+
+/* Welcome Title Styling */
+.welcome-title {
+  font-size: 1.8rem; /* Slightly smaller font size to reduce height */
+  font-weight: bold;
+  color: var(--highlight-color);
+  text-align: center;
+  z-index: 1;
+  position: relative;
+  flex-grow: 1;
+  left: -5%;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+/* Burger Wrapper */
+.burger-wrapper {
+  position: absolute;
+  top: 50%; /* Adjusted to move it closer to the center */
+  right: -12.5em;  /* equivalent to -200px */
+  transform: translateY(-50%); /* Adjusted to center vertically */
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 101;
+}
+
+/* Portfolio Burger Menu */
+.burger-menu {
+  --fill-angle: 0deg;
+  position: relative;
+  width: 40px;
+  height: 40px;
+   /* Set background color and border color */
+  background-color: var(--color-text);  /* Set background color */
+  color: var(--color-secondary);
+  border: 4px solid transparent;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  pointer-events: auto;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  transition: background 0.3s, --fill-angle var(--anim-duration) linear;
+  border-image: conic-gradient(
+    rgba(0, 0, 0, 0.6) var(--fill-angle),
+    transparent var(--fill-angle)
+  ) 1;
+}
+
+.burger-menu span {
+  position: absolute;
+  width: 30px;
+  height: 4px;
+  background-color: var(--color-secondary-dark); /* Set the correct color */
+  border-radius: 4px;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  transform-origin: center;
+}
+
+
+.burger-menu span:nth-child(1) { 
+  top: 6px; 
+}
+
+.burger-menu span:nth-child(2) { 
+  top: 50%; 
+  transform: translateY(-50%); 
+}
+
+.burger-menu span:nth-child(3) { 
+  bottom: 6px; 
+}
+
+/* Burger to X Animation */
+.burger-menu.open span:nth-child(1) {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.burger-menu.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger-menu.open span:nth-child(3) {
+  bottom: 50%;
+  transform: translateY(50%) rotate(-45deg);
+}
+
+/* Hover State */
+.burger-menu:hover span {
+  background-color: #381805;
+}
+
+/* Border Fill Animations */
+.burger-wrapper.animate-cw .burger-menu {
+  --fill-angle: 360deg;
+}
+
+.burger-wrapper.animate-ccw .burger-menu {
+  --fill-angle: 0deg;
+}
+
+.burger-wrapper, .portfolio-menu {
+  border-radius: 50%;  /* Adjust the value to control the roundness */
+}
+
+/* ====================
+   Portfolio Menu
+   ==================== */
+
+/* Portfolio Menu */
+#portfolio-menu {
+  position: fixed;
+  margin-top: 10px;
+  top: calc(var(--space-xlg) + 18px); /* Adjusting top for lower placement */
+  right: 2px; /* Spacing variable for horizontal positioning */
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs); /* Space between items using spacing variable */
+  min-width: 190px;
+  max-width: 230px;
+  max-height: calc(100vh - var(--space-sm)); /* Adjusted max height based on spacing */
+  overflow-y: auto;
+  background-color: var(--color-bg-alt);  /* Background color using variable */
+  border: 1px solid var(--color-primary);  /* Subtle border with secondary-dark color */
+  border-radius: var(--radius-md); /* Slightly larger border-radius for smooth curves */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Lighter, more subtle shadow for a smoother effect */
+  z-index: 102;
+  padding: var(--space-xs); /* Reduced padding for better spacing */
+  transition: transform 0.3s ease-in-out; /* Smooth transition for showing/hiding */
+}
+
+
+#portfolio-menu.show {
+  display: flex; 
+  transform: translateX(0); /* Smoothly slide into view */
+}
+
+#portfolio-menu a {
+  display: block;
+  width: 100%;
+  padding: var(--space-xs) var(--space-sm); /* Reduced padding for vertical and horizontal space */
+  font-size: var(--font-size-base); /* Consistent font size */
+  color: var(--color-text); /* Text color from global variable */
+  text-decoration: none;
+  border-radius: var(--radius-sm); /* Rounded corners for items */
+  text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  border: 2px solid var(--color-border);  /* Subtle border using color variable */
+}
+
+#portfolio-menu a:hover {
+  background-color: var(--color-accent-1); /* Highlight color from accent */
+  border: 2px solid var(--color-secondary); /* Subtle hover effect border change */
+  color: var(--color-bg); /* Text color changes to light on hover */
+  transform: scale(1.05); /* Slight scale effect to improve hover interaction */
+}
+
+#portfolio-menu a:focus {
+  outline: none; /* Removes outline to avoid duplication with hover effects */
+  box-shadow: 0 0 0 2px var(--color-primary); /* Adds focus effect for accessibility */
+}
+
+/* ====================
+   Clock and Visitor Count
+   ==================== */
+
+/* Clock position on the left side */
+.clock {
+  position: absolute;
+  top: 52%;
+  left: 0;
+  transform: translateY(-52%);
+  padding: 10px 10px 10px 0;
+  font-family: 'Courier New', monospace;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+  background: transparent;
+  border-radius: 5px;
+  z-index: 2;
+  margin-left: 0px;
+}
+
+/* Visitor count section */
+#visitor-count-section {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 12px;
+  gap: 5px;
+  position: absolute;
+  right: 10px;
+  top: 52%;
+  transform: translateY(-52%);
+  z-index: 3;
+}
+
+#visitor-count-section p {
+  display: inline-block;
+  width: 150px;
+  text-align: right;
+  font-family: monospace;
+  white-space: nowrap;
+  position: relative;
+}
+
+#visitor-count-section p .number .prefix,
+#visitor-count-section p .number .digits {
+  display: inline;
+  margin: 0;
+}
+
+/* ====================
+   Fade and Animation Effects
+   ==================== */
+
+/* Fade-out transition */
+.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
+
+/* Floating animation for visit increment */
+@keyframes floatUp {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-15px);
+    opacity: 0;
+  }
+}
+
+.visit-animation {
+  position: absolute;
+  font-size: 12px;
+  font-weight: bold;
+  color: #ffcc00;
+  left: 100%;
+  margin-left: 5px;
+  animation: floatUp 1s ease-out forwards;
+  pointer-events: none;
+}
+
+/* ====================
+   Responsive Design
+   ==================== */
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #visitor-count-section {
+    text-align: left;
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
+  .footer-container ul {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    transform: none;
+  }
+}
+
+/* ====================
+   Hero Section
+   ==================== */
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 100px 20px;
+  min-height: 60vh;
+}
+
+.hero img {
+  border-radius: 50%;
+  width: 450px;
+  height: 450px;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  color: #ffb703;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ====================
+   Section Styling
+   ==================== */
+
+.section h2 {
+  text-align: center;
+  color: #f9a03f;
+}
+
+.section {
+  padding: 60px 20px;
+  max-width: 1580px;
+  margin: auto;
+}
+/* Card grid */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+  margin-top: 0;           /* already spaced by header’s margin-bottom */
+}
+.card-link {
+  display: block;
+  text-decoration: none;
+}
+
+.card {
+  position: relative;
+  background: #0c7075;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  top: 3em;
+  bottom: 4em;
+}
+
+/* Inner border via pseudo-element */
+.card::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  border: 2px solid #064447; /* Darker border color */
+  border-radius: 12px; /* Slightly smaller to stay inside the card */
+  pointer-events: none; /* Allow clicks to pass through */
+  z-index: 1;
+}
+
+.card-link:hover .card, .card-link:focus .card {
+  background-color: #bb4232;
+  transform: translateY(-3px);
+}
+.card-link:active .card {
+  background-color: #992f24;
+  transform: translateY(0);
+}
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+.card-content { padding: 20px; }
+.card-content h3 { color: #ffd166; margin-bottom: 10px; }
+
+/* Section Padding */
+.section {
+  padding: 2rem;
+}
+

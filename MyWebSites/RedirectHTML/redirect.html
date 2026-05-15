@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+        const INSTANCE_KEY = 'uniquePageInstanceId';
+
+        window.onload = function() {
+            console.log("Redirect page loaded.");
+
+            // Extract the instance_id from URL parameters
+            const params = new URLSearchParams(window.location.search);
+            let redirectUrl = params.get('url');
+            const instanceId = params.get('instance_id');  // Get the instance ID from URL
+
+            const storedInstanceId = localStorage.getItem(INSTANCE_KEY);
+            console.log('Stored Instance ID:', storedInstanceId);
+            console.log('URL Instance ID:', instanceId);
+
+            // Validate the instance ID (either from URL or localStorage)
+            if (instanceId) {
+                // If the instance ID from URL matches stored instance, redirect
+                if (instanceId === storedInstanceId) {
+                    if (redirectUrl && isValidUrl(redirectUrl)) {
+                        window.location.href = redirectUrl; // Redirect to the URL
+                    } else {
+                        document.body.innerHTML = "<p>Redirect URL is not valid or cannot be reached.</p>";
+                    }
+                } else {
+                    document.body.innerHTML = "<p>Instance mismatch detected.</p>";
+                }
+            } else {
+                // If no instance ID is found in the URL, create a new instance
+                const newInstanceId = Date.now().toString();
+                localStorage.setItem(INSTANCE_KEY, newInstanceId); // Store new instance ID
+                window.name = newInstanceId;
+                console.log('New instance created and stored.');
+                if (redirectUrl && isValidUrl(redirectUrl)) {
+                    window.location.href = redirectUrl; // Redirect to the URL
+                } else {
+                    document.body.innerHTML = "<p>Redirect URL not found or invalid.</p>";
+                }
+            }
+        };
+
+        // URL Validation function
+        function isValidUrl(url) {
+            try {
+                const targetUrl = new URL(url, window.location.origin);
+                return targetUrl.origin === window.location.origin;
+            } catch (e) {
+                console.error("URL validation error:", e);
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <p>Redirecting you to the existing instance...</p>
+</body>
+</html>

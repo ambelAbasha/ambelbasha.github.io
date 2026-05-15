@@ -1,0 +1,40 @@
+<?php
+// Include the database connection file
+include('db.php');
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Πίνακας Πωλήσεων Περιφερειακών Η/Υ</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="table-container">
+            <h3>Table Of Peripherals Sales - Computer</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="3">Table of Sales</th>
+                    </tr>
+                    <tr>
+                        <th>Item</th>
+                        <th>Quantity of Items</th>
+                        <th>Price in Euro</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Include the PHP script to fetch and display sales data -->
+                    <?php include('sales.php'); ?>
+                </tbody>
+            </table>
+        </div>
+        <div class="return-button">
+            <button onclick="window.location.href='../index.html'">Return</button>
+        </div>
+    </div>
+</body>
+</html>

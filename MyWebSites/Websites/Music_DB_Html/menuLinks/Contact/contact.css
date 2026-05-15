@@ -1,0 +1,68 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.contact-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px; /* Maximum width */
+    width: 100%;
+    height: 400px; /* Fixed height to ensure consistent form size */
+    overflow: hidden; /* Remove scrollbar by hiding any overflow */
+    display: flex; /* Flexbox for better layout control */
+    flex-direction: column; /* Stack child elements vertically */
+}
+
+.contact-form h2 {
+    margin-top: 0;
+    text-align: center; /* Center the heading */
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 96%; /* Keeps the width relative to the form's width, but can be set to a fixed value */
+    max-width: 100%; /* Ensures the width doesn't exceed the form's width */
+    padding: 8px;
+    margin-bottom: 10px;
+    margin-right: 6px;
+    margin-left: auto;  /* Center horizontally */
+    padding-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* Ensures padding and border are included in the element's total width */
+    resize: none; /* Disables resizing of the textarea */
+}
+
+/* Fixed height for the textarea */
+.contact-form textarea {
+    height: 140px; /* Set a fixed height for the textarea */
+}
+
+.contact-form button {
+    display: block; /* Makes the button behave like a block element */
+    margin: 0 auto; /* Centers the button horizontally */
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.contact-form button:hover {
+    background-color: #0056b3;
+}
+

@@ -1,0 +1,205 @@
+/* Reset some default styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+    height: 100%;
+}
+
+/* Outer container */
+.outer-container {
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    height: 100vh; /* Full viewport height */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Main container styling */
+.container {
+    position: absolute; /* Use absolute positioning to place the container */
+    top: 50%; /* Position the top of the container in the middle of the viewport */
+    left: 50%; /* Position the left of the container in the middle of the viewport */
+    transform: translate(-50%, -50%); /* Shift the container by half of its width and height to center it */
+    display: flex;
+    flex-direction: column; /* Align children elements in a column */
+    justify-content: center; /* Center children vertically */
+    align-items: center; /* Center children horizontally */
+    width: 80%;
+    max-width: 700px;
+    min-height: 350px;
+    padding: 30px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Box styling */
+.box {
+    width: 100%; /* Set the box to take the full width of the container */
+    max-width: 500px; /* Limit the box width */
+    min-height: 250px; /* Reduced minimum height for the box */
+    padding: 15px; /* Reduced padding inside the box */
+    border: 2px solid lightgrey;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    text-align: center;
+    position: relative;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(200, 200, 200, 0.8), rgba(255, 255, 255, 0.6));
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2), 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Styling for sorted array */
+.sorted-array {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.sorted-array span {
+    margin: 5px 15px;
+    font-size: 18px;
+    background-color: #e0f7fa;
+    padding: 8px;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Glossy effect for top left corner of the box */
+.sorted-array::before {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top right, rgba(255, 255, 255, 0.3), transparent); /* Glossy effect */
+    border-top-left-radius: 15px; /* Match container's border radius */
+    z-index: 3; /* Ensure this is above the box content */
+}
+
+/* Glossy effect for top right corner of the box */
+.sorted-array::after {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top left, rgba(255, 255, 255, 0.3), transparent); /* Glossy effect */
+    border-top-right-radius: 15px; /* Match container's border radius */
+    z-index: 3; /* Ensure this is above the box content */
+}
+
+/* Adding inner shadow effect for depth */
+.sorted-array::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 15px;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.3); /* Inner shadow for depth */
+    transform: translate(-50%, -50%) scale(0.98); /* Slightly shrink for "stuffed" effect */
+    z-index: -1; /* Put the inner shadow behind content */
+}
+
+/* Return button container */
+.return-button {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    margin-top: 500px;
+    width: 100%;
+}
+
+/* Styling for return button */
+.return-button button {
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative; /* Set position to relative for pseudo-elements */
+    overflow: hidden; /* Ensure pseudo-elements don't overflow */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), /* Light shadow */
+                0 4px 20px rgba(0, 0, 0, 0.3); /* Highlight from top */
+    margin: 20px 0; /* Ensure consistent margin */
+}
+
+/* Glossy effect for top left corner */
+.return-button button::before {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top right, rgba(255, 255, 255, 0.6), transparent);
+    border-top-left-radius: 5px; /* Adjust border radius as needed */
+    z-index: 1; /* Ensure the pseudo-element is above the background */
+}
+
+/* Glossy effect for top right corner */
+.return-button button::after {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top left, rgba(255, 255, 255, 0.6), transparent);
+    border-top-right-radius: 5px; /* Adjust border radius as needed */
+    z-index: 1; /* Ensure the pseudo-element is above the background */
+}
+
+.return-button button:hover::before,
+.return-button button:hover::after {
+    opacity: 0.8; /* Slightly increase opacity on hover */
+}
+
+.return-button button:hover {
+    background-color: #076907;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3), /* Light shadow */
+                0 4px 20px rgba(0, 0, 0, 0.4); /* Highlight from top */
+}
+
+.return-button button:active {
+    transform: scale(0.95); /* Slightly shrink the button on click */
+}
+
+/* Message styling for not-found or error */
+.not-found, .error-message {
+    background-color: #f8d7da;
+    color: rgb(196, 33, 33); /* Make the text color transparent */
+    padding: 10px;
+    margin-top: 20%;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight:700 ;
+    text-align: center;
+    
+    /* Apply a linear gradient to the text */
+    background: linear-gradient(to top left, #721c24, #f8d7da, #721c24, #f8d7da);
+    background-clip: text; /* Make the gradient apply to the text itself */
+    -webkit-background-clip: text; /* For Safari support */
+}
+
+/* Optional: If you want to add a shadow for better visibility on lighter backgrounds */
+.not-found, .error-message {
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}

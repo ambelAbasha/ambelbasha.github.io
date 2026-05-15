@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera Stream UI</title>
+    <link rel="stylesheet" href="Styles/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Camera Stream Management</h1>
+            <button id="add-camera">Add Camera</button>
+        </header>
+        <main id="camera-list">
+            <!-- Camera Cards Will Be Dynamically Added Here -->
+        </main>
+    </div>
+
+    <template id="camera-card-template">
+        <div class="camera-card">
+            <div class="video-container">
+                <video controls muted autoplay>
+                    <source src="" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="controls">
+                <input type="text" class="url-input" placeholder="Enter stream URL" style="display: none;">
+                <button class="edit-url">Change URL</button>
+                <button class="fullscreen">Fullscreen</button>
+                <button class="delete">Delete</button>
+            </div>
+        </div>
+    </template>
+
+    <script src="Scripts/updateGridLayout.js"></script>
+</body>
+</html>

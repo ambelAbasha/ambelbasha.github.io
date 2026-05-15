@@ -1,0 +1,57 @@
+/* Terminal */
+.terminal {
+  background: #000;                     /* Pure black background */
+  color: var(--color-terminal-green);                       /* Green text for terminal-style look */
+  font-family: 'Monaco', 'Courier New', monospace;
+  padding: 20px;
+  border-radius: 12px;
+  white-space: pre-wrap;
+  min-height: 280px;
+  margin-bottom: var(--space-xlg);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+  line-height: 1.4;
+  font-size: 1rem;
+}
+
+/* Center the Linux Commands title inside its card */
+.linux-card .card-content h3 {
+  text-align: center;    /* center text inside its container */
+  margin: 0 auto 1rem;   /* auto left/right margins, with a bottom gap */
+  width: fit-content;    /* shrink‐wrap to the text width */
+}
+/* Linux Card Hover */
+.linux-card.card:hover {
+  background-color: var(--color-secondary);
+  transform: translateY(-6px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Ensure the terminal inside also adapts on hover */
+.linux-card.card:hover .terminal {
+  box-shadow: 0 4px 15px rgba(10, 153, 10, 0.5);
+}
+
+/* Blinking cursor */
+.terminal::after {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 18px;
+  background: red;
+  margin-left: 5px;
+  animation: blink 1s infinite;
+}
+
+/* Blinking effect for cursor */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+
+/* Optional: Add a subtle glow effect on hover for interactivity */
+.terminal:hover {
+  box-shadow: 0 4px 15px rgba(10, 153, 10, 0.5); /* Glowing green effect on hover */
+  transition: box-shadow 0.3s ease-in-out; /* Smooth transition for glowing effect */
+}

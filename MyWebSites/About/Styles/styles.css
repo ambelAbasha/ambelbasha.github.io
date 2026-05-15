@@ -1,0 +1,575 @@
+/*=============================================
+  :root — Dark Mode (default)
+=============================================*/
+:root {
+  /* Colors */
+  --color-bg: #003135;
+  --color-bg-alt: #024950;
+  --color-bg-hover: #002428;
+  --color-primary: #0FA4AF;
+  --color-secondary: #bb4232;
+  --color-secondary-dark: #993528;
+  --color-accent-1: #F5C74F;
+  --color-accent-2: #B8C46E;
+  --color-accent-3: #CFAF9D;
+  --color-text: #ffffff;
+  --color-text-muted: #bb4232;
+  --color-border: #0FA4AF;
+  --color-shadow: rgba(0, 0, 0, 0.2);
+
+  /* Typography */
+  --font-sans: 'Poppins', sans-serif;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.5rem;
+  --font-size-xsm: 0.75rem; /* Added for extra small text */
+  --line-height-base: 1.4;
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+
+  /* Radii & Shadows */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 2px 6px var(--color-shadow);
+  --shadow-md: 0 4px 12px var(--color-shadow);
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition: 0.3s ease;
+}
+
+/*=============================================
+  Light Mode Overrides
+=============================================*/
+body.light-mode {
+  --color-bg:        #f9f9f9;
+  --color-bg-alt:    #e1e5ea;
+  --color-bg-hover:  #f0f2f5;
+  --color-primary:   #075055;
+  --color-secondary: #993528;
+  --color-accent-1:  #F5C74F;
+  --color-text:      #333333;
+  --color-text-muted:#555555;
+  --color-border:    #075055;
+  --color-shadow:    rgba(0, 0, 0, 0.1);
+}
+
+/*=============================================
+  Global & Utility Resets
+=============================================*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: var(--line-height-base);
+  transition: background-color var(--transition), color var(--transition);
+  padding-top: 4rem;
+}
+main {
+  padding-top: calc(4rem + var(--space-xlg));
+}
+
+/* Links */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+a:hover {
+  color: var(--color-accent-1);
+}
+
+/* Headings */
+h1, h2, h3 {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--color-text);
+}
+
+/*=============================================
+  Header (Sticky Navbar) & Theme Toggle
+=============================================*/
+.header {
+  position: fixed;
+  top: 0; left: 0; width: 100%;
+  background: linear-gradient(180deg, var(--color-bg-alt), var(--color-bg));
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  padding: var(--space-sm) 0;
+  z-index: 100;
+  animation: slideDown 0.6s ease-in-out forwards;
+}
+
+.header::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%; height: 4px;
+  background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet, red);
+  background-size: 400% 100%;
+  animation: rainbowFlow 10s linear infinite;
+}
+
+/* Wrap content to control layout */
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Logo centered, big */
+.logo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--space-xs);
+}
+
+/* Nav sits below title */
+.main-nav {
+  display: flex;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-sm);
+}
+
+.main-nav a {
+  color: var(--color-text);
+  font-size: small;
+  font-weight: 500;
+  transition: color var(--transition-fast);
+}
+
+.main-nav a:hover {
+  color: var(--color-accent-1);
+}
+
+/* Hide the checkbox input */
+input[type="checkbox"].ios-checkbox { 
+  display: none;
+}
+
+/* Style the label that acts as the toggle switch */
+input[type="checkbox"].ios-checkbox + label {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  width: 60px;
+  height: 30px;
+  border-radius: 30px; /* Rounded corners for the switch */
+  background-color: #eeeeee; /* Light gray background */
+  transition: background 0.2s ease;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2); /* Very thin inset border */
+}
+
+/* Knob styling (the circle) */
+input[type="checkbox"].ios-checkbox + label:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 4px; /* Initial position of the knob */
+  width: 22px;
+  height: 22px;
+  background-color: #ffffff; /* White knob color */
+  border-radius: 50%;
+  transform: translateY(-50%); /* Vertically center the knob */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Subtle shadow */
+  transition: left 0.2s ease, background-color 0.2s ease;
+}
+
+/* Styling for checked state (toggle is on) */
+input[type="checkbox"].ios-checkbox:checked + label {
+  background: linear-gradient(120deg, #5433ff, #21bdff, #22ff82); /* Reversed gradient background */
+}
+
+input[type="checkbox"].ios-checkbox:checked + label:after {
+  left: 34px; /* Move knob to the right when checked */
+}
+
+/* Position the theme switch (top-right) */
+.theme-switch {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-lg);
+}
+
+/* Icon positioning */
+.icon-sun, .icon-moon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%); /* Vertically center the icons */
+  font-size: 16px; /* Adjust icon size */
+}
+
+/* Sun icon (on the left) */
+.icon-sun {
+  right: 8px; /* Move sun icon slightly to the right */
+  color: transparent; /* Make the text color transparent for the gradient to show */
+  background-image: radial-gradient(circle, #ffdd00, #ff6600); /* Radial gradient from yellow to orange */
+  background-clip: text; /* Apply gradient only to the text */
+  -webkit-background-clip: text; /* For Safari support */
+  font-size: 16px; /* Adjust font size as needed */
+  transition: background-image 0.3s ease-in-out; /* Smooth transition for gradient effect */
+}
+
+/* Moon icon (on the right) */
+.icon-moon {
+  color: transparent; /* Make the text color transparent for the gradient to show */
+  background-image: radial-gradient(circle, #c0c0c0, #f8f6f4); /* Radial gradient from light gray to dark gray */
+  background-clip: text; /* Apply gradient only to the text */
+  -webkit-background-clip: text; /* For Safari support */
+  font-size: 18px; /* Adjust font size as needed */
+  left: 8px; /* Move moon icon slightly to the left */
+  transition: background-image 0.3s ease-in-out; /* Smooth transition for gradient effect */
+}
+
+
+/* Optional: Styling for dark mode toggle */
+body.light-mode .toggle:after {
+  background: #fff; /* White knob color in light mode */
+}
+
+/*=============================================
+  About Section (Three Columns)
+=============================================*/
+.about-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 var(--space-sm);
+}
+
+.contact-info,
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  background-color: var(--color-bg-hover);
+  backdrop-filter: blur(var(--shadow-sm));
+  padding: var(--space-md);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.contact-info:hover,
+.summary:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.contact-info h2,
+.summary h2 {
+  color: var(--color-primary);
+}
+
+.contact-info ul {
+  list-style: none;
+}
+
+.contact-info li {
+  margin: var(--space-xs) 0;
+}
+
+.contact-info i {
+  margin-right: var(--space-xs);
+  color: var(--color-primary);
+}
+
+.profile-pic-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-pic {
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition);
+}
+
+.profile-pic:hover {
+  transform: scale(1.05);
+}
+
+/*=============================================
+  Section Titles
+=============================================*/
+.skills-section h2,
+.experience-section h2,
+.education-section h2,
+.languages-section h2,
+.projects-section h2 {
+  text-align: center;
+  margin: var(--space-lg) 0 var(--space-sm);
+  font-size: 1.75rem;
+  color: var(--color-primary);
+}
+
+/*=============================================
+  Skills List
+=============================================*/
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  justify-content: center;
+  list-style: none;
+  padding: 0 var(--space-sm);
+}
+
+.skills-list li {
+  background-color: var(--color-bg-hover);
+  backdrop-filter: blur(var(--shadow-sm));
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.skills-list li:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+/*=============================================
+  Experience & Education Cards
+=============================================*/
+.experience-card,
+.education-card {
+  background-color: var(--color-bg-hover);
+  backdrop-filter: blur(var(--shadow-sm));
+  padding: 1.5rem;
+  margin: 1rem auto;
+  max-width: 700px;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.experience-card:hover,
+.education-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.date-range {
+  font-style: italic;
+  color: var(--color-primary);
+  font-size: 0.9rem;
+}
+
+/*=============================================
+  Projects & Languages Lists
+=============================================*/
+.projects-section ul,
+.languages-section ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  padding: 0 var(--space-sm);
+}
+
+.projects-section li,
+.languages-section li {
+  background-color: var(--color-bg-hover);
+  backdrop-filter: blur(var(--shadow-sm));
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.projects-section li:hover,
+.languages-section li:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+/*=============================================
+  Responsive Layout
+=============================================*/
+@media screen and (max-width: 800px) {
+  .about-section {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .about-section .contact-info,
+  .about-section .summary {
+    align-items: center;
+  }
+
+  .skills-list,
+  .languages-list,
+  .projects-section ul {
+    flex-direction: column;
+  }
+}
+
+/*=============================================
+  Print Styles (resume)
+=============================================*/
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 1cm;
+  }
+
+  body {
+    background-color: white;
+    color: black;
+    padding: 0;
+  }
+
+  header,
+  .theme-switch {
+    display: none !important;
+  }
+
+  .experience-card,
+  .education-card {
+    page-break-inside: avoid;
+    box-shadow: none;
+    background: white;
+  }
+
+  .contact-info,
+  .summary,
+  .skills-list li,
+  .projects-section li,
+  .languages-section li {
+    background: white !important;
+    box-shadow: none !important;
+  }
+}
+
+/*=============================================
+  Footer Section
+=============================================*/
+.footer {
+  background: linear-gradient(180deg, var(--color-bg-alt), var(--color-bg));
+  color: var(--color-text);
+  padding: var(--space-sm) 0;
+  text-align: center;
+  border-radius: var(--radius-lg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer {
+  scroll-margin-top: 4rem; /* Adjust to your navbar’s height */
+}
+
+.footer-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-md);
+  background: var(--color-bg);
+  box-shadow: inset 0 10px 20px rgba(0, 0, 0, 0.1), inset 0 -10px 20px rgba(0, 0, 0, 0.1); /* Vertical inset shadows */
+  border-radius: var(--radius-md);
+  display: flex;
+  justify-content: center; /* Center the links within the container */
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-container ul {
+  list-style-type: none;
+  font-weight: 500;
+  margin: 0;
+  display: flex;
+  justify-content: center; /* Center the list items */
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+/* Style for links */
+.footer-container ul li a {
+  color: var(--color-accent-1);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 12px; /* Directly set a smaller font size */
+  position: relative;
+  padding: var(--space-xs) var(--space-sm);
+  transition: color var(--transition), transform var(--transition-fast);
+}
+
+.footer-container ul li a:hover {
+  color: var(--color-secondary);
+  transform: scale(1.01);
+}
+
+.footer-container ul li a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 4px;
+  border-radius: 5px;
+  background: var(--color-primary);
+  left: 50%;
+  bottom: -5px;
+  transform: translateX(-50%) scaleX(0);
+  transition: width 0.3s ease-out;
+}
+
+.footer-container ul li a:hover::after {
+  width: 64%;
+  transform: translateX(-50%) scaleX(1);
+}
+
+/* Icon Styles */
+.footer-container a i {
+  font-size: 12px;
+  transition: color var(--transition), transform var(--transition);
+}
+
+/* Specific Icon Styles */
+.footer-container a i.fa-home {
+  font-size: 14px;
+  transform: translateY(-2px); /* Shifted the icon a bit upwards */
+}
+
+.footer-container a i.fa-user {
+  font-size: 14px;
+  transform: translateY(-2px); /* Shifted the icon a bit upwards */
+}
+
+.footer-container a i:hover {
+  color: var(--color-secondary); /* Updated hover color for icons */
+}
+
+/* Specific hover effect for both text and icon */
+.footer-container a:hover i {
+  color: var(--color-secondary);
+}

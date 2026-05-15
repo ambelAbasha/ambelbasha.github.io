@@ -1,0 +1,163 @@
+/* General Layout Styles */
+.hover-text-content {
+    margin: 20px;
+    padding: 20px;
+    text-align: left; /* Aligns the text to the left */
+    max-width: 1000px; /* Limits the content width for better readability */
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #f9f9f9; /* Light background color for better contrast */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1); /* Light shadow for emphasis */
+}
+
+.header {
+    text-align: center; /* Align header to the left */
+    font-size: 2em; /* Slightly larger header size */
+    font-weight: bold; /* Bold for emphasis */
+    margin-bottom: 20px;
+    color: #333; /* Dark color for the header (ensures visibility) */
+    text-transform: uppercase; /* Makes the header stand out */
+}
+
+/* Paragraph and List Styling */
+.hover-text-content p {
+    font-size: 1em; /* Slightly larger text for easier reading */
+    line-height: 1.2em; /* Increased line height for better readability */
+    margin-bottom: 20px; /* Increased margin for better spacing */
+    color: #555; /* Slightly lighter color for paragraphs */
+}
+
+.hover-text-content ul {
+    list-style-type: disc;
+    padding-left: 20px; /* Adjust padding for left alignment */
+    margin-left: 20px; /* Ensure proper alignment with text */
+    margin-bottom: 20px; /* Increased margin for better spacing */
+}
+
+.hover-text-content li {
+    font-size: 1.1em; /* Make list items slightly larger */
+    line-height: 1.6em; /* Increased line height for readability */
+    margin-bottom: 12px; /* Increased margin for better spacing */
+    color: #555; /* Lighter color for list items */
+}
+
+/* Strong and List Item Styling */
+.hover-text-content strong {
+    font-weight: bold;
+    color: #333; /* Dark color for strong text */
+}
+
+/* Hover Effect for Lists */
+.hover-text-content li:hover {
+    background-color: #f0f0f0; /* Highlight on hover for better UX */
+    padding-left: 10px;
+    border-radius: 6px; /* Rounded corners on hover */
+    cursor: pointer; /* Change cursor to indicate interactivity */
+}
+
+/* Style for the extra content */
+.extra-content {
+    display: none; /* Hidden by default */
+    margin-top: 15px;
+    padding-top: 10px;
+    font-size: 1em;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Style for the Read More button */
+.read-more-btn {
+    display: inline-block;
+    margin-top: 1px;
+    background-color: #00b7b7;
+    left: 50%;
+    color: white;
+    font-size: 0.875rem; /* Smaller font size */
+    padding: 6px 10px; /* Smaller padding */
+    border-radius: 9px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    text-decoration: none; /* Remove underline if any */
+}
+
+/* Center the Read More button */
+.read-more-btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+}
+
+/* Hover effect for the Read More button */
+.read-more-btn:hover {
+    background-color: #008c8c;
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+    .hover-text-content {
+        padding: 15px;
+    }
+
+    .header {
+        font-size: 2em;
+    }
+
+    .hover-text-content p,
+    .hover-text-content li {
+        font-size: 1em;
+    }
+
+    .hover-text-content ul {
+        margin-left: 15px;
+        padding-left: 15px;
+    }
+
+    /* Make button more prominent on small screens */
+    .read-more-btn {
+        font-size: 1.1rem;
+        padding: 12px 25px;
+        width: 100%; /* Button takes full width on mobile */
+    }
+}
+
+/* CSS for staggered fade-in word animation */
+.fade-in-word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(15px); /* Start with slight offset */
+    animation: fadeIn 0.6s forwards; /* Fade-in animation */
+}
+
+/* Stagger delay for each word */
+.fade-in-word:nth-child(1) { animation-delay: 0.1s; }
+.fade-in-word:nth-child(2) { animation-delay: 0.2s; }
+.fade-in-word:nth-child(3) { animation-delay: 0.3s; }
+.fade-in-word:nth-child(4) { animation-delay: 0.4s; }
+
+/* Keyframe for fade-in effect */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fade-out effect */
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.3s ease-out; /* Smooth transition */
+}
+
+/* Fade-in effect */
+.fade-in {
+    opacity: 1;
+    transition: opacity 0.3s ease-in; /* Smooth transition */
+}

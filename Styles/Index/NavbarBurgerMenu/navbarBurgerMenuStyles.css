@@ -1,0 +1,511 @@
+/* =========================================
+   FIXED & RESPONSIVE NAVBAR (WORKING VERSION with !important alignment fixes)
+========================================= */
+
+.landing-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(180deg, var(--color-bg-alt), var(--color-bg));
+  padding: clamp(0.4rem, 1.5vw, var(--space-md)) 0;
+  box-shadow: var(--shadow-md);
+  z-index: 100;
+  animation: slideDown 0.6s ease-in-out forwards;
+}
+
+.landing-navbar::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  /* Full spectrum left → right — revealed progressively by scroll */
+  background: linear-gradient(to right,
+    #ff0000 0%,
+    #ff6200 16%,
+    #ffe600 32%,
+    #00cc44 50%,
+    #0055ff 68%,
+    #7700cc 84%,
+    #cc00ff 100%
+  );
+  /* clip-path reveals the bar from left as scroll increases.
+     (1 - prog) * 100% = right-side clip amount, so at prog=0 the bar is
+     fully hidden and at prog=1 the full spectrum is visible. */
+  clip-path: inset(0 calc((1 - var(--scroll-prog, 0)) * 100%) 0 0);
+  will-change: clip-path;
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-sm);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.navbar-brand {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 75%; /* Prevents long names from overlapping */
+}
+
+/* =============================
+   BURGER WRAPPER
+============================= */
+.burger-wrapper {
+  position: absolute !important;
+  top: 50% !important;
+  right: 2rem !important;
+  transform: translateY(-50%) !important;
+  width: 52px !important;
+  height: 52px !important;
+  border-radius: 50% !important;
+  pointer-events: none !important;
+  z-index: 101 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+/* =============================
+   BURGER MENU
+============================= */
+.burger-menu {
+  --fill-angle: 0deg;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle at 40% 40%, rgba(255,255,255,0.95), rgba(230,230,230,0.90));
+  color: var(--color-secondary);
+  border: 2px solid rgba(var(--color-primary-rgb), 0.45);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-xs);
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 1;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  box-shadow:
+    0 0 0 3px rgba(var(--color-primary-rgb), 0.18),
+    0 0 14px rgba(var(--color-primary-rgb), 0.22),
+    var(--shadow-sm);
+}
+
+.burger-menu::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1.5px solid transparent;
+  background: conic-gradient(from 0deg, var(--color-primary), var(--color-accent-1), var(--color-primary)) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: spinRing 4s linear infinite;
+}
+
+.burger-menu:hover::before,
+.burger-menu.open::before { opacity: 1; }
+
+@keyframes spinRing {
+  to { transform: rotate(360deg); }
+}
+
+.burger-menu:hover {
+  transform: scale(1.10);
+  border-color: rgba(var(--color-primary-rgb), 0.70);
+  box-shadow:
+    0 0 0 3px rgba(var(--color-primary-rgb), 0.32),
+    0 0 22px rgba(var(--color-primary-rgb), 0.40),
+    var(--shadow-sm);
+}
+
+.burger-menu.open {
+  border-color: rgba(var(--color-accent-1-rgb), 0.75);
+  box-shadow:
+    0 0 0 3px rgba(var(--color-accent-1-rgb), 0.28),
+    0 0 22px rgba(var(--color-accent-1-rgb), 0.38),
+    var(--shadow-sm);
+}
+
+.burger-menu span {
+  position: absolute;
+  width: 20px;
+  height: 2.5px;
+  background: linear-gradient(to right, var(--color-secondary-dark), var(--color-secondary));
+  border-radius: 3px;
+  transition: transform 0.38s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+              opacity 0.28s ease,
+              width 0.28s ease;
+  transform-origin: center;
+}
+
+.burger-menu span:nth-child(1) { top: 11px; }
+.burger-menu span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+.burger-menu span:nth-child(3) { bottom: 11px; width: 14px; }
+
+.burger-menu:hover span { background: linear-gradient(to right, #1a0800, #381805); }
+.burger-menu:hover span:nth-child(3) { width: 20px; }
+
+.burger-menu.open span:nth-child(1) {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  background: linear-gradient(to right, var(--color-accent-1), var(--color-primary));
+}
+.burger-menu.open span:nth-child(2) { opacity: 0; transform: translateY(-50%) scaleX(0); }
+.burger-menu.open span:nth-child(3) {
+  bottom: 50%;
+  width: 20px;
+  transform: translateY(50%) rotate(-45deg);
+  background: linear-gradient(to right, var(--color-accent-1), var(--color-primary));
+}
+
+/* =============================
+   COLLAPSIBLE MENU — Space Grotesk panel
+============================= */
+#menu {
+  position: absolute;
+  top: 3.8rem;
+  right: 2px;
+  display: none;
+  flex-direction: column;
+  align-items: stretch;
+  min-width: 224px;
+  max-width: 256px;
+  padding: 14px 0 12px;
+  z-index: 99;
+  overflow: hidden;
+
+  background: var(--color-menu-bg);
+  border-radius: 20px;
+  border: 1px solid rgba(var(--color-primary-rgb), 0.13);
+
+  box-shadow:
+    10px 14px 34px rgba(0, 10, 12, 0.84),
+    -4px -5px 16px rgba(4, 100, 115, 0.16),
+    0 0 0 1px rgba(var(--color-primary-rgb), 0.05) inset;
+}
+
+#menu.open { display: flex; }
+
+/* mouse-follow radial glow */
+#menu::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    100px circle at var(--mx, -120px) var(--my, -120px),
+    rgba(var(--color-primary-rgb), 0.07),
+    transparent 70%
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.40s ease;
+}
+#menu.open::after { opacity: 1; }
+
+/* ── Section labels ── */
+.menu-section-label {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(var(--color-primary-rgb), 0.34);
+  padding: 0 18px 5px;
+  margin-top: 2px;
+  opacity: 0;
+}
+
+/* ── Dividers ── */
+.menu-rule {
+  height: 1px;
+  background: rgba(var(--color-primary-rgb), 0.08);
+  margin: 6px 18px;
+  opacity: 0;
+}
+
+/* ── Menu item base ── */
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 9px 18px 9px 14px;
+  text-decoration: none;
+  position: relative;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.18s ease;
+  opacity: 0;
+  transform: translateX(10px);
+}
+
+.menu-item:hover  { background: rgba(var(--color-primary-rgb), 0.055); }
+.menu-item.active { background: rgba(var(--color-primary-rgb), 0.08);  }
+
+/* Active indicator bar — spring height via transition */
+.menu-indicator {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.5px;
+  height: 0;
+  background: rgba(var(--color-primary-rgb), 0.82);
+  border-radius: 0 2px 2px 0;
+  transition: height 0.34s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.menu-item.active .menu-indicator { height: 26px; }
+
+/* Icon box */
+.menu-icon-box {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 13px;
+  background: rgba(var(--color-primary-rgb), 0.05);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.10);
+  color: rgba(var(--color-primary-rgb), 0.48);
+  transition:
+    background    0.22s ease,
+    border-color  0.22s ease,
+    color         0.22s ease,
+    transform     0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.menu-item:hover .menu-icon-box,
+.menu-item.active .menu-icon-box {
+  background: rgba(var(--color-primary-rgb), 0.11);
+  border-color: rgba(var(--color-primary-rgb), 0.32);
+  color: rgba(var(--color-primary-rgb), 0.92);
+  transform: scale(1.08);
+}
+
+/* Text stack */
+.menu-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.menu-name {
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: rgba(255, 255, 255, 0.54);
+  transition: color 0.18s ease;
+  line-height: 1;
+}
+
+.menu-sub {
+  font-size: 10px;
+  color: rgba(var(--color-primary-rgb), 0.28);
+  transition: color 0.18s ease;
+  line-height: 1;
+}
+
+.menu-item:hover .menu-name,
+.menu-item.active .menu-name { color: rgba(255, 255, 255, 0.92); }
+
+.menu-item:hover .menu-sub,
+.menu-item.active .menu-sub  { color: rgba(var(--color-primary-rgb), 0.56);  }
+
+/* Focus */
+.menu-item:focus            { outline: none; }
+.menu-item:focus-visible    {
+  outline: 2px solid rgba(var(--color-primary-rgb), 0.50);
+  outline-offset: -2px;
+}
+
+/* Pressed */
+.menu-item:active .menu-icon-box { transform: scale(0.94); }
+
+/* Badge */
+.menu-badge {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  background: rgba(var(--color-primary-rgb), 0.10);
+  color: rgba(var(--color-primary-rgb), 0.80);
+  padding: 3px 8px;
+  border-radius: 20px;
+  border: 1px solid rgba(var(--color-primary-rgb), 0.22);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* ── Portfolio CTA — gold theme ── */
+.menu-item.cta-btn-menu { background: transparent; }
+.menu-item.cta-btn-menu:hover  { background: rgba(var(--color-accent-1-rgb), 0.05);  }
+.menu-item.cta-btn-menu.active { background: rgba(var(--color-accent-1-rgb), 0.08);  }
+
+.menu-item.cta-btn-menu .menu-indicator {
+  background: rgba(var(--color-accent-1-rgb), 0.82);
+}
+.menu-item.cta-btn-menu.active .menu-indicator { height: 26px; }
+
+.menu-item.cta-btn-menu .menu-icon-box {
+  background: rgba(var(--color-accent-1-rgb), 0.05);
+  border-color: rgba(var(--color-accent-1-rgb), 0.10);
+  color: rgba(var(--color-accent-1-rgb), 0.48);
+}
+.menu-item.cta-btn-menu:hover .menu-icon-box,
+.menu-item.cta-btn-menu.active .menu-icon-box {
+  background: rgba(var(--color-accent-1-rgb), 0.11);
+  border-color: rgba(var(--color-accent-1-rgb), 0.32);
+  color: rgba(var(--color-accent-1-rgb), 0.92);
+}
+
+.menu-item.cta-btn-menu .menu-name { color: rgba(var(--color-accent-1-rgb), 0.70); }
+.menu-item.cta-btn-menu .menu-sub  { color: rgba(var(--color-accent-1-rgb), 0.28); }
+.menu-item.cta-btn-menu:hover .menu-name,
+.menu-item.cta-btn-menu.active .menu-name { color: rgba(255, 218, 96, 0.96); }
+.menu-item.cta-btn-menu:hover .menu-sub,
+.menu-item.cta-btn-menu.active .menu-sub  { color: rgba(var(--color-accent-1-rgb), 0.54); }
+
+.menu-item.cta-btn-menu .menu-badge {
+  background: rgba(var(--color-accent-1-rgb), 0.10);
+  color: rgba(var(--color-accent-1-rgb), 0.80);
+  border-color: rgba(var(--color-accent-1-rgb), 0.22);
+}
+
+/* ── Status row ── */
+.menu-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px 2px;
+  opacity: 0;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-status-online);
+  flex-shrink: 0;
+  animation: statusPulse 2.2s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+  0%, 100% { transform: scale(1);    opacity: 1;    }
+  50%       { transform: scale(1.5); opacity: 0.55; }
+}
+
+.status-text {
+  font-size: 10px;
+  color: rgba(var(--color-primary-rgb), 0.30);
+  letter-spacing: 0.04em;
+}
+
+/* ── Staggered entry ── */
+#menu.open .menu-item {
+  animation: menuItemIn 0.30s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation-delay: var(--item-delay, 0.07s);
+}
+#menu.open .menu-section-label,
+#menu.open .menu-rule,
+#menu.open .menu-status {
+  animation: menuFadeIn 0.26s ease both;
+  animation-delay: var(--item-delay, 0.04s);
+}
+
+@keyframes menuItemIn {
+  from { opacity: 0; transform: translateX(10px) scale(0.97); }
+  to   { opacity: 1; transform: translateX(0)     scale(1);   }
+}
+
+@keyframes menuFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* =============================
+   RESPONSIVE FIXES
+============================= */
+@media (max-width: 768px) {
+  .landing-navbar { padding: var(--space-sm) 0; }
+
+  .navbar-container {
+    padding: 0 1rem !important;
+  }
+
+  .navbar-brand {
+    max-width: 65% !important;
+    font-size: clamp(0.9rem, 4vw, 1.1rem) !important;
+  }
+
+  .burger-wrapper {
+    right: 1rem !important;
+    width: 48px !important;
+    height: 48px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+  }
+
+  /* Constrain menu panel so it never overflows the viewport */
+  #menu {
+    max-width: min(256px, calc(100vw - 1rem));
+  }
+}
+
+@media (max-width: 480px) {
+  .landing-navbar { padding: var(--space-xs) 0; }
+
+  .navbar-brand {
+    font-size: clamp(0.8rem, 4.5vw, 1rem) !important;
+    max-width: 58% !important;
+  }
+
+  .burger-wrapper {
+    right: 0.5rem !important;
+    width: 40px !important;
+    height: 40px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+  }
+
+  /* On very small phones the panel expands from the right edge */
+  #menu {
+    right: 0.25rem;
+    min-width: unset;
+    max-width: calc(100vw - 0.5rem);
+    width: calc(100vw - 0.5rem);
+    border-radius: 14px;
+  }
+}
+
+@media (max-width: 360px) {
+  .navbar-brand {
+    font-size: 0.75rem !important;
+    max-width: 54% !important;
+  }
+
+  .burger-wrapper {
+    right: 0.25rem !important;
+    width: 36px !important;
+    height: 36px !important;
+  }
+
+  .burger-menu {
+    width: 34px !important;
+    height: 34px !important;
+  }
+}

@@ -1,0 +1,586 @@
+/* General reset and full viewport height */
+body, html {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Outer container to center content vertically and horizontally */
+.outer-container {
+    width: 100%;
+    height: calc(100vh - 70px); /* Take full height minus button space */
+    display: flex;
+    justify-content: center; /* Horizontally center content */
+    align-items: center; /* Vertically center content */
+    padding: 10px; /* Optional padding for a little space around */
+    box-sizing: border-box;
+}
+
+/* .container styling */
+.container {
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    flex-direction: column;
+    width: 70%; /* Keep container width relatively wide */
+    max-width: 800px; /* Allow container to grow larger on wide screens */
+    min-height: 250px; /* Reduced the height of the container further */
+    border-radius: 10px; /* Rounded corners */
+    padding: 15px; /* Reduced padding to make the container more compact */
+    position: relative; /* For stacking context */
+    z-index: 1; /* Ensure it's below the box */
+    box-sizing: border-box;
+    margin: 0 auto; /* Centering horizontally without pushing too high */
+}
+
+/* Inflated 3D effect for the box inside the container */
+.box {
+    width: 80%; /* Keep the box width relative to the container */
+    max-width: 600px; /* Limit the box width */
+    min-height: 250px; /* Reduced minimum height for the box */
+    padding: 15px; /* Reduced padding inside the box */
+    border: 2px solid lightgrey;
+    margin-bottom: 70px;
+    border-radius: 15px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(200, 200, 200, 0.8), rgba(255, 255, 255, 0.6));
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2), 0 10px 15px rgba(0, 0, 0, 0.1);
+    transform: translateZ(0) perspective(420px); /* 3D perspective */
+    transform-style: preserve-3d;
+    z-index: 2; /* Keep box above other elements */
+    box-sizing: border-box;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Glossy effect for top left corner of the box */
+.box::before {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top right, rgba(255, 255, 255, 0.3), transparent); /* Glossy effect */
+    border-top-left-radius: 15px; /* Match container's border radius */
+    z-index: 3; /* Ensure this is above the box content */
+}
+
+/* Glossy effect for top right corner of the box */
+.box::after {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top left, rgba(255, 255, 255, 0.3), transparent); /* Glossy effect */
+    border-top-right-radius: 15px; /* Match container's border radius */
+    z-index: 3; /* Ensure this is above the box content */
+}
+
+/* Adding inner shadow effect for depth */
+.box::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 15px;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.3); /* Inner shadow for depth */
+    transform: translate(-50%, -50%) scale(0.98); /* Slightly shrink for "stuffed" effect */
+    z-index: -1; /* Put the inner shadow behind content */
+}
+
+/* Hover effect for more pronounced 3D look */
+.box:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1), 0 12px 40px rgba(0, 0, 0, 0.2); /* More shadow depth */
+}
+
+/* Active state for further 3D interaction */
+.box:active {
+    transform: perspective(500px) scale(0.98); /* Slightly shrink on click to simulate pressing */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1), 0 10px 30px rgba(0, 0, 0, 0.1); /* Decrease shadow for pressed effect */
+}
+
+/* Button styles */
+.btn {
+    font-size: 18px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 24px;
+    text-align: center;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+/* Style for the link as a button */
+#inputFormButton {
+    display: inline-block; /* Makes it behave like a block-level element while staying inline */
+    padding: 10px 20px; /* Adds space inside the button */
+    font-family: Arial, sans-serif; /* Sets the font */
+    font-size: 16px; /* Sets the font size */
+    font-weight: bold; /* Makes the text bold */
+    color: #fff; /* White text color */
+    background-color: #4CAF50; /* Green background color */
+    text-decoration: none; /* Removes underline from the link */
+    text-align: center; /* Centers the text inside */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition on hover */
+}
+
+/* Hover effect for the button */
+#inputFormButton:hover {
+    background-color: #45a049; /* Darker green background on hover */
+    transform: translateY(-1px); /* Slightly lifts the button when hovered */
+}
+
+/* Focus effect for accessibility */
+#inputFormButton:focus {
+    outline: none; /* Removes the outline */
+    box-shadow: 0 0 0 3px rgba(72, 154, 238, 0.5); /* Adds a blue glow effect for focus */
+}
+
+/* Style for the label element */
+label[for="action"] {
+    font-family: Arial, sans-serif; /* Sets the font */
+    font-size: 16px; /* Sets the font size */
+    font-weight: bold; /* Makes the text bold */
+    color: #333; /* Dark grey color for the text */
+    display: inline-block; /* Ensures the label is displayed inline, but can have margins and padding */
+    margin-bottom: 10px; /* Adds space below the label */
+    margin-right: 10px; /* Adds space to the right of the label */
+}
+
+/* Style for the select dropdown */
+select[name="action"] {
+    width: 30%; /* Sets the width of the dropdown to 50% of its container */
+    padding: 10px 15px; /* Adds padding inside the dropdown */
+    font-size: 16px; /* Sets the font size */
+    text-align: center;
+    font-family: Arial, sans-serif; /* Sets the font for better readability */
+    color: #333; /* Sets the text color */
+    background-color: #f9f9f9; /* Light background color */
+    border: 1px solid #ccc; /* Border with light grey color */
+    border-radius: 5px; /* Rounded corners for the dropdown */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Adds subtle shadow for depth */
+    display: block; /* Makes the select block-level, ensuring it stretches horizontally */
+    margin-left: auto; /* Centers the select element horizontally */
+    margin-right: auto; /* Centers the select element horizontally */
+    transition: all 0.3s ease; /* Adds smooth transition for focus and hover effects */
+}
+
+/* Style for the select dropdown when it's focused */
+select[name="action"]:focus {
+    border-color: #007BFF; /* Blue border color on focus */
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* Soft blue glow on focus */
+    outline: none; /* Removes the outline */
+}
+
+/* Style for the average result */
+.result.average {
+    font-size: 18px;
+    color: #003afa; /* Dark blue text */
+    border: 1px solid rgba(169, 169, 169, 0.5); /* Gray border with opacity */
+    padding: 8px 15px; /* Padding for spacing */
+    border-radius: 3px; /* Slightly rounded corners */
+    margin: 5px 0; /* Space between results */
+    display: inline-block; /* Align the result based on text width */
+    white-space: nowrap; /* Prevent line breaks */
+}
+
+/* Style for the minimum price result */
+.result.minimum {
+    font-size: 18px;
+    color: #155724; /* Dark greenish text */
+    border: 1px solid rgba(169, 169, 169, 0.5); /* Gray border with opacity */
+    padding: 8px 15px; /* Padding for spacing */
+    border-radius: 3px; /* Slightly rounded corners */
+    margin: 5px 0; /* Space between results */
+    display: inline-block; /* Align the result based on text width */
+    white-space: nowrap; /* Prevent line breaks */
+}
+
+/* Style for the maximum price result */
+.result.maximum {
+    font-size: 18px;
+    color: #ac1703; /* Dark red text */
+    border: 1px solid rgba(169, 169, 169, 0.5); /* Gray border with opacity */
+    padding: 8px 15px; /* Padding for spacing */
+    border-radius: 3px; /* Slightly rounded corners */
+    margin: 5px 0; /* Space between results */
+    display: inline-block; /* Align the result based on text width */
+    white-space: nowrap; /* Prevent line breaks */
+}
+
+/* Style for the "no items found" message */
+.result.no-items {
+    font-size: 18px;
+    color: #721c24; /* Dark red text */
+    border: 1px solid rgba(169, 169, 169, 0.5); /* Gray border with opacity */
+    padding: 8px 15px; /* Padding for spacing */
+    border-radius: 3px; /* Slightly rounded corners */
+    margin: 5px 0; /* Space between results */
+    display: inline-block; /* Align the result based on text width */
+    white-space: nowrap; /* Prevent line breaks */
+}
+
+/* Button styles */
+.btn {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    padding: 10px 20px; /* Padding around the button */
+    text-decoration: none; /* Removes underline from the link */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    display: inline-block; /* Ensures button stays inline */
+    margin-top: 20px;
+    transition: background-color 0.3s, transform 0.3s ease; /* Smooth transitions */
+}
+
+/* Hover effect for the button */
+.btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-1px); /* Slight lift on hover */
+}
+
+/* Focus state to improve accessibility */
+.btn:focus {
+    outline: none; /* Removes the default focus outline */
+    box-shadow: 0 0 0 2px rgba(38, 143, 255, 0.5); /* Adds a subtle blue outline */
+}
+
+/* Specific styling for the "Back to Input Form" button */
+#backToInputFormbtn {
+    background-color: #28a745; /* Green background */
+    border: none; /* No border */
+}
+
+#backToInputFormbtn:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+#backToInputFormbtn:focus {
+    box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.5); /* Green outline on focus */
+}
+
+/* .return-button */
+.return-button {
+    text-align: center; /* Center the button */
+    margin-top: 20px;
+    margin-bottom: 70px; /* Margin from the bottom */
+    position: absolute;
+    padding-top: 30px;
+    bottom: 60px; /* Place the button 70px above the bottom of the page */
+    width: 100%; /* Ensure it stretches across the width */
+}
+
+.return-button button {
+    padding: 10px 20px; /* Add padding to the button */
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative; /* Set position to relative for pseudo-elements */
+    overflow: hidden; /* Ensure pseudo-elements don't overflow */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), /* Light shadow */
+                0 4px 20px rgba(0, 0, 0, 0.3); /* Highlight from top */
+    margin: 20px 0; /* Ensure consistent margin */
+}
+
+/* Glossy effect for top left corner */
+.return-button button::before {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top right, rgba(255, 255, 255, 0.6), transparent);
+    border-top-left-radius: 5px; /* Adjust border radius as needed */
+    z-index: 1; /* Ensure the pseudo-element is above the background */
+}
+
+/* Glossy effect for top right corner */
+.return-button button::after {
+    content: ""; /* Empty content for pseudo-element */
+    position: absolute; /* Absolute positioning */
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(to top left, rgba(255, 255, 255, 0.6), transparent);
+    border-top-right-radius: 5px; /* Adjust border radius as needed */
+    z-index: 1; /* Ensure the pseudo-element is above the background */
+}
+
+.return-button button:hover::before,
+.return-button button:hover::after {
+    opacity: 0.8; /* Slightly increase opacity on hover */
+}
+
+.return-button button:hover {
+    background-color: #076907;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3), /* Light shadow */
+                0 4px 20px rgba(0, 0, 0, 0.4); /* Highlight from top */
+}
+
+.return-button button:active {
+    transform: scale(0.95); /* Slightly shrink the button on click */
+}
+
+/* Responsiveness for small screens (up to 480px) */
+@media screen and (max-width: 480px) {
+    .outer-container {
+        width: 90%;
+    }
+
+    .box {
+        padding: 8px;
+    }
+
+    table {
+        font-size: 10px;
+    }
+
+    th, td {
+        padding: 6px;
+    }
+
+    .return-button button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}
+
+/* Responsiveness for medium screens (up to 768px) */
+@media screen and (max-width: 768px) {
+    .container {
+        width: 95%;
+        margin-top: 5%;
+    }
+
+    .box {
+        padding: 10px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 10px;
+    }
+
+    .return-button button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}
+
+/* Responsiveness for larger screens (from 1024px to 1440px) */
+@media screen and (min-width: 1024px) {
+    .container {
+        width: 80%;
+        margin-top: 5%;
+    }
+
+    .box {
+        padding: 20px;
+        max-width: 600px; /* Increased box width on large screens */
+    }
+
+    .outer-container {
+        height: auto; /* Allow content to adjust as needed */
+    }
+}
+
+/* Responsiveness for very large screens (bigger than 1440px) */
+@media screen and (min-width: 1440px) {
+    .container {
+        width: 70%; /* Make container more spacious on large desktops */
+        margin-top: 3%;
+    }
+
+    .box {
+        padding: 20px;
+        max-width: 700px; /* Further expand box width */
+    }
+
+    .outer-container {
+        height: auto;
+    }
+
+    table {
+        font-size: 14px; /* Increase table font size for readability */
+    }
+
+    th, td {
+        padding: 15px; /* Increase padding for better readability */
+    }
+
+    .return-button button {
+        font-size: 18px; /* Increase button size for desktop users */
+        padding: 10px 20px; /* Larger padding for desktop buttons */
+    }
+}
+
+/* Style for the action button in forms (submit button) */
+button[type="submit"], .action-btn {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    font-size: 18px;
+    padding: 12px 24px;
+    text-align: center;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s, transform 0.3s ease-in-out;
+    box-sizing: border-box;
+}
+
+/* Hover effect */
+button[type="submit"]:hover, .action-btn:hover {
+    background-color: #45a049; /* Darker green */
+    transform: translateY(-1px); /* Slight lift on hover */
+}
+
+/* Focus effect */
+button[type="submit"]:focus, .action-btn:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 128, 0, 0.5); /* Green outline when focused */
+}
+
+/* Disabled state */
+button[type="submit"]:disabled, .action-btn:disabled {
+    background-color: #d3d3d3; /* Light grey background */
+    color: #a3a3a3; /* Grey text */
+    cursor: not-allowed;
+}
+
+/* For a general action button class `.action-btn` */
+.action-btn {
+    font-weight: bold;
+    background-color: #008CBA; /* Default action color (blue) */
+    padding: 12px 24px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s ease-in-out;
+}
+
+/* Hover effect for `.action-btn` */
+.action-btn:hover {
+    background-color: #007B9D;
+    transform: translateY(-1px); /* Slight lift on hover */
+}
+
+/* Form group styling */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* General action button class `.action-btn` */
+.action-btn {
+    font-weight: bold;
+    background-color: #008CBA; /* Default action color (blue) */
+    padding: 12px 24px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease-in-out;
+}
+
+/* Hover effect for `.action-btn` */
+.action-btn:hover {
+    background-color: #007B9D;
+    transform: translateY(-1px); /* Slight lift on hover */
+}
+
+/* Form group styling */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Label styling */
+label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Styling for paragraphs (e.g., 'Choose an action:') */
+p {
+    font-family: Arial, sans-serif; /* Font family */
+    text-align: center; /* Center the text */
+    font-size: 16px; /* Font size */
+    font-weight: bold; /* Bold text */
+    color: #333; /* Dark grey text color */
+    background-color: #f9f9f94d; /* Light background */
+    border-radius: 5px; /* Rounded corners */
+    padding: 5px; /* Padding inside the paragraph */
+    margin: 10px 0 30px; /* Top and bottom margins */
+}
+
+/* Input select styling */
+select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+    font-size: 16px;
+    color: #333;
+    background-color: #fff; /* White background */
+    transition: border-color 0.3s ease; /* Smooth transition for border color */
+}
+
+/* Focus effect for select */
+select:focus {
+    border-color: #008CBA; /* Blue border on focus */
+    outline: none; /* Remove default outline */
+}
+
+/* Center-align elements */
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Additional styles for responsiveness */
+@media screen and (max-width: 768px) {
+    /* Adjust padding for smaller screens */
+    .action-btn {
+        padding: 10px 20px; /* Smaller padding */
+        font-size: 14px; /* Adjust font size */
+    }
+
+    p {
+        font-size: 14px; /* Adjust font size for paragraphs */
+    }
+
+    select {
+        font-size: 14px; /* Adjust font size for select inputs */
+    }
+}
